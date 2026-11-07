@@ -31,9 +31,19 @@ jobs:
         run: pip install pillow
 
       - name: Generate assets and build
+        env:
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
         run: |
           python generate_assets.py
-          python build.py "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          OWNER_LC="$(echo "$OWNER" | tr '[:upper:]' '[:lower:]')"
+          REPO_LC="$(echo "$REPO" | tr '[:upper:]' '[:lower:]')"
+          if [ "$REPO_LC" = "${OWNER_LC}.github.io" ]; then
+            SITE_URL="https://${OWNER}.github.io/"
+          else
+            SITE_URL="https://${OWNER}.github.io/${REPO}/"
+          fi
+          python build.py "$SITE_URL"
 
       - uses: actions/upload-pages-artifact@v3
         with:

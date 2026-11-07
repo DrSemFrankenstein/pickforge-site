@@ -38,7 +38,11 @@ This regenerates the HTML, Markdown, llms files, sitemap, robots.txt and JSON-LD
 3. In the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 4. The workflow `.github/workflows/github-pages.yml` runs on push: it generates assets, runs `build.py` with `https://<user>.github.io/<repo>/`, and deploys.
 
-Site URL: `https://<your-github-username>.github.io/<repo-name>/` (enable **Enforce HTTPS** under Pages settings after the first deploy).
+Site URL:
+- **Root home page:** rename the repo to `<username>.github.io` (e.g. `DrSemFrankenstein.github.io`) → `https://<username>.github.io/`
+- **Project site:** any other repo name → `https://<username>.github.io/<repo-name>/`
+
+Enable **Enforce HTTPS** under Pages after the first deploy.
 
 ## Editing text
 

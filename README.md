@@ -12,7 +12,7 @@
 | `sitemap.xml` | All three pages with hreflang alternates. |
 | `site.webmanifest`, `assets/*.png`, `assets/favicon.svg` | Icons and manifest. |
 | `assets/og.jpg` | 1200×630 social preview image (regenerate with `generate_assets.py` if missing). |
-| `assets/sprite.webp` | 48-frame sprite sheet (7×7 grid, 405×720 frames) scrubbed by scroll (`generate_assets.py`). |
+| `assets/sprite.webp` | 48-frame sprite sheet (7×7 grid, 405×720 frames). **Commit the real file** — `generate_assets.py` only creates a placeholder if it is missing. |
 | `assets/site.css`, `assets/site.js` | Shared styles and the scroll animation. |
 | `404.html`, `.nojekyll` | GitHub Pages helpers. |
 | `_headers`, `_redirects` | Security headers (Cloudflare Pages / Netlify) and HTTPS/404 rules. |

@@ -71,14 +71,22 @@ def sprite_webp(path: Path) -> None:
     sheet.save(path, "WEBP", quality=82, method=6)
 
 
+def _write_if_missing(path: Path, write) -> None:
+    if path.is_file():
+        print("skip", path.name, "(already present)")
+        return
+    write(path)
+    print("wrote", path.name)
+
+
 def main() -> None:
     ASSETS.mkdir(exist_ok=True)
-    icon_png(32, ASSETS / "favicon-32.png")
-    icon_png(192, ASSETS / "icon-192.png")
-    icon_png(512, ASSETS / "icon-512.png")
-    og_jpg(ASSETS / "og.jpg")
-    sprite_webp(ASSETS / "sprite.webp")
-    print("Wrote assets to", ASSETS)
+    _write_if_missing(ASSETS / "favicon-32.png", lambda p: icon_png(32, p))
+    _write_if_missing(ASSETS / "icon-192.png", lambda p: icon_png(192, p))
+    _write_if_missing(ASSETS / "icon-512.png", lambda p: icon_png(512, p))
+    _write_if_missing(ASSETS / "og.jpg", og_jpg)
+    _write_if_missing(ASSETS / "sprite.webp", sprite_webp)
+    print("Done. Put the real hero sprite at assets/sprite.webp if you only have a placeholder.")
 
 
 if __name__ == "__main__":

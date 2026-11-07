@@ -1,0 +1,22 @@
+{
+  "name": "PickForge",
+  "short_name": "PickForge",
+  "description": "PickForge is an editorial publisher of product and travel guides. We compare gear before linking out, disclose affiliate and partner relationships on every page, and maintain this site as public proof of real content\u2014not a storefront.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#CFAE87",
+  "theme_color": "#CFAE87",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

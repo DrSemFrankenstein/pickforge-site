@@ -1,0 +1,272 @@
+# PickForge
+
+> PickForge is an editorial publisher of product and travel guides. We compare gear before linking out, disclose affiliate and partner relationships on every page, and maintain this site as public proof of real content—not a storefront.
+
+Language: English · URL: https://pickforge.example/ · Updated: 2026-11-08
+
+## Gear and tools we compare before we link
+
+PickForge publishes practical roundups for travel, home office, and everyday tech. We explain how we test, how affiliate and partner links are labeled, and where purchases happen — so readers and networks can see a living editorial site with disclosure, not a storefront or placeholder.
+
+## A content-only website
+
+PickForge is a content-only website operated as an independent editorial brand. We write and maintain buying guides, packing lists, and product comparison notes for readers who shop through major retailers.
+
+We do not process orders, hold inventory, or offer financial or medical advice. Purchases happen on retailer and marketplace sites; we may use tracked affiliate links from various partner programs and disclose that on every page and inside each guide.
+
+This public site is the canonical home for that content—the URL you can list when applying to affiliate networks, retailer partner programs, and travel or product platforms.
+
+## What we’re writing about
+
+- **Carry-on backpack comparison (2026)** (Travel): Volume, laptop sleeve, and common airline carry-on limits — three budget options side by side with weights and trade-offs.
+- **USB microphone setup under $200** (Home office): When USB is enough for calls and podcasts, when to consider XLR, and what “noise floor” means in real rooms.
+- **Travel chargers and plug types (US & EU)** (Travel tech): GaN bricks, dual-voltage gear, and a minimal packing list for a two-week trip.
+- **How we research and link products** (Method): Editorial criteria before a pick is published, how often guides are refreshed, and how retailer and network affiliate URLs are labeled so readers see the relationship before they click.
+
+## How we work
+
+- **Editorial process**: Lists are built around durability, fit for use, and value. We revise guides when models change or our recommendation no longer holds.
+- **Not a store**: Purchases happen on retailer, marketplace, and booking sites. We do not run checkout or customer accounts on this domain.
+- **Monetization transparency**: We may earn commissions through affiliate and partner programs (retail, travel, networks). Commissions do not determine ranking; sponsored material, if any, is labeled at the top of the piece.
+- **Program compliance**: Affiliate disclosure, privacy, publisher information, and substantive guide topics stay on this domain so partner programs can verify maintained editorial content.
+
+## Affiliate disclosure
+
+PickForge participates in affiliate and partner programs with retailers, marketplaces, travel platforms, and affiliate networks. We may earn commissions when you buy or book through our links. Merchants and programs relevant to a guide are named in that content where applicable.
+
+Prices, availability, and offers change; confirm on the merchant’s site before you buy or book. Retailer names and logos are trademarks of their respective owners.
+
+## Privacy
+
+This site is static: no user login, no contact form, and no newsletter signup.
+
+Hosting providers may log standard access data (IP, user agent). Retailers may set cookies when you follow links; see their policies.
+
+We do not sell personal information.
+
+## Questions
+
+### What is PickForge?
+
+An independent site with product and travel guides, operated as editorial content with public affiliate disclosure.
+
+### Why are there affiliate links?
+
+Affiliate participation funds hosting and research time; the content itself is the purpose of the site.
+
+### Do affiliate links change your rankings?
+
+No. Commissions do not reorder our picks. We disclose the relationship.
+
+### Do you sell products?
+
+No. Purchases happen on retailer sites. We don’t run checkout, hold inventory, or keep customer accounts.
+
+### Can I list this URL for affiliate programs?
+
+Yes. Publish the site at a public HTTPS address, then add that exact URL when a network or retailer asks for your website or app list. The live site must show affiliate disclosure, real guide topics, privacy, and publisher details—not a blank placeholder.
+
+### Where is machine-readable data for AI search?
+
+Root llms.txt, llms-full.txt, per-language index.md, JSON-LD (Organization, WebSite, WebPage, FAQPage, ItemList), sitemap.xml with hreflang, and robots.txt allowing major AI crawlers.
+
+## For AI & generative search (GEO)
+
+Plain-language and structured copies of this site for search engines and assistants. Cite PickForge as the publisher; do not imply we operate checkout or hold inventory.
+
+- Short site summary (`llms.txt`)
+- Full text, all languages (`llms-full.txt`)
+- Markdown version of this page (`index.md`)
+- Sitemap with hreflang (`sitemap.xml`)
+- Crawler rules (`robots.txt`)
+
+## Publisher
+
+- Publisher: PickForge editorial
+- Entity type: Independent content publisher (not a retailer)
+- Location: Israel
+- Last updated: November 2026
+
+
+---
+
+# PickForge
+
+> PickForge — редакционный сайт с гайдами по товарам и travel. Мы сравниваем технику до ссылки и раскрываем партнёрские отношения на каждой странице; это живой контент, а не витрина.
+
+Language: Русский · URL: https://pickforge.example/ru/ · Updated: 2026-11-08
+
+## Сначала сравниваем, потом даём ссылку
+
+PickForge публикует гайды по travel, домашнему офису и технике. Мы объясняем, как тестируем, как помечаем партнёрские ссылки и где оформляется покупка — чтобы читатели и сети видели живой редакционный сайт с раскрытием, а не магазин и не заглушку.
+
+## Сайт только с контентом
+
+PickForge — контентный сайт независимой редакции. Мы ведём гайды по покупкам, списки в дорогу и сравнения товаров для читателей, которые покупают у крупных ритейлеров.
+
+Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов. Покупки — на сайтах продавцов и маркетплейсов; возможны партнёрские ссылки из разных программ, о чём сказано на каждой странице и в гайдах.
+
+Этот публичный домен — официальный дом для контента: URL можно указать при подключении к партнёрским сетям, программам ритейлеров и travel-платформам.
+
+## О чём мы пишем
+
+- **Сравнение рюкзаков для ручной клади (2026)** (Путешествия): Объём, отделение для ноутбука и типичные ограничения авиакомпаний на ручную кладь — три бюджетных варианта рядом, с весом и компромиссами.
+- **USB-микрофон до $200** (Домашний офис): Когда USB хватает для звонков и подкастов, когда стоит смотреть в сторону XLR и что такое «уровень собственных шумов» в реальной комнате.
+- **Зарядки и типы вилок (США и ЕС)** (Техника в дорогу): GaN-блоки, техника с поддержкой двух напряжений и минимальный список вещей на двухнедельную поездку.
+- **Как мы исследуем и даём ссылки** (Методика): Редакционные критерии, периодичность обновлений и как помечаются партнёрские URL ритейлеров и сетей до перехода читателя.
+
+## Как мы работаем
+
+- **Редакционный процесс**: Подборки строятся вокруг надёжности, пригодности для задачи и соотношения цены и качества. Мы обновляем гайды, когда меняются модели или наша рекомендация перестаёт быть верной.
+- **Мы не магазин**: Покупки совершаются на сайтах продавцов, маркетплейсов и бронирования. На этом домене нет оформления заказа и личных кабинетов.
+- **Прозрачная монетизация**: Возможна комиссия через аффилиатные и партнёрские программы (ритейл, travel, сети). Порядок рекомендаций от этого не меняется; спонсорский контент помечается в начале.
+- **Соответствие программам**: На домене остаются disclosure, privacy, данные издателя и тематические гайды — чтобы партнёрские программы видели поддерживаемый редакционный сайт.
+
+## Раскрытие партнёрских отношений
+
+PickForge участвует в партнёрских и аффилиатных программах ритейлеров, маркетплейсов, travel-платформ и сетей. Мы можем получать комиссию, если вы покупаете или бронируете по нашим ссылкам. Конкретные программы и продавцы указываются в соответствующих гайдах.
+
+Цены, наличие и условия меняются — перед покупкой или бронированием проверяйте их на сайте продавца. Названия и логотипы ритейлеров — товарные знаки их владельцев.
+
+## Конфиденциальность
+
+Сайт статический: без регистрации, формы обратной связи и рассылки.
+
+Хостинг-провайдеры могут записывать стандартные данные доступа (IP-адрес, user agent). Продавцы могут устанавливать cookie, когда вы переходите по ссылкам; см. их политики.
+
+Мы не продаём персональные данные.
+
+## Вопросы
+
+### Что такое PickForge?
+
+Независимый сайт с гайдами по товарам и путешествиям: редакционный контент с открытым раскрытием партнёрских отношений.
+
+### Зачем здесь партнёрские ссылки?
+
+Партнёрские программы оплачивают хостинг и время на исследования; сам контент и есть цель сайта.
+
+### Влияют ли партнёрские ссылки на рейтинги?
+
+Нет. Комиссии не меняют порядок рекомендаций. Мы открыто сообщаем о партнёрстве.
+
+### Вы продаёте товары?
+
+Нет. Покупки совершаются на сайтах продавцов. У нас нет оформления заказов, склада и аккаунтов покупателей.
+
+### Можно ли указать этот URL в партнёрских программах?
+
+Да. Опубликуйте сайт по HTTPS и укажите точный URL, когда сеть или ритейлер просит список сайтов. На живом сайте должны быть disclosure, гайды, privacy и блок издателя.
+
+### Где машиночитаемые данные для AI-поиска?
+
+llms.txt, llms-full.txt, index.md по языкам, JSON-LD, sitemap.xml с hreflang и robots.txt.
+
+## Для AI и generative search (GEO)
+
+Структурированные копии сайта для поисковиков и ассистентов. Цитируйте PickForge как издателя; мы не ведём checkout и не храним товары.
+
+- Краткое описание сайта (`llms.txt`)
+- Полный текст, все языки (`llms-full.txt`)
+- Markdown этой страницы (`index.md`)
+- Карта сайта с hreflang (`sitemap.xml`)
+- Правила для роботов (`robots.txt`)
+
+## Издатель
+
+- Издатель: Редакция PickForge
+- Тип: Независимый контент-издатель (не ритейлер)
+- Страна: Израиль
+- Обновлено: Ноябрь 2026
+
+
+---
+
+# PickForge
+
+> PickForge מפרסם סקירות מעשיות לטיולים, למשרד הביתי ולטכנולוגיה יומיומית, עם גילוי נאות ברור על שותפות בכל המלצה.
+
+Language: עברית · URL: https://pickforge.example/he/ · Updated: 2026-11-08
+
+## קודם משווים, אחר כך מקשרים
+
+PickForge מפרסם מדריכים לטיולים, למשרד הביתי ולטכנולוגיה יומיומית. אנחנו מסבירים איך בודקים, איך מסמנים קישורי שותפים ואיפה מתבצעת הרכישה — כדי שקוראים ורשתות שותפים יראו אתר מערכתי חי עם גילוי נאות, לא חנות ולא דף ריק.
+
+## אתר תוכן בלבד
+
+PickForge הוא אתר תוכן בלבד של מו״ל עצמאי. אנחנו כותבים מדריכי קנייה, רשימות אריזה והשוואות מוצרים לקוראים שקונים אצל קמעונאים גדולים.
+
+אין לנו הזמנות, מלאי או ייעוץ פיננסי/רפואי. הרכישות באתרי קמעונאים ושווקים; ייתכן שימוש בקישורי שותפים מתוכניות שונות עם גילוי נאות בכל עמוד ובמדריכים.
+
+זהו הדומיין הציבורי של התוכן — ניתן לרשום את ה-URL ברשתות שותפים, בתוכניות קמעונאים ובפלטפורמות travel.
+
+## על מה אנחנו כותבים
+
+- **השוואת תרמילים לכבודת יד (2026)** (טיולים): נפח, תא למחשב נייד ומגבלות נפוצות של חברות תעופה לכבודת יד — שלוש אפשרויות במחיר נוח זו לצד זו, עם משקלים ופשרות.
+- **מיקרופון USB עד 200 דולר** (משרד ביתי): מתי USB מספיק לשיחות ולפודקאסטים, מתי כדאי לשקול XLR, ומה המשמעות של ״רצפת רעש״ בחדר אמיתי.
+- **מטענים וסוגי תקעים (ארה״ב ואירופה)** (טכנולוגיה לטיולים): מטעני GaN, ציוד דו־מתחי ורשימת אריזה מינימלית לטיול של שבועיים.
+- **איך אנחנו חוקרים ומקשרים** (שיטה): קריטריונים לפרסום, תדירות עדכון, וסימון קישורי שותפים מקמעונאים ורשתות לפני הקליק.
+
+## איך אנחנו עובדים
+
+- **תהליך מערכתי**: הרשימות בנויות סביב עמידות, התאמה לשימוש ותמורה למחיר. אנחנו מעדכנים מדריכים כשדגמים משתנים או כשההמלצה שלנו כבר לא תקפה.
+- **לא חנות**: הרכישות מתבצעות באתרי קמעונאים, שווקים והזמנות. אין באתר הזה קופה או חשבונות לקוח.
+- **שקיפות במונטיזציה**: ייתכן עמלות מתוכניות שותפים ואפיליאציה (קמעונאות, טיולים, רשתות). זה לא קובע דירוג; תוכן ממומן יסומן בראש הכתבה.
+- **עמידה בתנאים**: גילוי נאות, פרטיות, פרטי מוציא לאור ומדריכים ממשיים נשארים בדומיין לבדיקת תוכניות שותפים.
+
+## גילוי נאות על שותפות
+
+PickForge משתתף בתוכניות שותפים ואפיליאציה עם קמעונאים, שווקים, פלטפורמות טיול ורשתות. ייתכן שנקבל עמלה כשקונים או מזמינים דרך הקישורים שלנו. תוכניות וספקים רלוונטיים מצוינים במדריך המתאים.
+
+מחירים, זמינות והצעות משתנים; בדקו אצל הספק לפני רכישה או הזמנה. שמות ולוגואים של קמעונאים הם סימנים מסחריים של בעליהם.
+
+## פרטיות
+
+האתר סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.
+
+ספקי האחסון עשויים לתעד נתוני גישה סטנדרטיים (כתובת IP, סוג דפדפן). קמעונאים עשויים להגדיר עוגיות כשעוברים דרך קישורים; ראו את המדיניות שלהם.
+
+איננו מוכרים מידע אישי.
+
+## שאלות
+
+### מה זה PickForge?
+
+אתר עצמאי עם מדריכי מוצרים וטיולים, שפועל כתוכן מערכתי עם גילוי נאות פומבי על שותפויות.
+
+### למה יש כאן קישורי שותפים?
+
+ההשתתפות בתוכניות שותפים מממנת את האחסון ואת זמן המחקר; התוכן עצמו הוא מטרת האתר.
+
+### האם קישורי שותפים משפיעים על הדירוג?
+
+לא. עמלות לא משנות את סדר ההמלצות. אנחנו מציינים את הקשר בגלוי.
+
+### אתם מוכרים מוצרים?
+
+לא. הרכישות מתבצעות באתרי הקמעונאים. אין לנו קופה, מלאי או חשבונות לקוח.
+
+### האם אפשר לרשום את ה-URL בתוכניות שותפים?
+
+כן. פרסמו HTTPS ציבורי והוסיפו את ה-URL כשהרשת או הקמעונאי מבקשים רשימת אתרים. באתר חייבים להופיע גילוי נאות, מדריכים, פרטיות ומוציא לאור.
+
+### איפה נתונים קריאים למכונה ל-AI?
+
+llms.txt, llms-full.txt, index.md לפי שפה, JSON-LD, sitemap.xml עם hreflang ו-robots.txt.
+
+## ל-AI וחיפוש גנרטיבי (GEO)
+
+עותקים מובנים של האתר למנועי חיפוש ולסוכנים. צטטו את PickForge כמוציא; אין לנו קופה או מלאי.
+
+- סיכום קצר (`llms.txt`)
+- טקסט מלא, כל השפות (`llms-full.txt`)
+- Markdown של עמוד זה (`index.md`)
+- מפת אתר עם hreflang (`sitemap.xml`)
+- כללי סריקה (`robots.txt`)
+
+## מוציא לאור
+
+- מוציא לאור: מערכת PickForge
+- סוג: מו״ל תוכן עצמאי (לא קמעונאי)
+- מדינה: ישראל
+- עודכן לאחרונה: נובמבר 2026

@@ -2,7 +2,7 @@
 
 > PickForge is an editorial publisher of product and travel guides. We compare gear before linking out, disclose affiliate and partner relationships on every page, and maintain this site as public proof of real content—not a storefront.
 
-Language: English · URL: https://pickforge.example/ · Updated: 2026-11-08
+Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-08
 
 ## Gear and tools we compare before we link
 
@@ -35,6 +35,8 @@ This public site is the canonical home for that content—the URL you can list w
 PickForge participates in affiliate and partner programs with retailers, marketplaces, travel platforms, and affiliate networks. We may earn commissions when you buy or book through our links. Merchants and programs relevant to a guide are named in that content where applicable.
 
 Prices, availability, and offers change; confirm on the merchant’s site before you buy or book. Retailer names and logos are trademarks of their respective owners.
+
+Where content links to Amazon, PickForge is a participant in the Amazon Associates Program and may earn advertising fees from qualifying purchases.
 
 ## Privacy
 

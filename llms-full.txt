@@ -2,7 +2,7 @@
 
 > PickForge is an editorial publisher of product and travel guides. We compare gear before linking out, disclose affiliate and partner relationships on every page, and maintain this site as public proof of real content—not a storefront.
 
-Language: English · URL: https://pickforge.example/ · Updated: 2026-11-08
+Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-08
 
 ## Gear and tools we compare before we link
 
@@ -35,6 +35,8 @@ This public site is the canonical home for that content—the URL you can list w
 PickForge participates in affiliate and partner programs with retailers, marketplaces, travel platforms, and affiliate networks. We may earn commissions when you buy or book through our links. Merchants and programs relevant to a guide are named in that content where applicable.
 
 Prices, availability, and offers change; confirm on the merchant’s site before you buy or book. Retailer names and logos are trademarks of their respective owners.
+
+Where content links to Amazon, PickForge is a participant in the Amazon Associates Program and may earn advertising fees from qualifying purchases.
 
 ## Privacy
 
@@ -94,7 +96,7 @@ Plain-language and structured copies of this site for search engines and assista
 
 > PickForge — редакционный сайт с гайдами по товарам и travel. Мы сравниваем технику до ссылки и раскрываем партнёрские отношения на каждой странице; это живой контент, а не витрина.
 
-Language: Русский · URL: https://pickforge.example/ru/ · Updated: 2026-11-08
+Language: Русский · URL: https://drsemfrankenstein.github.io/pickforge-site/ru/ · Updated: 2026-11-08
 
 ## Сначала сравниваем, потом даём ссылку
 
@@ -127,6 +129,8 @@ PickForge — контентный сайт независимой редакц�
 PickForge участвует в партнёрских и аффилиатных программах ритейлеров, маркетплейсов, travel-платформ и сетей. Мы можем получать комиссию, если вы покупаете или бронируете по нашим ссылкам. Конкретные программы и продавцы указываются в соответствующих гайдах.
 
 Цены, наличие и условия меняются — перед покупкой или бронированием проверяйте их на сайте продавца. Названия и логотипы ритейлеров — товарные знаки их владельцев.
+
+Если в материале есть ссылки на Amazon, PickForge участвует в программе Amazon Associates и может получать вознаграждение за соответствующие покупки.
 
 ## Конфиденциальность
 
@@ -186,7 +190,7 @@ llms.txt, llms-full.txt, index.md по языкам, JSON-LD, sitemap.xml с hre
 
 > PickForge מפרסם סקירות מעשיות לטיולים, למשרד הביתי ולטכנולוגיה יומיומית, עם גילוי נאות ברור על שותפות בכל המלצה.
 
-Language: עברית · URL: https://pickforge.example/he/ · Updated: 2026-11-08
+Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-08
 
 ## קודם משווים, אחר כך מקשרים
 
@@ -219,6 +223,8 @@ PickForge הוא אתר תוכן בלבד של מו״ל עצמאי. אנחנו �
 PickForge משתתף בתוכניות שותפים ואפיליאציה עם קמעונאים, שווקים, פלטפורמות טיול ורשתות. ייתכן שנקבל עמלה כשקונים או מזמינים דרך הקישורים שלנו. תוכניות וספקים רלוונטיים מצוינים במדריך המתאים.
 
 מחירים, זמינות והצעות משתנים; בדקו אצל הספק לפני רכישה או הזמנה. שמות ולוגואים של קמעונאים הם סימנים מסחריים של בעליהם.
+
+כאשר תוכן מקשר ל-Amazon, PickForge משתתף בAmazon Associates ועשוי לקבל עמלה מרכישות מזכות.
 
 ## פרטיות
 

@@ -1,5 +1,5 @@
 # PickForge welcomes search engines and AI assistants.
-# Summary for language models: https://pickforge.example/llms.txt
+# Summary for language models: https://drsemfrankenstein.github.io/pickforge-site/llms.txt
 
 User-agent: *
 Allow: /
@@ -55,4 +55,4 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
-Sitemap: https://pickforge.example/sitemap.xml
+Sitemap: https://drsemfrankenstein.github.io/pickforge-site/sitemap.xml

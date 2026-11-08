@@ -13,7 +13,8 @@ import json, re, sys, html
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-SITE_URL = (sys.argv[1] if len(sys.argv) > 1 else "https://pickforge.example/").rstrip("/") + "/"
+DEFAULT_ORIGIN = "https://drsemfrankenstein.github.io/pickforge-site"
+SITE_URL = (sys.argv[1] if len(sys.argv) > 1 else DEFAULT_ORIGIN + "/").rstrip("/") + "/"
 UPDATED_ISO = "2026-11-08"
 LANGS = ["en", "ru", "he"]
 PATHS = {"en": "", "ru": "ru/", "he": "he/"}
@@ -56,7 +57,10 @@ CONTENT = {
   ],
   "disc_h": "Affiliate disclosure",
   "disc_p": "PickForge participates in <strong>affiliate and partner programs</strong> with retailers, marketplaces, travel platforms, and affiliate networks. We may earn commissions when you buy or book through our links. Merchants and programs relevant to a guide are named in that content where applicable.",
-  "disc_fine": ["Prices, availability, and offers change; confirm on the merchant’s site before you buy or book. Retailer names and logos are trademarks of their respective owners."],
+  "disc_fine": [
+    "Prices, availability, and offers change; confirm on the merchant’s site before you buy or book. Retailer names and logos are trademarks of their respective owners.",
+    "Where content links to Amazon, PickForge is a participant in the <strong>Amazon Associates Program</strong> and may earn advertising fees from qualifying purchases.",
+  ],
   "priv_h": "Privacy",
   "priv": ["This site is static: no user login, no contact form, and no newsletter signup.",
            "Hosting providers may log standard access data (IP, user agent). Retailers may set cookies when you follow links; see their policies.",
@@ -121,7 +125,10 @@ CONTENT = {
   ],
   "disc_h": "Раскрытие партнёрских отношений",
   "disc_p": "PickForge участвует в <strong>партнёрских и аффилиатных программах</strong> ритейлеров, маркетплейсов, travel-платформ и сетей. Мы можем получать комиссию, если вы покупаете или бронируете по нашим ссылкам. Конкретные программы и продавцы указываются в соответствующих гайдах.",
-  "disc_fine": ["Цены, наличие и условия меняются — перед покупкой или бронированием проверяйте их на сайте продавца. Названия и логотипы ритейлеров — товарные знаки их владельцев."],
+  "disc_fine": [
+    "Цены, наличие и условия меняются — перед покупкой или бронированием проверяйте их на сайте продавца. Названия и логотипы ритейлеров — товарные знаки их владельцев.",
+    "Если в материале есть ссылки на Amazon, PickForge участвует в программе <strong>Amazon Associates</strong> и может получать вознаграждение за соответствующие покупки.",
+  ],
   "priv_h": "Конфиденциальность",
   "priv": ["Сайт статический: без регистрации, формы обратной связи и рассылки.",
            "Хостинг-провайдеры могут записывать стандартные данные доступа (IP-адрес, user agent). Продавцы могут устанавливать cookie, когда вы переходите по ссылкам; см. их политики.",
@@ -186,7 +193,10 @@ CONTENT = {
   ],
   "disc_h": "גילוי נאות על שותפות",
   "disc_p": "PickForge משתתף ב<strong>תוכניות שותפים ואפיליאציה</strong> עם קמעונאים, שווקים, פלטפורמות טיול ורשתות. ייתכן שנקבל עמלה כשקונים או מזמינים דרך הקישורים שלנו. תוכניות וספקים רלוונטיים מצוינים במדריך המתאים.",
-  "disc_fine": ["מחירים, זמינות והצעות משתנים; בדקו אצל הספק לפני רכישה או הזמנה. שמות ולוגואים של קמעונאים הם סימנים מסחריים של בעליהם."],
+  "disc_fine": [
+    "מחירים, זמינות והצעות משתנים; בדקו אצל הספק לפני רכישה או הזמנה. שמות ולוגואים של קמעונאים הם סימנים מסחריים של בעליהם.",
+    "כאשר תוכן מקשר ל-Amazon, PickForge משתתף ב<strong>Amazon Associates</strong> ועשוי לקבל עמלה מרכישות מזכות.",
+  ],
   "priv_h": "פרטיות",
   "priv": ["האתר סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.",
            "ספקי האחסון עשויים לתעד נתוני גישה סטנדרטיים (כתובת IP, סוג דפדפן). קמעונאים עשויים להגדיר עוגיות כשעוברים דרך קישורים; ראו את המדיניות שלהם.",

@@ -6,7 +6,7 @@
 
 - Publisher: PickForge (independent editorial, not a retailer)
 - Monetization: affiliate and partner programs (retail, travel, networks); commissions do not reorder picks
-- Languages: English (https://pickforge.example/), Russian (https://pickforge.example/ru/), Hebrew (https://pickforge.example/he/, RTL)
+- Languages: English (https://drsemfrankenstein.github.io/pickforge-site/), Russian (https://drsemfrankenstein.github.io/pickforge-site/ru/), Hebrew (https://drsemfrankenstein.github.io/pickforge-site/he/, RTL)
 - Machine formats: llms.txt, llms-full.txt, index.md per language, JSON-LD on each HTML page, sitemap.xml (hreflang), robots.txt
 
 ## Affiliate program checklist
@@ -18,9 +18,9 @@
 
 ## Pages
 
-- [English](https://pickforge.example/) · [Markdown](https://pickforge.example/index.md)
-- [Russian](https://pickforge.example/ru/) · [Markdown](https://pickforge.example/ru/index.md)
-- [Hebrew](https://pickforge.example/he/) · [Markdown](https://pickforge.example/he/index.md)
+- [English](https://drsemfrankenstein.github.io/pickforge-site/) · [Markdown](https://drsemfrankenstein.github.io/pickforge-site/index.md)
+- [Russian](https://drsemfrankenstein.github.io/pickforge-site/ru/) · [Markdown](https://drsemfrankenstein.github.io/pickforge-site/ru/index.md)
+- [Hebrew](https://drsemfrankenstein.github.io/pickforge-site/he/) · [Markdown](https://drsemfrankenstein.github.io/pickforge-site/he/index.md)
 
 ## Guide topics
 
@@ -52,6 +52,6 @@
 
 ## Files
 
-- https://pickforge.example/llms-full.txt
-- https://pickforge.example/sitemap.xml
-- https://pickforge.example/robots.txt
+- https://drsemfrankenstein.github.io/pickforge-site/llms-full.txt
+- https://drsemfrankenstein.github.io/pickforge-site/sitemap.xml
+- https://drsemfrankenstein.github.io/pickforge-site/robots.txt

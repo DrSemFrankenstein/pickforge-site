@@ -1,7 +1,7 @@
 {
   "name": "PickForge",
   "short_name": "PickForge",
-  "description": "PickForge is an editorial publisher of product and travel guides. We compare gear before linking out, disclose affiliate and partner relationships on every page, and maintain this site as public proof of real content\u2014not a storefront.",
+  "description": "PickForge publishes product and travel guides. Comparisons use published specifications and stated limits. Affiliate relationships are disclosed. This site does not sell products.",
   "start_url": "./",
   "scope": "./",
   "display": "browser",

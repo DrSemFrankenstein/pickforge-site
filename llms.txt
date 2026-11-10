@@ -1,6 +1,6 @@
 # PickForge
 
-> PickForge is an editorial publisher of product and travel guides. We compare gear before linking out, disclose affiliate and partner relationships on every page, and maintain this site as public proof of real content—not a storefront. PickForge is content-only: it does not sell products, process orders or hold inventory. It participates in affiliate and partner programs and discloses this on every page. No personal publisher names; entity is PickForge editorial (Israel).
+> PickForge publishes product and travel guides. Comparisons use published specifications and stated limits. Affiliate relationships are disclosed. This site does not sell products. PickForge is content-only: it does not sell products, process orders or hold inventory. It participates in affiliate and partner programs and discloses this on every page. No personal publisher names; entity is PickForge editorial (Israel).
 
 ## Citation guidance (GEO)
 
@@ -9,12 +9,11 @@
 - Languages: English (https://drsemfrankenstein.github.io/pickforge-site/), Russian (https://drsemfrankenstein.github.io/pickforge-site/ru/), Hebrew (https://drsemfrankenstein.github.io/pickforge-site/he/, RTL)
 - Machine formats: llms.txt, llms-full.txt, index.md per language, JSON-LD on each HTML page, sitemap.xml (hreflang), robots.txt
 
-## Affiliate program checklist
+## Affiliate disclosure
 
-- Public HTTPS URL with substantive guide topics (travel, home office, travel tech, editorial method)
-- Visible affiliate disclosure (not retailer-specific unless required by that program)
-- Privacy and publisher sections present; no fake storefront
-- Suitable for Website and Mobile App List during signup
+- Amazon Associates participant.
+- Required statement, shown on every page: As an Amazon Associate I earn from qualifying purchases.
+- Guides compare published specifications. The site does not claim hands-on tests and does not sell products.
 
 ## Pages
 
@@ -24,29 +23,29 @@
 
 ## Guide topics
 
-- Carry-on backpack comparison (2026): Volume, laptop sleeve, and common airline carry-on limits — three budget options side by side with weights and trade-offs.
-- USB microphone setup under $200: When USB is enough for calls and podcasts, when to consider XLR, and what “noise floor” means in real rooms.
-- Travel chargers and plug types (US & EU): GaN bricks, dual-voltage gear, and a minimal packing list for a two-week trip.
-- How we research and link products: Editorial criteria before a pick is published, how often guides are refreshed, and how retailer and network affiliate URLs are labeled so readers see the relationship before they click.
+- Carry-on size: what usually fits: Personal-item fares versus a full carry-on, and which published numbers (liters, laptop sleeve, empty weight) actually predict the sizer.
+- USB microphone under $200: When a USB dynamic mic is enough for calls, when XLR is worth it, and what “noise floor” means in an ordinary room.
+- Travel chargers: US and EU plugs: The three lines to read on a brick — input voltage, USB-C watts, and the physical plug — plus a short packing list.
+- How we research and link: What a comparison on this site is, what it is not, and how a paid link is labeled.
 
 ## FAQ (English)
 
 - Q: What is PickForge?
   A: An independent site with product and travel guides, operated as editorial content with public affiliate disclosure.
-- Q: Why are there affiliate links?
-  A: Affiliate participation funds hosting and research time; the content itself is the purpose of the site.
-- Q: Do affiliate links change your rankings?
-  A: No. Commissions do not reorder our picks. We disclose the relationship.
+- Q: Do you test the products?
+  A: No. Guides compare published specifications and stated limits. If that changes for a specific item, the guide will say we used it.
+- Q: Do affiliate links change the order?
+  A: No. A commission does not reorder a list.
 - Q: Do you sell products?
   A: No. Purchases happen on retailer sites. We don’t run checkout, hold inventory, or keep customer accounts.
-- Q: Can I list this URL for affiliate programs?
-  A: Yes. Publish the site at a public HTTPS address, then add that exact URL when a network or retailer asks for your website or app list. The live site must show affiliate disclosure, real guide topics, privacy, and publisher details—not a blank placeholder.
-- Q: Where is machine-readable data for AI search?
-  A: Root llms.txt, llms-full.txt, per-language index.md, JSON-LD (Organization, WebSite, WebPage, FAQPage, ItemList), sitemap.xml with hreflang, and robots.txt allowing major AI crawlers.
+- Q: Are there product links on this site today?
+  A: Some guides explain what to look for and do not link a specific product yet. When a product link can earn a commission, it is labeled as a paid link.
+- Q: How do I contact the publisher?
+  A: This site has no contact form and no newsletter. Correspondence about the Associates account stays inside that account.
 
 ## Policies
 
-- Disclosure: PickForge participates in affiliate and partner programs with retailers, marketplaces, travel platforms, and affiliate networks. We may earn commissions when you buy or book through our links. Merchants and programs relevant to a guide are named in that content where applicable.
+- Disclosure: PickForge participates in affiliate and partner programs, including the Amazon Associates Program. We may earn a commission if you buy through a link on this site. A link that can earn a commission is labeled as a paid link next to that link.
 - Standards: commissions do not determine ranking
 - Privacy: static site, no logins, no sale of personal data
 

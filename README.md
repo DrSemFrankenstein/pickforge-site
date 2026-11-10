@@ -60,4 +60,4 @@ Then open `http://localhost:3000/` and use EN / RU / HE.
 
 ## Affiliate programs (any platform)
 
-After deploy, use the live **HTTPS** home URL when a network or retailer asks for your site list. Disclosure is **platform-neutral**; add program-specific wording in `build.py` only if a partner requires it. See `SECURITY.md` before going live.
+After deploy, use the live **HTTPS** home URL when a network or retailer asks for your site list. Amazon Associates tracking ID is `pickforge-20`. Every page includes the required sentence: “As an Amazon Associate I earn from qualifying purchases.” See `SECURITY.md` before going live.

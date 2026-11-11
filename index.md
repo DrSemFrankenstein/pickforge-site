@@ -2,7 +2,7 @@
 
 > PickForge publishes product and travel guides. Comparisons use published specifications and stated limits. Affiliate relationships are disclosed. This site does not sell products.
 
-Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-10
+Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-11
 
 ## Guides from published specs, not a lab
 
@@ -117,4 +117,4 @@ Plain-language and structured copies of this site for search engines and assista
 - Publisher: PickForge editorial
 - Entity type: Independent content publisher (not a retailer)
 - Location: Israel
-- Last updated: 10 November 2026
+- Last updated: 11 November 2026

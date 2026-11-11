@@ -80,7 +80,7 @@ a:hover{text-decoration-color:var(--ribbon)}
 .articles{grid-column:1/-1}
 .article{max-width:42rem;padding-bottom:1.5rem;margin-bottom:1.5rem;border-bottom:1px solid var(--line)}
 .article h2{font-size:clamp(1.45rem,2.4vw,1.9rem);margin:.15rem 0 .7rem}
-.amazon-exact{font:700 1.05rem/1.45 var(--display);margin:1rem 0 0}
+.amazon-exact{font:700 1.05rem/1.45 var(--display);margin:1rem 0 0;color:var(--ink)}
 .disclosure{grid-column:1/-1;border:2px solid var(--ink);border-radius:1.2rem;padding:clamp(1.5rem,4vw,2.6rem);display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:1rem 2.5rem;background:#F6EDDF}
 .disclosure h2{font-size:clamp(1.7rem,3vw,2.3rem);font-stretch:85%}
 .disclosure .body p:first-child{font-size:1.15rem}
@@ -103,7 +103,7 @@ a:hover{text-decoration-color:var(--ribbon)}
 .publisher dd{margin:0}
 footer{background:var(--paper);padding:2rem clamp(1rem,4vw,3rem) calc(2.5rem + env(safe-area-inset-bottom,0px))}
 footer .inner{max-width:68rem;margin:0 auto;border-top:1px solid var(--line);padding-top:1.4rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem;font-size:.9rem;color:var(--ink-2)}
-footer .assoc{display:flex;flex-direction:column;gap:.15rem}
+footer .assoc{display:flex;flex-direction:column;gap:.15rem;color:var(--ink);font-weight:700}
 @media (max-width:860px){
   .privacy,.faq{grid-column:1/-1}
   .disclosure,.publisher{grid-template-columns:1fr}

@@ -2,7 +2,7 @@
 
 > PickForge מפרסם מדריכי מוצרים וטיולים. ההשוואות מבוססות על מפרט שפורסם ומגבלות מוצהרות. קשרי שותפים מפורסמים. האתר לא מוכר מוצרים.
 
-Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-10
+Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-11
 
 ## מדריכים לפי מפרט שפורסם, לא ממעבדה
 
@@ -117,4 +117,4 @@ Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט 
 - מוציא לאור: מערכת PickForge
 - סוג: מו״ל תוכן עצמאי (לא קמעונאי)
 - מדינה: ישראל
-- עודכן לאחרונה: 10 בנובמבר 2026
+- עודכן לאחרונה: 11 בנובמבר 2026

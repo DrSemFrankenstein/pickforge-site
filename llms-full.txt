@@ -2,7 +2,7 @@
 
 > PickForge publishes product and travel guides. Comparisons use published specifications and stated limits. Affiliate relationships are disclosed. This site does not sell products.
 
-Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-10
+Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-11
 
 ## Guides from published specs, not a lab
 
@@ -117,7 +117,7 @@ Plain-language and structured copies of this site for search engines and assista
 - Publisher: PickForge editorial
 - Entity type: Independent content publisher (not a retailer)
 - Location: Israel
-- Last updated: 10 November 2026
+- Last updated: 11 November 2026
 
 
 ---
@@ -126,7 +126,7 @@ Plain-language and structured copies of this site for search engines and assista
 
 > PickForge публикует гайды по товарам и путешествиям. Сравнения строятся на опубликованных характеристиках и заявленных ограничениях. Партнёрские отношения раскрыты. Сайт ничего не продаёт.
 
-Language: Русский · URL: https://drsemfrankenstein.github.io/pickforge-site/ru/ · Updated: 2026-11-10
+Language: Русский · URL: https://drsemfrankenstein.github.io/pickforge-site/ru/ · Updated: 2026-11-11
 
 ## Гайды по опубликованным характеристикам, не из лаборатории
 
@@ -241,7 +241,7 @@ Amazon не спонсирует и не поддерживает PickForge. Н�
 - Издатель: Редакция PickForge
 - Тип: Независимый контент-издатель (не ритейлер)
 - Страна: Израиль
-- Обновлено: 10 ноября 2026
+- Обновлено: 11 ноября 2026
 
 
 ---
@@ -250,7 +250,7 @@ Amazon не спонсирует и не поддерживает PickForge. Н�
 
 > PickForge מפרסם מדריכי מוצרים וטיולים. ההשוואות מבוססות על מפרט שפורסם ומגבלות מוצהרות. קשרי שותפים מפורסמים. האתר לא מוכר מוצרים.
 
-Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-10
+Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-11
 
 ## מדריכים לפי מפרט שפורסם, לא ממעבדה
 
@@ -365,4 +365,4 @@ Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט 
 - מוציא לאור: מערכת PickForge
 - סוג: מו״ל תוכן עצמאי (לא קמעונאי)
 - מדינה: ישראל
-- עודכן לאחרונה: 10 בנובמבר 2026
+- עודכן לאחרונה: 11 בנובמבר 2026

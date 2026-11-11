@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DEFAULT_ORIGIN = "https://drsemfrankenstein.github.io/pickforge-site"
 SITE_URL = (sys.argv[1] if len(sys.argv) > 1 else DEFAULT_ORIGIN + "/").rstrip("/") + "/"
-UPDATED_ISO = "2026-11-10"
+UPDATED_ISO = "2026-11-11"
 AMAZON_EXACT = "As an Amazon Associate I earn from qualifying purchases."
 ASSOCIATES_ID = "pickforge-20"
 LANGS = ["en", "ru", "he"]
@@ -44,6 +44,7 @@ CONTENT = {
               "We do not process orders, hold inventory, or offer financial or medical advice. Purchases happen on retailer and marketplace sites; we may use tracked affiliate links from various partner programs and disclose that on <a href=\"#disclosure\">every page</a> and inside each guide.",
               "The guides on this site are the content. A purchase, if you choose to make one, happens on the retailer’s own site."],
   "guides_k": "Guides", "guides_h": "What we’re writing about",
+  "articles_h": "The guides",
   "guides": [
     ("Travel", "Carry-on size: what usually fits", "Personal-item fares versus a full carry-on, and which published numbers (liters, laptop sleeve, empty weight) actually predict the sizer."),
     ("Home office", "USB microphone under $200", "When a USB dynamic mic is enough for calls, when XLR is worth it, and what “noise floor” means in an ordinary room."),
@@ -90,7 +91,7 @@ CONTENT = {
     ("Publisher", "PickForge editorial"),
     ("Entity type", "Independent content publisher (not a retailer)"),
     ("Location", "Israel"),
-    ("Last updated", "10 November 2026"),
+    ("Last updated", "11 November 2026"),
   ],
   "assoc": "As an Amazon Associate I earn from qualifying purchases.",
   "foot_links": ["Privacy", "Disclosure", "Publisher"],
@@ -112,6 +113,7 @@ CONTENT = {
               "Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов. Покупки — на сайтах продавцов и маркетплейсов; возможны партнёрские ссылки из разных программ, о чём сказано <a href=\"#disclosure\">на каждой странице</a> и в гайдах.",
               "Гайды на этом сайте и есть контент. Покупка, если вы её совершаете, проходит на сайте продавца."],
   "guides_k": "Гайды", "guides_h": "О чём мы пишем",
+  "articles_h": "Тексты гайдов",
   "guides": [
     ("Путешествия", "Размер ручной клади: что обычно проходит", "Тариф только с личной вещью против полноценной ручной клади и какие опубликованные цифры (литры, карман для ноутбука, вес пустого рюкзака) реально предсказывают калибратор."),
     ("Домашний офис", "USB-микрофон до $200", "Когда хватает USB-динамического микрофона для звонков, когда нужен XLR и что значит «уровень шума» в обычной комнате."),
@@ -158,7 +160,7 @@ CONTENT = {
     ("Издатель", "Редакция PickForge"),
     ("Тип", "Независимый контент-издатель (не ритейлер)"),
     ("Страна", "Израиль"),
-    ("Обновлено", "10 ноября 2026"),
+    ("Обновлено", "11 ноября 2026"),
   ],
   "assoc": "As an Amazon Associate I earn from qualifying purchases.",
   "foot_links": ["Конфиденциальность", "Раскрытие", "Издатель"],
@@ -180,6 +182,7 @@ CONTENT = {
               "אין לנו הזמנות, מלאי או ייעוץ פיננסי/רפואי. הרכישות באתרי קמעונאים ושווקים; ייתכן שימוש בקישורי שותפים מתוכניות שונות עם גילוי נאות <a href=\"#disclosure\">בכל עמוד</a> ובמדריכים.",
               "המדריכים באתר הם התוכן. רכישה, אם תבחרו לבצע אותה, מתבצעת באתר הקמעונאי."],
   "guides_k": "מדריכים", "guides_h": "על מה אנחנו כותבים",
+  "articles_h": "המדריכים במלואם",
   "guides": [
     ("טיולים", "גודל כבודת יד: מה בדרך כלל נכנס", "תעריף עם חפץ אישי בלבד מול כבודת יד מלאה, ואילו מספרים שפורסמו (ליטרים, תא למחשב, משקל ריק) באמת מנבאים את תא המדידה."),
     ("משרד ביתי", "מיקרופון USB עד 200 דולר", "מתי מיקרופון דינמי ב-USB מספיק לשיחות, מתי שווה XLR, ומהי ״רצפת רעש״ בחדר רגיל."),
@@ -226,7 +229,7 @@ CONTENT = {
     ("מוציא לאור", "מערכת PickForge"),
     ("סוג", "מו״ל תוכן עצמאי (לא קמעונאי)"),
     ("מדינה", "ישראל"),
-    ("עודכן לאחרונה", "10 בנובמבר 2026"),
+    ("עודכן לאחרונה", "11 בנובמבר 2026"),
   ],
   "assoc": "As an Amazon Associate I earn from qualifying purchases.",
   "foot_links": ["פרטיות", "גילוי נאות", "מוציא לאור"],
@@ -478,7 +481,7 @@ def page(lang):
   <div class="paper">
     <div class="paper-inner">
       <section class="articles" id="articles" aria-labelledby="art-h">
-        <h2 class="sec" id="art-h">{c["guides_h"]}</h2>
+        <h2 class="sec" id="art-h">{c["articles_h"]}</h2>
 {articles}
       </section>
       <section class="disclosure" id="disclosure" aria-labelledby="disc-h">

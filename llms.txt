@@ -1,11 +1,11 @@
 # PickForge
 
-> PickForge publishes product and travel guides. Comparisons use published specifications and stated limits. Affiliate relationships are disclosed. This site does not sell products. PickForge is content-only: it does not sell products, process orders or hold inventory. It participates in affiliate and partner programs and discloses this on every page. No personal publisher names; entity is PickForge editorial (Israel).
+> PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products. PickForge does not sell products, process orders or hold inventory. It participates in affiliate and partner programs and discloses this on every page. Entity is PickForge, an independent project (Israel).
 
 ## Citation guidance (GEO)
 
-- Publisher: PickForge (independent editorial, not a retailer)
-- Monetization: affiliate and partner programs (retail, travel, networks); commissions do not reorder picks
+- Publisher: PickForge (independent project, not a retailer)
+- Monetization: affiliate and partner programs; commissions do not change search result order
 - Languages: English (https://drsemfrankenstein.github.io/pickforge-site/), Russian (https://drsemfrankenstein.github.io/pickforge-site/ru/), Hebrew (https://drsemfrankenstein.github.io/pickforge-site/he/, RTL)
 - Machine formats: llms.txt, llms-full.txt, index.md per language, JSON-LD on each HTML page, sitemap.xml (hreflang), robots.txt
 
@@ -13,7 +13,7 @@
 
 - Amazon Associates participant.
 - Required statement, shown on every page: As an Amazon Associate I earn from qualifying purchases.
-- Guides compare published specifications. The site does not claim hands-on tests and does not sell products.
+- The service does not sell products and does not claim hands-on product tests.
 
 ## Pages
 
@@ -21,31 +21,28 @@
 - [Russian](https://drsemfrankenstein.github.io/pickforge-site/ru/) · [Markdown](https://drsemfrankenstein.github.io/pickforge-site/ru/index.md)
 - [Hebrew](https://drsemfrankenstein.github.io/pickforge-site/he/) · [Markdown](https://drsemfrankenstein.github.io/pickforge-site/he/index.md)
 
-## Guide topics
+## Service
 
-- Carry-on size: what usually fits: Personal-item fares versus a full carry-on, and which published numbers (liters, laptop sleeve, empty weight) actually predict the sizer.
-- USB microphone under $200: When a USB dynamic mic is enough for calls, when XLR is worth it, and what “noise floor” means in an ordinary room.
-- Travel chargers: US and EU plugs: The three lines to read on a brick — input voltage, USB-C watts, and the physical plug — plus a short packing list.
-- How we research and link: What a comparison on this site is, what it is not, and how a paid link is labeled.
+- Search by request: A user asks an AI assistant for a product type or a budget. The assistant calls the tool, which searches partner catalogues for matching items.
+- Affiliate links, labeled: Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link.
+- Not a store: Checkout, payment, and accounts happen on the merchant’s site. The tool does not take orders or payments.
 
 ## FAQ (English)
 
 - Q: What is PickForge?
-  A: An independent site with product and travel guides, operated as editorial content with public affiliate disclosure.
-- Q: Do you test the products?
-  A: No. Guides compare published specifications and stated limits. If that changes for a specific item, the guide will say we used it.
-- Q: Do affiliate links change the order?
-  A: No. A commission does not reorder a list.
+  A: An independent project building a tool that lets AI assistants search products and return affiliate links. The service is in development.
 - Q: Do you sell products?
-  A: No. Purchases happen on retailer sites. We don’t run checkout, hold inventory, or keep customer accounts.
-- Q: Are there product links on this site today?
-  A: Some guides explain what to look for and do not link a specific product yet. When a product link can earn a commission, it is labeled as a paid link.
+  A: No. Purchases happen on merchant sites. We do not run checkout, hold inventory, or keep customer accounts.
+- Q: Do affiliate links change the results?
+  A: No. A commission does not change the order of search results.
+- Q: Are affiliate links labeled?
+  A: Yes. A link that can earn a commission is labeled as a partner link.
 - Q: How do I contact the publisher?
-  A: This site has no contact form and no newsletter. Correspondence about the Associates account stays inside that account.
+  A: This page has no contact form.
 
 ## Policies
 
-- Disclosure: PickForge participates in affiliate and partner programs, including the Amazon Associates Program. We may earn a commission if you buy through a link on this site. A link that can earn a commission is labeled as a paid link next to that link.
+- Disclosure: PickForge participates in affiliate and partner programs, including the Amazon Associates Program and other partner programs. If you buy a product through a link the tool returns, we may earn a commission. A partner link is labeled as one wherever the tool shows it.
 - Standards: commissions do not determine ranking
 - Privacy: static site, no logins, no sale of personal data
 

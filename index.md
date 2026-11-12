@@ -1,68 +1,37 @@
 # PickForge
 
-> PickForge publishes product and travel guides. Comparisons use published specifications and stated limits. Affiliate relationships are disclosed. This site does not sell products.
+> PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.
 
 Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-11
 
-## Guides from published specs, not a lab
+## Product search with affiliate links, for AI assistants
 
-PickForge publishes practical roundups for travel, home office, and everyday tech. We compare published specifications, weights, and stated limits. We do not claim hands-on tests. When a guide includes an affiliate link, the relationship is labeled before the link.
+PickForge is building a tool that helps an AI assistant find a product the user asks about and return a link. Some links carry our affiliate tracking ID. The tool runs on our server; this page describes it and explains the affiliate relationships.
 
-## A content-only website
+## An information page for a service in development
 
-PickForge is a content-only website operated as an independent editorial brand. We write and maintain buying guides, packing lists, and product comparison notes for readers who shop through major retailers.
+PickForge is an independent project. This page describes the service, how we handle affiliate links, and who runs it. It is not a store and does not sell products.
 
-We do not process orders, hold inventory, or offer financial or medical advice. Purchases happen on retailer and marketplace sites; we may use tracked affiliate links from various partner programs and disclose that on every page and inside each guide.
+The service is in development. Search and link generation run on PickForge’s own server, not on this page. Purchases happen on the merchant’s site, where prices and availability are shown.
 
-The guides on this site are the content. A purchase, if you choose to make one, happens on the retailer’s own site.
+We do not process orders, hold inventory, or give financial or medical advice.
 
-## What we’re writing about
+## What the tool does
 
-- **Carry-on size: what usually fits** (Travel): Personal-item fares versus a full carry-on, and which published numbers (liters, laptop sleeve, empty weight) actually predict the sizer.
-- **USB microphone under $200** (Home office): When a USB dynamic mic is enough for calls, when XLR is worth it, and what “noise floor” means in an ordinary room.
-- **Travel chargers: US and EU plugs** (Travel tech): The three lines to read on a brick — input voltage, USB-C watts, and the physical plug — plus a short packing list.
-- **How we research and link** (Method): What a comparison on this site is, what it is not, and how a paid link is labeled.
+- **Search by request** (Search): A user asks an AI assistant for a product type or a budget. The assistant calls the tool, which searches partner catalogues for matching items.
+- **Affiliate links, labeled** (Links): Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link.
+- **Not a store** (Scope): Checkout, payment, and accounts happen on the merchant’s site. The tool does not take orders or payments.
 
-## Carry-on size: what usually fits
+## Principles
 
-Airlines publish two different limits: a larger carry-on and a smaller personal item. A 40–45 L travel pack often meets a generous carry-on rule and fails a strict sizer, or a fare that allows only a personal item. A 20–28 L pack is the safer size for those fares.
-
-The published numbers that predict the sizer are stated volume, laptop-sleeve length, empty weight, and whether the hip belt and straps tuck away. Brands do not measure liters the same way, so treat the volume as a range. A dangling belt fails a sizer even when the liters look fine.
-
-We have not weighed these bags. Before a trip, read the airline’s current baggage page for your fare. A screenshot in a blog is not the rule.
-
-## USB microphone under $200
-
-For calls and a spoken podcast in an ordinary room, a USB dynamic microphone usually beats a cheap condenser. A condenser hears the room: the fridge, the keyboard, the bare wall. A dynamic mic hears what is close to it.
-
-XLR plus an interface is the better path if you already plan to change microphones later. It costs more than one USB mic and adds a box. Under $200, one USB dynamic mic and a stand is the whole setup.
-
-“Noise floor” here means the hiss and room sound you still hear when you are not talking. A rug, a full bookshelf, and not talking into a bare wall change that more than a second microphone in the same price band. We are not publishing measured decibel figures. Those depend on the room.
-
-## Travel chargers: US and EU plugs
-
-Read three lines on the brick. Input 100–240 V, 50/60 Hz means dual voltage. A US-only 120 V brick is unsafe on 230 V. USB-C Power Delivery watts: a phone is fine around 20 W; a laptop often wants 45–65 W, or whatever the laptop maker prints. The plug face is separate: a GaN brick still needs the pins for the country, or one passive adapter.
-
-Do not stack a voltage converter on a dual-voltage brick. For two weeks, pack one dual-voltage brick, one USB-C cable rated for those watts, and one passive plug adapter if the pins do not match. Leave a second brick at home unless a second person is charging a laptop at the same time.
-
-## How we research and link
-
-A pick on this site is a comparison of published specifications and stated limits, plus a note on who the item is for. It is not a lab test. If we have not used an item, the guide says so.
-
-A commission does not change the order of a list. If a link can earn a commission, it is labeled as a paid link, and this site states: As an Amazon Associate I earn from qualifying purchases.
-
-We revise a guide when the model line changes or a limit we cited no longer matches the source.
-
-## How we work
-
-- **Editorial process**: We compare published specifications and stated limits. We do not run a lab. A guide says so when we have not used the item.
-- **Not a store**: Purchases happen on retailer, marketplace, and booking sites. We do not run checkout or customer accounts on this domain.
-- **Monetization transparency**: We may earn commissions through affiliate and partner programs. A commission does not change the order of a list. A paid link is labeled next to the link.
-- **Updates**: We revise a guide when the model line changes or a limit we cited no longer matches the source.
+- **Data**: A search request is used only to answer that request. We do not sell personal data.
+- **Commissions**: A commission does not change the order of search results. A link that can earn a commission is labeled.
+- **No hands-on claims**: We do not claim product tests. Product information comes from merchant and partner data.
+- **Updates**: We update this page when the service, partner programs, or disclosures change.
 
 ## Affiliate disclosure
 
-PickForge participates in affiliate and partner programs, including the Amazon Associates Program. We may earn a commission if you buy through a link on this site. A link that can earn a commission is labeled as a paid link next to that link.
+PickForge participates in affiliate and partner programs, including the Amazon Associates Program and other partner programs. If you buy a product through a link the tool returns, we may earn a commission. A partner link is labeled as one wherever the tool shows it.
 
 Prices, availability, and offers change. Confirm them on the merchant’s site before you buy. Retailer names and logos are trademarks of their owners.
 
@@ -70,9 +39,9 @@ Amazon does not sponsor or endorse PickForge. The sentence below is the program 
 
 ## Privacy
 
-This site is static: no user login, no contact form, and no newsletter signup.
+This page is static: no user login, no contact form, and no newsletter signup.
 
-Hosting providers may log standard access data (IP, user agent). Retailers may set cookies when you follow links; see their policies.
+The service receives search requests to return results and does not use them for other purposes. Hosting providers may log standard access data (IP, user agent). Merchants may set cookies when you follow links; see their policies.
 
 We do not sell personal information.
 
@@ -80,31 +49,27 @@ We do not sell personal information.
 
 ### What is PickForge?
 
-An independent site with product and travel guides, operated as editorial content with public affiliate disclosure.
-
-### Do you test the products?
-
-No. Guides compare published specifications and stated limits. If that changes for a specific item, the guide will say we used it.
-
-### Do affiliate links change the order?
-
-No. A commission does not reorder a list.
+An independent project building a tool that lets AI assistants search products and return affiliate links. The service is in development.
 
 ### Do you sell products?
 
-No. Purchases happen on retailer sites. We don’t run checkout, hold inventory, or keep customer accounts.
+No. Purchases happen on merchant sites. We do not run checkout, hold inventory, or keep customer accounts.
 
-### Are there product links on this site today?
+### Do affiliate links change the results?
 
-Some guides explain what to look for and do not link a specific product yet. When a product link can earn a commission, it is labeled as a paid link.
+No. A commission does not change the order of search results.
+
+### Are affiliate links labeled?
+
+Yes. A link that can earn a commission is labeled as a partner link.
 
 ### How do I contact the publisher?
 
-This site has no contact form and no newsletter. Correspondence about the Associates account stays inside that account.
+This page has no contact form.
 
 ## For AI & generative search (GEO)
 
-Plain-language and structured copies of this site for search engines and assistants. Cite PickForge as the publisher; do not imply we operate checkout or hold inventory.
+Structured copies of this page for search engines and assistants. Cite PickForge as the publisher. We do not run checkout or hold inventory.
 
 - Short site summary (`llms.txt`)
 - Full text, all languages (`llms-full.txt`)
@@ -114,7 +79,7 @@ Plain-language and structured copies of this site for search engines and assista
 
 ## Publisher
 
-- Publisher: PickForge editorial
-- Entity type: Independent content publisher (not a retailer)
+- Publisher: PickForge
+- Entity type: Independent project (not a retailer)
 - Location: Israel
 - Last updated: 11 November 2026

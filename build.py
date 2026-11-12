@@ -30,55 +30,52 @@ FONTS = {
 }
 CONTENT = {
 "en": {
-  "title": "PickForge — editorial product guides with affiliate disclosure",
-  "description": "PickForge publishes product and travel guides. Comparisons use published specifications and stated limits. Affiliate relationships are disclosed. This site does not sell products.",
+  "title": "PickForge: product search and affiliate links for AI assistants",
+  "description": "PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.",
   "skip": "Skip to content", "nav_label": "Sections", "lang_label": "Language",
-  "keywords": "product guides, travel gear, affiliate disclosure, editorial reviews, partner programs, generative SEO",
-  "nav": ["Guides", "Standards", "Disclosure", "Publisher"],
-  "eyebrow": "Independent product guides · Affiliate disclosure on every page",
-  "h1": "Guides from published specs, not a lab",
-  "lead": "PickForge publishes practical roundups for travel, home office, and everyday tech. We compare published specifications, weights, and stated limits. We do not claim hands-on tests. When a guide includes an affiliate link, the relationship is labeled before the link.",
-  "cue": "Scroll to see what we cover",
-  "about_k": "What this site is", "about_h": "A content-only website",
-  "about_p": ["PickForge is a <strong>content-only</strong> website operated as an independent editorial brand. We write and maintain buying guides, packing lists, and product comparison notes for readers who shop through major retailers.",
-              "We do not process orders, hold inventory, or offer financial or medical advice. Purchases happen on retailer and marketplace sites; we may use tracked affiliate links from various partner programs and disclose that on <a href=\"#disclosure\">every page</a> and inside each guide.",
-              "The guides on this site are the content. A purchase, if you choose to make one, happens on the retailer’s own site."],
-  "guides_k": "Guides", "guides_h": "What we’re writing about",
-  "articles_h": "The guides",
+  "keywords": "PickForge, affiliate disclosure, AI assistant tool, product search, partner programs",
+  "nav": ["Service", "How we work", "Disclosure", "Publisher"],
+  "eyebrow": "Product search for AI assistants · Affiliate disclosure on every page",
+  "h1": "Product search with affiliate links, for AI assistants",
+  "lead": "PickForge is building a tool that helps an AI assistant find a product the user asks about and return a link. Some links carry our affiliate tracking ID. The tool runs on our server; this page describes it and explains the affiliate relationships.",
+  "cue": "Scroll for details",
+  "about_k": "What this site is", "about_h": "An information page for a service in development",
+  "about_p": ["PickForge is an independent project. This page describes the service, how we handle affiliate links, and who runs it. It is not a store and does not sell products.",
+              "The service is in development. Search and link generation run on PickForge’s own server, not on this page. Purchases happen on the merchant’s site, where prices and availability are shown.",
+              "We do not process orders, hold inventory, or give financial or medical advice."],
+  "guides_k": "Service", "guides_h": "What the tool does",
   "guides": [
-    ("Travel", "Carry-on size: what usually fits", "Personal-item fares versus a full carry-on, and which published numbers (liters, laptop sleeve, empty weight) actually predict the sizer."),
-    ("Home office", "USB microphone under $200", "When a USB dynamic mic is enough for calls, when XLR is worth it, and what “noise floor” means in an ordinary room."),
-    ("Travel tech", "Travel chargers: US and EU plugs", "The three lines to read on a brick — input voltage, USB-C watts, and the physical plug — plus a short packing list."),
-    ("Method", "How we research and link", "What a comparison on this site is, what it is not, and how a paid link is labeled."),
+    ("Search", "Search by request", "A user asks an AI assistant for a product type or a budget. The assistant calls the tool, which searches partner catalogues for matching items."),
+    ("Links", "Affiliate links, labeled", "Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link."),
+    ("Scope", "Not a store", "Checkout, payment, and accounts happen on the merchant’s site. The tool does not take orders or payments."),
   ],
-  "std_k": "Standards", "std_h": "How we work",
+  "std_k": "How we work", "std_h": "Principles",
   "standards": [
-    ("Editorial process", "We compare published specifications and stated limits. We do not run a lab. A guide says so when we have not used the item."),
-    ("Not a store", "Purchases happen on retailer, marketplace, and booking sites. We do not run checkout or customer accounts on this domain."),
-    ("Monetization transparency", "We may earn commissions through affiliate and partner programs. A commission does not change the order of a list. A paid link is labeled next to the link."),
-    ("Updates", "We revise a guide when the model line changes or a limit we cited no longer matches the source."),
+    ("Data", "A search request is used only to answer that request. We do not sell personal data."),
+    ("Commissions", "A commission does not change the order of search results. A link that can earn a commission is labeled."),
+    ("No hands-on claims", "We do not claim product tests. Product information comes from merchant and partner data."),
+    ("Updates", "We update this page when the service, partner programs, or disclosures change."),
   ],
   "disc_h": "Affiliate disclosure",
-  "disc_p": "PickForge participates in affiliate and partner programs, including the <strong>Amazon Associates Program</strong>. We may earn a commission if you buy through a link on this site. A link that can earn a commission is labeled as a paid link next to that link.",
+  "disc_p": "PickForge participates in affiliate and partner programs, including the <strong>Amazon Associates Program</strong> and other partner programs. If you buy a product through a link the tool returns, we may earn a commission. A partner link is labeled as one wherever the tool shows it.",
   "disc_fine": [
     "Prices, availability, and offers change. Confirm them on the merchant’s site before you buy. Retailer names and logos are trademarks of their owners.",
     "Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.",
   ],
   "priv_h": "Privacy",
-  "priv": ["This site is static: no user login, no contact form, and no newsletter signup.",
-           "Hosting providers may log standard access data (IP, user agent). Retailers may set cookies when you follow links; see their policies.",
+  "priv": ["This page is static: no user login, no contact form, and no newsletter signup.",
+           "The service receives search requests to return results and does not use them for other purposes. Hosting providers may log standard access data (IP, user agent). Merchants may set cookies when you follow links; see their policies.",
            "We do not sell personal information."],
   "faq_h": "Questions",
   "faq": [
-    ("What is PickForge?", "An independent site with product and travel guides, operated as editorial content with public affiliate disclosure."),
-    ("Do you test the products?", "No. Guides compare published specifications and stated limits. If that changes for a specific item, the guide will say we used it."),
-    ("Do affiliate links change the order?", "No. A commission does not reorder a list."),
-    ("Do you sell products?", "No. Purchases happen on retailer sites. We don’t run checkout, hold inventory, or keep customer accounts."),
-    ("Are there product links on this site today?", "Some guides explain what to look for and do not link a specific product yet. When a product link can earn a commission, it is labeled as a paid link."),
-    ("How do I contact the publisher?", "This site has no contact form and no newsletter. Correspondence about the Associates account stays inside that account."),
+    ("What is PickForge?", "An independent project building a tool that lets AI assistants search products and return affiliate links. The service is in development."),
+    ("Do you sell products?", "No. Purchases happen on merchant sites. We do not run checkout, hold inventory, or keep customer accounts."),
+    ("Do affiliate links change the results?", "No. A commission does not change the order of search results."),
+    ("Are affiliate links labeled?", "Yes. A link that can earn a commission is labeled as a partner link."),
+    ("How do I contact the publisher?", "This page has no contact form."),
   ],
   "geo_h": "For AI & generative search (GEO)",
-  "geo_p": "Plain-language and structured copies of this site for search engines and assistants. Cite PickForge as the publisher; do not imply we operate checkout or hold inventory.",
+  "geo_p": "Structured copies of this page for search engines and assistants. Cite PickForge as the publisher. We do not run checkout or hold inventory.",
   "geo_links": [
     ("llms.txt", "Short site summary"),
     ("llms-full.txt", "Full text, all languages"),
@@ -88,8 +85,8 @@ CONTENT = {
   ],
   "pub_h": "Publisher",
   "pub": [
-    ("Publisher", "PickForge editorial"),
-    ("Entity type", "Independent content publisher (not a retailer)"),
+    ("Publisher", "PickForge"),
+    ("Entity type", "Independent project (not a retailer)"),
     ("Location", "Israel"),
     ("Last updated", "11 November 2026"),
   ],
@@ -99,55 +96,52 @@ CONTENT = {
   "story_label": "About PickForge",
 },
 "ru": {
-  "title": "PickForge: независимые гайды по товарам для путешествий, домашнего офиса и техники",
-  "description": "PickForge публикует гайды по товарам и путешествиям. Сравнения строятся на опубликованных характеристиках и заявленных ограничениях. Партнёрские отношения раскрыты. Сайт ничего не продаёт.",
+  "title": "PickForge: поиск товаров и партнёрские ссылки для ИИ-ассистентов",
+  "description": "PickForge разрабатывает инструмент, с помощью которого ИИ-ассистент ищет товары и возвращает партнёрские ссылки. Эта страница описывает сервис и раскрытие партнёрских отношений. PickForge ничего не продаёт.",
   "skip": "Перейти к содержимому", "nav_label": "Разделы", "lang_label": "Язык",
-  "keywords": "гайды по товарам, travel, раскрытие партнёрских ссылок, редакционные обзоры, партнёрские программы",
-  "nav": ["Гайды", "Принципы", "Раскрытие", "Издатель"],
-  "eyebrow": "Независимые гайды · Раскрытие партнёрских отношений на каждой странице",
-  "h1": "Гайды по опубликованным характеристикам, не из лаборатории",
-  "lead": "PickForge публикует практические подборки для путешествий, домашнего офиса и повседневной техники. Мы сравниваем опубликованные характеристики, вес и заявленные ограничения. Ручные тесты не заявляем. Если в гайде есть партнёрская ссылка, отношение указано до ссылки.",
-  "cue": "Листайте, чтобы увидеть, о чём мы пишем",
-  "about_k": "Что это за сайт", "about_h": "Сайт только с контентом",
-  "about_p": ["PickForge — <strong>контентный</strong> сайт независимой редакции. Мы ведём гайды по покупкам, списки в дорогу и сравнения товаров для читателей, которые покупают у крупных ритейлеров.",
-              "Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов. Покупки — на сайтах продавцов и маркетплейсов; возможны партнёрские ссылки из разных программ, о чём сказано <a href=\"#disclosure\">на каждой странице</a> и в гайдах.",
-              "Гайды на этом сайте и есть контент. Покупка, если вы её совершаете, проходит на сайте продавца."],
-  "guides_k": "Гайды", "guides_h": "О чём мы пишем",
-  "articles_h": "Тексты гайдов",
+  "keywords": "PickForge, раскрытие партнёрских ссылок, инструмент для ИИ-ассистентов, поиск товаров, партнёрские программы",
+  "nav": ["Сервис", "Как мы работаем", "Раскрытие", "Издатель"],
+  "eyebrow": "Поиск товаров для ИИ-ассистентов · Раскрытие партнёрских отношений на каждой странице",
+  "h1": "Поиск товаров с партнёрскими ссылками для ИИ-ассистентов",
+  "lead": "PickForge разрабатывает инструмент, который помогает ИИ-ассистенту найти товар по запросу пользователя и вернуть ссылку. Часть ссылок содержит наш партнёрский идентификатор. Инструмент работает на нашем сервере; эта страница его описывает и объясняет партнёрские отношения.",
+  "cue": "Листайте, чтобы увидеть подробности",
+  "about_k": "Что это за сайт", "about_h": "Информационная страница сервиса в разработке",
+  "about_p": ["PickForge — независимый проект. Эта страница описывает сервис, то, как мы работаем с партнёрскими ссылками, и кто за ним стоит. Это не магазин, и мы ничего не продаём.",
+              "Сервис в разработке. Поиск и генерация ссылок работают на сервере PickForge, а не на этой странице. Покупки совершаются на сайте продавца, где видны цены и наличие.",
+              "Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов."],
+  "guides_k": "Сервис", "guides_h": "Что делает инструмент",
   "guides": [
-    ("Путешествия", "Размер ручной клади: что обычно проходит", "Тариф только с личной вещью против полноценной ручной клади и какие опубликованные цифры (литры, карман для ноутбука, вес пустого рюкзака) реально предсказывают калибратор."),
-    ("Домашний офис", "USB-микрофон до $200", "Когда хватает USB-динамического микрофона для звонков, когда нужен XLR и что значит «уровень шума» в обычной комнате."),
-    ("Техника в дорогу", "Зарядки: вилки США и ЕС", "Три строки на блоке — входное напряжение, ватты USB-C и физическая вилка — и короткий список в дорогу."),
-    ("Методика", "Как мы собираем гайд и ставим ссылку", "Чем является сравнение на этом сайте, чем не является и как помечается платная ссылка."),
+    ("Поиск", "Поиск по запросу", "Пользователь просит ИИ-ассистента подобрать тип товара или бюджет. Ассистент вызывает инструмент, который ищет подходящие позиции в партнёрских каталогах."),
+    ("Ссылки", "Партнёрские ссылки с пометкой", "Ссылки на продавцов могут содержать наш партнёрский идентификатор. Если ссылка может принести комиссию, это указано рядом с ней."),
+    ("Границы", "Не магазин", "Оформление заказа, оплата и аккаунты происходят на сайте продавца. Инструмент не принимает заказы и платежи."),
   ],
-  "std_k": "Принципы", "std_h": "Как мы работаем",
+  "std_k": "Как мы работаем", "std_h": "Принципы",
   "standards": [
-    ("Редакционный процесс", "Сравниваем опубликованные характеристики и заявленные ограничения. Лаборатории нет. Если вещь не использовали, гайд так и пишет."),
-    ("Мы не магазин", "Покупки совершаются на сайтах продавцов, маркетплейсов и бронирования. На этом домене нет оформления заказа и личных кабинетов."),
-    ("Прозрачная монетизация", "Возможна комиссия через партнёрские программы. Комиссия не меняет порядок списка. Платная ссылка помечена рядом со ссылкой."),
-    ("Обновления", "Гайд правим, когда меняется линейка моделей или цитируемое ограничение больше не совпадает с источником."),
+    ("Данные", "Поисковый запрос используется только для ответа на него. Мы не продаём персональные данные."),
+    ("Комиссии", "Комиссия не меняет порядок результатов поиска. Ссылка, которая может принести комиссию, помечена."),
+    ("Без заявлений о тестах", "Мы не заявляем о ручных тестах товаров. Информация о товарах берётся из данных продавцов и партнёрских программ."),
+    ("Обновления", "Мы обновляем эту страницу, когда меняются сервис, партнёрские программы или раскрытие."),
   ],
   "disc_h": "Раскрытие партнёрских отношений",
-  "disc_p": "PickForge участвует в партнёрских программах, включая <strong>Amazon Associates</strong>. Мы можем получить комиссию, если вы покупаете по ссылке на этом сайте. Ссылка, по которой возможна комиссия, помечена как платная рядом с ней.",
+  "disc_p": "PickForge участвует в партнёрских программах, включая <strong>Amazon Associates</strong> и другие партнёрские программы. Если вы купите товар по ссылке, которую вернул инструмент, мы можем получить комиссию. Партнёрская ссылка помечается как таковая там, где инструмент её показывает.",
   "disc_fine": [
     "Цены, наличие и условия меняются. Перед покупкой проверьте их на сайте продавца. Названия и логотипы — товарные знаки владельцев.",
     "Amazon не спонсирует и не поддерживает PickForge. Ниже — обязательная формулировка программы на английском.",
   ],
   "priv_h": "Конфиденциальность",
-  "priv": ["Сайт статический: без регистрации, формы обратной связи и рассылки.",
-           "Хостинг-провайдеры могут записывать стандартные данные доступа (IP-адрес, user agent). Продавцы могут устанавливать cookie, когда вы переходите по ссылкам; см. их политики.",
+  "priv": ["Эта страница статическая: без регистрации, формы обратной связи и рассылки.",
+           "Сервис получает поисковые запросы, чтобы вернуть результаты, и не использует их для других целей. Хостинг-провайдеры могут записывать стандартные данные доступа (IP-адрес, user agent). Продавцы могут устанавливать cookie, когда вы переходите по ссылкам; см. их политики.",
            "Мы не продаём персональные данные."],
   "faq_h": "Вопросы",
   "faq": [
-    ("Что такое PickForge?", "Независимый сайт с гайдами по товарам и путешествиям: редакционный контент с открытым раскрытием партнёрских отношений."),
-    ("Вы тестируете товары?", "Нет. Гайды сравнивают опубликованные характеристики и заявленные ограничения. Если по конкретной вещи это изменится, гайд напишет, что мы её использовали."),
-    ("Влияют ли комиссии на порядок?", "Нет. Комиссия не меняет порядок списка."),
-    ("Вы продаёте товары?", "Нет. Покупки совершаются на сайтах продавцов. У нас нет оформления заказов, склада и аккаунтов покупателей."),
-    ("Есть ли сейчас ссылки на товары?", "Часть гайдов объясняет, на что смотреть, и пока не ссылается на конкретный товар. Когда ссылка может принести комиссию, она помечена как платная."),
-    ("Как связаться с издателем?", "На сайте нет формы и рассылки. Переписка по аккаунту Associates остаётся внутри этого аккаунта."),
+    ("Что такое PickForge?", "Независимый проект: инструмент, с помощью которого ИИ-ассистенты ищут товары и возвращают партнёрские ссылки. Сервис в разработке."),
+    ("Вы продаёте товары?", "Нет. Покупки совершаются на сайтах продавцов. Мы не ведём оформление заказов, не храним товары и не ведём аккаунты покупателей."),
+    ("Влияют ли комиссии на результаты?", "Нет. Комиссия не меняет порядок результатов поиска."),
+    ("Помечены ли партнёрские ссылки?", "Да. Ссылка, которая может принести комиссию, помечена как партнёрская."),
+    ("Как связаться с издателем?", "На этой странице нет формы обратной связи."),
   ],
   "geo_h": "Для AI и generative search (GEO)",
-  "geo_p": "Структурированные копии сайта для поисковиков и ассистентов. Цитируйте PickForge как издателя; мы не ведём checkout и не храним товары.",
+  "geo_p": "Структурированные копии этой страницы для поисковиков и ассистентов. Цитируйте PickForge как издателя. Мы не ведём оформление заказов и не храним товары.",
   "geo_links": [
     ("llms.txt", "Краткое описание сайта"),
     ("llms-full.txt", "Полный текст, все языки"),
@@ -157,8 +151,8 @@ CONTENT = {
   ],
   "pub_h": "Издатель",
   "pub": [
-    ("Издатель", "Редакция PickForge"),
-    ("Тип", "Независимый контент-издатель (не ритейлер)"),
+    ("Издатель", "PickForge"),
+    ("Тип", "Независимый проект (не ритейлер)"),
     ("Страна", "Израиль"),
     ("Обновлено", "11 ноября 2026"),
   ],
@@ -168,55 +162,52 @@ CONTENT = {
   "story_label": "О PickForge",
 },
 "he": {
-  "title": "PickForge: מדריכי מוצרים עצמאיים לטיולים, למשרד הביתי ולטכנולוגיה יומיומית",
-  "description": "PickForge מפרסם מדריכי מוצרים וטיולים. ההשוואות מבוססות על מפרט שפורסם ומגבלות מוצהרות. קשרי שותפים מפורסמים. האתר לא מוכר מוצרים.",
+  "title": "PickForge: חיפוש מוצרים וקישורי שותפים לעוזרי AI",
+  "description": "PickForge מפתח כלי שמאפשר לעוזר AI לחפש מוצרים ולהחזיר קישורי שותפים. עמוד זה מתאר את השירות ואת הגילוי על השותפויות. PickForge לא מוכר מוצרים.",
   "skip": "דילוג לתוכן", "nav_label": "אזורים באתר", "lang_label": "שפה",
-  "keywords": "מדריכי מוצרים, ציוד טיולים, גילוי נאות, תוכן מערכתי, תוכניות שותפים",
-  "nav": ["מדריכים", "סטנדרטים", "גילוי נאות", "מוציא לאור"],
-  "eyebrow": "מדריכים עצמאיים · גילוי נאות על שותפות בכל עמוד",
-  "h1": "מדריכים לפי מפרט שפורסם, לא ממעבדה",
-  "lead": "PickForge מפרסם סקירות מעשיות לטיולים, למשרד הביתי ולטכנולוגיה יומיומית. אנחנו משווים מפרט שפורסם, משקל ומגבלות מוצהרות. אין כאן טענה לבדיקה בידיים. כשיש קישור שותפים במדריך, הקשר מצוין לפני הקישור.",
-  "cue": "גללו כדי לראות על מה אנחנו כותבים",
-  "about_k": "מה האתר הזה", "about_h": "אתר תוכן בלבד",
-  "about_p": ["PickForge הוא אתר <strong>תוכן בלבד</strong> של מו״ל עצמאי. אנחנו כותבים מדריכי קנייה, רשימות אריזה והשוואות מוצרים לקוראים שקונים אצל קמעונאים גדולים.",
-              "אין לנו הזמנות, מלאי או ייעוץ פיננסי/רפואי. הרכישות באתרי קמעונאים ושווקים; ייתכן שימוש בקישורי שותפים מתוכניות שונות עם גילוי נאות <a href=\"#disclosure\">בכל עמוד</a> ובמדריכים.",
-              "המדריכים באתר הם התוכן. רכישה, אם תבחרו לבצע אותה, מתבצעת באתר הקמעונאי."],
-  "guides_k": "מדריכים", "guides_h": "על מה אנחנו כותבים",
-  "articles_h": "המדריכים במלואם",
+  "keywords": "PickForge, גילוי נאות על שותפים, כלי לעוזרי AI, חיפוש מוצרים, תוכניות שותפים",
+  "nav": ["השירות", "איך אנחנו עובדים", "גילוי נאות", "מוציא לאור"],
+  "eyebrow": "חיפוש מוצרים לעוזרי AI · גילוי נאות על שותפות בכל עמוד",
+  "h1": "חיפוש מוצרים עם קישורי שותפים, לעוזרי AI",
+  "lead": "PickForge בונה כלי שעוזר לעוזר AI למצוא מוצר לפי בקשת המשתמש ולהחזיר קישור. חלק מהקישורים כוללים את מזהה השותפים שלנו. הכלי פועל על השרת שלנו; עמוד זה מתאר אותו ומסביר את קשרי השותפות.",
+  "cue": "גללו לפרטים",
+  "about_k": "מה האתר הזה", "about_h": "עמוד מידע לשירות בפיתוח",
+  "about_p": ["PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירות, איך אנחנו עובדים עם קישורי שותפים ומי עומד מאחוריו. זו לא חנות, ואיננו מוכרים מוצרים.",
+              "השירות בפיתוח. החיפוש ויצירת הקישורים פועלים על השרת של PickForge, לא בעמוד הזה. רכישות מתבצעות באתר הסוחר, שם מוצגים מחירים וזמינות.",
+              "איננו מקבלים הזמנות, לא שומרים מלאי ולא נותנים ייעוץ פיננסי או רפואי."],
+  "guides_k": "השירות", "guides_h": "מה הכלי עושה",
   "guides": [
-    ("טיולים", "גודל כבודת יד: מה בדרך כלל נכנס", "תעריף עם חפץ אישי בלבד מול כבודת יד מלאה, ואילו מספרים שפורסמו (ליטרים, תא למחשב, משקל ריק) באמת מנבאים את תא המדידה."),
-    ("משרד ביתי", "מיקרופון USB עד 200 דולר", "מתי מיקרופון דינמי ב-USB מספיק לשיחות, מתי שווה XLR, ומהי ״רצפת רעש״ בחדר רגיל."),
-    ("טכנולוגיה לטיולים", "מטענים: תקעי ארה״ב ואירופה", "שלוש שורות על הלבנה — מתח כניסה, וואט ב-USB-C והתקע הפיזי — ורשימת אריזה קצרה."),
-    ("שיטה", "איך אנחנו חוקרים ומקשרים", "מהי השוואה באתר הזה, מה היא לא, ואיך מסומן קישור בתשלום."),
+    ("חיפוש", "חיפוש לפי בקשה", "המשתמש מבקש מעוזר AI סוג מוצר או תקציב. העוזר מפעיל את הכלי, שמחפש פריטים מתאימים בקטלוגים של שותפים."),
+    ("קישורים", "קישורי שותפים עם סימון", "קישורים לסוחרים יכולים לכלול את מזהה השותפים שלנו. כשקישור עשוי להניב עמלה, זה מצוין לידו."),
+    ("גבולות", "לא חנות", "הזמנה, תשלום וחשבונות מתבצעים באתר הסוחר. הכלי לא מקבל הזמנות ולא תשלומים."),
   ],
-  "std_k": "סטנדרטים", "std_h": "איך אנחנו עובדים",
+  "std_k": "איך אנחנו עובדים", "std_h": "עקרונות",
   "standards": [
-    ("תהליך מערכתי", "משווים מפרט שפורסם ומגבלות מוצהרות. אין מעבדה. אם לא השתמשנו בפריט, המדריך אומר זאת."),
-    ("לא חנות", "הרכישות מתבצעות באתרי קמעונאים, שווקים והזמנות. אין באתר הזה קופה או חשבונות לקוח."),
-    ("שקיפות במונטיזציה", "ייתכן עמלה מתוכניות שותפים. עמלה לא משנה את סדר הרשימה. קישור בתשלום מסומן ליד הקישור."),
-    ("עדכונים", "מעדכנים מדריך כשקו הדגמים משתנה או כשמגבלה שציטטנו כבר לא תואמת את המקור."),
+    ("נתונים", "בקשת חיפוש משמשת רק כדי לענות עליה. איננו מוכרים מידע אישי."),
+    ("עמלות", "עמלה לא משנה את סדר תוצאות החיפוש. קישור שעשוי להניב עמלה מסומן."),
+    ("בלי טענות לבדיקה", "איננו טוענים לבדיקות ידניות של מוצרים. המידע על מוצרים מגיע מנתוני הסוחרים והתוכניות."),
+    ("עדכונים", "מעדכנים את העמוד כשהשירות, תוכניות השותפים או הגילוי משתנים."),
   ],
   "disc_h": "גילוי נאות על שותפות",
-  "disc_p": "PickForge משתתף בתוכניות שותפים, כולל <strong>Amazon Associates</strong>. ייתכן שנקבל עמלה אם תקנו דרך קישור באתר. קישור שיכול להניב עמלה מסומן כקישור בתשלום לידו.",
+  "disc_p": "PickForge משתתף בתוכניות שותפים, כולל <strong>Amazon Associates</strong> ותוכניות שותפים נוספות. אם תרכשו מוצר דרך קישור שהכלי החזיר, ייתכן שנקבל עמלה. קישור שותפים מסומן ככזה במקום שבו הכלי מציג אותו.",
   "disc_fine": [
     "מחירים, זמינות והצעות משתנים. אשרו אותם באתר הסוחר לפני קנייה. שמות ולוגואים הם סימנים מסחריים של בעליהם.",
     "Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט למטה הוא נוסח הגילוי הנדרש, באנגלית.",
   ],
   "priv_h": "פרטיות",
-  "priv": ["האתר סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.",
-           "ספקי האחסון עשויים לתעד נתוני גישה סטנדרטיים (כתובת IP, סוג דפדפן). קמעונאים עשויים להגדיר עוגיות כשעוברים דרך קישורים; ראו את המדיניות שלהם.",
+  "priv": ["העמוד סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.",
+           "השירות מקבל בקשות חיפוש כדי להחזיר תוצאות, ולא משתמש בהן למטרות אחרות. ספקי אחסון עשויים לתעד נתוני גישה סטנדרטיים (כתובת IP, סוג דפדפן). סוחרים עשויים להגדיר עוגיות כשעוברים דרך קישורים; ראו את המדיניות שלהם.",
            "איננו מוכרים מידע אישי."],
   "faq_h": "שאלות",
   "faq": [
-    ("מה זה PickForge?", "אתר עצמאי עם מדריכי מוצרים וטיולים, שפועל כתוכן מערכתי עם גילוי נאות פומבי על שותפויות."),
-    ("אתם בודקים את המוצרים?", "לא. המדריכים משווים מפרט שפורסם ומגבלות מוצהרות. אם זה ישתנה לפריט מסוים, המדריך יציין שהשתמשנו בו."),
-    ("האם עמלה משנה את הסדר?", "לא. עמלה לא משנה את סדר הרשימה."),
-    ("אתם מוכרים מוצרים?", "לא. הרכישות מתבצעות באתרי הקמעונאים. אין לנו קופה, מלאי או חשבונות לקוח."),
-    ("יש כיום קישורים למוצרים?", "חלק מהמדריכים מסבירים על מה להסתכל ועדיין לא מקשרים למוצר מסוים. כשקישור יכול להניב עמלה, הוא מסומן כקישור בתשלום."),
-    ("איך יוצרים קשר עם המוציא לאור?", "אין באתר טופס ואין ניוזלטר. התכתבות על חשבון Associates נשארת בתוך החשבון."),
+    ("מה זה PickForge?", "פרויקט עצמאי: כלי שמאפשר לעוזרי AI לחפש מוצרים ולהחזיר קישורי שותפים. השירות בפיתוח."),
+    ("אתם מוכרים מוצרים?", "לא. רכישות מתבצעות באתרי הסוחרים. איננו מנהלים קופה, לא שומרים מלאי ולא מנהלים חשבונות לקוח."),
+    ("האם עמלות משנות את התוצאות?", "לא. עמלה לא משנה את סדר תוצאות החיפוש."),
+    ("האם קישורי השותפים מסומנים?", "כן. קישור שעשוי להניב עמלה מסומן כקישור שותפים."),
+    ("איך יוצרים קשר עם המוציא לאור?", "בעמוד זה אין טופס יצירת קשר."),
   ],
   "geo_h": "ל-AI וחיפוש גנרטיבי (GEO)",
-  "geo_p": "עותקים מובנים של האתר למנועי חיפוש ולסוכנים. צטטו את PickForge כמוציא; אין לנו קופה או מלאי.",
+  "geo_p": "עותקים מובנים של העמוד הזה למנועי חיפוש ולעוזרים. צטטו את PickForge כמוציא. איננו מנהלים קופה ואיננו שומרים מלאי.",
   "geo_links": [
     ("llms.txt", "סיכום קצר"),
     ("llms-full.txt", "טקסט מלא, כל השפות"),
@@ -226,8 +217,8 @@ CONTENT = {
   ],
   "pub_h": "מוציא לאור",
   "pub": [
-    ("מוציא לאור", "מערכת PickForge"),
-    ("סוג", "מו״ל תוכן עצמאי (לא קמעונאי)"),
+    ("מוציא לאור", "PickForge"),
+    ("סוג", "פרויקט עצמאי (לא קמעונאי)"),
     ("מדינה", "ישראל"),
     ("עודכן לאחרונה", "11 בנובמבר 2026"),
   ],
@@ -236,73 +227,6 @@ CONTENT = {
   "home": "PickForge — דף הבית",
   "story_label": "אודות PickForge",
 },
-}
-
-ARTICLE_IDS = ["carry-on", "usb-mic", "chargers", "method"]
-ARTICLES = {
-"en": [
-  {"id": "carry-on", "kicker": "Travel", "title": "Carry-on size: what usually fits", "paras": [
-    "Airlines publish two different limits: a larger carry-on and a smaller personal item. A 40–45 L travel pack often meets a generous carry-on rule and fails a strict sizer, or a fare that allows only a personal item. A 20–28 L pack is the safer size for those fares.",
-    "The published numbers that predict the sizer are stated volume, laptop-sleeve length, empty weight, and whether the hip belt and straps tuck away. Brands do not measure liters the same way, so treat the volume as a range. A dangling belt fails a sizer even when the liters look fine.",
-    "We have not weighed these bags. Before a trip, read the airline’s current baggage page for your fare. A screenshot in a blog is not the rule.",
-  ]},
-  {"id": "usb-mic", "kicker": "Home office", "title": "USB microphone under $200", "paras": [
-    "For calls and a spoken podcast in an ordinary room, a USB dynamic microphone usually beats a cheap condenser. A condenser hears the room: the fridge, the keyboard, the bare wall. A dynamic mic hears what is close to it.",
-    "XLR plus an interface is the better path if you already plan to change microphones later. It costs more than one USB mic and adds a box. Under $200, one USB dynamic mic and a stand is the whole setup.",
-    "“Noise floor” here means the hiss and room sound you still hear when you are not talking. A rug, a full bookshelf, and not talking into a bare wall change that more than a second microphone in the same price band. We are not publishing measured decibel figures. Those depend on the room.",
-  ]},
-  {"id": "chargers", "kicker": "Travel tech", "title": "Travel chargers: US and EU plugs", "paras": [
-    "Read three lines on the brick. Input 100–240 V, 50/60 Hz means dual voltage. A US-only 120 V brick is unsafe on 230 V. USB-C Power Delivery watts: a phone is fine around 20 W; a laptop often wants 45–65 W, or whatever the laptop maker prints. The plug face is separate: a GaN brick still needs the pins for the country, or one passive adapter.",
-    "Do not stack a voltage converter on a dual-voltage brick. For two weeks, pack one dual-voltage brick, one USB-C cable rated for those watts, and one passive plug adapter if the pins do not match. Leave a second brick at home unless a second person is charging a laptop at the same time.",
-  ]},
-  {"id": "method", "kicker": "Method", "title": "How we research and link", "paras": [
-    "A pick on this site is a comparison of published specifications and stated limits, plus a note on who the item is for. It is not a lab test. If we have not used an item, the guide says so.",
-    "A commission does not change the order of a list. If a link can earn a commission, it is labeled as a paid link, and this site states: As an Amazon Associate I earn from qualifying purchases.",
-    "We revise a guide when the model line changes or a limit we cited no longer matches the source.",
-  ]},
-],
-"ru": [
-  {"id": "carry-on", "kicker": "Путешествия", "title": "Размер ручной клади: что обычно проходит", "paras": [
-    "Авиакомпании публикуют два разных лимита: большую ручную кладь и меньшую личную вещь. Рюкзак на 40–45 л часто проходит щедрый лимит ручной клади и не проходит строгий калибратор или тариф, где разрешена только личная вещь. Для таких тарифов спокойнее рюкзак на 20–28 л.",
-    "Опубликованные цифры, которые предсказывают калибратор: заявленный объём, длина кармана для ноутбука, вес пустого рюкзака и убираются ли пояс и лямки. Литры бренды меряют по-разному, поэтому объём — это диапазон. Свисающий пояс не проходит калибратор, даже если литры выглядят нормально.",
-    "Мы эти рюкзаки не взвешивали. Перед поездкой читайте актуальную страницу багажа вашей авиакомпании для вашего тарифа. Скриншот в блоге — не правило.",
-  ]},
-  {"id": "usb-mic", "kicker": "Домашний офис", "title": "USB-микрофон до $200", "paras": [
-    "Для звонков и разговорного подкаста в обычной комнате USB-динамический микрофон обычно лучше дешёвого конденсаторного. Конденсаторный слышит комнату: холодильник, клавиатуру, голую стену. Динамический слышит то, что близко к нему.",
-    "XLR и аудиоинтерфейс лучше, если микрофоны планируете менять. Это дороже одного USB-микрофона и добавляет коробку. До $200 весь комплект — один USB-динамический микрофон и стойка.",
-    "«Уровень шума» здесь — шипение и звук комнаты, которые слышно, когда вы молчите. Ковёр, заполненная полка и речь не в голую стену меняют это сильнее, чем второй микрофон в том же бюджете. Измеренные децибелы мы не публикуем: они зависят от комнаты.",
-  ]},
-  {"id": "chargers", "kicker": "Техника в дорогу", "title": "Зарядки: вилки США и ЕС", "paras": [
-    "На блоке читайте три строки. Вход 100–240 В, 50/60 Гц — это два напряжения. Блок только на 120 В опасен в сети 230 В. Ватты USB-C Power Delivery: телефону хватает около 20 Вт; ноутбуку часто нужно 45–65 Вт или то, что написал производитель ноутбука. Вилка отдельно: GaN-блоку всё равно нужны штыри страны или один пассивный переходник.",
-    "Не ставьте преобразователь напряжения на блок, который и так на 100–240 В. На две недели: один такой блок, один кабель USB-C на эти ватты и один пассивный переходник, если штыри не подходят. Второй блок оставьте дома, если второй человек не заряжает ноутбук одновременно.",
-  ]},
-  {"id": "method", "kicker": "Методика", "title": "Как мы собираем гайд и ставим ссылку", "paras": [
-    "Подборка на этом сайте — сравнение опубликованных характеристик и заявленных ограничений плюс пометка, кому вещь подходит. Это не лабораторный тест. Если вещь не использовали, гайд так и пишет.",
-    "Комиссия не меняет порядок списка. Если по ссылке возможна комиссия, она помечена как платная, и на сайте есть фраза: As an Amazon Associate I earn from qualifying purchases.",
-    "Гайд правим, когда меняется линейка или процитированное ограничение больше не совпадает с источником.",
-  ]},
-],
-"he": [
-  {"id": "carry-on", "kicker": "טיולים", "title": "גודל כבודת יד: מה בדרך כלל נכנס", "paras": [
-    "חברות תעופה מפרסמות שתי מגבלות שונות: כבודת יד גדולה יותר וחפץ אישי קטן יותר. תיק של 40–45 ליטר לרוב עומד בכלל נדיב לכבודת יד ונכשל בתא מדידה קפדני, או בתעריף שמאפשר רק חפץ אישי. לחפץ אישי בטוח יותר תיק של 20–28 ליטר.",
-    "המספרים שפורסמו ומנבאים את תא המדידה: נפח מוצהר, אורך תא למחשב, משקל ריק, והאם חגורת המותן והרצועות נכנסות פנימה. מותגים לא מודדים ליטרים באותה שיטה, אז התייחסו לנפח כטווח. חגורה משתלשלת נכשלת בתא המדידה גם כשהליטרים נראים תקינים.",
-    "לא שקלנו את התיקים האלה. לפני טיסה קראו את דף הכבודה העדכני של חברת התעופה לתעריף שלכם. צילום מסך בבלוג אינו הכלל.",
-  ]},
-  {"id": "usb-mic", "kicker": "משרד ביתי", "title": "מיקרופון USB עד 200 דולר", "paras": [
-    "לשיחות ולפודקאסט מדובר בחדר רגיל, מיקרופון דינמי ב-USB בדרך כלל עדיף על קונדנסר זול. קונדנסר שומע את החדר: מקרר, מקלדת, קיר חשוף. מיקרופון דינמי שומע את מה שקרוב אליו.",
-    "XLR עם כרטיס קול עדיף אם כבר מתכננים להחליף מיקרופונים. זה יקר ממיקרופון USB אחד ומוסיף קופסה. מתחת ל-200 דולר כל המערכת היא מיקרופון דינמי אחד ב-USB ומעמד.",
-    "״רצפת רעש״ כאן היא הרחש וקול החדר שנשמעים כשלא מדברים. שטיח, מדף מלא, ולא לדבר אל קיר חשוף משנים את זה יותר ממיקרופון שני באותו תקציב. איננו מפרסמים דציבלים שנמדדו. הם תלויים בחדר.",
-  ]},
-  {"id": "chargers", "kicker": "טכנולוגיה לטיולים", "title": "מטענים: תקעי ארה״ב ואירופה", "paras": [
-    "קראו שלוש שורות על הלבנה. כניסה 100–240 וולט, 50/60 הרץ, פירושה שני מתחים. לבנה של 120 וולט בלבד מסוכנת ברשת של 230 וולט. וואט ב-USB-C: לטלפון מספיקים כ-20 וואט; למחשב נייד לרוב צריך 45–65 וואט, או מה שיצרן המחשב הדפיס. צורת התקע נפרדת: לבנת GaN עדיין צריכה את הפינים של המדינה, או מתאם פסיבי אחד.",
-    "אל תחברו ממיר מתח על לבנה שכבר תומכת ב-100–240 וולט. לשבועיים: לבנה אחת כזו, כבל USB-C אחד שמדורג לוואטים האלה, ומתאם פסיבי אחד אם הפינים לא מתאימים. השאירו לבנה שנייה בבית אלא אם אדם שני טוען מחשב נייד באותו זמן.",
-  ]},
-  {"id": "method", "kicker": "שיטה", "title": "איך אנחנו חוקרים ומקשרים", "paras": [
-    "בחירה באתר הזה היא השוואה של מפרט שפורסם ומגבלות מוצהרות, ועוד הערה למי הפריט מתאים. זו לא בדיקת מעבדה. אם לא השתמשנו בפריט, המדריך אומר זאת.",
-    "עמלה לא משנה את סדר הרשימה. אם קישור יכול להניב עמלה, הוא מסומן כקישור בתשלום, והאתר מציין: As an Amazon Associate I earn from qualifying purchases.",
-    "מעדכנים מדריך כשקו הדגמים משתנה או כשמגבלה שציטטנו כבר לא תואמת את המקור.",
-  ]},
-],
 }
 
 def strip(s):
@@ -327,8 +251,7 @@ def jsonld(lang, c):
            "description": CONTENT["en"]["description"],
            "location": {"@type": "Place", "address": {"@type": "PostalAddress", "addressCountry": "IL"}},
            "knowsAbout": [
-             "Travel gear", "Product comparison guides", "Affiliate disclosure",
-             "Affiliate marketing", "Home office audio", "USB microphones", "Travel chargers"
+             "AI assistant tools", "Product search", "Affiliate disclosure", "Partner programs"
            ]}
     site = {"@type": "WebSite", "@id": SITE_URL + "#website", "name": "PickForge", "url": SITE_URL,
             "inLanguage": LANGS, "publisher": {"@id": SITE_URL + "#org"},
@@ -365,12 +288,8 @@ def page(lang):
         f' title="{NATIVE[l]}">{SHORT[l]}</a>' for l in LANGS)
     n = c["nav"]
     guides = "\n".join(
-        f'<li><span class="topic">{html.escape(t)}</span><div><h3><a href="#{ARTICLE_IDS[i]}">{html.escape(h)}</a></h3><p>{html.escape(p)}</p></div></li>'
-        for i, (t, h, p) in enumerate(c["guides"]))
-    articles = "\n".join(
-        f'<article class="article" id="{a["id"]}"><p class="kicker">{html.escape(a["kicker"])}</p><h2>{html.escape(a["title"])}</h2>'
-        + "".join(f"<p>{html.escape(p)}</p>" for p in a["paras"]) + "</article>"
-        for a in ARTICLES[lang])
+        f'<li><span class="topic">{html.escape(t)}</span><div><h3>{html.escape(h)}</h3><p>{html.escape(p)}</p></div></li>'
+        for t, h, p in c["guides"])
     stds = "\n".join(f'<div class="standard"><h3>{h}</h3><p>{p}</p></div>' for h, p in c["standards"])
     faq = "\n".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in c["faq"])
     pub = "".join(f'<dt>{k}</dt><dd>{v}</dd>' for k, v in c["pub"])
@@ -480,10 +399,6 @@ def page(lang):
 
   <div class="paper">
     <div class="paper-inner">
-      <section class="articles" id="articles" aria-labelledby="art-h">
-        <h2 class="sec" id="art-h">{c["articles_h"]}</h2>
-{articles}
-      </section>
       <section class="disclosure" id="disclosure" aria-labelledby="disc-h">
         <h2 id="disc-h">{c["disc_h"]}</h2>
         <div class="body"><p>{c["disc_p"]}</p>{fine}<p class="amazon-exact">{AMAZON_EXACT}</p></div>
@@ -522,8 +437,6 @@ def markdown(lang):
            f"## {strip(c['h1'])}", "", strip(c["lead"]), "",
            f"## {c['about_h']}", ""] + [strip(p) + "\n" for p in c["about_p"]]
     out += [f"## {c['guides_h']}", ""] + [f"- **{h}** ({t}): {p}" for t, h, p in c["guides"]] + [""]
-    for a in ARTICLES[lang]:
-        out += [f"## {a['title']}", ""] + [p + "\n" for p in a["paras"]]
     out += [f"## {c['std_h']}", ""] + [f"- **{h}**: {p}" for h, p in c["standards"]] + [""]
     out += [f"## {c['disc_h']}", "", strip(c["disc_p"]), ""] + [strip(p) + "\n" for p in c["disc_fine"]]
     out += [f"## {c['priv_h']}", ""] + [p + "\n" for p in c["priv"]]
@@ -539,12 +452,12 @@ def llms_txt():
     faq_block = "\n".join(f"- Q: {q}\n  A: {strip(a)}" for q, a in e["faq"])
     return f"""# PickForge
 
-> {e['description']} PickForge is content-only: it does not sell products, process orders or hold inventory. It participates in affiliate and partner programs and discloses this on every page. No personal publisher names; entity is PickForge editorial (Israel).
+> {e['description']} PickForge does not sell products, process orders or hold inventory. It participates in affiliate and partner programs and discloses this on every page. Entity is PickForge, an independent project (Israel).
 
 ## Citation guidance (GEO)
 
-- Publisher: PickForge (independent editorial, not a retailer)
-- Monetization: affiliate and partner programs (retail, travel, networks); commissions do not reorder picks
+- Publisher: PickForge (independent project, not a retailer)
+- Monetization: affiliate and partner programs; commissions do not change search result order
 - Languages: English ({url('en')}), Russian ({url('ru')}), Hebrew ({url('he')}, RTL)
 - Machine formats: llms.txt, llms-full.txt, index.md per language, JSON-LD on each HTML page, sitemap.xml (hreflang), robots.txt
 
@@ -552,7 +465,7 @@ def llms_txt():
 
 - Amazon Associates participant.
 - Required statement, shown on every page: {AMAZON_EXACT}
-- Guides compare published specifications. The site does not claim hands-on tests and does not sell products.
+- The service does not sell products and does not claim hands-on product tests.
 
 ## Pages
 
@@ -560,7 +473,7 @@ def llms_txt():
 - [Russian]({url('ru')}) · [Markdown]({url('ru')}index.md)
 - [Hebrew]({url('he')}) · [Markdown]({url('he')}index.md)
 
-## Guide topics
+## Service
 
 """ + "\n".join(f"- {h}: {p}" for t, h, p in e["guides"]) + f"""
 

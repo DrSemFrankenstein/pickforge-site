@@ -1,68 +1,37 @@
 # PickForge
 
-> PickForge publishes product and travel guides. Comparisons use published specifications and stated limits. Affiliate relationships are disclosed. This site does not sell products.
+> PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.
 
 Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-11
 
-## Guides from published specs, not a lab
+## Product search with affiliate links, for AI assistants
 
-PickForge publishes practical roundups for travel, home office, and everyday tech. We compare published specifications, weights, and stated limits. We do not claim hands-on tests. When a guide includes an affiliate link, the relationship is labeled before the link.
+PickForge is building a tool that helps an AI assistant find a product the user asks about and return a link. Some links carry our affiliate tracking ID. The tool runs on our server; this page describes it and explains the affiliate relationships.
 
-## A content-only website
+## An information page for a service in development
 
-PickForge is a content-only website operated as an independent editorial brand. We write and maintain buying guides, packing lists, and product comparison notes for readers who shop through major retailers.
+PickForge is an independent project. This page describes the service, how we handle affiliate links, and who runs it. It is not a store and does not sell products.
 
-We do not process orders, hold inventory, or offer financial or medical advice. Purchases happen on retailer and marketplace sites; we may use tracked affiliate links from various partner programs and disclose that on every page and inside each guide.
+The service is in development. Search and link generation run on PickForge’s own server, not on this page. Purchases happen on the merchant’s site, where prices and availability are shown.
 
-The guides on this site are the content. A purchase, if you choose to make one, happens on the retailer’s own site.
+We do not process orders, hold inventory, or give financial or medical advice.
 
-## What we’re writing about
+## What the tool does
 
-- **Carry-on size: what usually fits** (Travel): Personal-item fares versus a full carry-on, and which published numbers (liters, laptop sleeve, empty weight) actually predict the sizer.
-- **USB microphone under $200** (Home office): When a USB dynamic mic is enough for calls, when XLR is worth it, and what “noise floor” means in an ordinary room.
-- **Travel chargers: US and EU plugs** (Travel tech): The three lines to read on a brick — input voltage, USB-C watts, and the physical plug — plus a short packing list.
-- **How we research and link** (Method): What a comparison on this site is, what it is not, and how a paid link is labeled.
+- **Search by request** (Search): A user asks an AI assistant for a product type or a budget. The assistant calls the tool, which searches partner catalogues for matching items.
+- **Affiliate links, labeled** (Links): Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link.
+- **Not a store** (Scope): Checkout, payment, and accounts happen on the merchant’s site. The tool does not take orders or payments.
 
-## Carry-on size: what usually fits
+## Principles
 
-Airlines publish two different limits: a larger carry-on and a smaller personal item. A 40–45 L travel pack often meets a generous carry-on rule and fails a strict sizer, or a fare that allows only a personal item. A 20–28 L pack is the safer size for those fares.
-
-The published numbers that predict the sizer are stated volume, laptop-sleeve length, empty weight, and whether the hip belt and straps tuck away. Brands do not measure liters the same way, so treat the volume as a range. A dangling belt fails a sizer even when the liters look fine.
-
-We have not weighed these bags. Before a trip, read the airline’s current baggage page for your fare. A screenshot in a blog is not the rule.
-
-## USB microphone under $200
-
-For calls and a spoken podcast in an ordinary room, a USB dynamic microphone usually beats a cheap condenser. A condenser hears the room: the fridge, the keyboard, the bare wall. A dynamic mic hears what is close to it.
-
-XLR plus an interface is the better path if you already plan to change microphones later. It costs more than one USB mic and adds a box. Under $200, one USB dynamic mic and a stand is the whole setup.
-
-“Noise floor” here means the hiss and room sound you still hear when you are not talking. A rug, a full bookshelf, and not talking into a bare wall change that more than a second microphone in the same price band. We are not publishing measured decibel figures. Those depend on the room.
-
-## Travel chargers: US and EU plugs
-
-Read three lines on the brick. Input 100–240 V, 50/60 Hz means dual voltage. A US-only 120 V brick is unsafe on 230 V. USB-C Power Delivery watts: a phone is fine around 20 W; a laptop often wants 45–65 W, or whatever the laptop maker prints. The plug face is separate: a GaN brick still needs the pins for the country, or one passive adapter.
-
-Do not stack a voltage converter on a dual-voltage brick. For two weeks, pack one dual-voltage brick, one USB-C cable rated for those watts, and one passive plug adapter if the pins do not match. Leave a second brick at home unless a second person is charging a laptop at the same time.
-
-## How we research and link
-
-A pick on this site is a comparison of published specifications and stated limits, plus a note on who the item is for. It is not a lab test. If we have not used an item, the guide says so.
-
-A commission does not change the order of a list. If a link can earn a commission, it is labeled as a paid link, and this site states: As an Amazon Associate I earn from qualifying purchases.
-
-We revise a guide when the model line changes or a limit we cited no longer matches the source.
-
-## How we work
-
-- **Editorial process**: We compare published specifications and stated limits. We do not run a lab. A guide says so when we have not used the item.
-- **Not a store**: Purchases happen on retailer, marketplace, and booking sites. We do not run checkout or customer accounts on this domain.
-- **Monetization transparency**: We may earn commissions through affiliate and partner programs. A commission does not change the order of a list. A paid link is labeled next to the link.
-- **Updates**: We revise a guide when the model line changes or a limit we cited no longer matches the source.
+- **Data**: A search request is used only to answer that request. We do not sell personal data.
+- **Commissions**: A commission does not change the order of search results. A link that can earn a commission is labeled.
+- **No hands-on claims**: We do not claim product tests. Product information comes from merchant and partner data.
+- **Updates**: We update this page when the service, partner programs, or disclosures change.
 
 ## Affiliate disclosure
 
-PickForge participates in affiliate and partner programs, including the Amazon Associates Program. We may earn a commission if you buy through a link on this site. A link that can earn a commission is labeled as a paid link next to that link.
+PickForge participates in affiliate and partner programs, including the Amazon Associates Program and other partner programs. If you buy a product through a link the tool returns, we may earn a commission. A partner link is labeled as one wherever the tool shows it.
 
 Prices, availability, and offers change. Confirm them on the merchant’s site before you buy. Retailer names and logos are trademarks of their owners.
 
@@ -70,9 +39,9 @@ Amazon does not sponsor or endorse PickForge. The sentence below is the program 
 
 ## Privacy
 
-This site is static: no user login, no contact form, and no newsletter signup.
+This page is static: no user login, no contact form, and no newsletter signup.
 
-Hosting providers may log standard access data (IP, user agent). Retailers may set cookies when you follow links; see their policies.
+The service receives search requests to return results and does not use them for other purposes. Hosting providers may log standard access data (IP, user agent). Merchants may set cookies when you follow links; see their policies.
 
 We do not sell personal information.
 
@@ -80,31 +49,27 @@ We do not sell personal information.
 
 ### What is PickForge?
 
-An independent site with product and travel guides, operated as editorial content with public affiliate disclosure.
-
-### Do you test the products?
-
-No. Guides compare published specifications and stated limits. If that changes for a specific item, the guide will say we used it.
-
-### Do affiliate links change the order?
-
-No. A commission does not reorder a list.
+An independent project building a tool that lets AI assistants search products and return affiliate links. The service is in development.
 
 ### Do you sell products?
 
-No. Purchases happen on retailer sites. We don’t run checkout, hold inventory, or keep customer accounts.
+No. Purchases happen on merchant sites. We do not run checkout, hold inventory, or keep customer accounts.
 
-### Are there product links on this site today?
+### Do affiliate links change the results?
 
-Some guides explain what to look for and do not link a specific product yet. When a product link can earn a commission, it is labeled as a paid link.
+No. A commission does not change the order of search results.
+
+### Are affiliate links labeled?
+
+Yes. A link that can earn a commission is labeled as a partner link.
 
 ### How do I contact the publisher?
 
-This site has no contact form and no newsletter. Correspondence about the Associates account stays inside that account.
+This page has no contact form.
 
 ## For AI & generative search (GEO)
 
-Plain-language and structured copies of this site for search engines and assistants. Cite PickForge as the publisher; do not imply we operate checkout or hold inventory.
+Structured copies of this page for search engines and assistants. Cite PickForge as the publisher. We do not run checkout or hold inventory.
 
 - Short site summary (`llms.txt`)
 - Full text, all languages (`llms-full.txt`)
@@ -114,8 +79,8 @@ Plain-language and structured copies of this site for search engines and assista
 
 ## Publisher
 
-- Publisher: PickForge editorial
-- Entity type: Independent content publisher (not a retailer)
+- Publisher: PickForge
+- Entity type: Independent project (not a retailer)
 - Location: Israel
 - Last updated: 11 November 2026
 
@@ -124,69 +89,38 @@ Plain-language and structured copies of this site for search engines and assista
 
 # PickForge
 
-> PickForge публикует гайды по товарам и путешествиям. Сравнения строятся на опубликованных характеристиках и заявленных ограничениях. Партнёрские отношения раскрыты. Сайт ничего не продаёт.
+> PickForge разрабатывает инструмент, с помощью которого ИИ-ассистент ищет товары и возвращает партнёрские ссылки. Эта страница описывает сервис и раскрытие партнёрских отношений. PickForge ничего не продаёт.
 
 Language: Русский · URL: https://drsemfrankenstein.github.io/pickforge-site/ru/ · Updated: 2026-11-11
 
-## Гайды по опубликованным характеристикам, не из лаборатории
+## Поиск товаров с партнёрскими ссылками для ИИ-ассистентов
 
-PickForge публикует практические подборки для путешествий, домашнего офиса и повседневной техники. Мы сравниваем опубликованные характеристики, вес и заявленные ограничения. Ручные тесты не заявляем. Если в гайде есть партнёрская ссылка, отношение указано до ссылки.
+PickForge разрабатывает инструмент, который помогает ИИ-ассистенту найти товар по запросу пользователя и вернуть ссылку. Часть ссылок содержит наш партнёрский идентификатор. Инструмент работает на нашем сервере; эта страница его описывает и объясняет партнёрские отношения.
 
-## Сайт только с контентом
+## Информационная страница сервиса в разработке
 
-PickForge — контентный сайт независимой редакции. Мы ведём гайды по покупкам, списки в дорогу и сравнения товаров для читателей, которые покупают у крупных ритейлеров.
+PickForge — независимый проект. Эта страница описывает сервис, то, как мы работаем с партнёрскими ссылками, и кто за ним стоит. Это не магазин, и мы ничего не продаём.
 
-Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов. Покупки — на сайтах продавцов и маркетплейсов; возможны партнёрские ссылки из разных программ, о чём сказано на каждой странице и в гайдах.
+Сервис в разработке. Поиск и генерация ссылок работают на сервере PickForge, а не на этой странице. Покупки совершаются на сайте продавца, где видны цены и наличие.
 
-Гайды на этом сайте и есть контент. Покупка, если вы её совершаете, проходит на сайте продавца.
+Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов.
 
-## О чём мы пишем
+## Что делает инструмент
 
-- **Размер ручной клади: что обычно проходит** (Путешествия): Тариф только с личной вещью против полноценной ручной клади и какие опубликованные цифры (литры, карман для ноутбука, вес пустого рюкзака) реально предсказывают калибратор.
-- **USB-микрофон до $200** (Домашний офис): Когда хватает USB-динамического микрофона для звонков, когда нужен XLR и что значит «уровень шума» в обычной комнате.
-- **Зарядки: вилки США и ЕС** (Техника в дорогу): Три строки на блоке — входное напряжение, ватты USB-C и физическая вилка — и короткий список в дорогу.
-- **Как мы собираем гайд и ставим ссылку** (Методика): Чем является сравнение на этом сайте, чем не является и как помечается платная ссылка.
+- **Поиск по запросу** (Поиск): Пользователь просит ИИ-ассистента подобрать тип товара или бюджет. Ассистент вызывает инструмент, который ищет подходящие позиции в партнёрских каталогах.
+- **Партнёрские ссылки с пометкой** (Ссылки): Ссылки на продавцов могут содержать наш партнёрский идентификатор. Если ссылка может принести комиссию, это указано рядом с ней.
+- **Не магазин** (Границы): Оформление заказа, оплата и аккаунты происходят на сайте продавца. Инструмент не принимает заказы и платежи.
 
-## Размер ручной клади: что обычно проходит
+## Принципы
 
-Авиакомпании публикуют два разных лимита: большую ручную кладь и меньшую личную вещь. Рюкзак на 40–45 л часто проходит щедрый лимит ручной клади и не проходит строгий калибратор или тариф, где разрешена только личная вещь. Для таких тарифов спокойнее рюкзак на 20–28 л.
-
-Опубликованные цифры, которые предсказывают калибратор: заявленный объём, длина кармана для ноутбука, вес пустого рюкзака и убираются ли пояс и лямки. Литры бренды меряют по-разному, поэтому объём — это диапазон. Свисающий пояс не проходит калибратор, даже если литры выглядят нормально.
-
-Мы эти рюкзаки не взвешивали. Перед поездкой читайте актуальную страницу багажа вашей авиакомпании для вашего тарифа. Скриншот в блоге — не правило.
-
-## USB-микрофон до $200
-
-Для звонков и разговорного подкаста в обычной комнате USB-динамический микрофон обычно лучше дешёвого конденсаторного. Конденсаторный слышит комнату: холодильник, клавиатуру, голую стену. Динамический слышит то, что близко к нему.
-
-XLR и аудиоинтерфейс лучше, если микрофоны планируете менять. Это дороже одного USB-микрофона и добавляет коробку. До $200 весь комплект — один USB-динамический микрофон и стойка.
-
-«Уровень шума» здесь — шипение и звук комнаты, которые слышно, когда вы молчите. Ковёр, заполненная полка и речь не в голую стену меняют это сильнее, чем второй микрофон в том же бюджете. Измеренные децибелы мы не публикуем: они зависят от комнаты.
-
-## Зарядки: вилки США и ЕС
-
-На блоке читайте три строки. Вход 100–240 В, 50/60 Гц — это два напряжения. Блок только на 120 В опасен в сети 230 В. Ватты USB-C Power Delivery: телефону хватает около 20 Вт; ноутбуку часто нужно 45–65 Вт или то, что написал производитель ноутбука. Вилка отдельно: GaN-блоку всё равно нужны штыри страны или один пассивный переходник.
-
-Не ставьте преобразователь напряжения на блок, который и так на 100–240 В. На две недели: один такой блок, один кабель USB-C на эти ватты и один пассивный переходник, если штыри не подходят. Второй блок оставьте дома, если второй человек не заряжает ноутбук одновременно.
-
-## Как мы собираем гайд и ставим ссылку
-
-Подборка на этом сайте — сравнение опубликованных характеристик и заявленных ограничений плюс пометка, кому вещь подходит. Это не лабораторный тест. Если вещь не использовали, гайд так и пишет.
-
-Комиссия не меняет порядок списка. Если по ссылке возможна комиссия, она помечена как платная, и на сайте есть фраза: As an Amazon Associate I earn from qualifying purchases.
-
-Гайд правим, когда меняется линейка или процитированное ограничение больше не совпадает с источником.
-
-## Как мы работаем
-
-- **Редакционный процесс**: Сравниваем опубликованные характеристики и заявленные ограничения. Лаборатории нет. Если вещь не использовали, гайд так и пишет.
-- **Мы не магазин**: Покупки совершаются на сайтах продавцов, маркетплейсов и бронирования. На этом домене нет оформления заказа и личных кабинетов.
-- **Прозрачная монетизация**: Возможна комиссия через партнёрские программы. Комиссия не меняет порядок списка. Платная ссылка помечена рядом со ссылкой.
-- **Обновления**: Гайд правим, когда меняется линейка моделей или цитируемое ограничение больше не совпадает с источником.
+- **Данные**: Поисковый запрос используется только для ответа на него. Мы не продаём персональные данные.
+- **Комиссии**: Комиссия не меняет порядок результатов поиска. Ссылка, которая может принести комиссию, помечена.
+- **Без заявлений о тестах**: Мы не заявляем о ручных тестах товаров. Информация о товарах берётся из данных продавцов и партнёрских программ.
+- **Обновления**: Мы обновляем эту страницу, когда меняются сервис, партнёрские программы или раскрытие.
 
 ## Раскрытие партнёрских отношений
 
-PickForge участвует в партнёрских программах, включая Amazon Associates. Мы можем получить комиссию, если вы покупаете по ссылке на этом сайте. Ссылка, по которой возможна комиссия, помечена как платная рядом с ней.
+PickForge участвует в партнёрских программах, включая Amazon Associates и другие партнёрские программы. Если вы купите товар по ссылке, которую вернул инструмент, мы можем получить комиссию. Партнёрская ссылка помечается как таковая там, где инструмент её показывает.
 
 Цены, наличие и условия меняются. Перед покупкой проверьте их на сайте продавца. Названия и логотипы — товарные знаки владельцев.
 
@@ -194,9 +128,9 @@ Amazon не спонсирует и не поддерживает PickForge. Н�
 
 ## Конфиденциальность
 
-Сайт статический: без регистрации, формы обратной связи и рассылки.
+Эта страница статическая: без регистрации, формы обратной связи и рассылки.
 
-Хостинг-провайдеры могут записывать стандартные данные доступа (IP-адрес, user agent). Продавцы могут устанавливать cookie, когда вы переходите по ссылкам; см. их политики.
+Сервис получает поисковые запросы, чтобы вернуть результаты, и не использует их для других целей. Хостинг-провайдеры могут записывать стандартные данные доступа (IP-адрес, user agent). Продавцы могут устанавливать cookie, когда вы переходите по ссылкам; см. их политики.
 
 Мы не продаём персональные данные.
 
@@ -204,31 +138,27 @@ Amazon не спонсирует и не поддерживает PickForge. Н�
 
 ### Что такое PickForge?
 
-Независимый сайт с гайдами по товарам и путешествиям: редакционный контент с открытым раскрытием партнёрских отношений.
-
-### Вы тестируете товары?
-
-Нет. Гайды сравнивают опубликованные характеристики и заявленные ограничения. Если по конкретной вещи это изменится, гайд напишет, что мы её использовали.
-
-### Влияют ли комиссии на порядок?
-
-Нет. Комиссия не меняет порядок списка.
+Независимый проект: инструмент, с помощью которого ИИ-ассистенты ищут товары и возвращают партнёрские ссылки. Сервис в разработке.
 
 ### Вы продаёте товары?
 
-Нет. Покупки совершаются на сайтах продавцов. У нас нет оформления заказов, склада и аккаунтов покупателей.
+Нет. Покупки совершаются на сайтах продавцов. Мы не ведём оформление заказов, не храним товары и не ведём аккаунты покупателей.
 
-### Есть ли сейчас ссылки на товары?
+### Влияют ли комиссии на результаты?
 
-Часть гайдов объясняет, на что смотреть, и пока не ссылается на конкретный товар. Когда ссылка может принести комиссию, она помечена как платная.
+Нет. Комиссия не меняет порядок результатов поиска.
+
+### Помечены ли партнёрские ссылки?
+
+Да. Ссылка, которая может принести комиссию, помечена как партнёрская.
 
 ### Как связаться с издателем?
 
-На сайте нет формы и рассылки. Переписка по аккаунту Associates остаётся внутри этого аккаунта.
+На этой странице нет формы обратной связи.
 
 ## Для AI и generative search (GEO)
 
-Структурированные копии сайта для поисковиков и ассистентов. Цитируйте PickForge как издателя; мы не ведём checkout и не храним товары.
+Структурированные копии этой страницы для поисковиков и ассистентов. Цитируйте PickForge как издателя. Мы не ведём оформление заказов и не храним товары.
 
 - Краткое описание сайта (`llms.txt`)
 - Полный текст, все языки (`llms-full.txt`)
@@ -238,8 +168,8 @@ Amazon не спонсирует и не поддерживает PickForge. Н�
 
 ## Издатель
 
-- Издатель: Редакция PickForge
-- Тип: Независимый контент-издатель (не ритейлер)
+- Издатель: PickForge
+- Тип: Независимый проект (не ритейлер)
 - Страна: Израиль
 - Обновлено: 11 ноября 2026
 
@@ -248,69 +178,38 @@ Amazon не спонсирует и не поддерживает PickForge. Н�
 
 # PickForge
 
-> PickForge מפרסם מדריכי מוצרים וטיולים. ההשוואות מבוססות על מפרט שפורסם ומגבלות מוצהרות. קשרי שותפים מפורסמים. האתר לא מוכר מוצרים.
+> PickForge מפתח כלי שמאפשר לעוזר AI לחפש מוצרים ולהחזיר קישורי שותפים. עמוד זה מתאר את השירות ואת הגילוי על השותפויות. PickForge לא מוכר מוצרים.
 
 Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-11
 
-## מדריכים לפי מפרט שפורסם, לא ממעבדה
+## חיפוש מוצרים עם קישורי שותפים, לעוזרי AI
 
-PickForge מפרסם סקירות מעשיות לטיולים, למשרד הביתי ולטכנולוגיה יומיומית. אנחנו משווים מפרט שפורסם, משקל ומגבלות מוצהרות. אין כאן טענה לבדיקה בידיים. כשיש קישור שותפים במדריך, הקשר מצוין לפני הקישור.
+PickForge בונה כלי שעוזר לעוזר AI למצוא מוצר לפי בקשת המשתמש ולהחזיר קישור. חלק מהקישורים כוללים את מזהה השותפים שלנו. הכלי פועל על השרת שלנו; עמוד זה מתאר אותו ומסביר את קשרי השותפות.
 
-## אתר תוכן בלבד
+## עמוד מידע לשירות בפיתוח
 
-PickForge הוא אתר תוכן בלבד של מו״ל עצמאי. אנחנו כותבים מדריכי קנייה, רשימות אריזה והשוואות מוצרים לקוראים שקונים אצל קמעונאים גדולים.
+PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירות, איך אנחנו עובדים עם קישורי שותפים ומי עומד מאחוריו. זו לא חנות, ואיננו מוכרים מוצרים.
 
-אין לנו הזמנות, מלאי או ייעוץ פיננסי/רפואי. הרכישות באתרי קמעונאים ושווקים; ייתכן שימוש בקישורי שותפים מתוכניות שונות עם גילוי נאות בכל עמוד ובמדריכים.
+השירות בפיתוח. החיפוש ויצירת הקישורים פועלים על השרת של PickForge, לא בעמוד הזה. רכישות מתבצעות באתר הסוחר, שם מוצגים מחירים וזמינות.
 
-המדריכים באתר הם התוכן. רכישה, אם תבחרו לבצע אותה, מתבצעת באתר הקמעונאי.
+איננו מקבלים הזמנות, לא שומרים מלאי ולא נותנים ייעוץ פיננסי או רפואי.
 
-## על מה אנחנו כותבים
+## מה הכלי עושה
 
-- **גודל כבודת יד: מה בדרך כלל נכנס** (טיולים): תעריף עם חפץ אישי בלבד מול כבודת יד מלאה, ואילו מספרים שפורסמו (ליטרים, תא למחשב, משקל ריק) באמת מנבאים את תא המדידה.
-- **מיקרופון USB עד 200 דולר** (משרד ביתי): מתי מיקרופון דינמי ב-USB מספיק לשיחות, מתי שווה XLR, ומהי ״רצפת רעש״ בחדר רגיל.
-- **מטענים: תקעי ארה״ב ואירופה** (טכנולוגיה לטיולים): שלוש שורות על הלבנה — מתח כניסה, וואט ב-USB-C והתקע הפיזי — ורשימת אריזה קצרה.
-- **איך אנחנו חוקרים ומקשרים** (שיטה): מהי השוואה באתר הזה, מה היא לא, ואיך מסומן קישור בתשלום.
+- **חיפוש לפי בקשה** (חיפוש): המשתמש מבקש מעוזר AI סוג מוצר או תקציב. העוזר מפעיל את הכלי, שמחפש פריטים מתאימים בקטלוגים של שותפים.
+- **קישורי שותפים עם סימון** (קישורים): קישורים לסוחרים יכולים לכלול את מזהה השותפים שלנו. כשקישור עשוי להניב עמלה, זה מצוין לידו.
+- **לא חנות** (גבולות): הזמנה, תשלום וחשבונות מתבצעים באתר הסוחר. הכלי לא מקבל הזמנות ולא תשלומים.
 
-## גודל כבודת יד: מה בדרך כלל נכנס
+## עקרונות
 
-חברות תעופה מפרסמות שתי מגבלות שונות: כבודת יד גדולה יותר וחפץ אישי קטן יותר. תיק של 40–45 ליטר לרוב עומד בכלל נדיב לכבודת יד ונכשל בתא מדידה קפדני, או בתעריף שמאפשר רק חפץ אישי. לחפץ אישי בטוח יותר תיק של 20–28 ליטר.
-
-המספרים שפורסמו ומנבאים את תא המדידה: נפח מוצהר, אורך תא למחשב, משקל ריק, והאם חגורת המותן והרצועות נכנסות פנימה. מותגים לא מודדים ליטרים באותה שיטה, אז התייחסו לנפח כטווח. חגורה משתלשלת נכשלת בתא המדידה גם כשהליטרים נראים תקינים.
-
-לא שקלנו את התיקים האלה. לפני טיסה קראו את דף הכבודה העדכני של חברת התעופה לתעריף שלכם. צילום מסך בבלוג אינו הכלל.
-
-## מיקרופון USB עד 200 דולר
-
-לשיחות ולפודקאסט מדובר בחדר רגיל, מיקרופון דינמי ב-USB בדרך כלל עדיף על קונדנסר זול. קונדנסר שומע את החדר: מקרר, מקלדת, קיר חשוף. מיקרופון דינמי שומע את מה שקרוב אליו.
-
-XLR עם כרטיס קול עדיף אם כבר מתכננים להחליף מיקרופונים. זה יקר ממיקרופון USB אחד ומוסיף קופסה. מתחת ל-200 דולר כל המערכת היא מיקרופון דינמי אחד ב-USB ומעמד.
-
-״רצפת רעש״ כאן היא הרחש וקול החדר שנשמעים כשלא מדברים. שטיח, מדף מלא, ולא לדבר אל קיר חשוף משנים את זה יותר ממיקרופון שני באותו תקציב. איננו מפרסמים דציבלים שנמדדו. הם תלויים בחדר.
-
-## מטענים: תקעי ארה״ב ואירופה
-
-קראו שלוש שורות על הלבנה. כניסה 100–240 וולט, 50/60 הרץ, פירושה שני מתחים. לבנה של 120 וולט בלבד מסוכנת ברשת של 230 וולט. וואט ב-USB-C: לטלפון מספיקים כ-20 וואט; למחשב נייד לרוב צריך 45–65 וואט, או מה שיצרן המחשב הדפיס. צורת התקע נפרדת: לבנת GaN עדיין צריכה את הפינים של המדינה, או מתאם פסיבי אחד.
-
-אל תחברו ממיר מתח על לבנה שכבר תומכת ב-100–240 וולט. לשבועיים: לבנה אחת כזו, כבל USB-C אחד שמדורג לוואטים האלה, ומתאם פסיבי אחד אם הפינים לא מתאימים. השאירו לבנה שנייה בבית אלא אם אדם שני טוען מחשב נייד באותו זמן.
-
-## איך אנחנו חוקרים ומקשרים
-
-בחירה באתר הזה היא השוואה של מפרט שפורסם ומגבלות מוצהרות, ועוד הערה למי הפריט מתאים. זו לא בדיקת מעבדה. אם לא השתמשנו בפריט, המדריך אומר זאת.
-
-עמלה לא משנה את סדר הרשימה. אם קישור יכול להניב עמלה, הוא מסומן כקישור בתשלום, והאתר מציין: As an Amazon Associate I earn from qualifying purchases.
-
-מעדכנים מדריך כשקו הדגמים משתנה או כשמגבלה שציטטנו כבר לא תואמת את המקור.
-
-## איך אנחנו עובדים
-
-- **תהליך מערכתי**: משווים מפרט שפורסם ומגבלות מוצהרות. אין מעבדה. אם לא השתמשנו בפריט, המדריך אומר זאת.
-- **לא חנות**: הרכישות מתבצעות באתרי קמעונאים, שווקים והזמנות. אין באתר הזה קופה או חשבונות לקוח.
-- **שקיפות במונטיזציה**: ייתכן עמלה מתוכניות שותפים. עמלה לא משנה את סדר הרשימה. קישור בתשלום מסומן ליד הקישור.
-- **עדכונים**: מעדכנים מדריך כשקו הדגמים משתנה או כשמגבלה שציטטנו כבר לא תואמת את המקור.
+- **נתונים**: בקשת חיפוש משמשת רק כדי לענות עליה. איננו מוכרים מידע אישי.
+- **עמלות**: עמלה לא משנה את סדר תוצאות החיפוש. קישור שעשוי להניב עמלה מסומן.
+- **בלי טענות לבדיקה**: איננו טוענים לבדיקות ידניות של מוצרים. המידע על מוצרים מגיע מנתוני הסוחרים והתוכניות.
+- **עדכונים**: מעדכנים את העמוד כשהשירות, תוכניות השותפים או הגילוי משתנים.
 
 ## גילוי נאות על שותפות
 
-PickForge משתתף בתוכניות שותפים, כולל Amazon Associates. ייתכן שנקבל עמלה אם תקנו דרך קישור באתר. קישור שיכול להניב עמלה מסומן כקישור בתשלום לידו.
+PickForge משתתף בתוכניות שותפים, כולל Amazon Associates ותוכניות שותפים נוספות. אם תרכשו מוצר דרך קישור שהכלי החזיר, ייתכן שנקבל עמלה. קישור שותפים מסומן ככזה במקום שבו הכלי מציג אותו.
 
 מחירים, זמינות והצעות משתנים. אשרו אותם באתר הסוחר לפני קנייה. שמות ולוגואים הם סימנים מסחריים של בעליהם.
 
@@ -318,9 +217,9 @@ Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט 
 
 ## פרטיות
 
-האתר סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.
+העמוד סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.
 
-ספקי האחסון עשויים לתעד נתוני גישה סטנדרטיים (כתובת IP, סוג דפדפן). קמעונאים עשויים להגדיר עוגיות כשעוברים דרך קישורים; ראו את המדיניות שלהם.
+השירות מקבל בקשות חיפוש כדי להחזיר תוצאות, ולא משתמש בהן למטרות אחרות. ספקי אחסון עשויים לתעד נתוני גישה סטנדרטיים (כתובת IP, סוג דפדפן). סוחרים עשויים להגדיר עוגיות כשעוברים דרך קישורים; ראו את המדיניות שלהם.
 
 איננו מוכרים מידע אישי.
 
@@ -328,31 +227,27 @@ Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט 
 
 ### מה זה PickForge?
 
-אתר עצמאי עם מדריכי מוצרים וטיולים, שפועל כתוכן מערכתי עם גילוי נאות פומבי על שותפויות.
-
-### אתם בודקים את המוצרים?
-
-לא. המדריכים משווים מפרט שפורסם ומגבלות מוצהרות. אם זה ישתנה לפריט מסוים, המדריך יציין שהשתמשנו בו.
-
-### האם עמלה משנה את הסדר?
-
-לא. עמלה לא משנה את סדר הרשימה.
+פרויקט עצמאי: כלי שמאפשר לעוזרי AI לחפש מוצרים ולהחזיר קישורי שותפים. השירות בפיתוח.
 
 ### אתם מוכרים מוצרים?
 
-לא. הרכישות מתבצעות באתרי הקמעונאים. אין לנו קופה, מלאי או חשבונות לקוח.
+לא. רכישות מתבצעות באתרי הסוחרים. איננו מנהלים קופה, לא שומרים מלאי ולא מנהלים חשבונות לקוח.
 
-### יש כיום קישורים למוצרים?
+### האם עמלות משנות את התוצאות?
 
-חלק מהמדריכים מסבירים על מה להסתכל ועדיין לא מקשרים למוצר מסוים. כשקישור יכול להניב עמלה, הוא מסומן כקישור בתשלום.
+לא. עמלה לא משנה את סדר תוצאות החיפוש.
+
+### האם קישורי השותפים מסומנים?
+
+כן. קישור שעשוי להניב עמלה מסומן כקישור שותפים.
 
 ### איך יוצרים קשר עם המוציא לאור?
 
-אין באתר טופס ואין ניוזלטר. התכתבות על חשבון Associates נשארת בתוך החשבון.
+בעמוד זה אין טופס יצירת קשר.
 
 ## ל-AI וחיפוש גנרטיבי (GEO)
 
-עותקים מובנים של האתר למנועי חיפוש ולסוכנים. צטטו את PickForge כמוציא; אין לנו קופה או מלאי.
+עותקים מובנים של העמוד הזה למנועי חיפוש ולעוזרים. צטטו את PickForge כמוציא. איננו מנהלים קופה ואיננו שומרים מלאי.
 
 - סיכום קצר (`llms.txt`)
 - טקסט מלא, כל השפות (`llms-full.txt`)
@@ -362,7 +257,7 @@ Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט 
 
 ## מוציא לאור
 
-- מוציא לאור: מערכת PickForge
-- סוג: מו״ל תוכן עצמאי (לא קמעונאי)
+- מוציא לאור: PickForge
+- סוג: פרויקט עצמאי (לא קמעונאי)
 - מדינה: ישראל
 - עודכן לאחרונה: 11 בנובמבר 2026

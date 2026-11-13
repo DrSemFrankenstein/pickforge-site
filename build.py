@@ -14,12 +14,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_ORIGIN = "https://drsemfrankenstein.github.io/pickforge-site"
-# AliExpress link API baked into data-ali-endpoint (e.g. https://pickforge-mcp.example/api/links/aliexpress).
-# Env PICKFORGE_ALI_LINK_API or argv[2]. When empty, the page uses same-origin /api/... or local 127.0.0.1:3099 in JS.
+# AliExpress link API baked into data-ali-endpoint for static hosts (GitHub Pages has no /api).
+DEFAULT_ALI_LINK_API = "https://pickforge-mcp.onrender.com/api/links/aliexpress"
 ALI_LINK_API = os.environ.get("PICKFORGE_ALI_LINK_API", "").strip()
 if len(sys.argv) > 2:
     ALI_LINK_API = sys.argv[2].strip()
 SITE_URL = (sys.argv[1] if len(sys.argv) > 1 else DEFAULT_ORIGIN + "/").rstrip("/") + "/"
+if not ALI_LINK_API and "github.io" in SITE_URL:
+    ALI_LINK_API = DEFAULT_ALI_LINK_API
 UPDATED_ISO = "2026-11-13"
 AMAZON_EXACT = "As an Amazon Associate I earn from qualifying purchases."
 ASSOCIATES_ID = "pickforge-20"

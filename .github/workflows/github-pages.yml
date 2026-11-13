@@ -34,6 +34,7 @@ jobs:
         env:
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
+          PICKFORGE_ALI_LINK_API: ${{ vars.PICKFORGE_ALI_LINK_API }}
         run: |
           python generate_assets.py
           OWNER_LC="$(echo "$OWNER" | tr '[:upper:]' '[:lower:]')"
@@ -43,7 +44,11 @@ jobs:
           else
             SITE_URL="https://${OWNER}.github.io/${REPO}/"
           fi
-          python build.py "$SITE_URL"
+          if [ -n "$PICKFORGE_ALI_LINK_API" ]; then
+            python build.py "$SITE_URL" "$PICKFORGE_ALI_LINK_API"
+          else
+            python build.py "$SITE_URL"
+          fi
 
       - uses: actions/upload-pages-artifact@v3
         with:

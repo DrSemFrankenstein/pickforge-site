@@ -1,6 +1,7 @@
 const ASIN_RE = /\/(?:dp|gp\/product|gp\/aw\/d|exec\/obidos\/ASIN)\/([A-Z0-9]{10})(?=[/?#]|$)/i;
 const ALI_ITEM_RE = /\/(?:item|i)\/(\d{6,20})(?:\.html)?(?=[/?#]|$)/i;
 const LOCAL_ALI_API = "http://127.0.0.1:3099/api/links/aliexpress";
+const DEFAULT_ALI_API = "https://pickforge-mcp.onrender.com/api/links/aliexpress";
 
 function fail(code) {
   const error = new Error(code);
@@ -117,10 +118,16 @@ function resolveAliEndpoint(root) {
   if (typeof location === "undefined") return "";
   if (location.protocol === "file:") return LOCAL_ALI_API;
   const host = location.hostname;
-  if ((host === "localhost" || host === "127.0.0.1") && location.port !== "3099") {
+  if (host === "localhost" || host === "127.0.0.1") {
+    if (location.port === "3099") {
+      return new URL("/api/links/aliexpress", location.origin).href;
+    }
     return LOCAL_ALI_API;
   }
-  return new URL("/api/links/aliexpress", location.origin).href;
+  if (host.endsWith("github.io")) {
+    return DEFAULT_ALI_API;
+  }
+  return "";
 }
 
 async function aliExpressLink(sourceUrl, endpoint) {

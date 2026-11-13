@@ -1,6 +1,6 @@
 # PickForge
 
-> PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products. PickForge does not sell products, process orders or hold inventory. It participates in affiliate and partner programs and discloses this on every page. Entity is PickForge, an independent project (Israel).
+> PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products. PickForge does not sell products, process orders or hold inventory. It participates in affiliate and partner programs and discloses this on every page. Entity is PickForge, an independent project (Israel).
 
 ## Citation guidance (GEO)
 
@@ -11,8 +11,10 @@
 
 ## Affiliate disclosure
 
-- Amazon Associates participant.
+- Amazon Associates participant. Associates ID on this site: pickforge-20. Storefront: amazon.com only.
+- AliExpress Affiliate Program (Portals). Official promotion links are created by the Portals API on the server. This page does not invent one.
 - Required statement, shown on every page: As an Amazon Associate I earn from qualifying purchases.
+- Amazon links built on this page are full https://www.amazon.com addresses with tag=pickforge-20. No price is shown. Open the link from this page.
 - The service does not sell products and does not claim hands-on product tests.
 
 ## Pages
@@ -24,8 +26,17 @@
 ## Service
 
 - Search by request: A user asks an AI assistant for a product type or a budget. The assistant calls the tool, which searches partner catalogues for matching items.
-- Affiliate links, labeled: Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link.
+- Affiliate links, labeled: An Amazon.com link on this page is the full address with our Associates ID. An AliExpress promotion link is created only by the official Portals API. A link that can earn a commission is labeled.
 - Not a store: Checkout, payment, and accounts happen on the merchant’s site. The tool does not take orders or payments.
+
+## Assistant connectors
+
+The MCP server is not published and has no public HTTPS address. These URLs open the assistant’s connector page. They do not install PickForge. Do not paste a localhost address.
+
+- Claude: https://claude.ai/customize/connectors
+- ChatGPT: https://chatgpt.com/
+- ChatGPT guide: https://developers.openai.com/api/docs/guides/custom-mcp-server
+- Grok: https://grok.com/connectors
 
 ## FAQ (English)
 
@@ -37,12 +48,18 @@
   A: No. A commission does not change the order of search results.
 - Q: Are affiliate links labeled?
   A: Yes. A link that can earn a commission is labeled as a partner link.
+- Q: Can I make an Amazon link on this page?
+  A: Yes. The builder returns a full amazon.com address with tag pickforge-20. Open it from this page. The page does not show a price.
+- Q: Can I make an AliExpress link on this page?
+  A: Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead.
+- Q: How do I add PickForge to Claude, ChatGPT, or Grok?
+  A: Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it.
 - Q: How do I contact the publisher?
   A: This page has no contact form.
 
 ## Policies
 
-- Disclosure: PickForge participates in affiliate and partner programs, including the Amazon Associates Program and other partner programs. If you buy a product through a link the tool returns, we may earn a commission. A partner link is labeled as one wherever the tool shows it.
+- Disclosure: PickForge participates in the Amazon Associates Program and the AliExpress Affiliate Program (Portals). If you buy through a link we label, we may earn a commission. You do not pay extra.
 - Standards: commissions do not determine ranking
 - Privacy: static site, no logins, no sale of personal data
 

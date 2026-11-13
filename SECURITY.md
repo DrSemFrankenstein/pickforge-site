@@ -37,6 +37,10 @@ GitHub Pages does **not** read `_headers`. After enabling HTTPS in repo settings
 - **Supply chain**: Google Fonts CDN; mitigate by self-hosting if you need stricter policy.
 - **Directory listing**: disabled on proper static hosts; avoid browsing via raw `file://` folders (use `index.html` or `npx serve`).
 
+## Link builder
+
+The store-link tool (`assets/link-generator.js`) runs in the browser. It does not call PickForge, Amazon, or AliExpress. The Associates ID `pickforge-20` is public by design: it is part of every Amazon link. The form does not navigate (`form-action 'none'` in CSP); script handles it. No new host, cookie, or API key.
+
 ## If you add features later
 
-Re-review before prod: contact forms, analytics, comments, affiliate redirect endpoints, or any server-side logic introduce new attack surface and need separate hardening.
+Re-review before prod: contact forms, analytics, comments, affiliate redirect endpoints, or any server-side logic introduce new attack surface and need separate hardening. An AliExpress promotion link needs the Portals API on a server. Do not put the Portals secret in this static site.

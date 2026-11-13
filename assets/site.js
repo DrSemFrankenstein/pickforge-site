@@ -1,4 +1,51 @@
 (function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function headerOffset() {
+    var bar = document.getElementById('bar');
+    return (bar ? bar.offsetHeight : 64) + 12;
+  }
+
+  function smoothScrollToY(targetY) {
+    window.scrollTo({
+      top: Math.max(0, targetY),
+      behavior: reduceMotion ? 'auto' : 'smooth',
+    });
+  }
+
+  function scrollToId(id, updateHash) {
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    var y = el.getBoundingClientRect().top + window.scrollY - headerOffset();
+    smoothScrollToY(y);
+    if (updateHash && history.replaceState) {
+      history.replaceState(null, '', '#' + id);
+    } else if (updateHash) {
+      location.hash = id;
+    }
+  }
+
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    var raw = link.getAttribute('href');
+    if (!raw || raw === '#') return;
+    var id = decodeURIComponent(raw.slice(1));
+    var target = document.getElementById(id);
+    if (!target) return;
+    if (link.target === '_blank' || event.defaultPrevented) return;
+    event.preventDefault();
+    scrollToId(id, true);
+    if (!reduceMotion) target.focus({ preventScroll: true });
+  });
+
+  if (location.hash.length > 1) {
+    requestAnimationFrame(function () {
+      scrollToId(decodeURIComponent(location.hash.slice(1)), false);
+    });
+  }
+
   var FRAMES = 48, COLS = 7, ROWS = 7;
   var sprite = document.getElementById('sprite');
   var story = document.getElementById('story');

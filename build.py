@@ -9,16 +9,22 @@ The URL argument becomes the canonical base for every page, hreflang link,
 sitemap entry, robots.txt, llms.txt and JSON-LD block. Without an argument,
 the placeholder https://pickforge.example/ is used.
 """
-import json, re, sys, html
+import json, os, re, sys, html
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_ORIGIN = "https://drsemfrankenstein.github.io/pickforge-site"
+# AliExpress link API baked into data-ali-endpoint (e.g. https://pickforge-mcp.example/api/links/aliexpress).
+# Env PICKFORGE_ALI_LINK_API or argv[2]. When empty, the page uses same-origin /api/... or local 127.0.0.1:3099 in JS.
+ALI_LINK_API = os.environ.get("PICKFORGE_ALI_LINK_API", "").strip()
+if len(sys.argv) > 2:
+    ALI_LINK_API = sys.argv[2].strip()
 SITE_URL = (sys.argv[1] if len(sys.argv) > 1 else DEFAULT_ORIGIN + "/").rstrip("/") + "/"
-UPDATED_ISO = "2026-11-11"
+UPDATED_ISO = "2026-11-13"
 AMAZON_EXACT = "As an Amazon Associate I earn from qualifying purchases."
 ASSOCIATES_ID = "pickforge-20"
 LANGS = ["en", "ru", "he"]
+HERO_CONNECTOR_ICONS = frozenset({"claude", "chatgpt", "grok"})
 PATHS = {"en": "", "ru": "ru/", "he": "he/"}
 NATIVE = {"en": "English", "ru": "Русский", "he": "עברית"}
 SHORT = {"en": "EN", "ru": "RU", "he": "HE"}
@@ -31,22 +37,25 @@ FONTS = {
 CONTENT = {
 "en": {
   "title": "PickForge: product search and affiliate links for AI assistants",
-  "description": "PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.",
+  "description": "PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.",
   "skip": "Skip to content", "nav_label": "Sections", "lang_label": "Language",
   "keywords": "PickForge, affiliate disclosure, AI assistant tool, product search, partner programs",
-  "nav": ["Service", "How we work", "Disclosure", "Publisher"],
+  "nav": ["Service", "Links", "Partners", "Assistant", "Disclosure"],
   "eyebrow": "Product search for AI assistants · Affiliate disclosure on every page",
   "h1": "Product search with affiliate links, for AI assistants",
-  "lead": "PickForge is building a tool that helps an AI assistant find a product the user asks about and return a link. Some links carry our affiliate tracking ID. The tool runs on our server; this page describes it and explains the affiliate relationships.",
+  "lead": "PickForge is a tool an AI assistant can call when you ask it to find a product. It returns a labeled affiliate link. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.",
   "cue": "Scroll for details",
+  "hero_asst_h": "Connect an assistant",
+  "hero_asst_p": "Opens that product’s connector settings. These links do not install PickForge yet.",
+  "hero_more": "All setup options",
   "about_k": "What this site is", "about_h": "An information page for a service in development",
   "about_p": ["PickForge is an independent project. This page describes the service, how we handle affiliate links, and who runs it. It is not a store and does not sell products.",
-              "The service is in development. Search and link generation run on PickForge’s own server, not on this page. Purchases happen on the merchant’s site, where prices and availability are shown.",
-              "We do not process orders, hold inventory, or give financial or medical advice."],
+              "Amazon.com links on this page are built in your browser as a full amazon.com address with Associates ID pickforge-20. An AliExpress promotion link is created only by the AliExpress Portals API on our server. This page does not call that API and does not invent one.",
+              "Purchases happen on the store’s site, where the price is shown. We do not process orders, hold inventory, or give financial or medical advice."],
   "guides_k": "Service", "guides_h": "What the tool does",
   "guides": [
     ("Search", "Search by request", "A user asks an AI assistant for a product type or a budget. The assistant calls the tool, which searches partner catalogues for matching items."),
-    ("Links", "Affiliate links, labeled", "Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link."),
+    ("Links", "Affiliate links, labeled", "An Amazon.com link on this page is the full address with our Associates ID. An AliExpress promotion link is created only by the official Portals API. A link that can earn a commission is labeled."),
     ("Scope", "Not a store", "Checkout, payment, and accounts happen on the merchant’s site. The tool does not take orders or payments."),
   ],
   "std_k": "How we work", "std_h": "Principles",
@@ -57,23 +66,75 @@ CONTENT = {
     ("Updates", "We update this page when the service, partner programs, or disclosures change."),
   ],
   "disc_h": "Affiliate disclosure",
-  "disc_p": "PickForge participates in affiliate and partner programs, including the <strong>Amazon Associates Program</strong> and other partner programs. If you buy a product through a link the tool returns, we may earn a commission. A partner link is labeled as one wherever the tool shows it.",
+  "disc_p": "PickForge participates in the <strong>Amazon Associates Program</strong> and the <strong>AliExpress Affiliate Program</strong> (Portals). If you buy through a link we label, we may earn a commission. You do not pay extra.",
   "disc_fine": [
-    "Prices, availability, and offers change. Confirm them on the merchant’s site before you buy. Retailer names and logos are trademarks of their owners.",
-    "Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.",
+    "Prices, availability, and offers change. Confirm them on the store’s site before you buy. Store names are trademarks of their owners.",
+    "Amazon.com links on this page are the full amazon.com address, including Associates ID pickforge-20. We do not hide that address behind a short link. Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.",
   ],
   "priv_h": "Privacy",
   "priv": ["This page is static: no user login, no contact form, and no newsletter signup.",
-           "The service receives search requests to return results and does not use them for other purposes. Hosting providers may log standard access data (IP, user agent). Merchants may set cookies when you follow links; see their policies.",
-           "We do not sell personal information."],
+           "The link builder runs in your browser. The product address or search words are not sent to PickForge. Opening a link sends you to Amazon or, when our server has issued one, to AliExpress. Those stores may set their own cookies.",
+           "The assistant tool, when it is published, receives a search request only to return results. We do not sell personal information. Hosting providers may log standard access data (IP, user agent)."],
   "faq_h": "Questions",
   "faq": [
     ("What is PickForge?", "An independent project building a tool that lets AI assistants search products and return affiliate links. The service is in development."),
     ("Do you sell products?", "No. Purchases happen on merchant sites. We do not run checkout, hold inventory, or keep customer accounts."),
     ("Do affiliate links change the results?", "No. A commission does not change the order of search results."),
     ("Are affiliate links labeled?", "Yes. A link that can earn a commission is labeled as a partner link."),
+    ("Can I make an Amazon link on this page?", "Yes. The builder returns a full amazon.com address with tag pickforge-20. Open it from this page. The page does not show a price."),
+    ("Can I make an AliExpress link on this page?", "Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead."),
+    ("How do I add PickForge to Claude, ChatGPT, or Grok?", "Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it."),
     ("How do I contact the publisher?", "This page has no contact form."),
   ],
+  "link": {
+    "h": "Make a store link",
+    "p": "Paste search words, an Amazon product page, or an AliExpress item URL. PickForge detects the store automatically.",
+    "label": "Search, Amazon page, or AliExpress URL",
+    "placeholder": "Cordless vacuum, amazon.com/…/dp/…, or aliexpress.com/item/…",
+    "autoNote": "Search words become an Amazon link with tag=pickforge-20. Amazon and AliExpress URLs are recognized from the address.",
+    "submit": "Make link",
+    "openAmazon": "Open on Amazon",
+    "openAli": "Open on AliExpress",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copy_fail": "Copy failed",
+    "kicker": "Affiliate link",
+    "amazon_disclose": "Affiliate link. As an Amazon Associate I earn from qualifying purchases. Check the current price on Amazon.",
+    "aliDisclose": "Affiliate link. AliExpress Portals issued this promotion link.",
+    "noscript": "This link builder needs JavaScript.",
+    "readyAmazon": "Amazon link ready. Open it from this page.",
+    "readyAli": "AliExpress promotion link ready.",
+    "err_empty": "Enter a product page or search words.",
+    "err_short": "Paste the full amazon.com page. Short links such as amzn.to are not used here.",
+    "err_region": "This Associates ID is for Amazon.com only. Other Amazon sites need their own ID.",
+    "err_page": "Paste an Amazon.com product page (/dp/…) or a search page.",
+    "err_query": "Enter at least two characters.",
+    "err_unknown": "Use search words, an amazon.com page, or an AliExpress product URL.",
+    "err_ali_no_api": "AliExpress links need the PickForge link API, which is not wired on this static page. Use search words or an Amazon URL.",
+    "err_ali_page": "Paste an AliExpress product page. The address must contain /item/ and the product number.",
+    "err_ali_fetch": "Could not reach the PickForge link API. Run pickforge-mcp locally on port 3099, or rebuild this page with a public data-ali-endpoint URL.",
+  },
+  "partners": {
+    "h": "Partners",
+    "p": "Product search and labeled affiliate links use these programs. Checkout stays on each merchant’s site. Store names are trademarks of their owners.",
+    "items": [
+      ("Amazon", "amazon", "Amazon Associates", "Product and search links on amazon.com include Associates ID pickforge-20."),
+      ("AliExpress", "aliexpress", "AliExpress Portals", "Official promotion links are created only through the Portals affiliate API."),
+    ],
+  },
+  "assistant": {
+    "h": "Add the tool to an assistant",
+    "p": [
+      "The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.",
+      "The server is not listed in a plugin directory, and it has no public HTTPS address yet. These links open the assistant’s connector page. They do not install PickForge. When you are there, do not paste a localhost address.",
+    ],
+    "connectors": [
+      ("Claude", "https://claude.ai/customize/connectors", "Open Claude connectors. Choose Add custom connector, then paste the public server address when it exists.", "claude"),
+      ("ChatGPT", "https://chatgpt.com/", "Open ChatGPT. Then open Plugins and choose Add custom MCP server.", "chatgpt"),
+      ("ChatGPT guide", "https://developers.openai.com/api/docs/guides/custom-mcp-server", "OpenAI’s steps for adding a custom MCP server.", "openai"),
+      ("Grok", "https://grok.com/connectors", "Open Grok connectors. Choose New Connector, then Custom. The address must be public HTTPS.", "grok"),
+    ],
+  },
   "geo_h": "For AI & generative search (GEO)",
   "geo_p": "Structured copies of this page for search engines and assistants. Cite PickForge as the publisher. We do not run checkout or hold inventory.",
   "geo_links": [
@@ -88,31 +149,34 @@ CONTENT = {
     ("Publisher", "PickForge"),
     ("Entity type", "Independent project (not a retailer)"),
     ("Location", "Israel"),
-    ("Last updated", "11 November 2026"),
+    ("Last updated", "13 November 2026"),
   ],
   "assoc": "As an Amazon Associate I earn from qualifying purchases.",
-  "foot_links": ["Privacy", "Disclosure", "Publisher"],
+  "foot_links": ["Privacy", "Links", "Disclosure", "Publisher"],
   "home": "PickForge home",
   "story_label": "About PickForge",
 },
 "ru": {
   "title": "PickForge: поиск товаров и партнёрские ссылки для ИИ-ассистентов",
-  "description": "PickForge разрабатывает инструмент, с помощью которого ИИ-ассистент ищет товары и возвращает партнёрские ссылки. Эта страница описывает сервис и раскрытие партнёрских отношений. PickForge ничего не продаёт.",
+  "description": "PickForge — инструмент поиска товаров для ИИ-ассистентов с помеченными партнёрскими ссылками. На странице есть сборка ссылки Amazon.com и раскрытие партнёрских отношений. PickForge ничего не продаёт.",
   "skip": "Перейти к содержимому", "nav_label": "Разделы", "lang_label": "Язык",
   "keywords": "PickForge, раскрытие партнёрских ссылок, инструмент для ИИ-ассистентов, поиск товаров, партнёрские программы",
-  "nav": ["Сервис", "Как мы работаем", "Раскрытие", "Издатель"],
+  "nav": ["Сервис", "Ссылки", "Партнёры", "Ассистент", "Раскрытие"],
   "eyebrow": "Поиск товаров для ИИ-ассистентов · Раскрытие партнёрских отношений на каждой странице",
   "h1": "Поиск товаров с партнёрскими ссылками для ИИ-ассистентов",
-  "lead": "PickForge разрабатывает инструмент, который помогает ИИ-ассистенту найти товар по запросу пользователя и вернуть ссылку. Часть ссылок содержит наш партнёрский идентификатор. Инструмент работает на нашем сервере; эта страница его описывает и объясняет партнёрские отношения.",
+  "lead": "PickForge — инструмент, который ИИ-ассистент вызывает, когда вы просите найти товар. Он возвращает помеченную партнёрскую ссылку. На этой странице также собирается ссылка Amazon.com в вашем браузере. Платите магазину, не PickForge.",
   "cue": "Листайте, чтобы увидеть подробности",
+  "hero_asst_h": "Подключить ассистента",
+  "hero_asst_p": "Открывает страницу коннекторов этого продукта. Ссылка пока не устанавливает PickForge.",
+  "hero_more": "Все способы подключения",
   "about_k": "Что это за сайт", "about_h": "Информационная страница сервиса в разработке",
   "about_p": ["PickForge — независимый проект. Эта страница описывает сервис, то, как мы работаем с партнёрскими ссылками, и кто за ним стоит. Это не магазин, и мы ничего не продаём.",
-              "Сервис в разработке. Поиск и генерация ссылок работают на сервере PickForge, а не на этой странице. Покупки совершаются на сайте продавца, где видны цены и наличие.",
-              "Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов."],
+              "Ссылки Amazon.com на этой странице собираются в браузере: полный адрес amazon.com с идентификатором Associates pickforge-20. Партнёрскую ссылку AliExpress создаёт только API AliExpress Portals на нашем сервере. Эта страница не вызывает этот API и не подделывает ссылку.",
+              "Покупка проходит на сайте магазина, где видна цена. Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов."],
   "guides_k": "Сервис", "guides_h": "Что делает инструмент",
   "guides": [
     ("Поиск", "Поиск по запросу", "Пользователь просит ИИ-ассистента подобрать тип товара или бюджет. Ассистент вызывает инструмент, который ищет подходящие позиции в партнёрских каталогах."),
-    ("Ссылки", "Партнёрские ссылки с пометкой", "Ссылки на продавцов могут содержать наш партнёрский идентификатор. Если ссылка может принести комиссию, это указано рядом с ней."),
+    ("Ссылки", "Партнёрские ссылки с пометкой", "Ссылка Amazon.com на этой странице — полный адрес с нашим идентификатором Associates. Партнёрскую ссылку AliExpress создаёт только официальный API Portals. Ссылка, которая может принести комиссию, помечена."),
     ("Границы", "Не магазин", "Оформление заказа, оплата и аккаунты происходят на сайте продавца. Инструмент не принимает заказы и платежи."),
   ],
   "std_k": "Как мы работаем", "std_h": "Принципы",
@@ -123,23 +187,75 @@ CONTENT = {
     ("Обновления", "Мы обновляем эту страницу, когда меняются сервис, партнёрские программы или раскрытие."),
   ],
   "disc_h": "Раскрытие партнёрских отношений",
-  "disc_p": "PickForge участвует в партнёрских программах, включая <strong>Amazon Associates</strong> и другие партнёрские программы. Если вы купите товар по ссылке, которую вернул инструмент, мы можем получить комиссию. Партнёрская ссылка помечается как таковая там, где инструмент её показывает.",
+  "disc_p": "PickForge участвует в <strong>Amazon Associates</strong> и в <strong>партнёрской программе AliExpress</strong> (Portals). Если вы купите товар по ссылке, которую мы пометили, мы можем получить комиссию. Доплаты нет.",
   "disc_fine": [
-    "Цены, наличие и условия меняются. Перед покупкой проверьте их на сайте продавца. Названия и логотипы — товарные знаки владельцев.",
-    "Amazon не спонсирует и не поддерживает PickForge. Ниже — обязательная формулировка программы на английском.",
+    "Цены, наличие и условия меняются. Перед покупкой проверьте их на сайте магазина. Названия магазинов — товарные знаки владельцев.",
+    "Ссылки Amazon.com на этой странице — полный адрес amazon.com, включая идентификатор Associates pickforge-20. Мы не прячем его за коротким адресом. Amazon не спонсирует и не поддерживает PickForge. Ниже — обязательная формулировка программы на английском.",
   ],
   "priv_h": "Конфиденциальность",
   "priv": ["Эта страница статическая: без регистрации, формы обратной связи и рассылки.",
-           "Сервис получает поисковые запросы, чтобы вернуть результаты, и не использует их для других целей. Хостинг-провайдеры могут записывать стандартные данные доступа (IP-адрес, user agent). Продавцы могут устанавливать cookie, когда вы переходите по ссылкам; см. их политики.",
-           "Мы не продаём персональные данные."],
+           "Сборщик ссылок работает в вашем браузере. Адрес товара или слова поиска не отправляются в PickForge. Переход открывает Amazon или, если ссылку выдал наш сервер, AliExpress. Эти магазины могут ставить свои cookie.",
+           "Инструмент ассистента, когда он будет опубликован, получает поисковый запрос только чтобы вернуть результат. Мы не продаём персональные данные. Хостинг может записывать обычные данные доступа (IP-адрес, user agent)."],
   "faq_h": "Вопросы",
   "faq": [
     ("Что такое PickForge?", "Независимый проект: инструмент, с помощью которого ИИ-ассистенты ищут товары и возвращают партнёрские ссылки. Сервис в разработке."),
     ("Вы продаёте товары?", "Нет. Покупки совершаются на сайтах продавцов. Мы не ведём оформление заказов, не храним товары и не ведём аккаунты покупателей."),
     ("Влияют ли комиссии на результаты?", "Нет. Комиссия не меняет порядок результатов поиска."),
     ("Помечены ли партнёрские ссылки?", "Да. Ссылка, которая может принести комиссию, помечена как партнёрская."),
+    ("Можно ли собрать ссылку Amazon на этой странице?", "Да. Сборщик возвращает полный адрес amazon.com с tag=pickforge-20. Откройте его с этой страницы. Цену страница не показывает."),
+    ("Можно ли собрать ссылку AliExpress на этой странице?", "Вставьте URL товара AliExpress — сборщик вызовет API Portals, если подключён публичный endpoint. На статической копии без API используйте слова поиска или URL Amazon."),
+    ("Как добавить PickForge в Claude, ChatGPT или Grok?", "Кнопки в разделе «Добавить инструмент в ассистент» открывают страницу коннекторов этого продукта. PickForge ещё нет в каталоге, поэтому кнопка его не устанавливает."),
     ("Как связаться с издателем?", "На этой странице нет формы обратной связи."),
   ],
+  "link": {
+    "h": "Собрать ссылку магазина",
+    "p": "Вставьте слова поиска, страницу товара Amazon или адрес товара AliExpress. PickForge сам определит магазин.",
+    "label": "Поиск, страница Amazon или URL AliExpress",
+    "placeholder": "Пылесос, amazon.com/…/dp/… или aliexpress.com/item/…",
+    "autoNote": "Слова поиска становятся ссылкой Amazon с tag=pickforge-20. Адреса Amazon и AliExpress распознаются автоматически.",
+    "submit": "Собрать ссылку",
+    "openAmazon": "Открыть на Amazon",
+    "openAli": "Открыть на AliExpress",
+    "copy": "Копировать",
+    "copied": "Скопировано",
+    "copy_fail": "Не скопировалось",
+    "kicker": "Партнёрская ссылка",
+    "amazon_disclose": "Партнёрская ссылка. As an Amazon Associate I earn from qualifying purchases. Цену смотрите на Amazon.",
+    "aliDisclose": "Партнёрская ссылка. Её выдал AliExpress Portals.",
+    "noscript": "Сборщику ссылок нужен JavaScript.",
+    "readyAmazon": "Ссылка Amazon готова. Откройте её с этой страницы.",
+    "readyAli": "Партнёрская ссылка AliExpress готова.",
+    "err_empty": "Введите страницу товара или слова поиска.",
+    "err_short": "Вставьте полную страницу amazon.com. Короткие ссылки вроде amzn.to здесь не используются.",
+    "err_region": "Этот идентификатор Associates только для Amazon.com. Для других сайтов Amazon нужен свой идентификатор.",
+    "err_page": "Вставьте страницу товара Amazon.com (/dp/…) или страницу поиска.",
+    "err_query": "Введите хотя бы два символа.",
+    "err_unknown": "Используйте слова поиска, страницу amazon.com или URL товара AliExpress.",
+    "err_ali_no_api": "Для AliExpress нужен API PickForge, которого нет на этой статической странице. Введите слова поиска или URL Amazon.",
+    "err_ali_page": "Вставьте страницу товара AliExpress. В адресе должны быть /item/ и номер товара.",
+    "err_ali_fetch": "Не удалось связаться с API PickForge. Запустите pickforge-mcp локально на порту 3099 или пересоберите страницу с публичным data-ali-endpoint.",
+  },
+  "partners": {
+    "h": "Партнёры",
+    "p": "Поиск и помеченные партнёрские ссылки идут через эти программы. Оплата — на сайте магазина. Названия магазинов — торговые марки их владельцев.",
+    "items": [
+      ("Amazon", "amazon", "Amazon Associates", "Ссылки на товары и поиск на amazon.com с идентификатором Associates pickforge-20."),
+      ("AliExpress", "aliexpress", "AliExpress Portals", "Партнёрские ссылки создаёт только официальный API Portals."),
+    ],
+  },
+  "assistant": {
+    "h": "Добавить инструмент в ассистент",
+    "p": [
+      "Поиск товаров — это MCP-сервер: служба, которую ассистент вызывает, когда вы просите найти товар. Он возвращает ссылки. Ссылка, которая может принести комиссию, помечена. Платите магазину, не PickForge.",
+      "Сервер ещё не в каталоге плагинов, и у него нет публичного адреса HTTPS. Эти ссылки открывают страницу коннекторов ассистента. Они не устанавливают PickForge. Не вставляйте туда адрес localhost.",
+    ],
+    "connectors": [
+      ("Claude", "https://claude.ai/customize/connectors", "Открыть коннекторы Claude. Выберите Add custom connector и вставьте публичный адрес сервера, когда он появится.", "claude"),
+      ("ChatGPT", "https://chatgpt.com/", "Открыть ChatGPT. Затем Plugins и Add custom MCP server.", "chatgpt"),
+      ("Инструкция ChatGPT", "https://developers.openai.com/api/docs/guides/custom-mcp-server", "Шаги OpenAI для своего MCP-сервера.", "openai"),
+      ("Grok", "https://grok.com/connectors", "Открыть коннекторы Grok. Выберите New Connector, затем Custom. Адрес должен быть публичным HTTPS.", "grok"),
+    ],
+  },
   "geo_h": "Для AI и generative search (GEO)",
   "geo_p": "Структурированные копии этой страницы для поисковиков и ассистентов. Цитируйте PickForge как издателя. Мы не ведём оформление заказов и не храним товары.",
   "geo_links": [
@@ -154,31 +270,34 @@ CONTENT = {
     ("Издатель", "PickForge"),
     ("Тип", "Независимый проект (не ритейлер)"),
     ("Страна", "Израиль"),
-    ("Обновлено", "11 ноября 2026"),
+    ("Обновлено", "13 ноября 2026"),
   ],
   "assoc": "As an Amazon Associate I earn from qualifying purchases.",
-  "foot_links": ["Конфиденциальность", "Раскрытие", "Издатель"],
+  "foot_links": ["Конфиденциальность", "Ссылки", "Раскрытие", "Издатель"],
   "home": "PickForge — главная",
   "story_label": "О PickForge",
 },
 "he": {
   "title": "PickForge: חיפוש מוצרים וקישורי שותפים לעוזרי AI",
-  "description": "PickForge מפתח כלי שמאפשר לעוזר AI לחפש מוצרים ולהחזיר קישורי שותפים. עמוד זה מתאר את השירות ואת הגילוי על השותפויות. PickForge לא מוכר מוצרים.",
+  "description": "PickForge הוא כלי חיפוש מוצרים לעוזרי AI, עם קישורי שותפים מסומנים. בעמוד יש בונה קישור ל-Amazon.com וגילוי נאות. PickForge לא מוכר מוצרים.",
   "skip": "דילוג לתוכן", "nav_label": "אזורים באתר", "lang_label": "שפה",
   "keywords": "PickForge, גילוי נאות על שותפים, כלי לעוזרי AI, חיפוש מוצרים, תוכניות שותפים",
-  "nav": ["השירות", "איך אנחנו עובדים", "גילוי נאות", "מוציא לאור"],
+  "nav": ["השירות", "קישורים", "שותפים", "עוזר", "גילוי נאות"],
   "eyebrow": "חיפוש מוצרים לעוזרי AI · גילוי נאות על שותפות בכל עמוד",
   "h1": "חיפוש מוצרים עם קישורי שותפים, לעוזרי AI",
-  "lead": "PickForge בונה כלי שעוזר לעוזר AI למצוא מוצר לפי בקשת המשתמש ולהחזיר קישור. חלק מהקישורים כוללים את מזהה השותפים שלנו. הכלי פועל על השרת שלנו; עמוד זה מתאר אותו ומסביר את קשרי השותפות.",
+  "lead": "PickForge הוא כלי שעוזר AI מפעיל כשמבקשים ממנו למצוא מוצר. הוא מחזיר קישור שותפים מסומן. בעמוד הזה נבנית גם כתובת Amazon.com בדפדפן. התשלום הוא לחנות, לא ל-PickForge.",
   "cue": "גללו לפרטים",
+  "hero_asst_h": "חיבור עוזר",
+  "hero_asst_p": "פותח את הגדרות המחברים של המוצר. הקישורים עדיין לא מתקינים את PickForge.",
+  "hero_more": "כל אפשרויות החיבור",
   "about_k": "מה האתר הזה", "about_h": "עמוד מידע לשירות בפיתוח",
   "about_p": ["PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירות, איך אנחנו עובדים עם קישורי שותפים ומי עומד מאחוריו. זו לא חנות, ואיננו מוכרים מוצרים.",
-              "השירות בפיתוח. החיפוש ויצירת הקישורים פועלים על השרת של PickForge, לא בעמוד הזה. רכישות מתבצעות באתר הסוחר, שם מוצגים מחירים וזמינות.",
-              "איננו מקבלים הזמנות, לא שומרים מלאי ולא נותנים ייעוץ פיננסי או רפואי."],
+              "קישורי Amazon.com בעמוד הזה נבנים בדפדפן: כתובת amazon.com מלאה עם מזהה Associates‏ pickforge-20. קישור קידום של AliExpress נוצר רק ב-API של AliExpress Portals בשרת שלנו. העמוד לא קורא ל-API הזה ולא ממציא קישור.",
+              "הרכישה מתבצעת באתר החנות, שם מוצג המחיר. איננו מקבלים הזמנות, לא שומרים מלאי ולא נותנים ייעוץ פיננסי או רפואי."],
   "guides_k": "השירות", "guides_h": "מה הכלי עושה",
   "guides": [
     ("חיפוש", "חיפוש לפי בקשה", "המשתמש מבקש מעוזר AI סוג מוצר או תקציב. העוזר מפעיל את הכלי, שמחפש פריטים מתאימים בקטלוגים של שותפים."),
-    ("קישורים", "קישורי שותפים עם סימון", "קישורים לסוחרים יכולים לכלול את מזהה השותפים שלנו. כשקישור עשוי להניב עמלה, זה מצוין לידו."),
+    ("קישורים", "קישורי שותפים עם סימון", "קישור Amazon.com בעמוד הזה הוא הכתובת המלאה עם מזהה ה-Associates שלנו. קישור קידום של AliExpress נוצר רק ב-API הרשמי של Portals. קישור שעשוי להניב עמלה מסומן."),
     ("גבולות", "לא חנות", "הזמנה, תשלום וחשבונות מתבצעים באתר הסוחר. הכלי לא מקבל הזמנות ולא תשלומים."),
   ],
   "std_k": "איך אנחנו עובדים", "std_h": "עקרונות",
@@ -189,23 +308,75 @@ CONTENT = {
     ("עדכונים", "מעדכנים את העמוד כשהשירות, תוכניות השותפים או הגילוי משתנים."),
   ],
   "disc_h": "גילוי נאות על שותפות",
-  "disc_p": "PickForge משתתף בתוכניות שותפים, כולל <strong>Amazon Associates</strong> ותוכניות שותפים נוספות. אם תרכשו מוצר דרך קישור שהכלי החזיר, ייתכן שנקבל עמלה. קישור שותפים מסומן ככזה במקום שבו הכלי מציג אותו.",
+  "disc_p": "PickForge משתתף ב-<strong>Amazon Associates</strong> וב-<strong>תוכנית השותפים של AliExpress</strong>‏ (Portals). אם תרכוש דרך קישור שסימנו, ייתכן שנקבל עמלה. אין תוספת תשלום.",
   "disc_fine": [
-    "מחירים, זמינות והצעות משתנים. אשרו אותם באתר הסוחר לפני קנייה. שמות ולוגואים הם סימנים מסחריים של בעליהם.",
-    "Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט למטה הוא נוסח הגילוי הנדרש, באנגלית.",
+    "מחירים, זמינות והצעות משתנים. אשרו אותם באתר החנות לפני קנייה. שמות החנויות הם סימנים מסחריים של בעליהם.",
+    "קישורי Amazon.com בעמוד הזה הם הכתובת המלאה ב-amazon.com, כולל מזהה Associates‏ pickforge-20. איננו מסתירים אותה מאחורי כתובת קצרה. Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט למטה הוא נוסח הגילוי הנדרש, באנגלית.",
   ],
   "priv_h": "פרטיות",
   "priv": ["העמוד סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.",
-           "השירות מקבל בקשות חיפוש כדי להחזיר תוצאות, ולא משתמש בהן למטרות אחרות. ספקי אחסון עשויים לתעד נתוני גישה סטנדרטיים (כתובת IP, סוג דפדפן). סוחרים עשויים להגדיר עוגיות כשעוברים דרך קישורים; ראו את המדיניות שלהם.",
-           "איננו מוכרים מידע אישי."],
+           "בונה הקישורים רץ בדפדפן. כתובת המוצר או מילות החיפוש לא נשלחות ל-PickForge. פתיחת קישור מעבירה אל Amazon, או אל AliExpress אם השרת שלנו הנפיק את הקישור. החנויות עשויות להגדיר עוגיות משלהן.",
+           "כלי העוזר, כשיפורסם, מקבל בקשת חיפוש רק כדי להחזיר תוצאה. איננו מוכרים מידע אישי. ספק האחסון עשוי לתעד נתוני גישה רגילים (כתובת IP, סוג דפדפן)."],
   "faq_h": "שאלות",
   "faq": [
     ("מה זה PickForge?", "פרויקט עצמאי: כלי שמאפשר לעוזרי AI לחפש מוצרים ולהחזיר קישורי שותפים. השירות בפיתוח."),
     ("אתם מוכרים מוצרים?", "לא. רכישות מתבצעות באתרי הסוחרים. איננו מנהלים קופה, לא שומרים מלאי ולא מנהלים חשבונות לקוח."),
     ("האם עמלות משנות את התוצאות?", "לא. עמלה לא משנה את סדר תוצאות החיפוש."),
     ("האם קישורי השותפים מסומנים?", "כן. קישור שעשוי להניב עמלה מסומן כקישור שותפים."),
+    ("אפשר לבנות קישור Amazon בעמוד הזה?", "כן. הבונה מחזיר כתובת amazon.com מלאה עם tag=pickforge-20. פתחו אותה מהעמוד הזה. העמוד לא מציג מחיר."),
+    ("אפשר לבנות קישור AliExpress בעמוד הזה?", "הדביקו כתובת מוצר ב-AliExpress — הבונה קורא ל-API של Portals כשיש endpoint ציבורי. בגרסה הסטטית בלי API השתמשו במילות חיפוש או בכתובת Amazon."),
+    ("איך מוסיפים את PickForge ל-Claude, ל-ChatGPT או ל-Grok?", "הכפתורים תחת «הוספת הכלי לעוזר» פותחים את עמוד המחברים של המוצר. PickForge עדיין לא בקטלוג, ולכן הכפתור לא מתקין אותו."),
     ("איך יוצרים קשר עם המוציא לאור?", "בעמוד זה אין טופס יצירת קשר."),
   ],
+  "link": {
+    "h": "בניית קישור לחנות",
+    "p": "הדביקו מילות חיפוש, עמוד מוצר ב-Amazon או כתובת פריט ב-AliExpress. PickForge מזהה את החנות אוטומטית.",
+    "label": "חיפוש, עמוד Amazon או כתובת AliExpress",
+    "placeholder": "שואב אבק, amazon.com/…/dp/… או aliexpress.com/item/…",
+    "autoNote": "מילות חיפוש הופכות לקישור Amazon עם tag=pickforge-20. כתובות Amazon ו-AliExpress מזוהות מהקישור.",
+    "submit": "בניית קישור",
+    "openAmazon": "פתיחה ב-Amazon",
+    "openAli": "פתיחה ב-AliExpress",
+    "copy": "העתקה",
+    "copied": "הועתק",
+    "copy_fail": "ההעתקה נכשלה",
+    "kicker": "קישור שותפים",
+    "amazon_disclose": "קישור שותפים. As an Amazon Associate I earn from qualifying purchases. את המחיר בודקים ב-Amazon.",
+    "aliDisclose": "קישור שותפים. קישור קידום זה הונפק ב-AliExpress Portals.",
+    "noscript": "בונה הקישורים צריך JavaScript.",
+    "readyAmazon": "קישור Amazon מוכן. פתחו אותו מהעמוד הזה.",
+    "readyAli": "קישור הקידום של AliExpress מוכן.",
+    "err_empty": "הזינו עמוד מוצר או מילות חיפוש.",
+    "err_short": "הדביקו את עמוד amazon.com המלא. קישורים קצרים כמו amzn.to לא בשימוש כאן.",
+    "err_region": "מזהה ה-Associates הזה הוא ל-Amazon.com בלבד. לאתרי Amazon אחרים צריך מזהה משלהם.",
+    "err_page": "הדביקו עמוד מוצר ב-Amazon.com‏ (/dp/…) או עמוד חיפוש.",
+    "err_query": "הזינו לפחות שני תווים.",
+    "err_unknown": "השתמשו במילות חיפוש, בעמוד amazon.com או בכתובת מוצר ב-AliExpress.",
+    "err_ali_no_api": "קישורי AliExpress דורשים את ה-API של PickForge, שלא מחובר בעמוד הסטטי הזה. השתמשו במילות חיפוש או בכתובת Amazon.",
+    "err_ali_page": "הדביקו עמוד מוצר ב-AliExpress. בכתובת חייבים להיות /item/ ומספר המוצר.",
+    "err_ali_fetch": "לא ניתן להגיע ל-API של PickForge. הריצו pickforge-mcp מקומית בפורט 3099, או בנו מחדש את העמוד עם כתובת data-ali-endpoint ציבורית.",
+  },
+  "partners": {
+    "h": "שותפים",
+    "p": "חיפוש מוצרים וקישורי שותפים מסומנים עוברים דרך התוכניות האלה. התשלום נשאר באתר הסוחר. שמות החנויות הם סימני מסחר של הבעלים.",
+    "items": [
+      ("Amazon", "amazon", "Amazon Associates", "קישורי מוצר וחיפוש ב-amazon.com כוללים את מזהה Associates‏ pickforge-20."),
+      ("AliExpress", "aliexpress", "AliExpress Portals", "קישורי קידום רשמיים נוצרים רק ב-API השותפים של Portals."),
+    ],
+  },
+  "assistant": {
+    "h": "הוספת הכלי לעוזר",
+    "p": [
+      "חיפוש המוצרים הוא שרת MCP: שירות שהעוזר קורא לו כשמבקשים למצוא מוצר. הוא מחזיר קישורים. קישור שעשוי להניב עמלה מסומן. התשלום הוא לחנות, לא ל-PickForge.",
+      "השרת לא רשום בקטלוג תוספים, ואין לו עדיין כתובת HTTPS ציבורית. הקישורים האלה פותחים את עמוד המחברים של העוזר. הם לא מתקינים את PickForge. אל תדביקו שם כתובת localhost.",
+    ],
+    "connectors": [
+      ("Claude", "https://claude.ai/customize/connectors", "פתיחת מחברי Claude. בחרו Add custom connector והדביקו את כתובת השרת הציבורית כשתהיה.", "claude"),
+      ("ChatGPT", "https://chatgpt.com/", "פתיחת ChatGPT. אחר כך Plugins ואז Add custom MCP server.", "chatgpt"),
+      ("מדריך ChatGPT", "https://developers.openai.com/api/docs/guides/custom-mcp-server", "השלבים של OpenAI להוספת שרת MCP משלכם.", "openai"),
+      ("Grok", "https://grok.com/connectors", "פתיחת מחברי Grok. בחרו New Connector ואז Custom. הכתובת חייבת להיות HTTPS ציבורי.", "grok"),
+    ],
+  },
   "geo_h": "ל-AI וחיפוש גנרטיבי (GEO)",
   "geo_p": "עותקים מובנים של העמוד הזה למנועי חיפוש ולעוזרים. צטטו את PickForge כמוציא. איננו מנהלים קופה ואיננו שומרים מלאי.",
   "geo_links": [
@@ -220,10 +391,10 @@ CONTENT = {
     ("מוציא לאור", "PickForge"),
     ("סוג", "פרויקט עצמאי (לא קמעונאי)"),
     ("מדינה", "ישראל"),
-    ("עודכן לאחרונה", "11 בנובמבר 2026"),
+    ("עודכן לאחרונה", "13 בנובמבר 2026"),
   ],
   "assoc": "As an Amazon Associate I earn from qualifying purchases.",
-  "foot_links": ["פרטיות", "גילוי נאות", "מוציא לאור"],
+  "foot_links": ["פרטיות", "קישורים", "גילוי נאות", "מוציא לאור"],
   "home": "PickForge — דף הבית",
   "story_label": "אודות PickForge",
 },
@@ -231,6 +402,65 @@ CONTENT = {
 
 def strip(s):
     return html.unescape(re.sub(r"<[^>]+>", "", s))
+
+def connector_li(rel, name, href, detail, icon=None):
+    icon_bit = ""
+    if icon:
+        src = f"{rel}assets/connectors/{icon}.svg"
+        icon_bit = (
+            f'<span class="connector-icon" aria-hidden="true">'
+            f'<img src="{html.escape(src)}" alt="" width="40" height="40" loading="lazy" decoding="async">'
+            f"</span>"
+        )
+    return (
+        f'<li class="connector-card">'
+        f"{icon_bit}"
+        f'<div class="connector-body">'
+        f'<a href="{html.escape(href, quote=True)}" rel="noopener noreferrer">{html.escape(name)}</a>'
+        f"<p>{html.escape(detail)}</p>"
+        f"</div></li>"
+    )
+
+def connector_hero_li(rel, name, href, icon):
+    src = f"{rel}assets/connectors/{icon}.svg"
+    icon_bit = (
+        f'<span class="connector-icon" aria-hidden="true">'
+        f'<img src="{html.escape(src)}" alt="" width="40" height="40" loading="lazy" decoding="async">'
+        f"</span>"
+    )
+    return (
+        f'<li class="connector-card connector-card--compact">'
+        f"{icon_bit}"
+        f'<a href="{html.escape(href, quote=True)}" rel="noopener noreferrer">{html.escape(name)}</a>'
+        f"</li>"
+    )
+
+def hero_connectors_html(rel, rows):
+    picked = [r for r in rows if len(r) > 3 and r[3] in HERO_CONNECTOR_ICONS]
+    return "\n".join(connector_hero_li(rel, r[0], r[1], r[3]) for r in picked)
+
+def partners_section_html(rel, partners):
+    cards = []
+    for name, icon, program, detail in partners["items"]:
+        src = f"{rel}assets/stores/{icon}.svg"
+        cards.append(
+            f'<li class="partner-card">'
+            f'<span class="partner-icon" aria-hidden="true">'
+            f'<img src="{html.escape(src)}" alt="" width="56" height="56" loading="lazy" decoding="async">'
+            f"</span>"
+            f'<div class="partner-body">'
+            f'<p class="partner-name">{html.escape(name)}</p>'
+            f'<p class="partner-program">{html.escape(program)}</p>'
+            f"<p>{html.escape(detail)}</p>"
+            f"</div></li>"
+        )
+    return (
+        f'<section class="partners" id="partners" aria-labelledby="partners-h">'
+        f'<h2 class="sec" id="partners-h">{html.escape(partners["h"])}</h2>'
+        f'<p class="partners-intro">{html.escape(partners["p"])}</p>'
+        f'<ul class="partners-grid">{"".join(cards)}</ul>'
+        f"</section>"
+    )
 
 def url(lang):
     return SITE_URL + PATHS[lang]
@@ -297,6 +527,27 @@ def page(lang):
     fine = "".join(f'<p class="fine">{p}</p>' for p in c["disc_fine"])
     assoc = f'<span>{c["assoc"]}</span>'
     fl = c["foot_links"]
+    L = c["link"]
+    link_json = json.dumps({
+        "placeholder": L["placeholder"], "autoNote": L["autoNote"],
+        "kicker": L["kicker"], "amazonDisclose": L["amazon_disclose"], "aliDisclose": L["aliDisclose"],
+        "openAmazon": L["openAmazon"], "openAli": L["openAli"],
+        "copy": L["copy"], "copied": L["copied"], "copyFail": L["copy_fail"],
+        "readyAmazon": L["readyAmazon"], "readyAli": L["readyAli"],
+        "err_empty": L["err_empty"], "err_short": L["err_short"],
+        "err_region": L["err_region"], "err_page": L["err_page"], "err_query": L["err_query"],
+        "err_unknown": L["err_unknown"], "err_ali_no_api": L["err_ali_no_api"],
+        "err_ali_page": L["err_ali_page"], "err_ali_fetch": L["err_ali_fetch"],
+    }, ensure_ascii=False).replace("<", "\\u003c")
+    P = c["partners"]
+    partners_block = partners_section_html(rel, P)
+    A = c["assistant"]
+    assistant_ps = "".join(f"<p>{html.escape(p)}</p>" for p in A["p"])
+    connectors = "\n".join(
+        connector_li(rel, row[0], row[1], row[2], row[3] if len(row) > 3 else None)
+        for row in A["connectors"]
+    )
+    hero_connectors = hero_connectors_html(rel, A["connectors"])
     return f"""<!doctype html>
 <html lang="{lang}" dir="{d}">
 <head>
@@ -348,9 +599,10 @@ def page(lang):
   <div class="bar-right">
     <nav aria-label="{c["nav_label"]}">
       <a href="#guides">{n[0]}</a>
-      <a href="#standards">{n[1]}</a>
-      <a class="keep" href="#disclosure">{n[2]}</a>
-      <a href="#publisher">{n[3]}</a>
+      <a href="#links">{n[1]}</a>
+      <a href="#partners">{n[2]}</a>
+      <a href="#assistant">{n[3]}</a>
+      <a class="keep" href="#disclosure">{n[4]}</a>
     </nav>
     <div class="langs" role="group" aria-label="{c["lang_label"]}">{langs}</div>
   </div>
@@ -361,12 +613,22 @@ def page(lang):
     <div class="stage" aria-hidden="true"><div class="sprite" id="sprite"></div></div>
     <div class="chapters">
       <div class="chapter hero" id="top">
-        <div class="panel">
-          <p class="eyebrow">{c["eyebrow"]}</p>
-          <h1>{c["h1"]}</h1>
-          <p class="lead">{c["lead"]}</p>
-          <p class="notice">{AMAZON_EXACT}</p>
-          <p class="cue">{c["cue"]}</p>
+        <div class="panel hero-split">
+          <div class="hero-copy">
+            <p class="eyebrow">{c["eyebrow"]}</p>
+            <h1>{c["h1"]}</h1>
+            <p class="lead">{c["lead"]}</p>
+            <p class="notice">{AMAZON_EXACT}</p>
+            <p class="cue">{c["cue"]}</p>
+          </div>
+          <aside class="hero-aside" aria-labelledby="hero-asst-h">
+            <p class="kicker" id="hero-asst-h">{html.escape(c["hero_asst_h"])}</p>
+            <p class="fine hero-aside-note">{html.escape(c["hero_asst_p"])}</p>
+            <ul class="connectors connectors--hero">
+{hero_connectors}
+            </ul>
+            <p class="hero-more"><a href="#assistant">{html.escape(c["hero_more"])}</a></p>
+          </aside>
         </div>
       </div>
       <div class="chapter" id="about">
@@ -399,6 +661,38 @@ def page(lang):
 
   <div class="paper">
     <div class="paper-inner">
+      <section class="tool" id="links" data-link-tool data-tag="{ASSOCIATES_ID}" data-ali-endpoint="{html.escape(ALI_LINK_API)}" data-icon-amazon="{rel}assets/stores/amazon.svg" data-icon-ali="{rel}assets/stores/aliexpress.svg" aria-labelledby="links-h">
+        <div>
+          <h2 id="links-h">{html.escape(L["h"])}</h2>
+        </div>
+        <div class="tool-body">
+          <p>{html.escape(L["p"])}</p>
+          <p class="amazon-exact">{AMAZON_EXACT}</p>
+          <form id="link-form" action="">
+            <label class="sr" for="link-input">{html.escape(L["label"])}</label>
+            <input id="link-input" name="q" type="text" autocomplete="off" spellcheck="false" maxlength="4000" placeholder="{html.escape(L["placeholder"])}" required>
+            <button type="submit">{html.escape(L["submit"])}</button>
+          </form>
+          <p class="fine" id="link-note"></p>
+          <p class="status" id="link-status" role="status"></p>
+          <div id="link-result" hidden>
+            <p class="kicker" id="link-kicker"></p>
+            <p class="url" id="link-out"></p>
+            <p class="fine" id="link-disclose"></p>
+            <div class="actions">
+              <a id="link-open" rel="noopener"><img id="link-open-icon" alt="" width="18" height="18" hidden decoding="async"><span id="link-open-label"></span></a>
+              <button type="button" id="link-copy"></button>
+            </div>
+          </div>
+          <noscript><p>{html.escape(L["noscript"])}</p></noscript>
+        </div>
+      </section>
+      <script type="application/json" id="link-strings">{link_json}</script>
+      {partners_block}
+      <section class="assistant" id="assistant" aria-labelledby="asst-h">
+        <h2 class="sec" id="asst-h">{html.escape(A["h"])}</h2>
+        <div>{assistant_ps}<ul class="connectors">{connectors}</ul></div>
+      </section>
       <section class="disclosure" id="disclosure" aria-labelledby="disc-h">
         <h2 id="disc-h">{c["disc_h"]}</h2>
         <div class="body"><p>{c["disc_p"]}</p>{fine}<p class="amazon-exact">{AMAZON_EXACT}</p></div>
@@ -423,10 +717,11 @@ def page(lang):
   <div class="inner">
     <span dir="ltr">© 2026 PickForge</span>
     <span class="assoc">{assoc}</span>
-    <span><a href="#privacy">{fl[0]}</a> · <a href="#disclosure">{fl[1]}</a> · <a href="#publisher">{fl[2]}</a></span>
+    <span><a href="#privacy">{fl[0]}</a> · <a href="#links">{fl[1]}</a> · <a href="#disclosure">{fl[2]}</a> · <a href="#publisher">{fl[3]}</a></span>
   </div>
 </footer>
 <script src="{rel}assets/site.js" defer></script>
+<script type="module" src="{rel}assets/link-generator.js"></script>
 </body>
 </html>
 """
@@ -438,6 +733,14 @@ def markdown(lang):
            f"## {c['about_h']}", ""] + [strip(p) + "\n" for p in c["about_p"]]
     out += [f"## {c['guides_h']}", ""] + [f"- **{h}** ({t}): {p}" for t, h, p in c["guides"]] + [""]
     out += [f"## {c['std_h']}", ""] + [f"- **{h}**: {p}" for h, p in c["standards"]] + [""]
+    L = c["link"]
+    out += [f"## {L['h']}", "", L["p"], "", L["autoNote"], ""]
+    Pr = c["partners"]
+    out += [f"## {Pr['h']}", "", Pr["p"], ""]
+    out += [f"- **{name}** ({program}): {detail}" for name, _icon, program, detail in Pr["items"]] + [""]
+    A = c["assistant"]
+    out += [f"## {A['h']}", ""] + [p + "\n" for p in A["p"]]
+    out += [f"- [{row[0]}]({row[1]}): {row[2]}" for row in A["connectors"]] + [""]
     out += [f"## {c['disc_h']}", "", strip(c["disc_p"]), ""] + [strip(p) + "\n" for p in c["disc_fine"]]
     out += [f"## {c['priv_h']}", ""] + [p + "\n" for p in c["priv"]]
     out += [f"## {c['faq_h']}", ""]
@@ -463,8 +766,10 @@ def llms_txt():
 
 ## Affiliate disclosure
 
-- Amazon Associates participant.
+- Amazon Associates participant. Associates ID on this site: {ASSOCIATES_ID}. Storefront: amazon.com only.
+- AliExpress Affiliate Program (Portals). Official promotion links are created by the Portals API on the server. This page does not invent one.
 - Required statement, shown on every page: {AMAZON_EXACT}
+- Amazon links built on this page are full https://www.amazon.com addresses with tag={ASSOCIATES_ID}. No price is shown. Open the link from this page.
 - The service does not sell products and does not claim hands-on product tests.
 
 ## Pages
@@ -475,7 +780,13 @@ def llms_txt():
 
 ## Service
 
-""" + "\n".join(f"- {h}: {p}" for t, h, p in e["guides"]) + f"""
+""" + "\n".join(f"- {h}: {p}" for t, h, p in e["guides"]) + """
+
+## Assistant connectors
+
+The MCP server is not published and has no public HTTPS address. These URLs open the assistant’s connector page. They do not install PickForge. Do not paste a localhost address.
+
+""" + "\n".join(f"- {row[0]}: {row[1]}" for row in e["assistant"]["connectors"]) + f"""
 
 ## FAQ (English)
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PickForge: product search and affiliate links for AI assistants</title>
-<meta name="description" content="PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.">
+<meta name="description" content="PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.">
 <meta name="keywords" content="PickForge, affiliate disclosure, AI assistant tool, product search, partner programs">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PickForge">
 <meta property="og:title" content="PickForge: product search and affiliate links for AI assistants">
-<meta property="og:description" content="PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.">
+<meta property="og:description" content="PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.">
 <meta property="og:url" content="https://drsemfrankenstein.github.io/pickforge-site/">
 <meta property="og:image" content="https://drsemfrankenstein.github.io/pickforge-site/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -34,7 +34,7 @@
 <meta property="og:locale:alternate" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PickForge: product search and affiliate links for AI assistants">
-<meta name="twitter:description" content="PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.">
+<meta name="twitter:description" content="PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.">
 <meta name="twitter:image" content="https://drsemfrankenstein.github.io/pickforge-site/assets/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +51,7 @@
       "name": "PickForge",
       "url": "https://drsemfrankenstein.github.io/pickforge-site/",
       "logo": "https://drsemfrankenstein.github.io/pickforge-site/assets/icon-512.png",
-      "description": "PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.",
+      "description": "PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.",
       "location": {
         "@type": "Place",
         "address": {
@@ -89,7 +89,7 @@
       "@id": "https://drsemfrankenstein.github.io/pickforge-site/#webpage",
       "url": "https://drsemfrankenstein.github.io/pickforge-site/",
       "name": "PickForge: product search and affiliate links for AI assistants",
-      "description": "PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.",
+      "description": "PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://drsemfrankenstein.github.io/pickforge-site/#website"
@@ -97,7 +97,7 @@
       "publisher": {
         "@id": "https://drsemfrankenstein.github.io/pickforge-site/#org"
       },
-      "dateModified": "2026-11-11",
+      "dateModified": "2026-11-13",
       "primaryImageOfPage": "https://drsemfrankenstein.github.io/pickforge-site/assets/og.jpg",
       "speakable": {
         "@type": "SpeakableSpecification",
@@ -137,7 +137,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Affiliate links, labeled",
-          "description": "Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link."
+          "description": "An Amazon.com link on this page is the full address with our Associates ID. An AliExpress promotion link is created only by the official Portals API. A link that can earn a commission is labeled."
         },
         {
           "@type": "ListItem",
@@ -204,6 +204,30 @@
         },
         {
           "@type": "Question",
+          "name": "Can I make an Amazon link on this page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The builder returns a full amazon.com address with tag pickforge-20. Open it from this page. The page does not show a price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I make an AliExpress link on this page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I add PickForge to Claude, ChatGPT, or Grok?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "How do I contact the publisher?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -224,9 +248,10 @@
   <div class="bar-right">
     <nav aria-label="Sections">
       <a href="#guides">Service</a>
-      <a href="#standards">How we work</a>
+      <a href="#links">Links</a>
+      <a href="#partners">Partners</a>
+      <a href="#assistant">Assistant</a>
       <a class="keep" href="#disclosure">Disclosure</a>
-      <a href="#publisher">Publisher</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><a href="index.html" hreflang="en" lang="en" aria-current="page" title="English">EN</a><a href="ru/index.html" hreflang="ru" lang="ru" title="Русский">RU</a><a href="he/index.html" hreflang="he" lang="he" title="עברית">HE</a></div>
   </div>
@@ -237,19 +262,31 @@
     <div class="stage" aria-hidden="true"><div class="sprite" id="sprite"></div></div>
     <div class="chapters">
       <div class="chapter hero" id="top">
-        <div class="panel">
-          <p class="eyebrow">Product search for AI assistants · Affiliate disclosure on every page</p>
-          <h1>Product search with affiliate links, for AI assistants</h1>
-          <p class="lead">PickForge is building a tool that helps an AI assistant find a product the user asks about and return a link. Some links carry our affiliate tracking ID. The tool runs on our server; this page describes it and explains the affiliate relationships.</p>
-          <p class="notice">As an Amazon Associate I earn from qualifying purchases.</p>
-          <p class="cue">Scroll for details</p>
+        <div class="panel hero-split">
+          <div class="hero-copy">
+            <p class="eyebrow">Product search for AI assistants · Affiliate disclosure on every page</p>
+            <h1>Product search with affiliate links, for AI assistants</h1>
+            <p class="lead">PickForge is a tool an AI assistant can call when you ask it to find a product. It returns a labeled affiliate link. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.</p>
+            <p class="notice">As an Amazon Associate I earn from qualifying purchases.</p>
+            <p class="cue">Scroll for details</p>
+          </div>
+          <aside class="hero-aside" aria-labelledby="hero-asst-h">
+            <p class="kicker" id="hero-asst-h">Connect an assistant</p>
+            <p class="fine hero-aside-note">Opens that product’s connector settings. These links do not install PickForge yet.</p>
+            <ul class="connectors connectors--hero">
+<li class="connector-card connector-card--compact"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/claude.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><a href="https://claude.ai/customize/connectors" rel="noopener noreferrer">Claude</a></li>
+<li class="connector-card connector-card--compact"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/chatgpt.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><a href="https://chatgpt.com/" rel="noopener noreferrer">ChatGPT</a></li>
+<li class="connector-card connector-card--compact"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/grok.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><a href="https://grok.com/connectors" rel="noopener noreferrer">Grok</a></li>
+            </ul>
+            <p class="hero-more"><a href="#assistant">All setup options</a></p>
+          </aside>
         </div>
       </div>
       <div class="chapter" id="about">
         <div class="panel">
           <p class="kicker">What this site is</p>
           <h2>An information page for a service in development</h2>
-          <p class="plain">PickForge is an independent project. This page describes the service, how we handle affiliate links, and who runs it. It is not a store and does not sell products.</p><p class="plain">The service is in development. Search and link generation run on PickForge’s own server, not on this page. Purchases happen on the merchant’s site, where prices and availability are shown.</p><p class="plain">We do not process orders, hold inventory, or give financial or medical advice.</p>
+          <p class="plain">PickForge is an independent project. This page describes the service, how we handle affiliate links, and who runs it. It is not a store and does not sell products.</p><p class="plain">Amazon.com links on this page are built in your browser as a full amazon.com address with Associates ID pickforge-20. An AliExpress promotion link is created only by the AliExpress Portals API on our server. This page does not call that API and does not invent one.</p><p class="plain">Purchases happen on the store’s site, where the price is shown. We do not process orders, hold inventory, or give financial or medical advice.</p>
         </div>
       </div>
       <div class="chapter" id="guides">
@@ -258,7 +295,7 @@
           <h2>What the tool does</h2>
           <ul class="guides">
 <li><span class="topic">Search</span><div><h3>Search by request</h3><p>A user asks an AI assistant for a product type or a budget. The assistant calls the tool, which searches partner catalogues for matching items.</p></div></li>
-<li><span class="topic">Links</span><div><h3>Affiliate links, labeled</h3><p>Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link.</p></div></li>
+<li><span class="topic">Links</span><div><h3>Affiliate links, labeled</h3><p>An Amazon.com link on this page is the full address with our Associates ID. An AliExpress promotion link is created only by the official Portals API. A link that can earn a commission is labeled.</p></div></li>
 <li><span class="topic">Scope</span><div><h3>Not a store</h3><p>Checkout, payment, and accounts happen on the merchant’s site. The tool does not take orders or payments.</p></div></li>
           </ul>
         </div>
@@ -280,13 +317,48 @@
 
   <div class="paper">
     <div class="paper-inner">
+      <section class="tool" id="links" data-link-tool data-tag="pickforge-20" data-ali-endpoint="" data-icon-amazon="assets/stores/amazon.svg" data-icon-ali="assets/stores/aliexpress.svg" aria-labelledby="links-h">
+        <div>
+          <h2 id="links-h">Make a store link</h2>
+        </div>
+        <div class="tool-body">
+          <p>Paste search words, an Amazon product page, or an AliExpress item URL. PickForge detects the store automatically.</p>
+          <p class="amazon-exact">As an Amazon Associate I earn from qualifying purchases.</p>
+          <form id="link-form" action="">
+            <label class="sr" for="link-input">Search, Amazon page, or AliExpress URL</label>
+            <input id="link-input" name="q" type="text" autocomplete="off" spellcheck="false" maxlength="4000" placeholder="Cordless vacuum, amazon.com/…/dp/…, or aliexpress.com/item/…" required>
+            <button type="submit">Make link</button>
+          </form>
+          <p class="fine" id="link-note"></p>
+          <p class="status" id="link-status" role="status"></p>
+          <div id="link-result" hidden>
+            <p class="kicker" id="link-kicker"></p>
+            <p class="url" id="link-out"></p>
+            <p class="fine" id="link-disclose"></p>
+            <div class="actions">
+              <a id="link-open" rel="noopener"><img id="link-open-icon" alt="" width="18" height="18" hidden decoding="async"><span id="link-open-label"></span></a>
+              <button type="button" id="link-copy"></button>
+            </div>
+          </div>
+          <noscript><p>This link builder needs JavaScript.</p></noscript>
+        </div>
+      </section>
+      <script type="application/json" id="link-strings">{"placeholder": "Cordless vacuum, amazon.com/…/dp/…, or aliexpress.com/item/…", "autoNote": "Search words become an Amazon link with tag=pickforge-20. Amazon and AliExpress URLs are recognized from the address.", "kicker": "Affiliate link", "amazonDisclose": "Affiliate link. As an Amazon Associate I earn from qualifying purchases. Check the current price on Amazon.", "aliDisclose": "Affiliate link. AliExpress Portals issued this promotion link.", "openAmazon": "Open on Amazon", "openAli": "Open on AliExpress", "copy": "Copy", "copied": "Copied", "copyFail": "Copy failed", "readyAmazon": "Amazon link ready. Open it from this page.", "readyAli": "AliExpress promotion link ready.", "err_empty": "Enter a product page or search words.", "err_short": "Paste the full amazon.com page. Short links such as amzn.to are not used here.", "err_region": "This Associates ID is for Amazon.com only. Other Amazon sites need their own ID.", "err_page": "Paste an Amazon.com product page (/dp/…) or a search page.", "err_query": "Enter at least two characters.", "err_unknown": "Use search words, an amazon.com page, or an AliExpress product URL.", "err_ali_no_api": "AliExpress links need the PickForge link API, which is not wired on this static page. Use search words or an Amazon URL.", "err_ali_page": "Paste an AliExpress product page. The address must contain /item/ and the product number.", "err_ali_fetch": "Could not reach the PickForge link API. Run pickforge-mcp locally on port 3099, or rebuild this page with a public data-ali-endpoint URL."}</script>
+      <section class="partners" id="partners" aria-labelledby="partners-h"><h2 class="sec" id="partners-h">Partners</h2><p class="partners-intro">Product search and labeled affiliate links use these programs. Checkout stays on each merchant’s site. Store names are trademarks of their owners.</p><ul class="partners-grid"><li class="partner-card"><span class="partner-icon" aria-hidden="true"><img src="assets/stores/amazon.svg" alt="" width="56" height="56" loading="lazy" decoding="async"></span><div class="partner-body"><p class="partner-name">Amazon</p><p class="partner-program">Amazon Associates</p><p>Product and search links on amazon.com include Associates ID pickforge-20.</p></div></li><li class="partner-card"><span class="partner-icon" aria-hidden="true"><img src="assets/stores/aliexpress.svg" alt="" width="56" height="56" loading="lazy" decoding="async"></span><div class="partner-body"><p class="partner-name">AliExpress</p><p class="partner-program">AliExpress Portals</p><p>Official promotion links are created only through the Portals affiliate API.</p></div></li></ul></section>
+      <section class="assistant" id="assistant" aria-labelledby="asst-h">
+        <h2 class="sec" id="asst-h">Add the tool to an assistant</h2>
+        <div><p>The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.</p><p>The server is not listed in a plugin directory, and it has no public HTTPS address yet. These links open the assistant’s connector page. They do not install PickForge. When you are there, do not paste a localhost address.</p><ul class="connectors"><li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/claude.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://claude.ai/customize/connectors" rel="noopener noreferrer">Claude</a><p>Open Claude connectors. Choose Add custom connector, then paste the public server address when it exists.</p></div></li>
+<li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/chatgpt.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://chatgpt.com/" rel="noopener noreferrer">ChatGPT</a><p>Open ChatGPT. Then open Plugins and choose Add custom MCP server.</p></div></li>
+<li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/openai.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://developers.openai.com/api/docs/guides/custom-mcp-server" rel="noopener noreferrer">ChatGPT guide</a><p>OpenAI’s steps for adding a custom MCP server.</p></div></li>
+<li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/grok.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://grok.com/connectors" rel="noopener noreferrer">Grok</a><p>Open Grok connectors. Choose New Connector, then Custom. The address must be public HTTPS.</p></div></li></ul></div>
+      </section>
       <section class="disclosure" id="disclosure" aria-labelledby="disc-h">
         <h2 id="disc-h">Affiliate disclosure</h2>
-        <div class="body"><p>PickForge participates in affiliate and partner programs, including the <strong>Amazon Associates Program</strong> and other partner programs. If you buy a product through a link the tool returns, we may earn a commission. A partner link is labeled as one wherever the tool shows it.</p><p class="fine">Prices, availability, and offers change. Confirm them on the merchant’s site before you buy. Retailer names and logos are trademarks of their owners.</p><p class="fine">Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.</p><p class="amazon-exact">As an Amazon Associate I earn from qualifying purchases.</p></div>
+        <div class="body"><p>PickForge participates in the <strong>Amazon Associates Program</strong> and the <strong>AliExpress Affiliate Program</strong> (Portals). If you buy through a link we label, we may earn a commission. You do not pay extra.</p><p class="fine">Prices, availability, and offers change. Confirm them on the store’s site before you buy. Store names are trademarks of their owners.</p><p class="fine">Amazon.com links on this page are the full amazon.com address, including Associates ID pickforge-20. We do not hide that address behind a short link. Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.</p><p class="amazon-exact">As an Amazon Associate I earn from qualifying purchases.</p></div>
       </section>
       <section class="privacy" id="privacy" aria-labelledby="priv-h">
         <h2 class="sec" id="priv-h">Privacy</h2>
-        <p>This page is static: no user login, no contact form, and no newsletter signup.</p><p>The service receives search requests to return results and does not use them for other purposes. Hosting providers may log standard access data (IP, user agent). Merchants may set cookies when you follow links; see their policies.</p><p>We do not sell personal information.</p>
+        <p>This page is static: no user login, no contact form, and no newsletter signup.</p><p>The link builder runs in your browser. The product address or search words are not sent to PickForge. Opening a link sends you to Amazon or, when our server has issued one, to AliExpress. Those stores may set their own cookies.</p><p>The assistant tool, when it is published, receives a search request only to return results. We do not sell personal information. Hosting providers may log standard access data (IP, user agent).</p>
       </section>
       <section class="faq" id="faq" aria-labelledby="faq-h">
         <h2 class="sec" id="faq-h">Questions</h2>
@@ -294,11 +366,14 @@
 <details><summary>Do you sell products?</summary><p>No. Purchases happen on merchant sites. We do not run checkout, hold inventory, or keep customer accounts.</p></details>
 <details><summary>Do affiliate links change the results?</summary><p>No. A commission does not change the order of search results.</p></details>
 <details><summary>Are affiliate links labeled?</summary><p>Yes. A link that can earn a commission is labeled as a partner link.</p></details>
+<details><summary>Can I make an Amazon link on this page?</summary><p>Yes. The builder returns a full amazon.com address with tag pickforge-20. Open it from this page. The page does not show a price.</p></details>
+<details><summary>Can I make an AliExpress link on this page?</summary><p>Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead.</p></details>
+<details><summary>How do I add PickForge to Claude, ChatGPT, or Grok?</summary><p>Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it.</p></details>
 <details><summary>How do I contact the publisher?</summary><p>This page has no contact form.</p></details>
       </section>
       <section class="publisher" id="publisher" aria-labelledby="pub-h">
         <h2 class="sec" id="pub-h">Publisher</h2>
-        <dl><dt>Publisher</dt><dd>PickForge</dd><dt>Entity type</dt><dd>Independent project (not a retailer)</dd><dt>Location</dt><dd>Israel</dd><dt>Last updated</dt><dd>11 November 2026</dd></dl>
+        <dl><dt>Publisher</dt><dd>PickForge</dd><dt>Entity type</dt><dd>Independent project (not a retailer)</dd><dt>Location</dt><dd>Israel</dd><dt>Last updated</dt><dd>13 November 2026</dd></dl>
       </section>
     </div>
   </div>
@@ -308,9 +383,10 @@
   <div class="inner">
     <span dir="ltr">© 2026 PickForge</span>
     <span class="assoc"><span>As an Amazon Associate I earn from qualifying purchases.</span></span>
-    <span><a href="#privacy">Privacy</a> · <a href="#disclosure">Disclosure</a> · <a href="#publisher">Publisher</a></span>
+    <span><a href="#privacy">Privacy</a> · <a href="#links">Links</a> · <a href="#disclosure">Disclosure</a> · <a href="#publisher">Publisher</a></span>
   </div>
 </footer>
 <script src="assets/site.js" defer></script>
+<script type="module" src="assets/link-generator.js"></script>
 </body>
 </html>

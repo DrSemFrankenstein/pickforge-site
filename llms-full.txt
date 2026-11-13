@@ -1,25 +1,25 @@
 # PickForge
 
-> PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.
+> PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.
 
-Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-11
+Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-13
 
 ## Product search with affiliate links, for AI assistants
 
-PickForge is building a tool that helps an AI assistant find a product the user asks about and return a link. Some links carry our affiliate tracking ID. The tool runs on our server; this page describes it and explains the affiliate relationships.
+PickForge is a tool an AI assistant can call when you ask it to find a product. It returns a labeled affiliate link. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.
 
 ## An information page for a service in development
 
 PickForge is an independent project. This page describes the service, how we handle affiliate links, and who runs it. It is not a store and does not sell products.
 
-The service is in development. Search and link generation run on PickForge’s own server, not on this page. Purchases happen on the merchant’s site, where prices and availability are shown.
+Amazon.com links on this page are built in your browser as a full amazon.com address with Associates ID pickforge-20. An AliExpress promotion link is created only by the AliExpress Portals API on our server. This page does not call that API and does not invent one.
 
-We do not process orders, hold inventory, or give financial or medical advice.
+Purchases happen on the store’s site, where the price is shown. We do not process orders, hold inventory, or give financial or medical advice.
 
 ## What the tool does
 
 - **Search by request** (Search): A user asks an AI assistant for a product type or a budget. The assistant calls the tool, which searches partner catalogues for matching items.
-- **Affiliate links, labeled** (Links): Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link.
+- **Affiliate links, labeled** (Links): An Amazon.com link on this page is the full address with our Associates ID. An AliExpress promotion link is created only by the official Portals API. A link that can earn a commission is labeled.
 - **Not a store** (Scope): Checkout, payment, and accounts happen on the merchant’s site. The tool does not take orders or payments.
 
 ## Principles
@@ -29,21 +29,45 @@ We do not process orders, hold inventory, or give financial or medical advice.
 - **No hands-on claims**: We do not claim product tests. Product information comes from merchant and partner data.
 - **Updates**: We update this page when the service, partner programs, or disclosures change.
 
+## Make a store link
+
+Paste search words, an Amazon product page, or an AliExpress item URL. PickForge detects the store automatically.
+
+Search words become an Amazon link with tag=pickforge-20. Amazon and AliExpress URLs are recognized from the address.
+
+## Partners
+
+Product search and labeled affiliate links use these programs. Checkout stays on each merchant’s site. Store names are trademarks of their owners.
+
+- **Amazon** (Amazon Associates): Product and search links on amazon.com include Associates ID pickforge-20.
+- **AliExpress** (AliExpress Portals): Official promotion links are created only through the Portals affiliate API.
+
+## Add the tool to an assistant
+
+The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.
+
+The server is not listed in a plugin directory, and it has no public HTTPS address yet. These links open the assistant’s connector page. They do not install PickForge. When you are there, do not paste a localhost address.
+
+- [Claude](https://claude.ai/customize/connectors): Open Claude connectors. Choose Add custom connector, then paste the public server address when it exists.
+- [ChatGPT](https://chatgpt.com/): Open ChatGPT. Then open Plugins and choose Add custom MCP server.
+- [ChatGPT guide](https://developers.openai.com/api/docs/guides/custom-mcp-server): OpenAI’s steps for adding a custom MCP server.
+- [Grok](https://grok.com/connectors): Open Grok connectors. Choose New Connector, then Custom. The address must be public HTTPS.
+
 ## Affiliate disclosure
 
-PickForge participates in affiliate and partner programs, including the Amazon Associates Program and other partner programs. If you buy a product through a link the tool returns, we may earn a commission. A partner link is labeled as one wherever the tool shows it.
+PickForge participates in the Amazon Associates Program and the AliExpress Affiliate Program (Portals). If you buy through a link we label, we may earn a commission. You do not pay extra.
 
-Prices, availability, and offers change. Confirm them on the merchant’s site before you buy. Retailer names and logos are trademarks of their owners.
+Prices, availability, and offers change. Confirm them on the store’s site before you buy. Store names are trademarks of their owners.
 
-Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.
+Amazon.com links on this page are the full amazon.com address, including Associates ID pickforge-20. We do not hide that address behind a short link. Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.
 
 ## Privacy
 
 This page is static: no user login, no contact form, and no newsletter signup.
 
-The service receives search requests to return results and does not use them for other purposes. Hosting providers may log standard access data (IP, user agent). Merchants may set cookies when you follow links; see their policies.
+The link builder runs in your browser. The product address or search words are not sent to PickForge. Opening a link sends you to Amazon or, when our server has issued one, to AliExpress. Those stores may set their own cookies.
 
-We do not sell personal information.
+The assistant tool, when it is published, receives a search request only to return results. We do not sell personal information. Hosting providers may log standard access data (IP, user agent).
 
 ## Questions
 
@@ -62,6 +86,18 @@ No. A commission does not change the order of search results.
 ### Are affiliate links labeled?
 
 Yes. A link that can earn a commission is labeled as a partner link.
+
+### Can I make an Amazon link on this page?
+
+Yes. The builder returns a full amazon.com address with tag pickforge-20. Open it from this page. The page does not show a price.
+
+### Can I make an AliExpress link on this page?
+
+Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead.
+
+### How do I add PickForge to Claude, ChatGPT, or Grok?
+
+Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it.
 
 ### How do I contact the publisher?
 
@@ -82,33 +118,33 @@ Structured copies of this page for search engines and assistants. Cite PickForge
 - Publisher: PickForge
 - Entity type: Independent project (not a retailer)
 - Location: Israel
-- Last updated: 11 November 2026
+- Last updated: 13 November 2026
 
 
 ---
 
 # PickForge
 
-> PickForge разрабатывает инструмент, с помощью которого ИИ-ассистент ищет товары и возвращает партнёрские ссылки. Эта страница описывает сервис и раскрытие партнёрских отношений. PickForge ничего не продаёт.
+> PickForge — инструмент поиска товаров для ИИ-ассистентов с помеченными партнёрскими ссылками. На странице есть сборка ссылки Amazon.com и раскрытие партнёрских отношений. PickForge ничего не продаёт.
 
-Language: Русский · URL: https://drsemfrankenstein.github.io/pickforge-site/ru/ · Updated: 2026-11-11
+Language: Русский · URL: https://drsemfrankenstein.github.io/pickforge-site/ru/ · Updated: 2026-11-13
 
 ## Поиск товаров с партнёрскими ссылками для ИИ-ассистентов
 
-PickForge разрабатывает инструмент, который помогает ИИ-ассистенту найти товар по запросу пользователя и вернуть ссылку. Часть ссылок содержит наш партнёрский идентификатор. Инструмент работает на нашем сервере; эта страница его описывает и объясняет партнёрские отношения.
+PickForge — инструмент, который ИИ-ассистент вызывает, когда вы просите найти товар. Он возвращает помеченную партнёрскую ссылку. На этой странице также собирается ссылка Amazon.com в вашем браузере. Платите магазину, не PickForge.
 
 ## Информационная страница сервиса в разработке
 
 PickForge — независимый проект. Эта страница описывает сервис, то, как мы работаем с партнёрскими ссылками, и кто за ним стоит. Это не магазин, и мы ничего не продаём.
 
-Сервис в разработке. Поиск и генерация ссылок работают на сервере PickForge, а не на этой странице. Покупки совершаются на сайте продавца, где видны цены и наличие.
+Ссылки Amazon.com на этой странице собираются в браузере: полный адрес amazon.com с идентификатором Associates pickforge-20. Партнёрскую ссылку AliExpress создаёт только API AliExpress Portals на нашем сервере. Эта страница не вызывает этот API и не подделывает ссылку.
 
-Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов.
+Покупка проходит на сайте магазина, где видна цена. Мы не принимаем заказы, не храним товары и не даём финансовых или медицинских советов.
 
 ## Что делает инструмент
 
 - **Поиск по запросу** (Поиск): Пользователь просит ИИ-ассистента подобрать тип товара или бюджет. Ассистент вызывает инструмент, который ищет подходящие позиции в партнёрских каталогах.
-- **Партнёрские ссылки с пометкой** (Ссылки): Ссылки на продавцов могут содержать наш партнёрский идентификатор. Если ссылка может принести комиссию, это указано рядом с ней.
+- **Партнёрские ссылки с пометкой** (Ссылки): Ссылка Amazon.com на этой странице — полный адрес с нашим идентификатором Associates. Партнёрскую ссылку AliExpress создаёт только официальный API Portals. Ссылка, которая может принести комиссию, помечена.
 - **Не магазин** (Границы): Оформление заказа, оплата и аккаунты происходят на сайте продавца. Инструмент не принимает заказы и платежи.
 
 ## Принципы
@@ -118,21 +154,45 @@ PickForge — независимый проект. Эта страница оп�
 - **Без заявлений о тестах**: Мы не заявляем о ручных тестах товаров. Информация о товарах берётся из данных продавцов и партнёрских программ.
 - **Обновления**: Мы обновляем эту страницу, когда меняются сервис, партнёрские программы или раскрытие.
 
+## Собрать ссылку магазина
+
+Вставьте слова поиска, страницу товара Amazon или адрес товара AliExpress. PickForge сам определит магазин.
+
+Слова поиска становятся ссылкой Amazon с tag=pickforge-20. Адреса Amazon и AliExpress распознаются автоматически.
+
+## Партнёры
+
+Поиск и помеченные партнёрские ссылки идут через эти программы. Оплата — на сайте магазина. Названия магазинов — торговые марки их владельцев.
+
+- **Amazon** (Amazon Associates): Ссылки на товары и поиск на amazon.com с идентификатором Associates pickforge-20.
+- **AliExpress** (AliExpress Portals): Партнёрские ссылки создаёт только официальный API Portals.
+
+## Добавить инструмент в ассистент
+
+Поиск товаров — это MCP-сервер: служба, которую ассистент вызывает, когда вы просите найти товар. Он возвращает ссылки. Ссылка, которая может принести комиссию, помечена. Платите магазину, не PickForge.
+
+Сервер ещё не в каталоге плагинов, и у него нет публичного адреса HTTPS. Эти ссылки открывают страницу коннекторов ассистента. Они не устанавливают PickForge. Не вставляйте туда адрес localhost.
+
+- [Claude](https://claude.ai/customize/connectors): Открыть коннекторы Claude. Выберите Add custom connector и вставьте публичный адрес сервера, когда он появится.
+- [ChatGPT](https://chatgpt.com/): Открыть ChatGPT. Затем Plugins и Add custom MCP server.
+- [Инструкция ChatGPT](https://developers.openai.com/api/docs/guides/custom-mcp-server): Шаги OpenAI для своего MCP-сервера.
+- [Grok](https://grok.com/connectors): Открыть коннекторы Grok. Выберите New Connector, затем Custom. Адрес должен быть публичным HTTPS.
+
 ## Раскрытие партнёрских отношений
 
-PickForge участвует в партнёрских программах, включая Amazon Associates и другие партнёрские программы. Если вы купите товар по ссылке, которую вернул инструмент, мы можем получить комиссию. Партнёрская ссылка помечается как таковая там, где инструмент её показывает.
+PickForge участвует в Amazon Associates и в партнёрской программе AliExpress (Portals). Если вы купите товар по ссылке, которую мы пометили, мы можем получить комиссию. Доплаты нет.
 
-Цены, наличие и условия меняются. Перед покупкой проверьте их на сайте продавца. Названия и логотипы — товарные знаки владельцев.
+Цены, наличие и условия меняются. Перед покупкой проверьте их на сайте магазина. Названия магазинов — товарные знаки владельцев.
 
-Amazon не спонсирует и не поддерживает PickForge. Ниже — обязательная формулировка программы на английском.
+Ссылки Amazon.com на этой странице — полный адрес amazon.com, включая идентификатор Associates pickforge-20. Мы не прячем его за коротким адресом. Amazon не спонсирует и не поддерживает PickForge. Ниже — обязательная формулировка программы на английском.
 
 ## Конфиденциальность
 
 Эта страница статическая: без регистрации, формы обратной связи и рассылки.
 
-Сервис получает поисковые запросы, чтобы вернуть результаты, и не использует их для других целей. Хостинг-провайдеры могут записывать стандартные данные доступа (IP-адрес, user agent). Продавцы могут устанавливать cookie, когда вы переходите по ссылкам; см. их политики.
+Сборщик ссылок работает в вашем браузере. Адрес товара или слова поиска не отправляются в PickForge. Переход открывает Amazon или, если ссылку выдал наш сервер, AliExpress. Эти магазины могут ставить свои cookie.
 
-Мы не продаём персональные данные.
+Инструмент ассистента, когда он будет опубликован, получает поисковый запрос только чтобы вернуть результат. Мы не продаём персональные данные. Хостинг может записывать обычные данные доступа (IP-адрес, user agent).
 
 ## Вопросы
 
@@ -151,6 +211,18 @@ Amazon не спонсирует и не поддерживает PickForge. Н�
 ### Помечены ли партнёрские ссылки?
 
 Да. Ссылка, которая может принести комиссию, помечена как партнёрская.
+
+### Можно ли собрать ссылку Amazon на этой странице?
+
+Да. Сборщик возвращает полный адрес amazon.com с tag=pickforge-20. Откройте его с этой страницы. Цену страница не показывает.
+
+### Можно ли собрать ссылку AliExpress на этой странице?
+
+Вставьте URL товара AliExpress — сборщик вызовет API Portals, если подключён публичный endpoint. На статической копии без API используйте слова поиска или URL Amazon.
+
+### Как добавить PickForge в Claude, ChatGPT или Grok?
+
+Кнопки в разделе «Добавить инструмент в ассистент» открывают страницу коннекторов этого продукта. PickForge ещё нет в каталоге, поэтому кнопка его не устанавливает.
 
 ### Как связаться с издателем?
 
@@ -171,33 +243,33 @@ Amazon не спонсирует и не поддерживает PickForge. Н�
 - Издатель: PickForge
 - Тип: Независимый проект (не ритейлер)
 - Страна: Израиль
-- Обновлено: 11 ноября 2026
+- Обновлено: 13 ноября 2026
 
 
 ---
 
 # PickForge
 
-> PickForge מפתח כלי שמאפשר לעוזר AI לחפש מוצרים ולהחזיר קישורי שותפים. עמוד זה מתאר את השירות ואת הגילוי על השותפויות. PickForge לא מוכר מוצרים.
+> PickForge הוא כלי חיפוש מוצרים לעוזרי AI, עם קישורי שותפים מסומנים. בעמוד יש בונה קישור ל-Amazon.com וגילוי נאות. PickForge לא מוכר מוצרים.
 
-Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-11
+Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-13
 
 ## חיפוש מוצרים עם קישורי שותפים, לעוזרי AI
 
-PickForge בונה כלי שעוזר לעוזר AI למצוא מוצר לפי בקשת המשתמש ולהחזיר קישור. חלק מהקישורים כוללים את מזהה השותפים שלנו. הכלי פועל על השרת שלנו; עמוד זה מתאר אותו ומסביר את קשרי השותפות.
+PickForge הוא כלי שעוזר AI מפעיל כשמבקשים ממנו למצוא מוצר. הוא מחזיר קישור שותפים מסומן. בעמוד הזה נבנית גם כתובת Amazon.com בדפדפן. התשלום הוא לחנות, לא ל-PickForge.
 
 ## עמוד מידע לשירות בפיתוח
 
 PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירות, איך אנחנו עובדים עם קישורי שותפים ומי עומד מאחוריו. זו לא חנות, ואיננו מוכרים מוצרים.
 
-השירות בפיתוח. החיפוש ויצירת הקישורים פועלים על השרת של PickForge, לא בעמוד הזה. רכישות מתבצעות באתר הסוחר, שם מוצגים מחירים וזמינות.
+קישורי Amazon.com בעמוד הזה נבנים בדפדפן: כתובת amazon.com מלאה עם מזהה Associates‏ pickforge-20. קישור קידום של AliExpress נוצר רק ב-API של AliExpress Portals בשרת שלנו. העמוד לא קורא ל-API הזה ולא ממציא קישור.
 
-איננו מקבלים הזמנות, לא שומרים מלאי ולא נותנים ייעוץ פיננסי או רפואי.
+הרכישה מתבצעת באתר החנות, שם מוצג המחיר. איננו מקבלים הזמנות, לא שומרים מלאי ולא נותנים ייעוץ פיננסי או רפואי.
 
 ## מה הכלי עושה
 
 - **חיפוש לפי בקשה** (חיפוש): המשתמש מבקש מעוזר AI סוג מוצר או תקציב. העוזר מפעיל את הכלי, שמחפש פריטים מתאימים בקטלוגים של שותפים.
-- **קישורי שותפים עם סימון** (קישורים): קישורים לסוחרים יכולים לכלול את מזהה השותפים שלנו. כשקישור עשוי להניב עמלה, זה מצוין לידו.
+- **קישורי שותפים עם סימון** (קישורים): קישור Amazon.com בעמוד הזה הוא הכתובת המלאה עם מזהה ה-Associates שלנו. קישור קידום של AliExpress נוצר רק ב-API הרשמי של Portals. קישור שעשוי להניב עמלה מסומן.
 - **לא חנות** (גבולות): הזמנה, תשלום וחשבונות מתבצעים באתר הסוחר. הכלי לא מקבל הזמנות ולא תשלומים.
 
 ## עקרונות
@@ -207,21 +279,45 @@ PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירו
 - **בלי טענות לבדיקה**: איננו טוענים לבדיקות ידניות של מוצרים. המידע על מוצרים מגיע מנתוני הסוחרים והתוכניות.
 - **עדכונים**: מעדכנים את העמוד כשהשירות, תוכניות השותפים או הגילוי משתנים.
 
+## בניית קישור לחנות
+
+הדביקו מילות חיפוש, עמוד מוצר ב-Amazon או כתובת פריט ב-AliExpress. PickForge מזהה את החנות אוטומטית.
+
+מילות חיפוש הופכות לקישור Amazon עם tag=pickforge-20. כתובות Amazon ו-AliExpress מזוהות מהקישור.
+
+## שותפים
+
+חיפוש מוצרים וקישורי שותפים מסומנים עוברים דרך התוכניות האלה. התשלום נשאר באתר הסוחר. שמות החנויות הם סימני מסחר של הבעלים.
+
+- **Amazon** (Amazon Associates): קישורי מוצר וחיפוש ב-amazon.com כוללים את מזהה Associates‏ pickforge-20.
+- **AliExpress** (AliExpress Portals): קישורי קידום רשמיים נוצרים רק ב-API השותפים של Portals.
+
+## הוספת הכלי לעוזר
+
+חיפוש המוצרים הוא שרת MCP: שירות שהעוזר קורא לו כשמבקשים למצוא מוצר. הוא מחזיר קישורים. קישור שעשוי להניב עמלה מסומן. התשלום הוא לחנות, לא ל-PickForge.
+
+השרת לא רשום בקטלוג תוספים, ואין לו עדיין כתובת HTTPS ציבורית. הקישורים האלה פותחים את עמוד המחברים של העוזר. הם לא מתקינים את PickForge. אל תדביקו שם כתובת localhost.
+
+- [Claude](https://claude.ai/customize/connectors): פתיחת מחברי Claude. בחרו Add custom connector והדביקו את כתובת השרת הציבורית כשתהיה.
+- [ChatGPT](https://chatgpt.com/): פתיחת ChatGPT. אחר כך Plugins ואז Add custom MCP server.
+- [מדריך ChatGPT](https://developers.openai.com/api/docs/guides/custom-mcp-server): השלבים של OpenAI להוספת שרת MCP משלכם.
+- [Grok](https://grok.com/connectors): פתיחת מחברי Grok. בחרו New Connector ואז Custom. הכתובת חייבת להיות HTTPS ציבורי.
+
 ## גילוי נאות על שותפות
 
-PickForge משתתף בתוכניות שותפים, כולל Amazon Associates ותוכניות שותפים נוספות. אם תרכשו מוצר דרך קישור שהכלי החזיר, ייתכן שנקבל עמלה. קישור שותפים מסומן ככזה במקום שבו הכלי מציג אותו.
+PickForge משתתף ב-Amazon Associates וב-תוכנית השותפים של AliExpress‏ (Portals). אם תרכוש דרך קישור שסימנו, ייתכן שנקבל עמלה. אין תוספת תשלום.
 
-מחירים, זמינות והצעות משתנים. אשרו אותם באתר הסוחר לפני קנייה. שמות ולוגואים הם סימנים מסחריים של בעליהם.
+מחירים, זמינות והצעות משתנים. אשרו אותם באתר החנות לפני קנייה. שמות החנויות הם סימנים מסחריים של בעליהם.
 
-Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט למטה הוא נוסח הגילוי הנדרש, באנגלית.
+קישורי Amazon.com בעמוד הזה הם הכתובת המלאה ב-amazon.com, כולל מזהה Associates‏ pickforge-20. איננו מסתירים אותה מאחורי כתובת קצרה. Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט למטה הוא נוסח הגילוי הנדרש, באנגלית.
 
 ## פרטיות
 
 העמוד סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.
 
-השירות מקבל בקשות חיפוש כדי להחזיר תוצאות, ולא משתמש בהן למטרות אחרות. ספקי אחסון עשויים לתעד נתוני גישה סטנדרטיים (כתובת IP, סוג דפדפן). סוחרים עשויים להגדיר עוגיות כשעוברים דרך קישורים; ראו את המדיניות שלהם.
+בונה הקישורים רץ בדפדפן. כתובת המוצר או מילות החיפוש לא נשלחות ל-PickForge. פתיחת קישור מעבירה אל Amazon, או אל AliExpress אם השרת שלנו הנפיק את הקישור. החנויות עשויות להגדיר עוגיות משלהן.
 
-איננו מוכרים מידע אישי.
+כלי העוזר, כשיפורסם, מקבל בקשת חיפוש רק כדי להחזיר תוצאה. איננו מוכרים מידע אישי. ספק האחסון עשוי לתעד נתוני גישה רגילים (כתובת IP, סוג דפדפן).
 
 ## שאלות
 
@@ -240,6 +336,18 @@ Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט 
 ### האם קישורי השותפים מסומנים?
 
 כן. קישור שעשוי להניב עמלה מסומן כקישור שותפים.
+
+### אפשר לבנות קישור Amazon בעמוד הזה?
+
+כן. הבונה מחזיר כתובת amazon.com מלאה עם tag=pickforge-20. פתחו אותה מהעמוד הזה. העמוד לא מציג מחיר.
+
+### אפשר לבנות קישור AliExpress בעמוד הזה?
+
+הדביקו כתובת מוצר ב-AliExpress — הבונה קורא ל-API של Portals כשיש endpoint ציבורי. בגרסה הסטטית בלי API השתמשו במילות חיפוש או בכתובת Amazon.
+
+### איך מוסיפים את PickForge ל-Claude, ל-ChatGPT או ל-Grok?
+
+הכפתורים תחת «הוספת הכלי לעוזר» פותחים את עמוד המחברים של המוצר. PickForge עדיין לא בקטלוג, ולכן הכפתור לא מתקין אותו.
 
 ### איך יוצרים קשר עם המוציא לאור?
 
@@ -260,4 +368,4 @@ Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט 
 - מוציא לאור: PickForge
 - סוג: פרויקט עצמאי (לא קמעונאי)
 - מדינה: ישראל
-- עודכן לאחרונה: 11 בנובמבר 2026
+- עודכן לאחרונה: 13 בנובמבר 2026

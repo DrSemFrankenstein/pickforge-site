@@ -1,25 +1,25 @@
 # PickForge
 
-> PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.
+> PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.
 
-Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-11
+Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-13
 
 ## Product search with affiliate links, for AI assistants
 
-PickForge is building a tool that helps an AI assistant find a product the user asks about and return a link. Some links carry our affiliate tracking ID. The tool runs on our server; this page describes it and explains the affiliate relationships.
+PickForge is a tool an AI assistant can call when you ask it to find a product. It returns a labeled affiliate link. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.
 
 ## An information page for a service in development
 
 PickForge is an independent project. This page describes the service, how we handle affiliate links, and who runs it. It is not a store and does not sell products.
 
-The service is in development. Search and link generation run on PickForge’s own server, not on this page. Purchases happen on the merchant’s site, where prices and availability are shown.
+Amazon.com links on this page are built in your browser as a full amazon.com address with Associates ID pickforge-20. An AliExpress promotion link is created only by the AliExpress Portals API on our server. This page does not call that API and does not invent one.
 
-We do not process orders, hold inventory, or give financial or medical advice.
+Purchases happen on the store’s site, where the price is shown. We do not process orders, hold inventory, or give financial or medical advice.
 
 ## What the tool does
 
 - **Search by request** (Search): A user asks an AI assistant for a product type or a budget. The assistant calls the tool, which searches partner catalogues for matching items.
-- **Affiliate links, labeled** (Links): Links to merchants can carry our partner tracking ID. Where a link can earn a commission, it is labeled next to the link.
+- **Affiliate links, labeled** (Links): An Amazon.com link on this page is the full address with our Associates ID. An AliExpress promotion link is created only by the official Portals API. A link that can earn a commission is labeled.
 - **Not a store** (Scope): Checkout, payment, and accounts happen on the merchant’s site. The tool does not take orders or payments.
 
 ## Principles
@@ -29,21 +29,45 @@ We do not process orders, hold inventory, or give financial or medical advice.
 - **No hands-on claims**: We do not claim product tests. Product information comes from merchant and partner data.
 - **Updates**: We update this page when the service, partner programs, or disclosures change.
 
+## Make a store link
+
+Paste search words, an Amazon product page, or an AliExpress item URL. PickForge detects the store automatically.
+
+Search words become an Amazon link with tag=pickforge-20. Amazon and AliExpress URLs are recognized from the address.
+
+## Partners
+
+Product search and labeled affiliate links use these programs. Checkout stays on each merchant’s site. Store names are trademarks of their owners.
+
+- **Amazon** (Amazon Associates): Product and search links on amazon.com include Associates ID pickforge-20.
+- **AliExpress** (AliExpress Portals): Official promotion links are created only through the Portals affiliate API.
+
+## Add the tool to an assistant
+
+The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.
+
+The server is not listed in a plugin directory, and it has no public HTTPS address yet. These links open the assistant’s connector page. They do not install PickForge. When you are there, do not paste a localhost address.
+
+- [Claude](https://claude.ai/customize/connectors): Open Claude connectors. Choose Add custom connector, then paste the public server address when it exists.
+- [ChatGPT](https://chatgpt.com/): Open ChatGPT. Then open Plugins and choose Add custom MCP server.
+- [ChatGPT guide](https://developers.openai.com/api/docs/guides/custom-mcp-server): OpenAI’s steps for adding a custom MCP server.
+- [Grok](https://grok.com/connectors): Open Grok connectors. Choose New Connector, then Custom. The address must be public HTTPS.
+
 ## Affiliate disclosure
 
-PickForge participates in affiliate and partner programs, including the Amazon Associates Program and other partner programs. If you buy a product through a link the tool returns, we may earn a commission. A partner link is labeled as one wherever the tool shows it.
+PickForge participates in the Amazon Associates Program and the AliExpress Affiliate Program (Portals). If you buy through a link we label, we may earn a commission. You do not pay extra.
 
-Prices, availability, and offers change. Confirm them on the merchant’s site before you buy. Retailer names and logos are trademarks of their owners.
+Prices, availability, and offers change. Confirm them on the store’s site before you buy. Store names are trademarks of their owners.
 
-Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.
+Amazon.com links on this page are the full amazon.com address, including Associates ID pickforge-20. We do not hide that address behind a short link. Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.
 
 ## Privacy
 
 This page is static: no user login, no contact form, and no newsletter signup.
 
-The service receives search requests to return results and does not use them for other purposes. Hosting providers may log standard access data (IP, user agent). Merchants may set cookies when you follow links; see their policies.
+The link builder runs in your browser. The product address or search words are not sent to PickForge. Opening a link sends you to Amazon or, when our server has issued one, to AliExpress. Those stores may set their own cookies.
 
-We do not sell personal information.
+The assistant tool, when it is published, receives a search request only to return results. We do not sell personal information. Hosting providers may log standard access data (IP, user agent).
 
 ## Questions
 
@@ -62,6 +86,18 @@ No. A commission does not change the order of search results.
 ### Are affiliate links labeled?
 
 Yes. A link that can earn a commission is labeled as a partner link.
+
+### Can I make an Amazon link on this page?
+
+Yes. The builder returns a full amazon.com address with tag pickforge-20. Open it from this page. The page does not show a price.
+
+### Can I make an AliExpress link on this page?
+
+Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead.
+
+### How do I add PickForge to Claude, ChatGPT, or Grok?
+
+Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it.
 
 ### How do I contact the publisher?
 
@@ -82,4 +118,4 @@ Structured copies of this page for search engines and assistants. Cite PickForge
 - Publisher: PickForge
 - Entity type: Independent project (not a retailer)
 - Location: Israel
-- Last updated: 11 November 2026
+- Last updated: 13 November 2026

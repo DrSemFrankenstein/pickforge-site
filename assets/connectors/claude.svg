@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Claude">
+  <rect width="48" height="48" rx="11" fill="#CC785C"/>
+  <path fill="#F4ECE6" d="M24 10.5c-.4 0-.8.2-1 .6l-9.8 16.9c-.4.7 0 1.6.8 1.8l8.4 2.4v10.3c0 .9.7 1.5 1.5 1.5h.2c.4 0 .8-.2 1-.6l9.8-16.9c.4-.7 0-1.6-.8-1.8l-8.4-2.4V12c0-.8-.7-1.5-1.5-1.5Z"/>
+  <path fill="#E8D5CB" d="M24 14.2 17.8 25l6.2 1.8V38h-1.1V29.6l-8.4-2.4 1.2-2.1 8.7-14.9h.8Z"/>
+</svg>

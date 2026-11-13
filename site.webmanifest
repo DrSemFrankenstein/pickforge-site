@@ -1,7 +1,7 @@
 {
   "name": "PickForge",
   "short_name": "PickForge",
-  "description": "PickForge is developing a tool that lets AI assistants search products and return affiliate links. This page describes the service and its affiliate disclosures. PickForge does not sell products.",
+  "description": "PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.",
   "start_url": "./",
   "scope": "./",
   "display": "browser",

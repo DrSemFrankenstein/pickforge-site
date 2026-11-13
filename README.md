@@ -60,4 +60,6 @@ Then open `http://localhost:3000/` and use EN / RU / HE.
 
 ## Affiliate programs (any platform)
 
-After deploy, use the live **HTTPS** home URL when a network or retailer asks for your site list. Amazon Associates tracking ID is `pickforge-20`. Every page includes the required sentence: “As an Amazon Associate I earn from qualifying purchases.” See `SECURITY.md` before going live.
+After deploy, use the live **HTTPS** home URL when a network or retailer asks for your site list. Amazon Associates tracking ID is `pickforge-20` (Amazon.com only). Every page includes the required sentence: “As an Amazon Associate I earn from qualifying purchases.”
+
+The page builds an Amazon.com link in the browser: a full `amazon.com` address with `tag=pickforge-20`, no price, opened from this site. It does not create an AliExpress promotion link. That link comes only from the AliExpress Portals API on the server. See `SECURITY.md` before going live.

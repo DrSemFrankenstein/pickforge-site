@@ -2,7 +2,7 @@
 
 > PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.
 
-Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-13
+Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ · Updated: 2026-11-14
 
 ## Product search with affiliate links, for AI assistants
 
@@ -46,12 +46,19 @@ Product search and labeled affiliate links use these programs. Checkout stays on
 
 The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.
 
-The server is not listed in a plugin directory, and it has no public HTTPS address yet. These links open the assistant’s connector page. They do not install PickForge. When you are there, do not paste a localhost address.
+PickForge is not in a plugin directory. The server address is https://pickforge-mcp.onrender.com/sse. Each link opens that product’s add-plugin page. The name, description, and connection are on the card. Claude’s link fills in the name and server address. You confirm before it is added. Do not paste a localhost address.
 
-- [Claude](https://claude.ai/customize/connectors): Open Claude connectors. Choose Add custom connector, then paste the public server address when it exists.
-- [ChatGPT](https://chatgpt.com/): Open ChatGPT. Then open Plugins and choose Add custom MCP server.
+- [Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=PickForge&connectorUrl=https%3A%2F%2Fpickforge-mcp.onrender.com%2Fsse): Opens Add custom connector with the name and server address filled in. Review them, then add.
+  - Name: PickForge
+  - Connection: https://pickforge-mcp.onrender.com/sse
+- [ChatGPT](https://chatgpt.com/plugins): Opens ChatGPT Plugins. Choose Add custom MCP server and enter the name, description, and connection. Authentication: No authentication. Then choose Create as a plugin.
+  - Name: PickForge
+  - Description: Product search with labeled affiliate links. You pay the store, not PickForge.
+  - Connection: https://pickforge-mcp.onrender.com/sse
 - [ChatGPT guide](https://developers.openai.com/api/docs/guides/custom-mcp-server): OpenAI’s steps for adding a custom MCP server.
-- [Grok](https://grok.com/connectors): Open Grok connectors. Choose New Connector, then Custom. The address must be public HTTPS.
+- [Grok](https://grok.com/connectors): Opens Grok connectors. Choose New Connector, then Custom, and enter the name and server address.
+  - Name: PickForge
+  - Connection: https://pickforge-mcp.onrender.com/sse
 
 ## Affiliate disclosure
 
@@ -97,7 +104,7 @@ Paste an AliExpress product URL and the builder calls the Portals API when a pub
 
 ### How do I add PickForge to Claude, ChatGPT, or Grok?
 
-Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it.
+Use the buttons under Connect an assistant. Claude opens Add custom connector with the name and server address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection on this page. Grok opens Connectors: choose New Connector, then Custom. You confirm before PickForge is added.
 
 ### How do I contact the publisher?
 
@@ -118,7 +125,7 @@ Structured copies of this page for search engines and assistants. Cite PickForge
 - Publisher: PickForge
 - Entity type: Independent project (not a retailer)
 - Location: Israel
-- Last updated: 13 November 2026
+- Last updated: 14 November 2026
 
 
 ---
@@ -127,7 +134,7 @@ Structured copies of this page for search engines and assistants. Cite PickForge
 
 > PickForge — инструмент поиска товаров для ИИ-ассистентов с помеченными партнёрскими ссылками. На странице есть сборка ссылки Amazon.com и раскрытие партнёрских отношений. PickForge ничего не продаёт.
 
-Language: Русский · URL: https://drsemfrankenstein.github.io/pickforge-site/ru/ · Updated: 2026-11-13
+Language: Русский · URL: https://drsemfrankenstein.github.io/pickforge-site/ru/ · Updated: 2026-11-14
 
 ## Поиск товаров с партнёрскими ссылками для ИИ-ассистентов
 
@@ -171,12 +178,19 @@ PickForge — независимый проект. Эта страница оп�
 
 Поиск товаров — это MCP-сервер: служба, которую ассистент вызывает, когда вы просите найти товар. Он возвращает ссылки. Ссылка, которая может принести комиссию, помечена. Платите магазину, не PickForge.
 
-Сервер ещё не в каталоге плагинов, и у него нет публичного адреса HTTPS. Эти ссылки открывают страницу коннекторов ассистента. Они не устанавливают PickForge. Не вставляйте туда адрес localhost.
+PickForge ещё нет в каталоге плагинов. Адрес сервера: https://pickforge-mcp.onrender.com/sse. Каждая ссылка открывает страницу добавления плагина. Имя, описание и подключение указаны на карточке. Ссылка Claude подставляет имя и адрес сервера. Подтвердите, прежде чем сервер будет добавлен. Не вставляйте адрес localhost.
 
-- [Claude](https://claude.ai/customize/connectors): Открыть коннекторы Claude. Выберите Add custom connector и вставьте публичный адрес сервера, когда он появится.
-- [ChatGPT](https://chatgpt.com/): Открыть ChatGPT. Затем Plugins и Add custom MCP server.
+- [Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=PickForge&connectorUrl=https%3A%2F%2Fpickforge-mcp.onrender.com%2Fsse): Открывает Add custom connector: имя и адрес сервера уже заполнены. Проверьте их и добавьте.
+  - Имя: PickForge
+  - Подключение: https://pickforge-mcp.onrender.com/sse
+- [ChatGPT](https://chatgpt.com/plugins): Открывает ChatGPT Plugins. Выберите Add custom MCP server и введите имя, описание и подключение. Authentication: No authentication. Затем Create as a plugin.
+  - Имя: PickForge
+  - Описание: Поиск товаров с помеченными партнёрскими ссылками. Платите магазину, не PickForge.
+  - Подключение: https://pickforge-mcp.onrender.com/sse
 - [Инструкция ChatGPT](https://developers.openai.com/api/docs/guides/custom-mcp-server): Шаги OpenAI для своего MCP-сервера.
-- [Grok](https://grok.com/connectors): Открыть коннекторы Grok. Выберите New Connector, затем Custom. Адрес должен быть публичным HTTPS.
+- [Grok](https://grok.com/connectors): Открывает коннекторы Grok. Выберите New Connector, затем Custom, и введите имя и адрес сервера.
+  - Имя: PickForge
+  - Подключение: https://pickforge-mcp.onrender.com/sse
 
 ## Раскрытие партнёрских отношений
 
@@ -222,7 +236,7 @@ PickForge участвует в Amazon Associates и в партнёрской �
 
 ### Как добавить PickForge в Claude, ChatGPT или Grok?
 
-Кнопки в разделе «Добавить инструмент в ассистент» открывают страницу коннекторов этого продукта. PickForge ещё нет в каталоге, поэтому кнопка его не устанавливает.
+Кнопки в блоке «Подключить ассистента» открывают настройки плагинов. Claude открывает Add custom connector с уже заполненными именем и адресом сервера. ChatGPT открывает Plugins: выберите Add custom MCP server и введите имя, описание и подключение с этой страницы. Grok открывает Connectors: New Connector, затем Custom. Подтвердите, прежде чем PickForge будет добавлен.
 
 ### Как связаться с издателем?
 
@@ -243,7 +257,7 @@ PickForge участвует в Amazon Associates и в партнёрской �
 - Издатель: PickForge
 - Тип: Независимый проект (не ритейлер)
 - Страна: Израиль
-- Обновлено: 13 ноября 2026
+- Обновлено: 14 ноября 2026
 
 
 ---
@@ -252,7 +266,7 @@ PickForge участвует в Amazon Associates и в партнёрской �
 
 > PickForge הוא כלי חיפוש מוצרים לעוזרי AI, עם קישורי שותפים מסומנים. בעמוד יש בונה קישור ל-Amazon.com וגילוי נאות. PickForge לא מוכר מוצרים.
 
-Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-13
+Language: עברית · URL: https://drsemfrankenstein.github.io/pickforge-site/he/ · Updated: 2026-11-14
 
 ## חיפוש מוצרים עם קישורי שותפים, לעוזרי AI
 
@@ -296,12 +310,19 @@ PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירו
 
 חיפוש המוצרים הוא שרת MCP: שירות שהעוזר קורא לו כשמבקשים למצוא מוצר. הוא מחזיר קישורים. קישור שעשוי להניב עמלה מסומן. התשלום הוא לחנות, לא ל-PickForge.
 
-השרת לא רשום בקטלוג תוספים, ואין לו עדיין כתובת HTTPS ציבורית. הקישורים האלה פותחים את עמוד המחברים של העוזר. הם לא מתקינים את PickForge. אל תדביקו שם כתובת localhost.
+PickForge לא רשום בקטלוג תוספים. כתובת השרת: https://pickforge-mcp.onrender.com/sse. כל קישור פותח את עמוד הוספת התוסף. השם, התיאור והחיבור מופיעים בכרטיס. הקישור של Claude ממלא את השם ואת כתובת השרת. יש לאשר לפני ההוספה. אל תדביקו כתובת localhost.
 
-- [Claude](https://claude.ai/customize/connectors): פתיחת מחברי Claude. בחרו Add custom connector והדביקו את כתובת השרת הציבורית כשתהיה.
-- [ChatGPT](https://chatgpt.com/): פתיחת ChatGPT. אחר כך Plugins ואז Add custom MCP server.
+- [Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=PickForge&connectorUrl=https%3A%2F%2Fpickforge-mcp.onrender.com%2Fsse): פותח את Add custom connector עם שם וכתובת שרת מלאים. בדקו אותם ואז הוסיפו.
+  - שם: PickForge
+  - חיבור: https://pickforge-mcp.onrender.com/sse
+- [ChatGPT](https://chatgpt.com/plugins): פותח את ChatGPT Plugins. בחרו Add custom MCP server והזינו שם, תיאור וחיבור. Authentication: No authentication. אחר כך Create as a plugin.
+  - שם: PickForge
+  - תיאור: חיפוש מוצרים עם קישורי שותפים מסומנים. התשלום הוא לחנות, לא ל-PickForge.
+  - חיבור: https://pickforge-mcp.onrender.com/sse
 - [מדריך ChatGPT](https://developers.openai.com/api/docs/guides/custom-mcp-server): השלבים של OpenAI להוספת שרת MCP משלכם.
-- [Grok](https://grok.com/connectors): פתיחת מחברי Grok. בחרו New Connector ואז Custom. הכתובת חייבת להיות HTTPS ציבורי.
+- [Grok](https://grok.com/connectors): פותח את מחברי Grok. בחרו New Connector ואז Custom, והזינו שם וכתובת שרת.
+  - שם: PickForge
+  - חיבור: https://pickforge-mcp.onrender.com/sse
 
 ## גילוי נאות על שותפות
 
@@ -347,7 +368,7 @@ PickForge משתתף ב-Amazon Associates וב-תוכנית השותפים של 
 
 ### איך מוסיפים את PickForge ל-Claude, ל-ChatGPT או ל-Grok?
 
-הכפתורים תחת «הוספת הכלי לעוזר» פותחים את עמוד המחברים של המוצר. PickForge עדיין לא בקטלוג, ולכן הכפתור לא מתקין אותו.
+הכפתורים תחת «חיבור עוזר» פותחים את הגדרות התוספים. Claude פותח Add custom connector עם שם וכתובת שרת מלאים. ChatGPT פותח Plugins: בחרו Add custom MCP server והזינו את השם, התיאור והחיבור מהעמוד הזה. Grok פותח Connectors: New Connector ואז Custom. יש לאשר לפני ש-PickForge נוסף.
 
 ### איך יוצרים קשר עם המוציא לאור?
 
@@ -368,4 +389,4 @@ PickForge משתתף ב-Amazon Associates וב-תוכנית השותפים של 
 - מוציא לאור: PickForge
 - סוג: פרויקט עצמאי (לא קמעונאי)
 - מדינה: ישראל
-- עודכן לאחרונה: 13 בנובמבר 2026
+- עודכן לאחרונה: 14 בנובמבר 2026

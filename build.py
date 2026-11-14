@@ -11,6 +11,7 @@ the placeholder https://pickforge.example/ is used.
 """
 import json, os, re, sys, html
 from pathlib import Path
+from urllib.parse import urlencode
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_ORIGIN = "https://drsemfrankenstein.github.io/pickforge-site"
@@ -22,7 +23,20 @@ if len(sys.argv) > 2:
 SITE_URL = (sys.argv[1] if len(sys.argv) > 1 else DEFAULT_ORIGIN + "/").rstrip("/") + "/"
 if not ALI_LINK_API and "github.io" in SITE_URL:
     ALI_LINK_API = DEFAULT_ALI_LINK_API
-UPDATED_ISO = "2026-11-13"
+UPDATED_ISO = "2026-11-14"
+MCP_NAME = "PickForge"
+MCP_URL = "https://pickforge-mcp.onrender.com/sse"
+MCP_HEALTH_URL = "https://pickforge-mcp.onrender.com/health"
+API_HEALTH_URL = "https://pickforge-api.onrender.com/health"
+FOOT_HEALTH_URLS = (MCP_HEALTH_URL, API_HEALTH_URL, MCP_URL)
+CLAUDE_CONNECT = "https://claude.ai/customize/connectors?" + urlencode({
+    "modal": "add-custom-connector",
+    "connectorName": MCP_NAME,
+    "connectorUrl": MCP_URL,
+})
+CHATGPT_CONNECT = "https://chatgpt.com/plugins"
+GROK_CONNECT = "https://grok.com/connectors"
+CHATGPT_GUIDE = "https://developers.openai.com/api/docs/guides/custom-mcp-server"
 AMAZON_EXACT = "As an Amazon Associate I earn from qualifying purchases."
 ASSOCIATES_ID = "pickforge-20"
 LANGS = ["en", "ru", "he"]
@@ -48,7 +62,7 @@ CONTENT = {
   "lead": "PickForge is a tool an AI assistant can call when you ask it to find a product. It returns a labeled affiliate link. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.",
   "cue": "Scroll for details",
   "hero_asst_h": "Connect an assistant",
-  "hero_asst_p": "Opens that product’s connector settings. These links do not install PickForge yet.",
+  "hero_asst_p": "Opens that product’s plugin settings. Claude fills in the name and server address. You confirm before adding.",
   "hero_more": "All setup options",
   "about_k": "What this site is", "about_h": "An information page for a service in development",
   "about_p": ["PickForge is an independent project. This page describes the service, how we handle affiliate links, and who runs it. It is not a store and does not sell products.",
@@ -85,7 +99,7 @@ CONTENT = {
     ("Are affiliate links labeled?", "Yes. A link that can earn a commission is labeled as a partner link."),
     ("Can I make an Amazon link on this page?", "Yes. The builder returns a full amazon.com address with tag pickforge-20. Open it from this page. The page does not show a price."),
     ("Can I make an AliExpress link on this page?", "Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead."),
-    ("How do I add PickForge to Claude, ChatGPT, or Grok?", "Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it."),
+    ("How do I add PickForge to Claude, ChatGPT, or Grok?", "Use the buttons under Connect an assistant. Claude opens Add custom connector with the name and server address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection on this page. Grok opens Connectors: choose New Connector, then Custom. You confirm before PickForge is added."),
     ("How do I contact the publisher?", "This page has no contact form."),
   ],
   "link": {
@@ -128,13 +142,15 @@ CONTENT = {
     "h": "Add the tool to an assistant",
     "p": [
       "The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.",
-      "The server is not listed in a plugin directory, and it has no public HTTPS address yet. These links open the assistant’s connector page. They do not install PickForge. When you are there, do not paste a localhost address.",
+      "PickForge is not in a plugin directory. The server address is https://pickforge-mcp.onrender.com/sse. Each link opens that product’s add-plugin page. The name, description, and connection are on the card. Claude’s link fills in the name and server address. You confirm before it is added. Do not paste a localhost address.",
     ],
+    "field_labels": {"name": "Name", "description": "Description", "connection": "Connection"},
+    "mcp_description": "Product search with labeled affiliate links. You pay the store, not PickForge.",
     "connectors": [
-      ("Claude", "https://claude.ai/customize/connectors", "Open Claude connectors. Choose Add custom connector, then paste the public server address when it exists.", "claude"),
-      ("ChatGPT", "https://chatgpt.com/", "Open ChatGPT. Then open Plugins and choose Add custom MCP server.", "chatgpt"),
-      ("ChatGPT guide", "https://developers.openai.com/api/docs/guides/custom-mcp-server", "OpenAI’s steps for adding a custom MCP server.", "openai"),
-      ("Grok", "https://grok.com/connectors", "Open Grok connectors. Choose New Connector, then Custom. The address must be public HTTPS.", "grok"),
+      ("Claude", CLAUDE_CONNECT, "Opens Add custom connector with the name and server address filled in. Review them, then add.", "claude", ("name", "connection")),
+      ("ChatGPT", CHATGPT_CONNECT, "Opens ChatGPT Plugins. Choose Add custom MCP server and enter the name, description, and connection. Authentication: No authentication. Then choose Create as a plugin.", "chatgpt", ("name", "description", "connection")),
+      ("ChatGPT guide", CHATGPT_GUIDE, "OpenAI’s steps for adding a custom MCP server.", "chatgpt"),
+      ("Grok", GROK_CONNECT, "Opens Grok connectors. Choose New Connector, then Custom, and enter the name and server address.", "grok", ("name", "connection")),
     ],
   },
   "geo_h": "For AI & generative search (GEO)",
@@ -151,10 +167,11 @@ CONTENT = {
     ("Publisher", "PickForge"),
     ("Entity type", "Independent project (not a retailer)"),
     ("Location", "Israel"),
-    ("Last updated", "13 November 2026"),
+    ("Last updated", "14 November 2026"),
   ],
   "assoc": "As an Amazon Associate I earn from qualifying purchases.",
   "foot_links": ["Privacy", "Links", "Disclosure", "Publisher"],
+  "foot_health": ["Health MCP", "Health API", "SSE (MCP)"],
   "home": "PickForge home",
   "story_label": "About PickForge",
 },
@@ -169,7 +186,7 @@ CONTENT = {
   "lead": "PickForge — инструмент, который ИИ-ассистент вызывает, когда вы просите найти товар. Он возвращает помеченную партнёрскую ссылку. На этой странице также собирается ссылка Amazon.com в вашем браузере. Платите магазину, не PickForge.",
   "cue": "Листайте, чтобы увидеть подробности",
   "hero_asst_h": "Подключить ассистента",
-  "hero_asst_p": "Открывает страницу коннекторов этого продукта. Ссылка пока не устанавливает PickForge.",
+  "hero_asst_p": "Открывает настройки плагинов. Claude подставляет имя и адрес сервера. Подтвердите перед добавлением.",
   "hero_more": "Все способы подключения",
   "about_k": "Что это за сайт", "about_h": "Информационная страница сервиса в разработке",
   "about_p": ["PickForge — независимый проект. Эта страница описывает сервис, то, как мы работаем с партнёрскими ссылками, и кто за ним стоит. Это не магазин, и мы ничего не продаём.",
@@ -206,7 +223,7 @@ CONTENT = {
     ("Помечены ли партнёрские ссылки?", "Да. Ссылка, которая может принести комиссию, помечена как партнёрская."),
     ("Можно ли собрать ссылку Amazon на этой странице?", "Да. Сборщик возвращает полный адрес amazon.com с tag=pickforge-20. Откройте его с этой страницы. Цену страница не показывает."),
     ("Можно ли собрать ссылку AliExpress на этой странице?", "Вставьте URL товара AliExpress — сборщик вызовет API Portals, если подключён публичный endpoint. На статической копии без API используйте слова поиска или URL Amazon."),
-    ("Как добавить PickForge в Claude, ChatGPT или Grok?", "Кнопки в разделе «Добавить инструмент в ассистент» открывают страницу коннекторов этого продукта. PickForge ещё нет в каталоге, поэтому кнопка его не устанавливает."),
+    ("Как добавить PickForge в Claude, ChatGPT или Grok?", "Кнопки в блоке «Подключить ассистента» открывают настройки плагинов. Claude открывает Add custom connector с уже заполненными именем и адресом сервера. ChatGPT открывает Plugins: выберите Add custom MCP server и введите имя, описание и подключение с этой страницы. Grok открывает Connectors: New Connector, затем Custom. Подтвердите, прежде чем PickForge будет добавлен."),
     ("Как связаться с издателем?", "На этой странице нет формы обратной связи."),
   ],
   "link": {
@@ -249,13 +266,15 @@ CONTENT = {
     "h": "Добавить инструмент в ассистент",
     "p": [
       "Поиск товаров — это MCP-сервер: служба, которую ассистент вызывает, когда вы просите найти товар. Он возвращает ссылки. Ссылка, которая может принести комиссию, помечена. Платите магазину, не PickForge.",
-      "Сервер ещё не в каталоге плагинов, и у него нет публичного адреса HTTPS. Эти ссылки открывают страницу коннекторов ассистента. Они не устанавливают PickForge. Не вставляйте туда адрес localhost.",
+      "PickForge ещё нет в каталоге плагинов. Адрес сервера: https://pickforge-mcp.onrender.com/sse. Каждая ссылка открывает страницу добавления плагина. Имя, описание и подключение указаны на карточке. Ссылка Claude подставляет имя и адрес сервера. Подтвердите, прежде чем сервер будет добавлен. Не вставляйте адрес localhost.",
     ],
+    "field_labels": {"name": "Имя", "description": "Описание", "connection": "Подключение"},
+    "mcp_description": "Поиск товаров с помеченными партнёрскими ссылками. Платите магазину, не PickForge.",
     "connectors": [
-      ("Claude", "https://claude.ai/customize/connectors", "Открыть коннекторы Claude. Выберите Add custom connector и вставьте публичный адрес сервера, когда он появится.", "claude"),
-      ("ChatGPT", "https://chatgpt.com/", "Открыть ChatGPT. Затем Plugins и Add custom MCP server.", "chatgpt"),
-      ("Инструкция ChatGPT", "https://developers.openai.com/api/docs/guides/custom-mcp-server", "Шаги OpenAI для своего MCP-сервера.", "openai"),
-      ("Grok", "https://grok.com/connectors", "Открыть коннекторы Grok. Выберите New Connector, затем Custom. Адрес должен быть публичным HTTPS.", "grok"),
+      ("Claude", CLAUDE_CONNECT, "Открывает Add custom connector: имя и адрес сервера уже заполнены. Проверьте их и добавьте.", "claude", ("name", "connection")),
+      ("ChatGPT", CHATGPT_CONNECT, "Открывает ChatGPT Plugins. Выберите Add custom MCP server и введите имя, описание и подключение. Authentication: No authentication. Затем Create as a plugin.", "chatgpt", ("name", "description", "connection")),
+      ("Инструкция ChatGPT", CHATGPT_GUIDE, "Шаги OpenAI для своего MCP-сервера.", "chatgpt"),
+      ("Grok", GROK_CONNECT, "Открывает коннекторы Grok. Выберите New Connector, затем Custom, и введите имя и адрес сервера.", "grok", ("name", "connection")),
     ],
   },
   "geo_h": "Для AI и generative search (GEO)",
@@ -272,10 +291,11 @@ CONTENT = {
     ("Издатель", "PickForge"),
     ("Тип", "Независимый проект (не ритейлер)"),
     ("Страна", "Израиль"),
-    ("Обновлено", "13 ноября 2026"),
+    ("Обновлено", "14 ноября 2026"),
   ],
   "assoc": "As an Amazon Associate I earn from qualifying purchases.",
   "foot_links": ["Конфиденциальность", "Ссылки", "Раскрытие", "Издатель"],
+  "foot_health": ["Health MCP", "Health API", "SSE (MCP)"],
   "home": "PickForge — главная",
   "story_label": "О PickForge",
 },
@@ -290,7 +310,7 @@ CONTENT = {
   "lead": "PickForge הוא כלי שעוזר AI מפעיל כשמבקשים ממנו למצוא מוצר. הוא מחזיר קישור שותפים מסומן. בעמוד הזה נבנית גם כתובת Amazon.com בדפדפן. התשלום הוא לחנות, לא ל-PickForge.",
   "cue": "גללו לפרטים",
   "hero_asst_h": "חיבור עוזר",
-  "hero_asst_p": "פותח את הגדרות המחברים של המוצר. הקישורים עדיין לא מתקינים את PickForge.",
+  "hero_asst_p": "פותח את הגדרות התוספים. Claude ממלא את השם ואת כתובת השרת. יש לאשר לפני ההוספה.",
   "hero_more": "כל אפשרויות החיבור",
   "about_k": "מה האתר הזה", "about_h": "עמוד מידע לשירות בפיתוח",
   "about_p": ["PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירות, איך אנחנו עובדים עם קישורי שותפים ומי עומד מאחוריו. זו לא חנות, ואיננו מוכרים מוצרים.",
@@ -327,7 +347,7 @@ CONTENT = {
     ("האם קישורי השותפים מסומנים?", "כן. קישור שעשוי להניב עמלה מסומן כקישור שותפים."),
     ("אפשר לבנות קישור Amazon בעמוד הזה?", "כן. הבונה מחזיר כתובת amazon.com מלאה עם tag=pickforge-20. פתחו אותה מהעמוד הזה. העמוד לא מציג מחיר."),
     ("אפשר לבנות קישור AliExpress בעמוד הזה?", "הדביקו כתובת מוצר ב-AliExpress — הבונה קורא ל-API של Portals כשיש endpoint ציבורי. בגרסה הסטטית בלי API השתמשו במילות חיפוש או בכתובת Amazon."),
-    ("איך מוסיפים את PickForge ל-Claude, ל-ChatGPT או ל-Grok?", "הכפתורים תחת «הוספת הכלי לעוזר» פותחים את עמוד המחברים של המוצר. PickForge עדיין לא בקטלוג, ולכן הכפתור לא מתקין אותו."),
+    ("איך מוסיפים את PickForge ל-Claude, ל-ChatGPT או ל-Grok?", "הכפתורים תחת «חיבור עוזר» פותחים את הגדרות התוספים. Claude פותח Add custom connector עם שם וכתובת שרת מלאים. ChatGPT פותח Plugins: בחרו Add custom MCP server והזינו את השם, התיאור והחיבור מהעמוד הזה. Grok פותח Connectors: New Connector ואז Custom. יש לאשר לפני ש-PickForge נוסף."),
     ("איך יוצרים קשר עם המוציא לאור?", "בעמוד זה אין טופס יצירת קשר."),
   ],
   "link": {
@@ -370,13 +390,15 @@ CONTENT = {
     "h": "הוספת הכלי לעוזר",
     "p": [
       "חיפוש המוצרים הוא שרת MCP: שירות שהעוזר קורא לו כשמבקשים למצוא מוצר. הוא מחזיר קישורים. קישור שעשוי להניב עמלה מסומן. התשלום הוא לחנות, לא ל-PickForge.",
-      "השרת לא רשום בקטלוג תוספים, ואין לו עדיין כתובת HTTPS ציבורית. הקישורים האלה פותחים את עמוד המחברים של העוזר. הם לא מתקינים את PickForge. אל תדביקו שם כתובת localhost.",
+      "PickForge לא רשום בקטלוג תוספים. כתובת השרת: https://pickforge-mcp.onrender.com/sse. כל קישור פותח את עמוד הוספת התוסף. השם, התיאור והחיבור מופיעים בכרטיס. הקישור של Claude ממלא את השם ואת כתובת השרת. יש לאשר לפני ההוספה. אל תדביקו כתובת localhost.",
     ],
+    "field_labels": {"name": "שם", "description": "תיאור", "connection": "חיבור"},
+    "mcp_description": "חיפוש מוצרים עם קישורי שותפים מסומנים. התשלום הוא לחנות, לא ל-PickForge.",
     "connectors": [
-      ("Claude", "https://claude.ai/customize/connectors", "פתיחת מחברי Claude. בחרו Add custom connector והדביקו את כתובת השרת הציבורית כשתהיה.", "claude"),
-      ("ChatGPT", "https://chatgpt.com/", "פתיחת ChatGPT. אחר כך Plugins ואז Add custom MCP server.", "chatgpt"),
-      ("מדריך ChatGPT", "https://developers.openai.com/api/docs/guides/custom-mcp-server", "השלבים של OpenAI להוספת שרת MCP משלכם.", "openai"),
-      ("Grok", "https://grok.com/connectors", "פתיחת מחברי Grok. בחרו New Connector ואז Custom. הכתובת חייבת להיות HTTPS ציבורי.", "grok"),
+      ("Claude", CLAUDE_CONNECT, "פותח את Add custom connector עם שם וכתובת שרת מלאים. בדקו אותם ואז הוסיפו.", "claude", ("name", "connection")),
+      ("ChatGPT", CHATGPT_CONNECT, "פותח את ChatGPT Plugins. בחרו Add custom MCP server והזינו שם, תיאור וחיבור. Authentication: No authentication. אחר כך Create as a plugin.", "chatgpt", ("name", "description", "connection")),
+      ("מדריך ChatGPT", CHATGPT_GUIDE, "השלבים של OpenAI להוספת שרת MCP משלכם.", "chatgpt"),
+      ("Grok", GROK_CONNECT, "פותח את מחברי Grok. בחרו New Connector ואז Custom, והזינו שם וכתובת שרת.", "grok", ("name", "connection")),
     ],
   },
   "geo_h": "ל-AI וחיפוש גנרטיבי (GEO)",
@@ -393,10 +415,11 @@ CONTENT = {
     ("מוציא לאור", "PickForge"),
     ("סוג", "פרויקט עצמאי (לא קמעונאי)"),
     ("מדינה", "ישראל"),
-    ("עודכן לאחרונה", "13 בנובמבר 2026"),
+    ("עודכן לאחרונה", "14 בנובמבר 2026"),
   ],
   "assoc": "As an Amazon Associate I earn from qualifying purchases.",
   "foot_links": ["פרטיות", "קישורים", "גילוי נאות", "מוציא לאור"],
+  "foot_health": ["Health MCP", "Health API", "SSE (MCP)"],
   "home": "PickForge — דף הבית",
   "story_label": "אודות PickForge",
 },
@@ -405,7 +428,24 @@ CONTENT = {
 def strip(s):
     return html.unescape(re.sub(r"<[^>]+>", "", s))
 
-def connector_li(rel, name, href, detail, icon=None):
+def connector_fields_html(labels, description, keys):
+    if not keys:
+        return ""
+    values = {"name": MCP_NAME, "description": description, "connection": MCP_URL}
+    bits = []
+    for key in keys:
+        bits.append(
+            "<div>"
+            f"<dt>{html.escape(labels[key])}</dt>"
+            f"<dd><code>{html.escape(values[key])}</code></dd>"
+            "</div>"
+        )
+    return f'<dl class="connector-fields">{"".join(bits)}</dl>'
+
+def connector_li(rel, row, labels, description):
+    name, href, detail = row[0], row[1], row[2]
+    icon = row[3] if len(row) > 3 else None
+    keys = row[4] if len(row) > 4 else ()
     icon_bit = ""
     if icon:
         src = f"{rel}assets/connectors/{icon}.svg"
@@ -420,8 +460,16 @@ def connector_li(rel, name, href, detail, icon=None):
         f'<div class="connector-body">'
         f'<a href="{html.escape(href, quote=True)}" rel="noopener noreferrer">{html.escape(name)}</a>'
         f"<p>{html.escape(detail)}</p>"
+        f"{connector_fields_html(labels, description, keys)}"
         f"</div></li>"
     )
+
+def connector_md(row, labels, description):
+    lines = [f"- [{row[0]}]({row[1]}): {row[2]}"]
+    values = {"name": MCP_NAME, "description": description, "connection": MCP_URL}
+    for key in (row[4] if len(row) > 4 else ()):
+        lines.append(f"  - {labels[key]}: {values[key]}")
+    return "\n".join(lines)
 
 def connector_hero_li(rel, name, href, icon):
     src = f"{rel}assets/connectors/{icon}.svg"
@@ -438,7 +486,7 @@ def connector_hero_li(rel, name, href, icon):
     )
 
 def hero_connectors_html(rel, rows):
-    picked = [r for r in rows if len(r) > 3 and r[3] in HERO_CONNECTOR_ICONS]
+    picked = [r for r in rows if len(r) > 4 and r[3] in HERO_CONNECTOR_ICONS]
     return "\n".join(connector_hero_li(rel, r[0], r[1], r[3]) for r in picked)
 
 def partners_section_html(rel, partners):
@@ -529,6 +577,10 @@ def page(lang):
     fine = "".join(f'<p class="fine">{p}</p>' for p in c["disc_fine"])
     assoc = f'<span>{c["assoc"]}</span>'
     fl = c["foot_links"]
+    fh = " · ".join(
+        f'<a href="{u}" rel="noopener noreferrer" target="_blank">{html.escape(l)}</a>'
+        for l, u in zip(c["foot_health"], FOOT_HEALTH_URLS)
+    )
     L = c["link"]
     link_json = json.dumps({
         "placeholder": L["placeholder"], "autoNote": L["autoNote"],
@@ -546,7 +598,7 @@ def page(lang):
     A = c["assistant"]
     assistant_ps = "".join(f"<p>{html.escape(p)}</p>" for p in A["p"])
     connectors = "\n".join(
-        connector_li(rel, row[0], row[1], row[2], row[3] if len(row) > 3 else None)
+        connector_li(rel, row, A["field_labels"], A["mcp_description"])
         for row in A["connectors"]
     )
     hero_connectors = hero_connectors_html(rel, A["connectors"])
@@ -693,7 +745,7 @@ def page(lang):
       {partners_block}
       <section class="assistant" id="assistant" aria-labelledby="asst-h">
         <h2 class="sec" id="asst-h">{html.escape(A["h"])}</h2>
-        <div>{assistant_ps}<ul class="connectors">{connectors}</ul></div>
+        <div>{assistant_ps}<ul class="connectors connectors--setup">{connectors}</ul><p class="assistant-health" dir="ltr">{fh}</p></div>
       </section>
       <section class="disclosure" id="disclosure" aria-labelledby="disc-h">
         <h2 id="disc-h">{c["disc_h"]}</h2>
@@ -742,7 +794,7 @@ def markdown(lang):
     out += [f"- **{name}** ({program}): {detail}" for name, _icon, program, detail in Pr["items"]] + [""]
     A = c["assistant"]
     out += [f"## {A['h']}", ""] + [p + "\n" for p in A["p"]]
-    out += [f"- [{row[0]}]({row[1]}): {row[2]}" for row in A["connectors"]] + [""]
+    out += [connector_md(row, A["field_labels"], A["mcp_description"]) for row in A["connectors"]] + [""]
     out += [f"## {c['disc_h']}", "", strip(c["disc_p"]), ""] + [strip(p) + "\n" for p in c["disc_fine"]]
     out += [f"## {c['priv_h']}", ""] + [p + "\n" for p in c["priv"]]
     out += [f"## {c['faq_h']}", ""]
@@ -782,11 +834,12 @@ def llms_txt():
 
 ## Service
 
-""" + "\n".join(f"- {h}: {p}" for t, h, p in e["guides"]) + """
+""" + "\n".join(f"- {h}: {p}" for t, h, p in e["guides"]) + f"""
 
 ## Assistant connectors
 
-The MCP server is not published and has no public HTTPS address. These URLs open the assistant’s connector page. They do not install PickForge. Do not paste a localhost address.
+The public MCP address is {MCP_URL} (SSE). Name: {MCP_NAME}. Description: {e["assistant"]["mcp_description"]}
+Claude opens Add custom connector with the name and address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection, with no authentication. Grok opens Connectors: choose New Connector, then Custom. Confirm before adding. Do not paste a localhost address.
 
 """ + "\n".join(f"- {row[0]}: {row[1]}" for row in e["assistant"]["connectors"]) + f"""
 

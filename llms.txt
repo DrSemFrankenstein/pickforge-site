@@ -31,10 +31,11 @@
 
 ## Assistant connectors
 
-The MCP server is not published and has no public HTTPS address. These URLs open the assistant’s connector page. They do not install PickForge. Do not paste a localhost address.
+The public MCP address is https://pickforge-mcp.onrender.com/sse (SSE). Name: PickForge. Description: Product search with labeled affiliate links. You pay the store, not PickForge.
+Claude opens Add custom connector with the name and address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection, with no authentication. Grok opens Connectors: choose New Connector, then Custom. Confirm before adding. Do not paste a localhost address.
 
-- Claude: https://claude.ai/customize/connectors
-- ChatGPT: https://chatgpt.com/
+- Claude: https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=PickForge&connectorUrl=https%3A%2F%2Fpickforge-mcp.onrender.com%2Fsse
+- ChatGPT: https://chatgpt.com/plugins
 - ChatGPT guide: https://developers.openai.com/api/docs/guides/custom-mcp-server
 - Grok: https://grok.com/connectors
 
@@ -53,7 +54,7 @@ The MCP server is not published and has no public HTTPS address. These URLs open
 - Q: Can I make an AliExpress link on this page?
   A: Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead.
 - Q: How do I add PickForge to Claude, ChatGPT, or Grok?
-  A: Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it.
+  A: Use the buttons under Connect an assistant. Claude opens Add custom connector with the name and server address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection on this page. Grok opens Connectors: choose New Connector, then Custom. You confirm before PickForge is added.
 - Q: How do I contact the publisher?
   A: This page has no contact form.
 

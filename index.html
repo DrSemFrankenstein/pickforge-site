@@ -97,7 +97,7 @@
       "publisher": {
         "@id": "https://drsemfrankenstein.github.io/pickforge-site/#org"
       },
-      "dateModified": "2026-11-13",
+      "dateModified": "2026-11-14",
       "primaryImageOfPage": "https://drsemfrankenstein.github.io/pickforge-site/assets/og.jpg",
       "speakable": {
         "@type": "SpeakableSpecification",
@@ -223,7 +223,7 @@
           "name": "How do I add PickForge to Claude, ChatGPT, or Grok?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it."
+            "text": "Use the buttons under Connect an assistant. Claude opens Add custom connector with the name and server address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection on this page. Grok opens Connectors: choose New Connector, then Custom. You confirm before PickForge is added."
           }
         },
         {
@@ -272,10 +272,10 @@
           </div>
           <aside class="hero-aside" aria-labelledby="hero-asst-h">
             <p class="kicker" id="hero-asst-h">Connect an assistant</p>
-            <p class="fine hero-aside-note">Opens that product’s connector settings. These links do not install PickForge yet.</p>
+            <p class="fine hero-aside-note">Opens that product’s plugin settings. Claude fills in the name and server address. You confirm before adding.</p>
             <ul class="connectors connectors--hero">
-<li class="connector-card connector-card--compact"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/claude.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><a href="https://claude.ai/customize/connectors" rel="noopener noreferrer">Claude</a></li>
-<li class="connector-card connector-card--compact"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/chatgpt.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><a href="https://chatgpt.com/" rel="noopener noreferrer">ChatGPT</a></li>
+<li class="connector-card connector-card--compact"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/claude.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><a href="https://claude.ai/customize/connectors?modal=add-custom-connector&amp;connectorName=PickForge&amp;connectorUrl=https%3A%2F%2Fpickforge-mcp.onrender.com%2Fsse" rel="noopener noreferrer">Claude</a></li>
+<li class="connector-card connector-card--compact"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/chatgpt.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><a href="https://chatgpt.com/plugins" rel="noopener noreferrer">ChatGPT</a></li>
 <li class="connector-card connector-card--compact"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/grok.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><a href="https://grok.com/connectors" rel="noopener noreferrer">Grok</a></li>
             </ul>
             <p class="hero-more"><a href="#assistant">All setup options</a></p>
@@ -347,10 +347,10 @@
       <section class="partners" id="partners" aria-labelledby="partners-h"><h2 class="sec" id="partners-h">Partners</h2><p class="partners-intro">Product search and labeled affiliate links use these programs. Checkout stays on each merchant’s site. Store names are trademarks of their owners.</p><ul class="partners-grid"><li class="partner-card"><span class="partner-icon" aria-hidden="true"><img src="assets/stores/amazon.svg" alt="" width="56" height="56" loading="lazy" decoding="async"></span><div class="partner-body"><p class="partner-name">Amazon</p><p class="partner-program">Amazon Associates</p><p>Product and search links on amazon.com include Associates ID pickforge-20.</p></div></li><li class="partner-card"><span class="partner-icon" aria-hidden="true"><img src="assets/stores/aliexpress.svg" alt="" width="56" height="56" loading="lazy" decoding="async"></span><div class="partner-body"><p class="partner-name">AliExpress</p><p class="partner-program">AliExpress Portals</p><p>Official promotion links are created only through the Portals affiliate API.</p></div></li></ul></section>
       <section class="assistant" id="assistant" aria-labelledby="asst-h">
         <h2 class="sec" id="asst-h">Add the tool to an assistant</h2>
-        <div><p>The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.</p><p>The server is not listed in a plugin directory, and it has no public HTTPS address yet. These links open the assistant’s connector page. They do not install PickForge. When you are there, do not paste a localhost address.</p><ul class="connectors"><li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/claude.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://claude.ai/customize/connectors" rel="noopener noreferrer">Claude</a><p>Open Claude connectors. Choose Add custom connector, then paste the public server address when it exists.</p></div></li>
-<li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/chatgpt.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://chatgpt.com/" rel="noopener noreferrer">ChatGPT</a><p>Open ChatGPT. Then open Plugins and choose Add custom MCP server.</p></div></li>
-<li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/openai.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://developers.openai.com/api/docs/guides/custom-mcp-server" rel="noopener noreferrer">ChatGPT guide</a><p>OpenAI’s steps for adding a custom MCP server.</p></div></li>
-<li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/grok.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://grok.com/connectors" rel="noopener noreferrer">Grok</a><p>Open Grok connectors. Choose New Connector, then Custom. The address must be public HTTPS.</p></div></li></ul></div>
+        <div><p>The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.</p><p>PickForge is not in a plugin directory. The server address is https://pickforge-mcp.onrender.com/sse. Each link opens that product’s add-plugin page. The name, description, and connection are on the card. Claude’s link fills in the name and server address. You confirm before it is added. Do not paste a localhost address.</p><ul class="connectors connectors--setup"><li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/claude.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://claude.ai/customize/connectors?modal=add-custom-connector&amp;connectorName=PickForge&amp;connectorUrl=https%3A%2F%2Fpickforge-mcp.onrender.com%2Fsse" rel="noopener noreferrer">Claude</a><p>Opens Add custom connector with the name and server address filled in. Review them, then add.</p><dl class="connector-fields"><div><dt>Name</dt><dd><code>PickForge</code></dd></div><div><dt>Connection</dt><dd><code>https://pickforge-mcp.onrender.com/sse</code></dd></div></dl></div></li>
+<li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/chatgpt.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://chatgpt.com/plugins" rel="noopener noreferrer">ChatGPT</a><p>Opens ChatGPT Plugins. Choose Add custom MCP server and enter the name, description, and connection. Authentication: No authentication. Then choose Create as a plugin.</p><dl class="connector-fields"><div><dt>Name</dt><dd><code>PickForge</code></dd></div><div><dt>Description</dt><dd><code>Product search with labeled affiliate links. You pay the store, not PickForge.</code></dd></div><div><dt>Connection</dt><dd><code>https://pickforge-mcp.onrender.com/sse</code></dd></div></dl></div></li>
+<li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/chatgpt.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://developers.openai.com/api/docs/guides/custom-mcp-server" rel="noopener noreferrer">ChatGPT guide</a><p>OpenAI’s steps for adding a custom MCP server.</p></div></li>
+<li class="connector-card"><span class="connector-icon" aria-hidden="true"><img src="assets/connectors/grok.svg" alt="" width="40" height="40" loading="lazy" decoding="async"></span><div class="connector-body"><a href="https://grok.com/connectors" rel="noopener noreferrer">Grok</a><p>Opens Grok connectors. Choose New Connector, then Custom, and enter the name and server address.</p><dl class="connector-fields"><div><dt>Name</dt><dd><code>PickForge</code></dd></div><div><dt>Connection</dt><dd><code>https://pickforge-mcp.onrender.com/sse</code></dd></div></dl></div></li></ul><p class="assistant-health" dir="ltr"><a href="https://pickforge-mcp.onrender.com/health" rel="noopener noreferrer" target="_blank">Health MCP</a> · <a href="https://pickforge-api.onrender.com/health" rel="noopener noreferrer" target="_blank">Health API</a> · <a href="https://pickforge-mcp.onrender.com/sse" rel="noopener noreferrer" target="_blank">SSE (MCP)</a></p></div>
       </section>
       <section class="disclosure" id="disclosure" aria-labelledby="disc-h">
         <h2 id="disc-h">Affiliate disclosure</h2>
@@ -368,12 +368,12 @@
 <details><summary>Are affiliate links labeled?</summary><p>Yes. A link that can earn a commission is labeled as a partner link.</p></details>
 <details><summary>Can I make an Amazon link on this page?</summary><p>Yes. The builder returns a full amazon.com address with tag pickforge-20. Open it from this page. The page does not show a price.</p></details>
 <details><summary>Can I make an AliExpress link on this page?</summary><p>Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead.</p></details>
-<details><summary>How do I add PickForge to Claude, ChatGPT, or Grok?</summary><p>Use the buttons under Add the tool to an assistant. Each one opens that product’s connector page. PickForge is not in a directory yet, so the button does not install it.</p></details>
+<details><summary>How do I add PickForge to Claude, ChatGPT, or Grok?</summary><p>Use the buttons under Connect an assistant. Claude opens Add custom connector with the name and server address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection on this page. Grok opens Connectors: choose New Connector, then Custom. You confirm before PickForge is added.</p></details>
 <details><summary>How do I contact the publisher?</summary><p>This page has no contact form.</p></details>
       </section>
       <section class="publisher" id="publisher" aria-labelledby="pub-h">
         <h2 class="sec" id="pub-h">Publisher</h2>
-        <dl><dt>Publisher</dt><dd>PickForge</dd><dt>Entity type</dt><dd>Independent project (not a retailer)</dd><dt>Location</dt><dd>Israel</dd><dt>Last updated</dt><dd>13 November 2026</dd></dl>
+        <dl><dt>Publisher</dt><dd>PickForge</dd><dt>Entity type</dt><dd>Independent project (not a retailer)</dd><dt>Location</dt><dd>Israel</dd><dt>Last updated</dt><dd>14 November 2026</dd></dl>
       </section>
     </div>
   </div>

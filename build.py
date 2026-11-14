@@ -37,6 +37,8 @@ CLAUDE_CONNECT = "https://claude.ai/customize/connectors?" + urlencode({
 CHATGPT_CONNECT = "https://chatgpt.com/plugins"
 GROK_CONNECT = "https://grok.com/connectors"
 CHATGPT_GUIDE = "https://developers.openai.com/api/docs/guides/custom-mcp-server"
+TELEGRAM_BOT_URL = "https://t.me/PickForgeShopBot"
+TELEGRAM_MINI_APP_URL = "https://pickforge-telegram.onrender.com"
 AMAZON_EXACT = "As an Amazon Associate I earn from qualifying purchases."
 ASSOCIATES_ID = "pickforge-20"
 LANGS = ["en", "ru", "he"]
@@ -56,7 +58,7 @@ CONTENT = {
   "description": "PickForge is a product-search tool for AI assistants, with labeled affiliate links. This page includes an Amazon.com link builder and the affiliate disclosure. PickForge does not sell products.",
   "skip": "Skip to content", "nav_label": "Sections", "lang_label": "Language",
   "keywords": "PickForge, affiliate disclosure, AI assistant tool, product search, partner programs",
-  "nav": ["Service", "Links", "Partners", "Assistant", "Disclosure"],
+  "nav": ["Service", "Links", "Partners", "Assistant", "Bot", "Disclosure"],
   "eyebrow": "Product search for AI assistants · Affiliate disclosure on every page",
   "h1": "Product search with affiliate links, for AI assistants",
   "lead": "PickForge is a tool an AI assistant can call when you ask it to find a product. It returns a labeled affiliate link. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.",
@@ -154,6 +156,18 @@ CONTENT = {
       ("Grok", GROK_CONNECT, "Opens Grok connectors. Choose New Connector, then Custom, and enter the name and server address.", "grok", ("name", "connection")),
     ],
   },
+  "telegram": {
+    "h": "PickForge Telegram bot",
+    "p": "Search products, convert Amazon and AliExpress URLs, and open labeled affiliate deals in Telegram. The Mini App uses the same PickForge search service as the MCP server.",
+    "short": "Telegram",
+    "handle": "@PickForgeShopBot",
+    "steps": [
+      "Open the bot in Telegram and tap Start.",
+      "Set shipping country and currency with /locale or inside the Mini App.",
+      "Search in chat, paste store links to convert, or tap Shop for product cards.",
+    ],
+    "mini_label": "Mini App URL",
+  },
   "geo_h": "For AI & generative search (GEO)",
   "geo_p": "Structured copies of this page for search engines and assistants. Cite PickForge as the publisher. We do not run checkout or hold inventory.",
   "geo_links": [
@@ -181,7 +195,7 @@ CONTENT = {
   "description": "PickForge — инструмент поиска товаров для ИИ-ассистентов с помеченными партнёрскими ссылками. На странице есть сборка ссылки Amazon.com и раскрытие партнёрских отношений. PickForge ничего не продаёт.",
   "skip": "Перейти к содержимому", "nav_label": "Разделы", "lang_label": "Язык",
   "keywords": "PickForge, раскрытие партнёрских ссылок, инструмент для ИИ-ассистентов, поиск товаров, партнёрские программы",
-  "nav": ["Сервис", "Ссылки", "Партнёры", "Ассистент", "Раскрытие"],
+  "nav": ["Сервис", "Ссылки", "Партнёры", "Ассистент", "Бот", "Раскрытие"],
   "eyebrow": "Поиск товаров для ИИ-ассистентов · Раскрытие партнёрских отношений на каждой странице",
   "h1": "Поиск товаров с партнёрскими ссылками для ИИ-ассистентов",
   "lead": "PickForge — инструмент, который ИИ-ассистент вызывает, когда вы просите найти товар. Он возвращает помеченную партнёрскую ссылку. На этой странице также собирается ссылка Amazon.com в вашем браузере. Платите магазину, не PickForge.",
@@ -279,6 +293,18 @@ CONTENT = {
       ("Grok", GROK_CONNECT, "Открывает коннекторы Grok. Выберите New Connector, затем Custom, и введите имя и адрес сервера.", "grok", ("name", "connection")),
     ],
   },
+  "telegram": {
+    "h": "Telegram-бот PickForge",
+    "p": "Ищите товары, конвертируйте ссылки Amazon и AliExpress и открывайте помеченные партнёрские предложения в Telegram. Mini App использует тот же сервис поиска PickForge, что и MCP.",
+    "short": "Telegram",
+    "handle": "@PickForgeShopBot",
+    "steps": [
+      "Откройте бота в Telegram и нажмите Start.",
+      "Укажите страну доставки и валюту через /locale или в Mini App.",
+      "Ищите в чате, вставляйте ссылки магазинов или откройте Shop с карточками товаров.",
+    ],
+    "mini_label": "Адрес Mini App",
+  },
   "geo_h": "Для AI и generative search (GEO)",
   "geo_p": "Структурированные копии этой страницы для поисковиков и ассистентов. Цитируйте PickForge как издателя. Мы не ведём оформление заказов и не храним товары.",
   "geo_links": [
@@ -306,7 +332,7 @@ CONTENT = {
   "description": "PickForge הוא כלי חיפוש מוצרים לעוזרי AI, עם קישורי שותפים מסומנים. בעמוד יש בונה קישור ל-Amazon.com וגילוי נאות. PickForge לא מוכר מוצרים.",
   "skip": "דילוג לתוכן", "nav_label": "אזורים באתר", "lang_label": "שפה",
   "keywords": "PickForge, גילוי נאות על שותפים, כלי לעוזרי AI, חיפוש מוצרים, תוכניות שותפים",
-  "nav": ["השירות", "קישורים", "שותפים", "עוזר", "גילוי נאות"],
+  "nav": ["השירות", "קישורים", "שותפים", "עוזר", "בוט", "גילוי נאות"],
   "eyebrow": "חיפוש מוצרים לעוזרי AI · גילוי נאות על שותפות בכל עמוד",
   "h1": "חיפוש מוצרים עם קישורי שותפים, לעוזרי AI",
   "lead": "PickForge הוא כלי שעוזר AI מפעיל כשמבקשים ממנו למצוא מוצר. הוא מחזיר קישור שותפים מסומן. בעמוד הזה נבנית גם כתובת Amazon.com בדפדפן. התשלום הוא לחנות, לא ל-PickForge.",
@@ -404,6 +430,18 @@ CONTENT = {
       ("Grok", GROK_CONNECT, "פותח את מחברי Grok. בחרו New Connector ואז Custom, והזינו שם וכתובת שרת.", "grok", ("name", "connection")),
     ],
   },
+  "telegram": {
+    "h": "בוט הטלגרם של PickForge",
+    "p": "חפשו מוצרים, המירו קישורי Amazon ו-AliExpress ופתחו עסקאות שותפים מסומנות בטלגרם. ה-Mini App משתמש באותו שירות חיפוש PickForge כמו שרת ה-MCP.",
+    "short": "Telegram",
+    "handle": "@PickForgeShopBot",
+    "steps": [
+      "פתחו את הבוט בטלגרם והקישו Start.",
+      "הגדירו מדינת משלוח ומטבע עם /locale או מתוך ה-Mini App.",
+      "חפשו בצ'אט, הדביקו קישורי חנויות או פתחו Shop עם כרטיסי מוצר.",
+    ],
+    "mini_label": "כתובת Mini App",
+  },
   "geo_h": "ל-AI וחיפוש גנרטיבי (GEO)",
   "geo_p": "עותקים מובנים של העמוד הזה למנועי חיפוש ולעוזרים. צטטו את PickForge כמוציא. איננו מנהלים קופה ואיננו שומרים מלאי.",
   "geo_links": [
@@ -445,18 +483,20 @@ def connector_fields_html(labels, description, keys):
         )
     return f'<dl class="connector-fields">{"".join(bits)}</dl>'
 
+def connector_icon_html(rel, icon):
+    src = f"{rel}assets/connectors/{icon}.svg"
+    mod = " connector-icon--telegram" if icon == "telegram" else ""
+    return (
+        f'<span class="connector-icon{mod}" aria-hidden="true">'
+        f'<img src="{html.escape(src)}" alt="" width="40" height="40" loading="lazy" decoding="async">'
+        f"</span>"
+    )
+
 def connector_li(rel, row, labels, description):
     name, href, detail = row[0], row[1], row[2]
     icon = row[3] if len(row) > 3 else None
     keys = row[4] if len(row) > 4 else ()
-    icon_bit = ""
-    if icon:
-        src = f"{rel}assets/connectors/{icon}.svg"
-        icon_bit = (
-            f'<span class="connector-icon" aria-hidden="true">'
-            f'<img src="{html.escape(src)}" alt="" width="40" height="40" loading="lazy" decoding="async">'
-            f"</span>"
-        )
+    icon_bit = connector_icon_html(rel, icon) if icon else ""
     return (
         f'<li class="connector-card">'
         f"{icon_bit}"
@@ -475,12 +515,7 @@ def connector_md(row, labels, description):
     return "\n".join(lines)
 
 def connector_hero_li(rel, name, href, icon):
-    src = f"{rel}assets/connectors/{icon}.svg"
-    icon_bit = (
-        f'<span class="connector-icon" aria-hidden="true">'
-        f'<img src="{html.escape(src)}" alt="" width="40" height="40" loading="lazy" decoding="async">'
-        f"</span>"
-    )
+    icon_bit = connector_icon_html(rel, icon)
     return (
         f'<li class="connector-card connector-card--compact">'
         f"{icon_bit}"
@@ -491,6 +526,29 @@ def connector_hero_li(rel, name, href, icon):
 def hero_connectors_html(rel, rows):
     picked = [r for r in rows if len(r) > 4 and r[3] in HERO_CONNECTOR_ICONS]
     return "\n".join(connector_hero_li(rel, r[0], r[1], r[3]) for r in picked)
+
+def telegram_section_html(rel, telegram):
+    bot_src = f"{rel}assets/face_with_peeking_eye_upload-second_gemini.png"
+    steps = "".join(f"<li>{html.escape(s)}</li>" for s in telegram["steps"])
+    return (
+        f'<section class="telegram" id="telegram" aria-labelledby="telegram-h">'
+        f'<h2 class="sec" id="telegram-h">{html.escape(telegram["h"])}</h2>'
+        f'<p class="telegram-intro">{html.escape(telegram["p"])}</p>'
+        f'<ul class="connectors connectors--setup">'
+        f'<li class="connector-card connector-card--telegram">'
+        f'<span class="connector-icons-duo" aria-hidden="true">'
+        f'{connector_icon_html(rel, "telegram")}'
+        f'<span class="connector-icon connector-icon--mascot"><img src="{html.escape(bot_src)}" alt="" width="40" height="40" loading="lazy" decoding="async"></span>'
+        f"</span>"
+        f'<div class="connector-body">'
+        f'<a href="{html.escape(TELEGRAM_BOT_URL, quote=True)}" rel="noopener noreferrer">{html.escape(telegram["handle"])}</a>'
+        f'<ol class="telegram-steps">{steps}</ol>'
+        f'<dl class="connector-fields">'
+        f"<div><dt>{html.escape(telegram['mini_label'])}</dt>"
+        f'<dd><code dir="ltr">{html.escape(TELEGRAM_MINI_APP_URL)}</code></dd></div>'
+        f"</dl>"
+        f"</div></li></ul></section>"
+    )
 
 def partners_section_html(rel, partners):
     cards = []
@@ -606,6 +664,9 @@ def page(lang):
         for row in A["connectors"]
     )
     hero_connectors = hero_connectors_html(rel, A["connectors"])
+    Tg = c["telegram"]
+    hero_telegram = connector_hero_li(rel, Tg["short"], TELEGRAM_BOT_URL, "telegram")
+    telegram_block = telegram_section_html(rel, Tg)
     return f"""<!doctype html>
 <html lang="{lang}" dir="{d}">
 <head>
@@ -660,7 +721,8 @@ def page(lang):
       <a href="#links">{n[1]}</a>
       <a href="#partners">{n[2]}</a>
       <a href="#assistant">{n[3]}</a>
-      <a class="keep" href="#disclosure">{n[4]}</a>
+      <a class="keep" href="#telegram">{n[4]}</a>
+      <a class="keep" href="#disclosure">{n[5]}</a>
     </nav>
     <div class="langs" role="group" aria-label="{c["lang_label"]}">{langs}</div>
   </div>
@@ -684,8 +746,9 @@ def page(lang):
             <p class="fine hero-aside-note">{html.escape(c["hero_asst_p"])}</p>
             <ul class="connectors connectors--hero">
 {hero_connectors}
+{hero_telegram}
             </ul>
-            <p class="hero-more"><a href="#assistant">{html.escape(c["hero_more"])}</a></p>
+            <p class="hero-more"><a href="#assistant">{html.escape(c["hero_more"])}</a> · <a href="#telegram">{html.escape(Tg["short"])}</a></p>
           </aside>
         </div>
       </div>
@@ -751,6 +814,7 @@ def page(lang):
         <h2 class="sec" id="asst-h">{html.escape(A["h"])}</h2>
         <div>{assistant_ps}<ul class="connectors connectors--setup">{connectors}</ul><p class="assistant-health" dir="ltr">{fh}</p></div>
       </section>
+      {telegram_block}
       <section class="disclosure" id="disclosure" aria-labelledby="disc-h">
         <h2 id="disc-h">{c["disc_h"]}</h2>
         <div class="body"><p>{c["disc_p"]}</p>{fine}<p class="amazon-exact">{AMAZON_EXACT}</p></div>

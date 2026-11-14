@@ -136,6 +136,10 @@ a:hover{text-decoration-color:var(--ribbon)}
 .url{font:500 .95rem/1.45 Consolas,ui-monospace,monospace;overflow-wrap:anywhere;color:var(--ink);margin:0}
 .status{min-height:1.4em;color:var(--ribbon);font:600 .95rem/1.4 var(--display)}
 .status.ok{color:var(--olive)}
+.status.busy{display:flex;align-items:center;gap:.55rem;color:var(--ink-2)}
+.status.busy::before{content:"";width:.95em;height:.95em;flex:0 0 auto;border:2px solid var(--line);border-top-color:var(--ribbon);border-radius:50%;animation:link-spin .7s linear infinite}
+@keyframes link-spin{to{transform:rotate(360deg)}}
+.tool-body form button.is-busy{cursor:wait;opacity:.88}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .assistant{grid-column:1/-1}
 .connectors{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));gap:.85rem}

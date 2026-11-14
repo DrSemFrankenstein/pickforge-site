@@ -149,6 +149,12 @@ async function aliExpressLink(sourceUrl, endpoint) {
   return data.affiliateUrl;
 }
 
+function paintYield() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(resolve));
+  });
+}
+
 function boot() {
   if (typeof document === "undefined") return;
   const root = document.querySelector("[data-link-tool]");
@@ -212,6 +218,20 @@ function boot() {
     setTimeout(() => { copyButton.textContent = label; }, 1400);
   });
 
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  function setWorking(on) {
+    form.setAttribute("aria-busy", on ? "true" : "false");
+    if (input) input.readOnly = on;
+    if (submitButton) {
+      submitButton.disabled = on;
+      submitButton.classList.toggle("is-busy", on);
+    }
+    if (on && copy.working) {
+      setStatus(copy.working, "busy");
+    }
+  }
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const value = input.value.trim();
@@ -228,8 +248,8 @@ function boot() {
       return;
     }
 
-    const submitButton = form.querySelector('button[type="submit"]');
-    if (submitButton) submitButton.disabled = true;
+    setWorking(true);
+    await paintYield();
 
     try {
       if (mode === "aliexpress") {
@@ -249,7 +269,7 @@ function boot() {
         : (error.message || copy.err_page);
       setStatus(message, "warn");
     } finally {
-      if (submitButton) submitButton.disabled = false;
+      setWorking(false);
     }
   });
 }

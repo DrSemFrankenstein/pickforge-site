@@ -39,6 +39,8 @@ GROK_CONNECT = "https://grok.com/connectors"
 CHATGPT_GUIDE = "https://developers.openai.com/api/docs/guides/custom-mcp-server"
 TELEGRAM_BOT_URL = "https://t.me/PickForgeShopBot"
 TELEGRAM_MINI_APP_URL = "https://pickforge-telegram.onrender.com"
+# Direct Mini App launch (short name must match BotFather “Configure Mini App”).
+TELEGRAM_MINI_APP_OPEN = "https://t.me/PickForgeShopBot?startapp"
 AMAZON_EXACT = "As an Amazon Associate I earn from qualifying purchases."
 ASSOCIATES_ID = "pickforge-20"
 LANGS = ["en", "ru", "he"]
@@ -132,6 +134,23 @@ CONTENT = {
     "err_ali_no_api": "AliExpress links need the PickForge link API, which is not wired on this static page. Use search words or an Amazon URL.",
     "err_ali_page": "Paste an AliExpress product page. The address must contain /item/ and the product number.",
     "err_ali_fetch": "Could not reach the PickForge link API. Run pickforge-mcp locally on port 3099, or rebuild this page with a public data-ali-endpoint URL.",
+  },
+  "mini_app": {
+    "h": "Telegram Mini App",
+    "p": "The same PickForge search and link tools run inside Telegram. Browsers cannot host the live Mini App (Telegram signs each session); use the button below to open it.",
+    "note": "Preview only — cards and search work after you open the bot and tap Shop or Menu.",
+    "open_bot": "Open @PickForgeShopBot",
+    "open_shop": "Open Mini App in Telegram",
+    "preview_kicker": "Search",
+    "preview_query": "laptop",
+    "preview_items": [
+      ("14″ ultrabook laptop", "$899.00", "amazon", "laptop.jpg"),
+      ("5G smartphone", "$649.00", "amazon", "phone.jpg"),
+      ("Mirrorless camera", "$1,199.00", "amazon", "camera.jpg"),
+      ("10″ tablet", "$429.00", "amazon", "tablet.jpg"),
+      ("Wireless headphones", "$79.99", "amazon", "headphones.jpg"),
+      ("Smartwatch", "$249.00", "aliexpress", "watch.jpg"),
+    ],
   },
   "partners": {
     "h": "Partners",
@@ -270,6 +289,23 @@ CONTENT = {
     "err_ali_page": "Вставьте страницу товара AliExpress. В адресе должны быть /item/ и номер товара.",
     "err_ali_fetch": "Не удалось связаться с API PickForge. Запустите pickforge-mcp локально на порту 3099 или пересоберите страницу с публичным data-ali-endpoint.",
   },
+  "mini_app": {
+    "h": "Mini App в Telegram",
+    "p": "Тот же поиск и конвертер ссылок PickForge — внутри Telegram. В обычном браузере живой Mini App недоступен (нужна подпись Telegram); откройте бота кнопкой ниже.",
+    "note": "Это превью. Поиск и карточки работают в боте: Shop или меню.",
+    "open_bot": "Открыть @PickForgeShopBot",
+    "open_shop": "Открыть Mini App в Telegram",
+    "preview_kicker": "Search",
+    "preview_query": "ноутбук",
+    "preview_items": [
+      ("Ультрабук 14″", "$899.00", "amazon", "laptop.jpg"),
+      ("Смартфон 5G", "$649.00", "amazon", "phone.jpg"),
+      ("Беззеркальная камера", "$1 199.00", "amazon", "camera.jpg"),
+      ("Планшет 10″", "$429.00", "amazon", "tablet.jpg"),
+      ("Беспроводные наушники", "$79.99", "amazon", "headphones.jpg"),
+      ("Умные часы", "$249.00", "aliexpress", "watch.jpg"),
+    ],
+  },
   "partners": {
     "h": "Партнёры",
     "p": "Поиск и помеченные партнёрские ссылки идут через эти программы. Оплата — на сайте магазина. Названия магазинов — торговые марки их владельцев.",
@@ -407,6 +443,23 @@ CONTENT = {
     "err_ali_page": "הדביקו עמוד מוצר ב-AliExpress. בכתובת חייבים להיות /item/ ומספר המוצר.",
     "err_ali_fetch": "לא ניתן להגיע ל-API של PickForge. הריצו pickforge-mcp מקומית בפורט 3099, או בנו מחדש את העמוד עם כתובת data-ali-endpoint ציבורית.",
   },
+  "mini_app": {
+    "h": "Mini App בטלגרם",
+    "p": "אותם כלי חיפוש והמרת קישורים של PickForge רצים בתוך טלגרם. בדפדפן רגיל אי אפשר להריץ את ה-Mini App החי (נדרשת חתימת טלגרם); פתחו את הבוט בכפתור למטה.",
+    "note": "תצוגה מקדימה בלבד — חיפוש וכרטיסים עובדים בבוט: Shop או התפריט.",
+    "open_bot": "פתיחת @PickForgeShopBot",
+    "open_shop": "פתיחת Mini App בטלגרם",
+    "preview_kicker": "Search",
+    "preview_query": "מחשב נייד",
+    "preview_items": [
+      ("מחשב נייד 14″", "$899.00", "amazon", "laptop.jpg"),
+      ("סמארטפון 5G", "$649.00", "amazon", "phone.jpg"),
+      ("מצלמה ללא מראה", "$1,199.00", "amazon", "camera.jpg"),
+      ("טאבלט 10″", "$429.00", "amazon", "tablet.jpg"),
+      ("אוזניות אלחוטיות", "$79.99", "amazon", "headphones.jpg"),
+      ("שעון חכם", "$249.00", "aliexpress", "watch.jpg"),
+    ],
+  },
   "partners": {
     "h": "שותפים",
     "p": "חיפוש מוצרים וקישורי שותפים מסומנים עוברים דרך התוכניות האלה. התשלום נשאר באתר הסוחר. שמות החנויות הם סימני מסחר של הבעלים.",
@@ -526,6 +579,54 @@ def connector_hero_li(rel, name, href, icon):
 def hero_connectors_html(rel, rows):
     picked = [r for r in rows if len(r) > 4 and r[3] in HERO_CONNECTOR_ICONS]
     return "\n".join(connector_hero_li(rel, r[0], r[1], r[3]) for r in picked)
+
+def miniapp_preview_cards_html(rel, items):
+    bits = []
+    for title, price, store, img in items:
+        thumb = f"{rel}assets/miniapp/{img}"
+        badge = f"{rel}assets/stores/{store}.svg"
+        bits.append(
+            f'<article class="miniapp-card">'
+            f'<div class="miniapp-card-media">'
+            f'<img src="{html.escape(thumb)}" alt="" width="108" height="81" loading="lazy" decoding="async">'
+            f"</div>"
+            f'<h3 class="miniapp-card-title">{html.escape(title)}</h3>'
+            f'<p class="miniapp-card-price">{html.escape(price)}</p>'
+            f'<p class="miniapp-card-store">'
+            f'<img src="{html.escape(badge)}" alt="" width="14" height="14" decoding="async">'
+            f"<span>{html.escape(store.capitalize())}</span></p>"
+            f"</article>"
+        )
+    return "".join(bits)
+
+def mini_app_section_html(rel, mini):
+    tel = f"{rel}assets/connectors/telegram.svg"
+    mascot = f"{rel}assets/face_with_peeking_eye_upload-second_gemini.png"
+    cards = miniapp_preview_cards_html(rel, mini["preview_items"])
+    return (
+        f'<section class="tool miniapp" id="mini-app" aria-labelledby="miniapp-h">'
+        f'<div><h2 id="miniapp-h">{html.escape(mini["h"])}</h2></div>'
+        f'<div class="tool-body">'
+        f'<p>{html.escape(mini["p"])}</p>'
+        f'<div class="miniapp-shell miniapp-shell--light" aria-hidden="true">'
+        f'<div class="miniapp-screen">'
+        f'<div class="miniapp-top"><span class="miniapp-brand" dir="ltr">Pick<span>Forge</span></span>'
+        f'<img class="miniapp-mascot" src="{html.escape(mascot)}" alt="" width="32" height="32" decoding="async"></div>'
+        f'<div class="miniapp-block">'
+        f'<span class="miniapp-kicker">{html.escape(mini["preview_kicker"])}</span>'
+        f'<div class="miniapp-field">{html.escape(mini["preview_query"])}</div>'
+        f'<div class="miniapp-grid">{cards}</div>'
+        f"</div></div>"
+        f"</div>"
+        f'<p class="fine">{html.escape(mini["note"])}</p>'
+        f'<div class="actions">'
+        f'<a href="{html.escape(TELEGRAM_MINI_APP_OPEN, quote=True)}" rel="noopener noreferrer">'
+        f'<img src="{html.escape(tel)}" alt="" width="18" height="18" decoding="async">'
+        f'<span>{html.escape(mini["open_shop"])}</span></a>'
+        f'<a class="miniapp-bot-link" href="{html.escape(TELEGRAM_BOT_URL, quote=True)}" rel="noopener noreferrer">'
+        f'{html.escape(mini["open_bot"])}</a>'
+        f"</div></div></section>"
+    )
 
 def telegram_section_html(rel, telegram):
     bot_src = f"{rel}assets/face_with_peeking_eye_upload-second_gemini.png"
@@ -667,6 +768,8 @@ def page(lang):
     Tg = c["telegram"]
     hero_telegram = connector_hero_li(rel, Tg["short"], TELEGRAM_BOT_URL, "telegram")
     telegram_block = telegram_section_html(rel, Tg)
+    Ma = c["mini_app"]
+    mini_app_block = mini_app_section_html(rel, Ma)
     return f"""<!doctype html>
 <html lang="{lang}" dir="{d}">
 <head>
@@ -809,6 +912,7 @@ def page(lang):
         </div>
       </section>
       <script type="application/json" id="link-strings">{link_json}</script>
+      {mini_app_block}
       {partners_block}
       <section class="assistant" id="assistant" aria-labelledby="asst-h">
         <h2 class="sec" id="asst-h">{html.escape(A["h"])}</h2>

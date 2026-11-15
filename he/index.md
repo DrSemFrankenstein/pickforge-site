@@ -33,7 +33,7 @@ PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירו
 
 הדביקו מילות חיפוש, עמוד מוצר ב-Amazon או כתובת פריט ב-AliExpress. PickForge מזהה את החנות אוטומטית.
 
-מילות חיפוש הופכות לקישור Amazon עם tag=pickforge-20. כתובות Amazon ו-AliExpress מזוהות מהקישור.
+מילות חיפוש — גלריית מוצרים (Amazon + AliExpress). כתובות Amazon ו-AliExpress הופכות לקישור שותף.
 
 ## שותפים
 

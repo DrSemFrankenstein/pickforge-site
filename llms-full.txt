@@ -33,7 +33,7 @@ Purchases happen on the store’s site, where the price is shown. We do not proc
 
 Paste search words, an Amazon product page, or an AliExpress item URL. PickForge detects the store automatically.
 
-Search words become an Amazon link with tag=pickforge-20. Amazon and AliExpress URLs are recognized from the address.
+Search words show a product gallery (Amazon + AliExpress). Amazon and AliExpress URLs become affiliate links.
 
 ## Partners
 
@@ -165,7 +165,7 @@ PickForge — независимый проект. Эта страница оп�
 
 Вставьте слова поиска, страницу товара Amazon или адрес товара AliExpress. PickForge сам определит магазин.
 
-Слова поиска становятся ссылкой Amazon с tag=pickforge-20. Адреса Amazon и AliExpress распознаются автоматически.
+Слова поиска — галерея товаров (Amazon + AliExpress). URL Amazon и AliExpress — партнёрские ссылки.
 
 ## Партнёры
 
@@ -297,7 +297,7 @@ PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירו
 
 הדביקו מילות חיפוש, עמוד מוצר ב-Amazon או כתובת פריט ב-AliExpress. PickForge מזהה את החנות אוטומטית.
 
-מילות חיפוש הופכות לקישור Amazon עם tag=pickforge-20. כתובות Amazon ו-AliExpress מזוהות מהקישור.
+מילות חיפוש — גלריית מוצרים (Amazon + AliExpress). כתובות Amazon ו-AliExpress הופכות לקישור שותף.
 
 ## שותפים
 

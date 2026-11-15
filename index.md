@@ -33,7 +33,7 @@ Purchases happen on the store’s site, where the price is shown. We do not proc
 
 Paste search words, an Amazon product page, or an AliExpress item URL. PickForge detects the store automatically.
 
-Search words become an Amazon link with tag=pickforge-20. Amazon and AliExpress URLs are recognized from the address.
+Search words show a product gallery (Amazon + AliExpress). Amazon and AliExpress URLs become affiliate links.
 
 ## Partners
 

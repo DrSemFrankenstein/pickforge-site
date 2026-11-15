@@ -2,6 +2,8 @@ const ASIN_RE = /\/(?:dp|gp\/product|gp\/aw\/d|exec\/obidos\/ASIN)\/([A-Z0-9]{10
 const ALI_ITEM_RE = /\/(?:item|i)\/(\d{6,20})(?:\.html)?(?=[/?#]|$)/i;
 const LOCAL_ALI_API = "http://127.0.0.1:3099/api/links/aliexpress";
 const DEFAULT_ALI_API = "https://pickforge-mcp.onrender.com/api/links/aliexpress";
+const LOCAL_SEARCH_API = "http://127.0.0.1:3099/api/search/products/rich";
+const DEFAULT_SEARCH_API = "https://pickforge-mcp.onrender.com/api/search/products/rich";
 
 function fail(code) {
   const error = new Error(code);
@@ -11,6 +13,18 @@ function fail(code) {
 
 function cleanQuery(value) {
   return value.replace(/[\u0000-\u001f]/g, " ").replace(/\s+/g, " ").trim().slice(0, 200);
+}
+
+function escapeHtml(str) {
+  return String(str ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function isHttpUrl(raw) {
+  return /^https?:\/\//i.test(String(raw || "").trim());
 }
 
 function isAliExpressHost(hostname) {
@@ -130,6 +144,24 @@ function resolveAliEndpoint(root) {
   return "";
 }
 
+function resolveSearchEndpoint(root) {
+  const fromData = (root.dataset.searchEndpoint || "").trim();
+  if (fromData) return fromData;
+  if (typeof location === "undefined") return "";
+  if (location.protocol === "file:") return LOCAL_SEARCH_API;
+  const host = location.hostname;
+  if (host === "localhost" || host === "127.0.0.1") {
+    if (location.port === "3099") {
+      return new URL("/api/search/products/rich", location.origin).href;
+    }
+    return LOCAL_SEARCH_API;
+  }
+  if (host.endsWith("github.io")) {
+    return DEFAULT_SEARCH_API;
+  }
+  return "";
+}
+
 async function aliExpressLink(sourceUrl, endpoint) {
   if (!endpoint) fail("ali_no_api");
   let res;
@@ -149,6 +181,127 @@ async function aliExpressLink(sourceUrl, endpoint) {
   return data.affiliateUrl;
 }
 
+async function productSearch(query, endpoint, shipTo, currency) {
+  if (!endpoint) {
+    throw new Error("search_no_api");
+  }
+  const url = new URL(endpoint);
+  url.searchParams.set("query", query);
+  url.searchParams.set("ship_to_country", shipTo);
+  url.searchParams.set("currency", currency);
+  url.searchParams.set("limit", "8");
+  let res;
+  try {
+    res = await fetch(url.toString(), { method: "GET", credentials: "omit", mode: "cors" });
+  } catch {
+    throw new Error("search_fetch");
+  }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(data.error || "search_fail");
+  }
+  return data;
+}
+
+function pickField(obj, ...keys) {
+  if (!obj) return undefined;
+  for (const key of keys) {
+    const value = obj[key];
+    if (value != null && value !== "") return value;
+  }
+  return undefined;
+}
+
+/** Normalizes /rich API items (camelCase) for gallery rendering. */
+function normalizeSearchItem(raw) {
+  const trust = raw.trust_metrics || raw.trustMetrics || {};
+  const pricing = raw.pricing || {};
+  return {
+    id: raw.id,
+    marketplace: raw.marketplace,
+    type: raw.type,
+    title: raw.title,
+    image_url: pickField(raw, "image_url", "imageUrl"),
+    affiliate_url: pickField(raw, "affiliate_url", "affiliateUrl"),
+    trust_metrics: {
+      rating: pickField(trust, "rating"),
+      orders_count: pickField(trust, "orders_count", "ordersCount"),
+    },
+    pricing: {
+      currency: pickField(pricing, "currency"),
+      total_landed_price: pickField(pricing, "total_landed_price", "totalLandedPrice"),
+      sale_price: pickField(pricing, "sale_price", "salePrice"),
+      price_note: pickField(pricing, "price_note", "priceNote"),
+    },
+  };
+}
+
+function formatPrice(item, copy) {
+  if (item.marketplace === "Amazon" || item.type === "search_results_link") {
+    return copy.amazonPrice || "Check live price on Amazon";
+  }
+  const p = item.pricing || {};
+  if (p.total_landed_price != null && p.currency) {
+    return `${p.currency} ${Number(p.total_landed_price).toFixed(2)}`;
+  }
+  if (p.sale_price != null && p.currency) {
+    return `${p.currency} ${Number(p.sale_price).toFixed(2)}`;
+  }
+  return p.price_note || "";
+}
+
+function storeIcon(marketplace, storeIcons) {
+  if (marketplace === "Amazon") return storeIcons.amazon;
+  if (marketplace === "AliExpress") return storeIcons.aliexpress;
+  return "";
+}
+
+function productPhoto(item, storeIcons) {
+  const icon = storeIcon(item.marketplace, storeIcons);
+  if (item.image_url) {
+    return `<img class="card-photo" src="${escapeHtml(item.image_url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />`;
+  }
+  if (icon) {
+    return `<img class="card-photo card-photo--store" src="${escapeHtml(icon)}" alt="" decoding="async" />`;
+  }
+  return "";
+}
+
+function renderGallery(payload, storeIcons, copy) {
+  const items = payload.items || [];
+  if (!items.length) {
+    return `<p class="fine">${escapeHtml("No products found.")}</p>`;
+  }
+  return items.map((item) => {
+    const icon = storeIcon(item.marketplace, storeIcons);
+    const logo = icon
+      ? `<img class="store-logo-below" src="${escapeHtml(icon)}" alt="" width="18" height="18" decoding="async" />`
+      : "";
+    const rating = item.marketplace === "Amazon" || item.trust_metrics?.rating == null
+      ? ""
+      : `★ ${item.trust_metrics.rating}`;
+    const orders = item.trust_metrics?.orders_count != null
+      ? `${item.trust_metrics.orders_count} orders`
+      : "";
+    const meta = [rating, orders].filter(Boolean).join(" · ");
+    const url = item.affiliate_url || "";
+    const openLabel = copy.viewDeal || "View deal";
+    const storeIconImg = icon
+      ? `<img src="${escapeHtml(icon)}" alt="" width="18" height="18" decoding="async">`
+      : "";
+    return (
+      `<article class="link-gallery-card" role="listitem">`
+      + `<div class="card-media">${productPhoto(item, storeIcons)}${logo}</div>`
+      + `<div><h3>${escapeHtml(item.title || "")}</h3>`
+      + (meta ? `<p class="meta">${escapeHtml(meta)}</p>` : "")
+      + `<p class="price">${escapeHtml(formatPrice(item, copy))}</p>`
+      + `<div class="actions"><a href="${escapeHtml(url)}" rel="noopener noreferrer" target="_blank">`
+      + `${storeIconImg}<span>${escapeHtml(openLabel)}</span></a></div></div>`
+      + `</article>`
+    );
+  }).join("");
+}
+
 function paintYield() {
   return new Promise((resolve) => {
     requestAnimationFrame(() => requestAnimationFrame(resolve));
@@ -164,8 +317,10 @@ function boot() {
   const copy = JSON.parse(stringsNode.textContent);
   const tag = root.dataset.tag || "";
   const aliEndpoint = resolveAliEndpoint(root);
+  const searchEndpoint = resolveSearchEndpoint(root);
   const form = document.getElementById("link-form");
   const input = document.getElementById("link-input");
+  const shipSelect = document.getElementById("link-ship");
   const status = document.getElementById("link-status");
   const result = document.getElementById("link-result");
   const out = document.getElementById("link-out");
@@ -176,6 +331,10 @@ function boot() {
   const note = document.getElementById("link-note");
   const openIcon = document.getElementById("link-open-icon");
   const openLabel = document.getElementById("link-open-label");
+  const gallery = document.getElementById("link-gallery");
+  const galleryKicker = document.getElementById("link-gallery-kicker");
+  const galleryDisclose = document.getElementById("link-gallery-disclose");
+  const galleryList = document.getElementById("link-gallery-list");
   const storeIcons = {
     amazon: root.dataset.iconAmazon || "",
     aliexpress: root.dataset.iconAli || "",
@@ -189,7 +348,17 @@ function boot() {
     status.className = "status" + (kind ? " " + kind : "");
   }
 
+  function hideGallery() {
+    if (gallery) gallery.hidden = true;
+    if (galleryList) galleryList.innerHTML = "";
+  }
+
+  function hideLinkResult() {
+    result.hidden = true;
+  }
+
   function showResult(link, discloseText, openLabelText, mode) {
+    hideGallery();
     kicker.textContent = copy.kicker;
     out.textContent = link;
     disclose.textContent = discloseText;
@@ -203,6 +372,22 @@ function boot() {
     else open.textContent = openLabelText;
     copyButton.textContent = copy.copy;
     result.hidden = false;
+  }
+
+  function showGallery(payload) {
+    hideLinkResult();
+    if (!gallery || !galleryList) return;
+    const items = (payload.items || []).map(normalizeSearchItem);
+    galleryKicker.textContent = copy.galleryKicker || copy.kicker;
+    galleryDisclose.textContent = payload.disclosure || "";
+    galleryList.innerHTML = renderGallery({ ...payload, items }, storeIcons, copy);
+    gallery.hidden = false;
+  }
+
+  function readShipLocale() {
+    const raw = shipSelect?.value || "US|USD";
+    const [ship, currency] = raw.split("|");
+    return { ship: ship || "US", currency: currency || "USD" };
   }
 
   copyButton.addEventListener("click", async () => {
@@ -220,15 +405,15 @@ function boot() {
 
   const submitButton = form.querySelector('button[type="submit"]');
 
-  function setWorking(on) {
+  function setWorking(on, message) {
     form.setAttribute("aria-busy", on ? "true" : "false");
     if (input) input.readOnly = on;
     if (submitButton) {
       submitButton.disabled = on;
       submitButton.classList.toggle("is-busy", on);
     }
-    if (on && copy.working) {
-      setStatus(copy.working, "busy");
+    if (on) {
+      setStatus(message || copy.working, "busy");
     }
   }
 
@@ -236,6 +421,7 @@ function boot() {
     event.preventDefault();
     const value = input.value.trim();
     result.hidden = true;
+    hideGallery();
     setStatus("");
 
     const mode = detectLinkMode(value);
@@ -259,6 +445,25 @@ function boot() {
         return;
       }
 
+      if (mode === "amazon" && !isHttpUrl(value)) {
+        const query = cleanQuery(value);
+        if (query.length < 2) {
+          setStatus(copy.err_query, "warn");
+          return;
+        }
+        if (!searchEndpoint) {
+          const link = amazonLink(value, tag);
+          showResult(link, copy.amazonDisclose, copy.openAmazon, "amazon");
+          setStatus(copy.readyAmazon, "ok");
+          return;
+        }
+        const { ship, currency } = readShipLocale();
+        const payload = await productSearch(query, searchEndpoint, ship, currency);
+        showGallery(payload);
+        setStatus(copy.readySearch || "ok", "ok");
+        return;
+      }
+
       const link = amazonLink(value, tag);
       showResult(link, copy.amazonDisclose, copy.openAmazon, "amazon");
       setStatus(copy.readyAmazon, "ok");
@@ -266,7 +471,9 @@ function boot() {
       const code = error && error.code;
       const message = code && copy["err_" + code]
         ? copy["err_" + code]
-        : (error.message || copy.err_page);
+        : (error.message === "search_fetch" || error.message === "search_fail" || error.message === "search_no_api")
+          ? (copy.searchErr || error.message)
+          : (error.message || copy.err_page);
       setStatus(message, "warn");
     } finally {
       setWorking(false);

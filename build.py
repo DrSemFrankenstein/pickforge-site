@@ -17,12 +17,16 @@ ROOT = Path(__file__).resolve().parent
 DEFAULT_ORIGIN = "https://drsemfrankenstein.github.io/pickforge-site"
 # AliExpress link API baked into data-ali-endpoint for static hosts (GitHub Pages has no /api).
 DEFAULT_ALI_LINK_API = "https://pickforge-mcp.onrender.com/api/links/aliexpress"
+DEFAULT_SEARCH_API = "https://pickforge-mcp.onrender.com/api/search/products/rich"
 ALI_LINK_API = os.environ.get("PICKFORGE_ALI_LINK_API", "").strip()
+SEARCH_API = os.environ.get("PICKFORGE_SEARCH_API", "").strip()
 if len(sys.argv) > 2:
     ALI_LINK_API = sys.argv[2].strip()
 SITE_URL = (sys.argv[1] if len(sys.argv) > 1 else DEFAULT_ORIGIN + "/").rstrip("/") + "/"
 if not ALI_LINK_API and "github.io" in SITE_URL:
     ALI_LINK_API = DEFAULT_ALI_LINK_API
+if not SEARCH_API and "github.io" in SITE_URL:
+    SEARCH_API = DEFAULT_SEARCH_API
 UPDATED_ISO = "2026-11-14"
 MCP_NAME = "PickForge"
 MCP_URL = "https://pickforge-mcp.onrender.com/sse"
@@ -111,9 +115,16 @@ CONTENT = {
     "p": "Paste search words, an Amazon product page, or an AliExpress item URL. PickForge detects the store automatically.",
     "label": "Search, Amazon page, or AliExpress URL",
     "placeholder": "Cordless vacuum, amazon.com/…/dp/…, or aliexpress.com/item/…",
-    "autoNote": "Search words become an Amazon link with tag=pickforge-20. Amazon and AliExpress URLs are recognized from the address.",
-    "submit": "Make link",
+    "autoNote": "Search words show a product gallery (Amazon + AliExpress). Amazon and AliExpress URLs become affiliate links.",
+    "submit": "Go",
     "working": "Building your link…",
+    "searchWorking": "Searching products…",
+    "readySearch": "Results loaded. Open a deal from the gallery.",
+    "viewDeal": "View deal",
+    "amazonPrice": "Check live price on Amazon",
+    "searchErr": "Product search failed.",
+    "galleryKicker": "Product results",
+    "shipLabel": "Ship to",
     "openAmazon": "Open on Amazon",
     "openAli": "Open on AliExpress",
     "copy": "Copy",
@@ -265,9 +276,16 @@ CONTENT = {
     "p": "Вставьте слова поиска, страницу товара Amazon или адрес товара AliExpress. PickForge сам определит магазин.",
     "label": "Поиск, страница Amazon или URL AliExpress",
     "placeholder": "Пылесос, amazon.com/…/dp/… или aliexpress.com/item/…",
-    "autoNote": "Слова поиска становятся ссылкой Amazon с tag=pickforge-20. Адреса Amazon и AliExpress распознаются автоматически.",
-    "submit": "Собрать ссылку",
+    "autoNote": "Слова поиска — галерея товаров (Amazon + AliExpress). URL Amazon и AliExpress — партнёрские ссылки.",
+    "submit": "Поехали",
     "working": "Собираем ссылку…",
+    "searchWorking": "Ищем товары…",
+    "readySearch": "Результаты загружены. Откройте товар из галереи.",
+    "viewDeal": "К товару",
+    "amazonPrice": "Актуальная цена на Amazon",
+    "searchErr": "Поиск не удался.",
+    "galleryKicker": "Результаты",
+    "shipLabel": "Доставка",
     "openAmazon": "Открыть на Amazon",
     "openAli": "Открыть на AliExpress",
     "copy": "Копировать",
@@ -419,9 +437,16 @@ CONTENT = {
     "p": "הדביקו מילות חיפוש, עמוד מוצר ב-Amazon או כתובת פריט ב-AliExpress. PickForge מזהה את החנות אוטומטית.",
     "label": "חיפוש, עמוד Amazon או כתובת AliExpress",
     "placeholder": "שואב אבק, amazon.com/…/dp/… או aliexpress.com/item/…",
-    "autoNote": "מילות חיפוש הופכות לקישור Amazon עם tag=pickforge-20. כתובות Amazon ו-AliExpress מזוהות מהקישור.",
-    "submit": "בניית קישור",
+    "autoNote": "מילות חיפוש — גלריית מוצרים (Amazon + AliExpress). כתובות Amazon ו-AliExpress הופכות לקישור שותף.",
+    "submit": "המשך",
     "working": "בונים את הקישור…",
+    "searchWorking": "מחפשים מוצרים…",
+    "readySearch": "התוצאות נטענו. פתחו עסקה מהגלריה.",
+    "viewDeal": "למבצע",
+    "amazonPrice": "מחיר עדכני ב-Amazon",
+    "searchErr": "החיפוש נכשל.",
+    "galleryKicker": "תוצאות",
+    "shipLabel": "משלוח ל",
     "openAmazon": "פתיחה ב-Amazon",
     "openAli": "פתיחה ב-AliExpress",
     "copy": "העתקה",
@@ -755,6 +780,10 @@ def page(lang):
         "err_region": L["err_region"], "err_page": L["err_page"], "err_query": L["err_query"],
         "err_unknown": L["err_unknown"], "err_ali_no_api": L["err_ali_no_api"],
         "err_ali_page": L["err_ali_page"], "err_ali_fetch": L["err_ali_fetch"],
+        "searchWorking": L.get("searchWorking", ""), "readySearch": L.get("readySearch", ""),
+        "viewDeal": L.get("viewDeal", "View deal"), "amazonPrice": L.get("amazonPrice", ""),
+        "searchErr": L.get("searchErr", ""), "galleryKicker": L.get("galleryKicker", ""),
+        "shipLabel": L.get("shipLabel", "Ship to"),
     }, ensure_ascii=False).replace("<", "\\u003c")
     P = c["partners"]
     partners_block = partners_section_html(rel, P)
@@ -885,13 +914,22 @@ def page(lang):
 
   <div class="paper">
     <div class="paper-inner">
-      <section class="tool" id="links" data-link-tool data-tag="{ASSOCIATES_ID}" data-ali-endpoint="{html.escape(ALI_LINK_API)}" data-icon-amazon="{rel}assets/stores/amazon.svg" data-icon-ali="{rel}assets/stores/aliexpress.svg" aria-labelledby="links-h">
+      <section class="tool" id="links" data-link-tool data-tag="{ASSOCIATES_ID}" data-ali-endpoint="{html.escape(ALI_LINK_API)}" data-search-endpoint="{html.escape(SEARCH_API)}" data-icon-amazon="{rel}assets/stores/amazon.svg" data-icon-ali="{rel}assets/stores/aliexpress.svg" aria-labelledby="links-h">
         <div>
           <h2 id="links-h">{html.escape(L["h"])}</h2>
         </div>
         <div class="tool-body">
           <p>{html.escape(L["p"])}</p>
           <p class="amazon-exact">{AMAZON_EXACT}</p>
+          <p class="fine link-ship-row">
+            <label for="link-ship">{html.escape(L.get("shipLabel", "Ship to"))}</label>
+            <select id="link-ship" name="ship" aria-label="{html.escape(L.get("shipLabel", "Ship to"))}">
+              <option value="US|USD">United States (USD)</option>
+              <option value="IL|ILS">Israel (ILS)</option>
+              <option value="GB|GBP">United Kingdom (GBP)</option>
+              <option value="DE|EUR">Germany (EUR)</option>
+            </select>
+          </p>
           <form id="link-form" action="">
             <label class="sr" for="link-input">{html.escape(L["label"])}</label>
             <input id="link-input" name="q" type="text" autocomplete="off" spellcheck="false" maxlength="4000" placeholder="{html.escape(L["placeholder"])}" required>
@@ -907,6 +945,11 @@ def page(lang):
               <a id="link-open" rel="noopener"><img id="link-open-icon" alt="" width="18" height="18" hidden decoding="async"><span id="link-open-label"></span></a>
               <button type="button" id="link-copy"></button>
             </div>
+          </div>
+          <div id="link-gallery" class="link-gallery" hidden>
+            <p class="kicker" id="link-gallery-kicker"></p>
+            <p class="fine" id="link-gallery-disclose"></p>
+            <div id="link-gallery-list" class="link-gallery-list" role="list"></div>
           </div>
           <noscript><p>{html.escape(L["noscript"])}</p></noscript>
         </div>

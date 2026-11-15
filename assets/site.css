@@ -146,12 +146,10 @@ a:hover{text-decoration-color:var(--ribbon)}
 .connector-card{display:flex;gap:.85rem;align-items:flex-start;padding:1rem 1.05rem;border:1.5px solid var(--ink);border-radius:1rem;background:#F6EDDF}
 .connector-icon{flex:0 0 auto;width:2.5rem;height:2.5rem;border-radius:.65rem;overflow:hidden;display:grid;place-items:center;background:#fff;border:1px solid var(--line);box-shadow:0 1px 0 rgba(42,28,18,.06)}
 .connector-icon img{display:block;width:100%;height:100%;object-fit:cover}
-.connector-icon--telegram{background:#26A5E4;border-color:#1d8ebf}
-.connector-icon--telegram img{object-fit:contain;object-position:center;padding:0}
-.connector-icons-duo{display:flex;gap:.35rem;flex:0 0 auto;align-items:center}
+.connector-icons-duo{display:flex;flex-direction:column;gap:.45rem;flex:0 0 auto;align-items:center;align-self:flex-start}
 .connector-icon--mascot{display:grid;place-items:center}
 .connector-icon--mascot img{object-fit:contain;object-position:center;padding:.12rem;background:#fff;width:100%;height:100%}
-.connector-card--telegram{align-items:center}
+.connector-card--telegram{align-items:flex-start}
 .telegram{grid-column:1/-1}
 .telegram-intro{color:var(--ink-2);max-width:42rem;margin:0 0 1rem}
 .telegram-steps{margin:.5rem 0 0;padding-inline-start:1.25rem;color:var(--ink-2);font-size:.95rem;line-height:1.5}
@@ -199,11 +197,13 @@ footer .assoc{display:flex;flex-direction:column;gap:.15rem;color:var(--ink);fon
   .story{grid-template-columns:minmax(0,1fr)}
   .stage{grid-column:1}
   .sprite{height:100vh;height:100svh;opacity:.95}
-  .chapter{max-width:none;justify-content:flex-end;padding:5rem 0 2rem}
+  .chapter{max-width:none;width:100%;justify-content:flex-end;padding:5rem 0 2rem}
+  .chapter.hero{max-width:none;width:100%}
   .panel{background:rgba(239,227,207,.9);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:1.4rem;padding:1.4rem 1.25rem}
-  .hero .panel.hero-split{background:transparent}
-  .hero-copy,.hero-aside{background:rgba(239,227,207,.9);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:1.4rem;padding:1.4rem 1.25rem}
-  .hero-aside{border:1.5px solid rgba(42,28,18,.25);max-width:none}
+  .hero .panel.hero-split{width:100%;background:transparent;padding:0}
+  .hero-copy,.hero-aside{width:100%;max-width:none;background:rgba(239,227,207,.9);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:1.4rem;padding:1.4rem 1.25rem}
+  .hero-copy .eyebrow,.hero-copy .lead,.hero-copy .notice{max-width:none}
+  .hero-aside{border:1.5px solid rgba(42,28,18,.25)}
   .hero h1{font-size:clamp(2.4rem,11vw,3.4rem)}
   :lang(ru) .hero h1{font-size:clamp(2.1rem,9.5vw,2.9rem)}
 }

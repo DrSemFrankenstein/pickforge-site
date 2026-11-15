@@ -537,8 +537,8 @@ def telegram_section_html(rel, telegram):
         f'<ul class="connectors connectors--setup">'
         f'<li class="connector-card connector-card--telegram">'
         f'<span class="connector-icons-duo" aria-hidden="true">'
-        f'{connector_icon_html(rel, "telegram")}'
         f'<span class="connector-icon connector-icon--mascot"><img src="{html.escape(bot_src)}" alt="" width="40" height="40" loading="lazy" decoding="async"></span>'
+        f'{connector_icon_html(rel, "telegram")}'
         f"</span>"
         f'<div class="connector-body">'
         f'<a href="{html.escape(TELEGRAM_BOT_URL, quote=True)}" rel="noopener noreferrer">{html.escape(telegram["handle"])}</a>'

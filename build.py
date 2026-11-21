@@ -18,6 +18,7 @@ DEFAULT_ORIGIN = "https://drsemfrankenstein.github.io/pickforge-site"
 # AliExpress link API baked into data-ali-endpoint for static hosts (GitHub Pages has no /api).
 DEFAULT_ALI_LINK_API = "https://pickforge-mcp.onrender.com/api/links/aliexpress"
 DEFAULT_SEARCH_API = "https://pickforge-mcp.onrender.com/api/search/products/rich"
+DEFAULT_TRAVEL_API = "https://pickforge-mcp.onrender.com/api/search/travel"
 ALI_LINK_API = os.environ.get("PICKFORGE_ALI_LINK_API", "").strip()
 SEARCH_API = os.environ.get("PICKFORGE_SEARCH_API", "").strip()
 if len(sys.argv) > 2:
@@ -137,6 +138,10 @@ CONTENT = {
     "amazonPrice": "Check live price on Amazon",
     "searchErr": "Product search failed.",
     "galleryKicker": "Product results",
+    "travelGalleryKicker": "Flight results",
+    "travelDisclose": "Affiliate travel link via Travelpayouts. Confirm price on the booking site.",
+    "travelHint": "Add a destination city or IATA codes, e.g. “Dubai”, “TLV LHR”, or “рейс Дубай”.",
+    "travelErr": "Flight search failed.",
     "shipLabel": "Ship to",
     "openAmazon": "Open on Amazon",
     "openAli": "Open on AliExpress",
@@ -300,6 +305,10 @@ CONTENT = {
     "amazonPrice": "Актуальная цена на Amazon",
     "searchErr": "Поиск не удался.",
     "galleryKicker": "Результаты",
+    "travelGalleryKicker": "Рейсы",
+    "travelDisclose": "Партнёрская ссылка на рейс (Travelpayouts). Цену проверьте на сайте бронирования.",
+    "travelHint": "Укажите город или коды IATA, напр. «Дубай», «TLV LHR» или «рейс в Дубай».",
+    "travelErr": "Поиск рейсов не удался.",
     "shipLabel": "Доставка",
     "openAmazon": "Открыть на Amazon",
     "openAli": "Открыть на AliExpress",
@@ -463,6 +472,10 @@ CONTENT = {
     "amazonPrice": "מחיר עדכני ב-Amazon",
     "searchErr": "החיפוש נכשל.",
     "galleryKicker": "תוצאות",
+    "travelGalleryKicker": "טיסות",
+    "travelDisclose": "קישור שותפים לטיסה (Travelpayouts). אשרו מחיר באתר ההזמנה.",
+    "travelHint": "הוסיפו עיר יעד או קודי IATA, למשל «דובאי», «TLV LHR» או «טיסה לדובאי».",
+    "travelErr": "חיפוש הטיסות נכשל.",
     "shipLabel": "משלוח ל",
     "openAmazon": "פתיחה ב-Amazon",
     "openAli": "פתיחה ב-AliExpress",
@@ -801,6 +814,8 @@ def page(lang):
         "searchWorking": L.get("searchWorking", ""), "readySearch": L.get("readySearch", ""),
         "viewDeal": L.get("viewDeal", "View deal"), "amazonPrice": L.get("amazonPrice", ""),
         "searchErr": L.get("searchErr", ""), "galleryKicker": L.get("galleryKicker", ""),
+        "travelGalleryKicker": L.get("travelGalleryKicker", ""), "travelDisclose": L.get("travelDisclose", ""),
+        "travelHint": L.get("travelHint", ""), "travelErr": L.get("travelErr", "Flight search failed."),
         "shipLabel": L.get("shipLabel", "Ship to"),
     }, ensure_ascii=False).replace("<", "\\u003c")
     P = c["partners"]
@@ -933,7 +948,7 @@ def page(lang):
 
   <div class="paper">
     <div class="paper-inner">
-      <section class="tool" id="links" data-link-tool data-tag="{ASSOCIATES_ID}" data-ali-endpoint="{html.escape(ALI_LINK_API)}" data-search-endpoint="{html.escape(SEARCH_API)}" data-icon-amazon="{rel}assets/stores/amazon.svg" data-icon-ali="{rel}assets/stores/aliexpress.svg" aria-labelledby="links-h">
+      <section class="tool" id="links" data-link-tool data-tag="{ASSOCIATES_ID}" data-ali-endpoint="{html.escape(ALI_LINK_API)}" data-search-endpoint="{html.escape(SEARCH_API)}" data-travel-endpoint="{html.escape(DEFAULT_TRAVEL_API)}" data-icon-amazon="{rel}assets/stores/amazon.svg" data-icon-ali="{rel}assets/stores/aliexpress.svg" data-icon-travel="{rel}assets/stores/travelpayouts.svg" aria-labelledby="links-h">
         <div>
           <h2 id="links-h">{html.escape(L["h"])}</h2>
         </div>

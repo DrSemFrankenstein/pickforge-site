@@ -4,6 +4,42 @@ const LOCAL_ALI_API = "http://127.0.0.1:3099/api/links/aliexpress";
 const DEFAULT_ALI_API = "https://pickforge-mcp.onrender.com/api/links/aliexpress";
 const LOCAL_SEARCH_API = "http://127.0.0.1:3099/api/search/products/rich";
 const DEFAULT_SEARCH_API = "https://pickforge-mcp.onrender.com/api/search/products/rich";
+const LOCAL_TRAVEL_API = "http://127.0.0.1:3099/api/search/travel";
+const DEFAULT_TRAVEL_API = "https://pickforge-mcp.onrender.com/api/search/travel";
+
+/** Hint-only: user asked for travel but we could not resolve a route (not required to search). */
+const TRAVEL_WORD_RE =
+  /\b(flight|flights|fly|flyght|airfare|air\s*ticket|travel|trip|vacation|holiday|destination|авиабилет|билет|перел[её]т|рейс|рейсы|полет|полёт|טיסה|טיסות|יעד|חופשה)\b/i;
+const ORIGIN_BY_COUNTRY = { IL: "TLV", US: "JFK", GB: "LHR", DE: "BER", FR: "CDG", AU: "SYD", CA: "YYZ" };
+const CITY_IATA = {
+  dubai: "DXB",
+  dubaii: "DXB",
+  bubai: "DXB",
+  london: "LHR",
+  paris: "CDG",
+  rome: "FCO",
+  bangkok: "BKK",
+  newyork: "JFK",
+  "new york": "JFK",
+  losangeles: "LAX",
+  "los angeles": "LAX",
+  miami: "MIA",
+  amsterdam: "AMS",
+  barcelona: "BCN",
+  istanbul: "IST",
+  tokio: "NRT",
+  tokyo: "NRT",
+  moscow: "SVO",
+  moskva: "SVO",
+  москва: "SVO",
+  дубай: "DXB",
+  лондон: "LHR",
+  париж: "CDG",
+  тельавив: "TLV",
+  "tel aviv": "TLV",
+  דובאי: "DXB",
+  לונדון: "LHR",
+};
 
 function fail(code) {
   const error = new Error(code);
@@ -144,6 +180,90 @@ function resolveAliEndpoint(root) {
   return "";
 }
 
+function resolveTravelEndpoint(root) {
+  const fromData = (root.dataset.travelEndpoint || "").trim();
+  if (fromData) return fromData;
+  if (typeof location === "undefined") return "";
+  if (location.protocol === "file:") return LOCAL_TRAVEL_API;
+  const host = location.hostname;
+  if (host === "localhost" || host === "127.0.0.1") {
+    if (location.port === "3099") {
+      return new URL("/api/search/travel", location.origin).href;
+    }
+    return LOCAL_TRAVEL_API;
+  }
+  if (host.endsWith("github.io")) {
+    return DEFAULT_TRAVEL_API;
+  }
+  return "";
+}
+
+function escapeRegExp(s) {
+  return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function queryMentionsCity(norm, cityName) {
+  const name = String(cityName || "").toLowerCase().trim();
+  if (!name) return false;
+  if (/^[a-z0-9 ]+$/i.test(name) && !name.includes(" ")) {
+    return new RegExp(`\\b${escapeRegExp(name)}\\b`, "i").test(norm);
+  }
+  return norm.includes(name);
+}
+
+function parseTravelRoute(text, shipCountry) {
+  const q = cleanQuery(text).toLowerCase();
+  const origin = ORIGIN_BY_COUNTRY[String(shipCountry || "US").toUpperCase()] || "TLV";
+  const codes = (q.match(/\b[a-z]{3}\b/gi) || [])
+    .map((c) => c.toUpperCase())
+    .filter((c, i, a) => a.indexOf(c) === i);
+
+  if (codes.length >= 2) {
+    return { origin: codes[0], destination: codes[1] };
+  }
+
+  const norm = q.replace(/[^a-z0-9\u0590-\u05ff\u0400-\u04ff\s]/g, " ");
+  let destination = codes.find((c) => c !== origin);
+  if (!destination && codes.length === 1 && codes[0] !== origin) {
+    destination = codes[0];
+  }
+  if (!destination) {
+    for (const [name, iata] of Object.entries(CITY_IATA)) {
+      if (queryMentionsCity(norm, name)) {
+        destination = iata;
+        break;
+      }
+    }
+  }
+  if (!destination || destination === origin) {
+    return null;
+  }
+  return { origin, destination };
+}
+
+async function travelSearch(route, endpoint) {
+  const url = new URL(endpoint);
+  url.searchParams.set("origin", route.origin);
+  url.searchParams.set("destination", route.destination);
+  const res = await fetch(url.toString(), { method: "GET", credentials: "omit", mode: "cors" });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(data.error || "travel_fail");
+  }
+  const items = (data.items || []).map((raw) => {
+    const price = raw.price ?? raw.Price;
+    const currency = raw.currency ?? raw.Currency ?? "USD";
+    return {
+      marketplace: "Travelpayouts",
+      type: "travel",
+      title: raw.title ?? raw.Title ?? `${route.origin} → ${route.destination}`,
+      affiliate_url: raw.affiliateClickUrl ?? raw.affiliate_click_url ?? raw.merchantUrl ?? raw.merchant_url,
+      pricing: price != null ? { currency, sale_price: price } : {},
+    };
+  });
+  return { items, disclosure: data.disclosure };
+}
+
 function resolveSearchEndpoint(root) {
   const fromData = (root.dataset.searchEndpoint || "").trim();
   if (fromData) return fromData;
@@ -237,6 +357,13 @@ function normalizeSearchItem(raw) {
 }
 
 function formatPrice(item, copy) {
+  if (item.marketplace === "Travelpayouts" || item.type === "travel") {
+    const p = item.pricing || {};
+    if (p.sale_price != null && p.currency) {
+      return `from ${p.currency} ${Number(p.sale_price).toFixed(0)}`;
+    }
+    return item.title || "";
+  }
   if (item.marketplace === "Amazon" || item.type === "search_results_link") {
     return copy.amazonPrice || "Check live price on Amazon";
   }
@@ -253,6 +380,7 @@ function formatPrice(item, copy) {
 function storeIcon(marketplace, storeIcons) {
   if (marketplace === "Amazon") return storeIcons.amazon;
   if (marketplace === "AliExpress") return storeIcons.aliexpress;
+  if (marketplace === "Travelpayouts") return storeIcons.travel;
   return "";
 }
 
@@ -318,6 +446,7 @@ function boot() {
   const tag = root.dataset.tag || "";
   const aliEndpoint = resolveAliEndpoint(root);
   const searchEndpoint = resolveSearchEndpoint(root);
+  const travelEndpoint = resolveTravelEndpoint(root);
   const form = document.getElementById("link-form");
   const input = document.getElementById("link-input");
   const shipSelect = document.getElementById("link-ship");
@@ -338,6 +467,7 @@ function boot() {
   const storeIcons = {
     amazon: root.dataset.iconAmazon || "",
     aliexpress: root.dataset.iconAli || "",
+    travel: root.dataset.iconTravel || "",
   };
 
   if (note && copy.autoNote) note.textContent = copy.autoNote;
@@ -374,11 +504,11 @@ function boot() {
     result.hidden = false;
   }
 
-  function showGallery(payload) {
+  function showGallery(payload, kickerOverride) {
     hideLinkResult();
     if (!gallery || !galleryList) return;
     const items = (payload.items || []).map(normalizeSearchItem);
-    galleryKicker.textContent = copy.galleryKicker || copy.kicker;
+    galleryKicker.textContent = kickerOverride || copy.galleryKicker || copy.kicker;
     galleryDisclose.textContent = payload.disclosure || "";
     galleryList.innerHTML = renderGallery({ ...payload, items }, storeIcons, copy);
     gallery.hidden = false;
@@ -451,13 +581,34 @@ function boot() {
           setStatus(copy.err_query, "warn");
           return;
         }
+        const { ship, currency } = readShipLocale();
+        const route = parseTravelRoute(query, ship);
+        if (route && travelEndpoint) {
+          const travelPayload = await travelSearch(route, travelEndpoint);
+          if (travelPayload.items?.length) {
+            const galleryPayload = {
+              items: travelPayload.items,
+              disclosure: copy.travelDisclose || travelPayload.disclosure,
+            };
+            showGallery(galleryPayload, copy.travelGalleryKicker || copy.galleryKicker);
+            setStatus(copy.readySearch || "ok", "ok");
+            return;
+          }
+        }
+        if (route && !travelEndpoint) {
+          setStatus(copy.travelHint || copy.err_unknown, "warn");
+          return;
+        }
+        if (TRAVEL_WORD_RE.test(query) && !route) {
+          setStatus(copy.travelHint || copy.err_query, "warn");
+          return;
+        }
         if (!searchEndpoint) {
           const link = amazonLink(value, tag);
           showResult(link, copy.amazonDisclose, copy.openAmazon, "amazon");
           setStatus(copy.readyAmazon, "ok");
           return;
         }
-        const { ship, currency } = readShipLocale();
         const payload = await productSearch(query, searchEndpoint, ship, currency);
         showGallery(payload);
         setStatus(copy.readySearch || "ok", "ok");
@@ -471,7 +622,9 @@ function boot() {
       const code = error && error.code;
       const message = code && copy["err_" + code]
         ? copy["err_" + code]
-        : (error.message === "search_fetch" || error.message === "search_fail" || error.message === "search_no_api")
+        : (error.message === "travel_fail" || error.message?.includes("Flight search"))
+          ? (copy.travelErr || copy.searchErr || error.message)
+          : (error.message === "search_fetch" || error.message === "search_fail" || error.message === "search_no_api")
           ? (copy.searchErr || error.message)
           : (error.message || copy.err_page);
       setStatus(message, "warn");

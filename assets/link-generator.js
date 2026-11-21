@@ -6,40 +6,8 @@ const LOCAL_SEARCH_API = "http://127.0.0.1:3099/api/search/products/rich";
 const DEFAULT_SEARCH_API = "https://pickforge-mcp.onrender.com/api/search/products/rich";
 const LOCAL_TRAVEL_API = "http://127.0.0.1:3099/api/search/travel";
 const DEFAULT_TRAVEL_API = "https://pickforge-mcp.onrender.com/api/search/travel";
-
-/** Hint-only: user asked for travel but we could not resolve a route (not required to search). */
-const TRAVEL_WORD_RE =
-  /\b(flight|flights|fly|flyght|airfare|air\s*ticket|travel|trip|vacation|holiday|destination|авиабилет|билет|перел[её]т|рейс|рейсы|полет|полёт|טיסה|טיסות|יעד|חופשה)\b/i;
-const ORIGIN_BY_COUNTRY = { IL: "TLV", US: "JFK", GB: "LHR", DE: "BER", FR: "CDG", AU: "SYD", CA: "YYZ" };
-const CITY_IATA = {
-  dubai: "DXB",
-  dubaii: "DXB",
-  bubai: "DXB",
-  london: "LHR",
-  paris: "CDG",
-  rome: "FCO",
-  bangkok: "BKK",
-  newyork: "JFK",
-  "new york": "JFK",
-  losangeles: "LAX",
-  "los angeles": "LAX",
-  miami: "MIA",
-  amsterdam: "AMS",
-  barcelona: "BCN",
-  istanbul: "IST",
-  tokio: "NRT",
-  tokyo: "NRT",
-  moscow: "SVO",
-  moskva: "SVO",
-  москва: "SVO",
-  дубай: "DXB",
-  лондон: "LHR",
-  париж: "CDG",
-  тельавив: "TLV",
-  "tel aviv": "TLV",
-  דובאי: "DXB",
-  לונדון: "LHR",
-};
+const LOCAL_TP_LINK_API = "http://127.0.0.1:3099/api/links/travelpayouts";
+const DEFAULT_TP_LINK_API = "https://pickforge-mcp.onrender.com/api/links/travelpayouts";
 
 function fail(code) {
   const error = new Error(code);
@@ -78,7 +46,17 @@ function isAmazonComHost(hostname) {
   return null;
 }
 
-/** @returns {"amazon" | "aliexpress" | "unknown"} */
+function isTravelBrandHost(hostname) {
+  const host = hostname.toLowerCase().replace(/\.$/, "");
+  const needles = [
+    "aviasales.", "jetradar.", "hotellook.", "booking.", "trip.com", "tripadvisor.",
+    "hotels.com", "expedia.", "agoda.", "omio.", "getyourguide.", "rentalcars.",
+    "tiqets.", "yesim.", "airalo.", "hostelworld.", "skyscanner.",
+  ];
+  return needles.some((n) => host.includes(n));
+}
+
+/** @returns {"amazon" | "aliexpress" | "travelpayouts" | "unknown"} */
 export function detectLinkMode(input) {
   const raw = String(input || "").trim();
   if (!raw) return "unknown";
@@ -94,6 +72,7 @@ export function detectLinkMode(input) {
   const amazon = isAmazonComHost(uri.hostname);
   if (amazon === "amazon") return "amazon";
   if (amazon === "short") return "unknown";
+  if (isTravelBrandHost(uri.hostname)) return "travelpayouts";
   return "unknown";
 }
 
@@ -180,6 +159,24 @@ function resolveAliEndpoint(root) {
   return "";
 }
 
+function resolveTravelpayoutsLinkEndpoint(root) {
+  const fromData = (root.dataset.travelpayoutsLinkEndpoint || "").trim();
+  if (fromData) return fromData;
+  if (typeof location === "undefined") return "";
+  if (location.protocol === "file:") return LOCAL_TP_LINK_API;
+  const host = location.hostname;
+  if (host === "localhost" || host === "127.0.0.1") {
+    if (location.port === "3099") {
+      return new URL("/api/links/travelpayouts", location.origin).href;
+    }
+    return LOCAL_TP_LINK_API;
+  }
+  if (host.endsWith("github.io")) {
+    return DEFAULT_TP_LINK_API;
+  }
+  return "";
+}
+
 function resolveTravelEndpoint(root) {
   const fromData = (root.dataset.travelEndpoint || "").trim();
   if (fromData) return fromData;
@@ -198,70 +195,31 @@ function resolveTravelEndpoint(root) {
   return "";
 }
 
-function escapeRegExp(s) {
-  return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function queryMentionsCity(norm, cityName) {
-  const name = String(cityName || "").toLowerCase().trim();
-  if (!name) return false;
-  if (/^[a-z0-9 ]+$/i.test(name) && !name.includes(" ")) {
-    return new RegExp(`\\b${escapeRegExp(name)}\\b`, "i").test(norm);
-  }
-  return norm.includes(name);
-}
-
-function parseTravelRoute(text, shipCountry) {
-  const q = cleanQuery(text).toLowerCase();
-  const origin = ORIGIN_BY_COUNTRY[String(shipCountry || "US").toUpperCase()] || "TLV";
-  const codes = (q.match(/\b[a-z]{3}\b/gi) || [])
-    .map((c) => c.toUpperCase())
-    .filter((c, i, a) => a.indexOf(c) === i);
-
-  if (codes.length >= 2) {
-    return { origin: codes[0], destination: codes[1] };
-  }
-
-  const norm = q.replace(/[^a-z0-9\u0590-\u05ff\u0400-\u04ff\s]/g, " ");
-  let destination = codes.find((c) => c !== origin);
-  if (!destination && codes.length === 1 && codes[0] !== origin) {
-    destination = codes[0];
-  }
-  if (!destination) {
-    for (const [name, iata] of Object.entries(CITY_IATA)) {
-      if (queryMentionsCity(norm, name)) {
-        destination = iata;
-        break;
-      }
-    }
-  }
-  if (!destination || destination === origin) {
-    return null;
-  }
-  return { origin, destination };
-}
-
-async function travelSearch(route, endpoint) {
+/** Travelpayouts: server resolves places via autocomplete; client sends raw query only. */
+async function travelSearchByQuery(text, endpoint, shipCountry) {
   const url = new URL(endpoint);
-  url.searchParams.set("origin", route.origin);
-  url.searchParams.set("destination", route.destination);
+  url.searchParams.set("query", cleanQuery(text));
+  url.searchParams.set("ship_from", String(shipCountry || "US").toUpperCase().slice(0, 2));
   const res = await fetch(url.toString(), { method: "GET", credentials: "omit", mode: "cors" });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
     throw new Error(data.error || "travel_fail");
   }
+  const origin = data.origin ?? data.Origin ?? "";
+  const destination = data.destination ?? data.Destination ?? "";
+  const routeLabel = origin && destination ? `${origin} → ${destination}` : "";
   const items = (data.items || []).map((raw) => {
     const price = raw.price ?? raw.Price;
     const currency = raw.currency ?? raw.Currency ?? "USD";
     return {
       marketplace: "Travelpayouts",
       type: "travel",
-      title: raw.title ?? raw.Title ?? `${route.origin} → ${route.destination}`,
+      title: raw.title ?? raw.Title ?? routeLabel,
       affiliate_url: raw.affiliateClickUrl ?? raw.affiliate_click_url ?? raw.merchantUrl ?? raw.merchant_url,
       pricing: price != null ? { currency, sale_price: price } : {},
     };
   });
-  return { items, disclosure: data.disclosure };
+  return { items, resolved: Boolean(routeLabel), disclosure: data.disclosure };
 }
 
 function resolveSearchEndpoint(root) {
@@ -280,6 +238,25 @@ function resolveSearchEndpoint(root) {
     return DEFAULT_SEARCH_API;
   }
   return "";
+}
+
+async function travelpayoutsLink(sourceUrl, endpoint) {
+  if (!endpoint) fail("travel_link_no_api");
+  let res;
+  try {
+    res = await fetch(`${endpoint}?url=${encodeURIComponent(sourceUrl)}`, {
+      method: "GET",
+      credentials: "omit",
+      mode: "cors",
+    });
+  } catch {
+    fail("travel_link_fetch");
+  }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.affiliateUrl) {
+    throw new Error(data.error || "Travelpayouts link service failed.");
+  }
+  return data.affiliateUrl;
 }
 
 async function aliExpressLink(sourceUrl, endpoint) {
@@ -447,6 +424,7 @@ function boot() {
   const aliEndpoint = resolveAliEndpoint(root);
   const searchEndpoint = resolveSearchEndpoint(root);
   const travelEndpoint = resolveTravelEndpoint(root);
+  const travelpayoutsLinkEndpoint = resolveTravelpayoutsLinkEndpoint(root);
   const form = document.getElementById("link-form");
   const input = document.getElementById("link-input");
   const shipSelect = document.getElementById("link-ship");
@@ -568,6 +546,13 @@ function boot() {
     await paintYield();
 
     try {
+      if (mode === "travelpayouts") {
+        const link = await travelpayoutsLink(value.trim(), travelpayoutsLinkEndpoint);
+        showResult(link, copy.travelLinkDisclose || copy.travelDisclose, copy.openTravel || "Open travel deal", "travel");
+        setStatus(copy.readyTravelLink || copy.readySearch || "ok", "ok");
+        return;
+      }
+
       if (mode === "aliexpress") {
         const link = await aliExpressLink(canonicalAliExpressUrl(value), aliEndpoint);
         showResult(link, copy.aliDisclose, copy.openAli, "aliexpress");
@@ -582,9 +567,8 @@ function boot() {
           return;
         }
         const { ship, currency } = readShipLocale();
-        const route = parseTravelRoute(query, ship);
-        if (route && travelEndpoint) {
-          const travelPayload = await travelSearch(route, travelEndpoint);
+        if (travelEndpoint) {
+          const travelPayload = await travelSearchByQuery(query, travelEndpoint, ship);
           if (travelPayload.items?.length) {
             const galleryPayload = {
               items: travelPayload.items,
@@ -594,14 +578,10 @@ function boot() {
             setStatus(copy.readySearch || "ok", "ok");
             return;
           }
-        }
-        if (route && !travelEndpoint) {
-          setStatus(copy.travelHint || copy.err_unknown, "warn");
-          return;
-        }
-        if (TRAVEL_WORD_RE.test(query) && !route) {
-          setStatus(copy.travelHint || copy.err_query, "warn");
-          return;
+          if (travelPayload.resolved) {
+            setStatus(copy.travelEmpty || copy.travelErr || "No flights found.", "warn");
+            return;
+          }
         }
         if (!searchEndpoint) {
           const link = amazonLink(value, tag);

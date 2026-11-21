@@ -1,5 +1,44 @@
 (function () {
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var WAKE_MS = 12000;
+
+  function wakeRenderServices() {
+    var links = document.querySelectorAll(".assistant-health a[href]");
+    if (!links.length) return;
+    links.forEach(function (anchor) {
+      var url = anchor.href;
+      if (!url || !/^https?:\/\//i.test(url)) return;
+      var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+      var timer = ctrl
+        ? setTimeout(function () {
+            ctrl.abort();
+          }, WAKE_MS)
+        : null;
+      fetch(url, {
+        method: "GET",
+        mode: "no-cors",
+        credentials: "omit",
+        cache: "no-store",
+        signal: ctrl ? ctrl.signal : undefined,
+      }).catch(function () {}).finally(function () {
+        if (timer) clearTimeout(timer);
+      });
+    });
+  }
+
+  function scheduleWakeup() {
+    wakeRenderServices();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", scheduleWakeup);
+  } else {
+    scheduleWakeup();
+  }
+  window.addEventListener("pageshow", function () {
+    wakeRenderServices();
+  });
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function headerOffset() {
     var bar = document.getElementById('bar');

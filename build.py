@@ -19,6 +19,7 @@ DEFAULT_ORIGIN = "https://drsemfrankenstein.github.io/pickforge-site"
 DEFAULT_ALI_LINK_API = "https://pickforge-mcp.onrender.com/api/links/aliexpress"
 DEFAULT_SEARCH_API = "https://pickforge-mcp.onrender.com/api/search/products/rich"
 DEFAULT_TRAVEL_API = "https://pickforge-mcp.onrender.com/api/search/travel"
+DEFAULT_TP_LINK_API = "https://pickforge-mcp.onrender.com/api/links/travelpayouts"
 ALI_LINK_API = os.environ.get("PICKFORGE_ALI_LINK_API", "").strip()
 SEARCH_API = os.environ.get("PICKFORGE_SEARCH_API", "").strip()
 if len(sys.argv) > 2:
@@ -128,8 +129,8 @@ CONTENT = {
     "h": "Make a store link",
     "p": "Paste search words, an Amazon product page, or an AliExpress item URL. PickForge detects the store automatically.",
     "label": "Search, Amazon page, or AliExpress URL",
-    "placeholder": "Cordless vacuum, amazon.com/…/dp/…, or aliexpress.com/item/…",
-    "autoNote": "Search words show a product gallery (Amazon + AliExpress). Amazon and AliExpress URLs become affiliate links.",
+    "placeholder": "Cordless vacuum, amazon.com/…/dp/…, aliexpress.com/item/…, or booking.com/…",
+    "autoNote": "Search words try Travelpayouts flights first (natural language; server resolves cities), then Amazon + AliExpress products. URLs become affiliate links.",
     "submit": "Go",
     "working": "Building your link…",
     "searchWorking": "Searching products…",
@@ -140,8 +141,14 @@ CONTENT = {
     "galleryKicker": "Product results",
     "travelGalleryKicker": "Flight results",
     "travelDisclose": "Affiliate travel link via Travelpayouts. Confirm price on the booking site.",
-    "travelHint": "Add a destination city or IATA codes, e.g. “Dubai”, “TLV LHR”, or “рейс Дубай”.",
+    "travelHint": "Include a destination place or IATA codes (e.g. “traveling in Berlin”, “TLV LHR”).",
     "travelErr": "Flight search failed.",
+    "travelEmpty": "No flights found for that route. Try other dates or IATA codes (e.g. TLV BER).",
+    "travelLinkDisclose": "Affiliate travel link via Travelpayouts. Confirm price on the booking site.",
+    "openTravel": "Open travel deal",
+    "readyTravelLink": "Travelpayouts partner link ready.",
+    "err_travel_link_no_api": "Travel brand links need the PickForge MCP link API on this page.",
+    "err_travel_link_fetch": "Could not reach the Travelpayouts link API.",
     "shipLabel": "Ship to",
     "openAmazon": "Open on Amazon",
     "openAli": "Open on AliExpress",
@@ -309,6 +316,7 @@ CONTENT = {
     "travelDisclose": "Партнёрская ссылка на рейс (Travelpayouts). Цену проверьте на сайте бронирования.",
     "travelHint": "Укажите город или коды IATA, напр. «Дубай», «TLV LHR» или «рейс в Дубай».",
     "travelErr": "Поиск рейсов не удался.",
+    "travelEmpty": "Рейсов по этому маршруту нет. Попробуйте другие даты или коды IATA (напр. TLV BER).",
     "shipLabel": "Доставка",
     "openAmazon": "Открыть на Amazon",
     "openAli": "Открыть на AliExpress",
@@ -476,6 +484,7 @@ CONTENT = {
     "travelDisclose": "קישור שותפים לטיסה (Travelpayouts). אשרו מחיר באתר ההזמנה.",
     "travelHint": "הוסיפו עיר יעד או קודי IATA, למשל «דובאי», «TLV LHR» או «טיסה לדובאי».",
     "travelErr": "חיפוש הטיסות נכשל.",
+    "travelEmpty": "לא נמצאו טיסות למסלול הזה. נסו תאריכים אחרים או קודי IATA (למשל TLV BER).",
     "shipLabel": "משלוח ל",
     "openAmazon": "פתיחה ב-Amazon",
     "openAli": "פתיחה ב-AliExpress",
@@ -816,6 +825,10 @@ def page(lang):
         "searchErr": L.get("searchErr", ""), "galleryKicker": L.get("galleryKicker", ""),
         "travelGalleryKicker": L.get("travelGalleryKicker", ""), "travelDisclose": L.get("travelDisclose", ""),
         "travelHint": L.get("travelHint", ""), "travelErr": L.get("travelErr", "Flight search failed."),
+        "travelEmpty": L.get("travelEmpty", "No flights found."),
+        "travelLinkDisclose": L.get("travelLinkDisclose", ""), "openTravel": L.get("openTravel", "Open travel deal"),
+        "readyTravelLink": L.get("readyTravelLink", ""), "err_travel_link_no_api": L.get("err_travel_link_no_api", ""),
+        "err_travel_link_fetch": L.get("err_travel_link_fetch", ""),
         "shipLabel": L.get("shipLabel", "Ship to"),
     }, ensure_ascii=False).replace("<", "\\u003c")
     P = c["partners"]
@@ -948,7 +961,7 @@ def page(lang):
 
   <div class="paper">
     <div class="paper-inner">
-      <section class="tool" id="links" data-link-tool data-tag="{ASSOCIATES_ID}" data-ali-endpoint="{html.escape(ALI_LINK_API)}" data-search-endpoint="{html.escape(SEARCH_API)}" data-travel-endpoint="{html.escape(DEFAULT_TRAVEL_API)}" data-icon-amazon="{rel}assets/stores/amazon.svg" data-icon-ali="{rel}assets/stores/aliexpress.svg" data-icon-travel="{rel}assets/stores/travelpayouts.svg" aria-labelledby="links-h">
+      <section class="tool" id="links" data-link-tool data-tag="{ASSOCIATES_ID}" data-ali-endpoint="{html.escape(ALI_LINK_API)}" data-search-endpoint="{html.escape(SEARCH_API)}" data-travel-endpoint="{html.escape(DEFAULT_TRAVEL_API)}" data-travelpayouts-link-endpoint="{html.escape(DEFAULT_TP_LINK_API)}" data-icon-amazon="{rel}assets/stores/amazon.svg" data-icon-ali="{rel}assets/stores/aliexpress.svg" data-icon-travel="{rel}assets/stores/travelpayouts.svg" aria-labelledby="links-h">
         <div>
           <h2 id="links-h">{html.escape(L["h"])}</h2>
         </div>
@@ -1089,7 +1102,7 @@ def llms_txt():
 ## Assistant connectors
 
 The public MCP address is {MCP_URL} (SSE). Name: {MCP_NAME}. Description: {e["assistant"]["mcp_description"]}
-MCP tools: search_products, search_travel (Travelpayouts flights, IATA codes), generate_affiliate_link (AliExpress URL).
+MCP tools: search_products, search_travel, generate_affiliate_link (AliExpress), generate_travelpayouts_link, list_travelpayouts_tools (includes API catalog from https://support.travelpayouts.com/hc/en-us/categories/200358578).
 Claude opens Add custom connector with the name and address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection, with no authentication. Grok opens Connectors: choose New Connector, then Custom. Confirm before adding. Do not paste a localhost address.
 
 """ + "\n".join(f"- {row[0]}: {row[1]}" for row in e["assistant"]["connectors"]) + f"""
@@ -1166,7 +1179,8 @@ CSP = (
     "style-src 'self' https://fonts.googleapis.com; "
     "font-src https://fonts.gstatic.com; "
     "img-src 'self' data: https://emrld.ltd; "
-    "connect-src 'self' https://emrld.ltd https://*.travelpayouts.com; "
+    "connect-src 'self' https://emrld.ltd https://*.travelpayouts.com "
+    "https://pickforge-mcp.onrender.com https://pickforge-api.onrender.com; "
     "frame-ancestors 'none'; "
     "base-uri 'self'; "
     "form-action 'none'; "

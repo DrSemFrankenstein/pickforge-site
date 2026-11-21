@@ -13,6 +13,7 @@
 
 - Amazon Associates participant. Associates ID on this site: pickforge-20. Storefront: amazon.com only.
 - AliExpress Affiliate Program (Portals). Official promotion links are created by the Portals API on the server. This page does not invent one.
+- Travelpayouts affiliate program; Travelpayouts Drive script (emrld.ltd) in page head for travel partner links where enabled.
 - Required statement, shown on every page: As an Amazon Associate I earn from qualifying purchases.
 - Amazon links built on this page are full https://www.amazon.com addresses with tag=pickforge-20. No price is shown. Open the link from this page.
 - The service does not sell products and does not claim hands-on product tests.
@@ -60,7 +61,7 @@ Claude opens Add custom connector with the name and address filled in. ChatGPT o
 
 ## Policies
 
-- Disclosure: PickForge participates in the Amazon Associates Program and the AliExpress Affiliate Program (Portals). If you buy through a link we label, we may earn a commission. You do not pay extra.
+- Disclosure: PickForge participates in the Amazon Associates Program, the AliExpress Affiliate Program (Portals), and the Travelpayouts affiliate program. If you buy through a link we label, we may earn a commission. You do not pay extra.
 - Standards: commissions do not determine ranking
 - Privacy: static site, no logins, no sale of personal data
 

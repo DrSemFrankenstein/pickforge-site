@@ -37,10 +37,11 @@ Search words show a product gallery (Amazon + AliExpress). Amazon and AliExpress
 
 ## Partners
 
-Product search and labeled affiliate links use these programs. Checkout stays on each merchant’s site. Store names are trademarks of their owners.
+Product search and labeled affiliate links use these programs. Travelpayouts Drive may apply travel partner links where enabled. Checkout stays on each merchant’s site. Store names are trademarks of their owners.
 
 - **Amazon** (Amazon Associates): Product and search links on amazon.com include Associates ID pickforge-20.
 - **AliExpress** (AliExpress Portals): Official promotion links are created only through the Portals affiliate API.
+- **Travelpayouts** (Travelpayouts Drive): Travel affiliate tooling via the Drive script in the page head, per Travelpayouts program rules.
 
 ## Add the tool to an assistant
 
@@ -62,7 +63,7 @@ PickForge is not in a plugin directory. The server address is https://pickforge-
 
 ## Affiliate disclosure
 
-PickForge participates in the Amazon Associates Program and the AliExpress Affiliate Program (Portals). If you buy through a link we label, we may earn a commission. You do not pay extra.
+PickForge participates in the Amazon Associates Program, the AliExpress Affiliate Program (Portals), and the Travelpayouts affiliate program. If you buy through a link we label, we may earn a commission. You do not pay extra.
 
 Prices, availability, and offers change. Confirm them on the store’s site before you buy. Store names are trademarks of their owners.
 
@@ -73,6 +74,8 @@ Amazon.com links on this page are the full amazon.com address, including Associa
 This page is static: no user login, no contact form, and no newsletter signup.
 
 The link builder runs in your browser. The product address or search words are not sent to PickForge. Opening a link sends you to Amazon or, when our server has issued one, to AliExpress. Those stores may set their own cookies.
+
+Travelpayouts Drive (script from emrld.ltd) may process page views and travel-related links under Travelpayouts’ privacy policy.
 
 The assistant tool, when it is published, receives a search request only to return results. We do not sell personal information. Hosting providers may log standard access data (IP, user agent).
 

@@ -47,6 +47,17 @@ TELEGRAM_MINI_APP_URL = "https://pickforge-telegram.onrender.com"
 TELEGRAM_MINI_APP_OPEN = "https://t.me/PickForgeShopBot?startapp"
 AMAZON_EXACT = "As an Amazon Associate I earn from qualifying purchases."
 ASSOCIATES_ID = "pickforge-20"
+# Travelpayouts Drive — project-specific snippet from the Travelpayouts dashboard (do not swap IDs).
+TRAVELPAYOUTS_DRIVE = """<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.setAttribute("data-cmp-ab","2");
+      script.src = 'https://emrld.ltd/NTk5MTk1.js?t=599195';
+      document.head.appendChild(script);
+  })();
+</script>
+"""
 LANGS = ["en", "ru", "he"]
 HERO_CONNECTOR_ICONS = frozenset({"claude", "chatgpt", "grok"})
 PATHS = {"en": "", "ru": "ru/", "he": "he/"}
@@ -90,7 +101,7 @@ CONTENT = {
     ("Updates", "We update this page when the service, partner programs, or disclosures change."),
   ],
   "disc_h": "Affiliate disclosure",
-  "disc_p": "PickForge participates in the <strong>Amazon Associates Program</strong> and the <strong>AliExpress Affiliate Program</strong> (Portals). If you buy through a link we label, we may earn a commission. You do not pay extra.",
+  "disc_p": "PickForge participates in the <strong>Amazon Associates Program</strong>, the <strong>AliExpress Affiliate Program</strong> (Portals), and the <strong>Travelpayouts</strong> affiliate program. If you buy through a link we label, we may earn a commission. You do not pay extra.",
   "disc_fine": [
     "Prices, availability, and offers change. Confirm them on the store’s site before you buy. Store names are trademarks of their owners.",
     "Amazon.com links on this page are the full amazon.com address, including Associates ID pickforge-20. We do not hide that address behind a short link. Amazon does not sponsor or endorse PickForge. The sentence below is the program disclosure.",
@@ -98,6 +109,7 @@ CONTENT = {
   "priv_h": "Privacy",
   "priv": ["This page is static: no user login, no contact form, and no newsletter signup.",
            "The link builder runs in your browser. The product address or search words are not sent to PickForge. Opening a link sends you to Amazon or, when our server has issued one, to AliExpress. Those stores may set their own cookies.",
+           "Travelpayouts Drive (script from emrld.ltd) may process page views and travel-related links under Travelpayouts’ privacy policy.",
            "The assistant tool, when it is published, receives a search request only to return results. We do not sell personal information. Hosting providers may log standard access data (IP, user agent)."],
   "faq_h": "Questions",
   "faq": [
@@ -165,10 +177,11 @@ CONTENT = {
   },
   "partners": {
     "h": "Partners",
-    "p": "Product search and labeled affiliate links use these programs. Checkout stays on each merchant’s site. Store names are trademarks of their owners.",
+    "p": "Product search and labeled affiliate links use these programs. Travelpayouts Drive may apply travel partner links where enabled. Checkout stays on each merchant’s site. Store names are trademarks of their owners.",
     "items": [
       ("Amazon", "amazon", "Amazon Associates", "Product and search links on amazon.com include Associates ID pickforge-20."),
       ("AliExpress", "aliexpress", "AliExpress Portals", "Official promotion links are created only through the Portals affiliate API."),
+      ("Travelpayouts", "travelpayouts", "Travelpayouts Drive", "Travel affiliate tooling via the Drive script in the page head, per Travelpayouts program rules."),
     ],
   },
   "assistant": {
@@ -251,7 +264,7 @@ CONTENT = {
     ("Обновления", "Мы обновляем эту страницу, когда меняются сервис, партнёрские программы или раскрытие."),
   ],
   "disc_h": "Раскрытие партнёрских отношений",
-  "disc_p": "PickForge участвует в <strong>Amazon Associates</strong> и в <strong>партнёрской программе AliExpress</strong> (Portals). Если вы купите товар по ссылке, которую мы пометили, мы можем получить комиссию. Доплаты нет.",
+  "disc_p": "PickForge участвует в <strong>Amazon Associates</strong>, в <strong>партнёрской программе AliExpress</strong> (Portals) и в <strong>партнёрской программе Travelpayouts</strong>. Если вы купите товар по ссылке, которую мы пометили, мы можем получить комиссию. Доплаты нет.",
   "disc_fine": [
     "Цены, наличие и условия меняются. Перед покупкой проверьте их на сайте магазина. Названия магазинов — товарные знаки владельцев.",
     "Ссылки Amazon.com на этой странице — полный адрес amazon.com, включая идентификатор Associates pickforge-20. Мы не прячем его за коротким адресом. Amazon не спонсирует и не поддерживает PickForge. Ниже — обязательная формулировка программы на английском.",
@@ -259,6 +272,7 @@ CONTENT = {
   "priv_h": "Конфиденциальность",
   "priv": ["Эта страница статическая: без регистрации, формы обратной связи и рассылки.",
            "Сборщик ссылок работает в вашем браузере. Адрес товара или слова поиска не отправляются в PickForge. Переход открывает Amazon или, если ссылку выдал наш сервер, AliExpress. Эти магазины могут ставить свои cookie.",
+           "Travelpayouts Drive (скрипт с emrld.ltd) может обрабатывать просмотры и travel-ссылки по политике конфиденциальности Travelpayouts.",
            "Инструмент ассистента, когда он будет опубликован, получает поисковый запрос только чтобы вернуть результат. Мы не продаём персональные данные. Хостинг может записывать обычные данные доступа (IP-адрес, user agent)."],
   "faq_h": "Вопросы",
   "faq": [
@@ -326,10 +340,11 @@ CONTENT = {
   },
   "partners": {
     "h": "Партнёры",
-    "p": "Поиск и помеченные партнёрские ссылки идут через эти программы. Оплата — на сайте магазина. Названия магазинов — торговые марки их владельцев.",
+    "p": "Поиск и помеченные партнёрские ссылки идут через эти программы. Travelpayouts Drive может подключать travel-партнёрские ссылки, где это включено. Оплата — на сайте магазина. Названия магазинов — торговые марки их владельцев.",
     "items": [
       ("Amazon", "amazon", "Amazon Associates", "Ссылки на товары и поиск на amazon.com с идентификатором Associates pickforge-20."),
       ("AliExpress", "aliexpress", "AliExpress Portals", "Партнёрские ссылки создаёт только официальный API Portals."),
+      ("Travelpayouts", "travelpayouts", "Travelpayouts Drive", "Travel-аффилиат через скрипт Drive в head страницы, по правилам программы Travelpayouts."),
     ],
   },
   "assistant": {
@@ -412,7 +427,7 @@ CONTENT = {
     ("עדכונים", "מעדכנים את העמוד כשהשירות, תוכניות השותפים או הגילוי משתנים."),
   ],
   "disc_h": "גילוי נאות על שותפות",
-  "disc_p": "PickForge משתתף ב-<strong>Amazon Associates</strong> וב-<strong>תוכנית השותפים של AliExpress</strong>‏ (Portals). אם תרכוש דרך קישור שסימנו, ייתכן שנקבל עמלה. אין תוספת תשלום.",
+  "disc_p": "PickForge משתתף ב-<strong>Amazon Associates</strong>, ב-<strong>תוכנית השותפים של AliExpress</strong>‏ (Portals) וב-<strong>תוכנית השותפים של Travelpayouts</strong>. אם תרכוש דרך קישור שסימנו, ייתכן שנקבל עמלה. אין תוספת תשלום.",
   "disc_fine": [
     "מחירים, זמינות והצעות משתנים. אשרו אותם באתר החנות לפני קנייה. שמות החנויות הם סימנים מסחריים של בעליהם.",
     "קישורי Amazon.com בעמוד הזה הם הכתובת המלאה ב-amazon.com, כולל מזהה Associates‏ pickforge-20. איננו מסתירים אותה מאחורי כתובת קצרה. Amazon לא נותנת חסות ל-PickForge ולא תומכת בו. המשפט למטה הוא נוסח הגילוי הנדרש, באנגלית.",
@@ -420,6 +435,7 @@ CONTENT = {
   "priv_h": "פרטיות",
   "priv": ["העמוד סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.",
            "בונה הקישורים רץ בדפדפן. כתובת המוצר או מילות החיפוש לא נשלחות ל-PickForge. פתיחת קישור מעבירה אל Amazon, או אל AliExpress אם השרת שלנו הנפיק את הקישור. החנויות עשויות להגדיר עוגיות משלהן.",
+           "Travelpayouts Drive (סקריפט מ-emrld.ltd) עשוי לעבד צפיות וקישורי נסיעות לפי מדיניות הפרטיות של Travelpayouts.",
            "כלי העוזר, כשיפורסם, מקבל בקשת חיפוש רק כדי להחזיר תוצאה. איננו מוכרים מידע אישי. ספק האחסון עשוי לתעד נתוני גישה רגילים (כתובת IP, סוג דפדפן)."],
   "faq_h": "שאלות",
   "faq": [
@@ -487,10 +503,11 @@ CONTENT = {
   },
   "partners": {
     "h": "שותפים",
-    "p": "חיפוש מוצרים וקישורי שותפים מסומנים עוברים דרך התוכניות האלה. התשלום נשאר באתר הסוחר. שמות החנויות הם סימני מסחר של הבעלים.",
+    "p": "חיפוש מוצרים וקישורי שותפים מסומנים עוברים דרך התוכניות האלה. Travelpayouts Drive עשוי להוסיף קישורי שותפי נסיעות במקומות שמופעלים. התשלום נשאר באתר הסוחר. שמות החנויות הם סימני מסחר של הבעלים.",
     "items": [
       ("Amazon", "amazon", "Amazon Associates", "קישורי מוצר וחיפוש ב-amazon.com כוללים את מזהה Associates‏ pickforge-20."),
       ("AliExpress", "aliexpress", "AliExpress Portals", "קישורי קידום רשמיים נוצרים רק ב-API השותפים של Portals."),
+      ("Travelpayouts", "travelpayouts", "Travelpayouts Drive", "שותפות נסיעות דרך סקריפט Drive ב-head, לפי כללי התוכנית של Travelpayouts."),
     ],
   },
   "assistant": {
@@ -802,6 +819,7 @@ def page(lang):
     return f"""<!doctype html>
 <html lang="{lang}" dir="{d}">
 <head>
+{TRAVELPAYOUTS_DRIVE}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{c["title"]}</title>
@@ -1037,6 +1055,7 @@ def llms_txt():
 
 - Amazon Associates participant. Associates ID on this site: {ASSOCIATES_ID}. Storefront: amazon.com only.
 - AliExpress Affiliate Program (Portals). Official promotion links are created by the Portals API on the server. This page does not invent one.
+- Travelpayouts affiliate program; Travelpayouts Drive script (emrld.ltd) in page head for travel partner links where enabled.
 - Required statement, shown on every page: {AMAZON_EXACT}
 - Amazon links built on this page are full https://www.amazon.com addresses with tag={ASSOCIATES_ID}. No price is shown. Open the link from this page.
 - The service does not sell products and does not claim hands-on product tests.
@@ -1123,14 +1142,14 @@ h1{{font:800 2.4rem/1.1 "Helvetica Neue",Arial,sans-serif;margin:0 0 1rem}}a{{co
 <p lang="he" dir="rtl"><a href="he/index.html">מעבר ל־PickForge (עברית)</a></p></main></body></html>
 """
 
-# Inline JSON-LD only; site.js is external. Google Fonts loaded from gstatic.
+# Inline JSON-LD, Travelpayouts Drive bootstrap, and Google Fonts.
 CSP = (
     "default-src 'self'; "
-    "script-src 'self' 'unsafe-inline'; "
+    "script-src 'self' 'unsafe-inline' https://emrld.ltd; "
     "style-src 'self' https://fonts.googleapis.com; "
     "font-src https://fonts.gstatic.com; "
-    "img-src 'self' data:; "
-    "connect-src 'self'; "
+    "img-src 'self' data: https://emrld.ltd; "
+    "connect-src 'self' https://emrld.ltd https://*.travelpayouts.com; "
     "frame-ancestors 'none'; "
     "base-uri 'self'; "
     "form-action 'none'; "

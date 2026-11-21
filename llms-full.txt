@@ -37,10 +37,11 @@ Search words show a product gallery (Amazon + AliExpress). Amazon and AliExpress
 
 ## Partners
 
-Product search and labeled affiliate links use these programs. Checkout stays on each merchant’s site. Store names are trademarks of their owners.
+Product search and labeled affiliate links use these programs. Travelpayouts Drive may apply travel partner links where enabled. Checkout stays on each merchant’s site. Store names are trademarks of their owners.
 
 - **Amazon** (Amazon Associates): Product and search links on amazon.com include Associates ID pickforge-20.
 - **AliExpress** (AliExpress Portals): Official promotion links are created only through the Portals affiliate API.
+- **Travelpayouts** (Travelpayouts Drive): Travel affiliate tooling via the Drive script in the page head, per Travelpayouts program rules.
 
 ## Add the tool to an assistant
 
@@ -62,7 +63,7 @@ PickForge is not in a plugin directory. The server address is https://pickforge-
 
 ## Affiliate disclosure
 
-PickForge participates in the Amazon Associates Program and the AliExpress Affiliate Program (Portals). If you buy through a link we label, we may earn a commission. You do not pay extra.
+PickForge participates in the Amazon Associates Program, the AliExpress Affiliate Program (Portals), and the Travelpayouts affiliate program. If you buy through a link we label, we may earn a commission. You do not pay extra.
 
 Prices, availability, and offers change. Confirm them on the store’s site before you buy. Store names are trademarks of their owners.
 
@@ -73,6 +74,8 @@ Amazon.com links on this page are the full amazon.com address, including Associa
 This page is static: no user login, no contact form, and no newsletter signup.
 
 The link builder runs in your browser. The product address or search words are not sent to PickForge. Opening a link sends you to Amazon or, when our server has issued one, to AliExpress. Those stores may set their own cookies.
+
+Travelpayouts Drive (script from emrld.ltd) may process page views and travel-related links under Travelpayouts’ privacy policy.
 
 The assistant tool, when it is published, receives a search request only to return results. We do not sell personal information. Hosting providers may log standard access data (IP, user agent).
 
@@ -169,10 +172,11 @@ PickForge — независимый проект. Эта страница оп�
 
 ## Партнёры
 
-Поиск и помеченные партнёрские ссылки идут через эти программы. Оплата — на сайте магазина. Названия магазинов — торговые марки их владельцев.
+Поиск и помеченные партнёрские ссылки идут через эти программы. Travelpayouts Drive может подключать travel-партнёрские ссылки, где это включено. Оплата — на сайте магазина. Названия магазинов — торговые марки их владельцев.
 
 - **Amazon** (Amazon Associates): Ссылки на товары и поиск на amazon.com с идентификатором Associates pickforge-20.
 - **AliExpress** (AliExpress Portals): Партнёрские ссылки создаёт только официальный API Portals.
+- **Travelpayouts** (Travelpayouts Drive): Travel-аффилиат через скрипт Drive в head страницы, по правилам программы Travelpayouts.
 
 ## Добавить инструмент в ассистент
 
@@ -194,7 +198,7 @@ PickForge ещё нет в каталоге плагинов. Адрес сер�
 
 ## Раскрытие партнёрских отношений
 
-PickForge участвует в Amazon Associates и в партнёрской программе AliExpress (Portals). Если вы купите товар по ссылке, которую мы пометили, мы можем получить комиссию. Доплаты нет.
+PickForge участвует в Amazon Associates, в партнёрской программе AliExpress (Portals) и в партнёрской программе Travelpayouts. Если вы купите товар по ссылке, которую мы пометили, мы можем получить комиссию. Доплаты нет.
 
 Цены, наличие и условия меняются. Перед покупкой проверьте их на сайте магазина. Названия магазинов — товарные знаки владельцев.
 
@@ -205,6 +209,8 @@ PickForge участвует в Amazon Associates и в партнёрской �
 Эта страница статическая: без регистрации, формы обратной связи и рассылки.
 
 Сборщик ссылок работает в вашем браузере. Адрес товара или слова поиска не отправляются в PickForge. Переход открывает Amazon или, если ссылку выдал наш сервер, AliExpress. Эти магазины могут ставить свои cookie.
+
+Travelpayouts Drive (скрипт с emrld.ltd) может обрабатывать просмотры и travel-ссылки по политике конфиденциальности Travelpayouts.
 
 Инструмент ассистента, когда он будет опубликован, получает поисковый запрос только чтобы вернуть результат. Мы не продаём персональные данные. Хостинг может записывать обычные данные доступа (IP-адрес, user agent).
 
@@ -301,10 +307,11 @@ PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירו
 
 ## שותפים
 
-חיפוש מוצרים וקישורי שותפים מסומנים עוברים דרך התוכניות האלה. התשלום נשאר באתר הסוחר. שמות החנויות הם סימני מסחר של הבעלים.
+חיפוש מוצרים וקישורי שותפים מסומנים עוברים דרך התוכניות האלה. Travelpayouts Drive עשוי להוסיף קישורי שותפי נסיעות במקומות שמופעלים. התשלום נשאר באתר הסוחר. שמות החנויות הם סימני מסחר של הבעלים.
 
 - **Amazon** (Amazon Associates): קישורי מוצר וחיפוש ב-amazon.com כוללים את מזהה Associates‏ pickforge-20.
 - **AliExpress** (AliExpress Portals): קישורי קידום רשמיים נוצרים רק ב-API השותפים של Portals.
+- **Travelpayouts** (Travelpayouts Drive): שותפות נסיעות דרך סקריפט Drive ב-head, לפי כללי התוכנית של Travelpayouts.
 
 ## הוספת הכלי לעוזר
 
@@ -326,7 +333,7 @@ PickForge לא רשום בקטלוג תוספים. כתובת השרת: https://
 
 ## גילוי נאות על שותפות
 
-PickForge משתתף ב-Amazon Associates וב-תוכנית השותפים של AliExpress‏ (Portals). אם תרכוש דרך קישור שסימנו, ייתכן שנקבל עמלה. אין תוספת תשלום.
+PickForge משתתף ב-Amazon Associates, ב-תוכנית השותפים של AliExpress‏ (Portals) וב-תוכנית השותפים של Travelpayouts. אם תרכוש דרך קישור שסימנו, ייתכן שנקבל עמלה. אין תוספת תשלום.
 
 מחירים, זמינות והצעות משתנים. אשרו אותם באתר החנות לפני קנייה. שמות החנויות הם סימנים מסחריים של בעליהם.
 
@@ -337,6 +344,8 @@ PickForge משתתף ב-Amazon Associates וב-תוכנית השותפים של 
 העמוד סטטי: אין הרשמה, טופס יצירת קשר או ניוזלטר.
 
 בונה הקישורים רץ בדפדפן. כתובת המוצר או מילות החיפוש לא נשלחות ל-PickForge. פתיחת קישור מעבירה אל Amazon, או אל AliExpress אם השרת שלנו הנפיק את הקישור. החנויות עשויות להגדיר עוגיות משלהן.
+
+Travelpayouts Drive (סקריפט מ-emrld.ltd) עשוי לעבד צפיות וקישורי נסיעות לפי מדיניות הפרטיות של Travelpayouts.
 
 כלי העוזר, כשיפורסם, מקבל בקשת חיפוש רק כדי להחזיר תוצאה. איננו מוכרים מידע אישי. ספק האחסון עשוי לתעד נתוני גישה רגילים (כתובת IP, סוג דפדפן).
 

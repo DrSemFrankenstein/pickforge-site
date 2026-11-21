@@ -6,7 +6,7 @@ Language: English · URL: https://drsemfrankenstein.github.io/pickforge-site/ ·
 
 ## Product search with affiliate links, for AI assistants
 
-PickForge is a tool an AI assistant can call when you ask it to find a product. It returns a labeled affiliate link. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.
+PickForge is a tool an AI assistant can call when you ask it to find a product or flights. It returns labeled affiliate links. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.
 
 ## An information page for a service in development
 
@@ -41,11 +41,11 @@ Product search and labeled affiliate links use these programs. Travelpayouts Dri
 
 - **Amazon** (Amazon Associates): Product and search links on amazon.com include Associates ID pickforge-20.
 - **AliExpress** (AliExpress Portals): Official promotion links are created only through the Portals affiliate API.
-- **Travelpayouts** (Travelpayouts Drive): Travel affiliate tooling via the Drive script in the page head, per Travelpayouts program rules.
+- **Travelpayouts** (Travelpayouts): Drive script on this site; MCP tool search_travel and Telegram /flights use the Travelpayouts API with your affiliate marker.
 
 ## Add the tool to an assistant
 
-The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.
+The MCP server lets an assistant search products (search_products) or flights (search_travel via Travelpayouts). Each link that can earn a commission is labeled. You pay the merchant, not PickForge.
 
 PickForge is not in a plugin directory. The server address is https://pickforge-mcp.onrender.com/sse. Each link opens that product’s add-plugin page. The name, description, and connection are on the card. Claude’s link fills in the name and server address. You confirm before it is added. Do not paste a localhost address.
 
@@ -54,7 +54,7 @@ PickForge is not in a plugin directory. The server address is https://pickforge-
   - Connection: https://pickforge-mcp.onrender.com/sse
 - [ChatGPT](https://chatgpt.com/plugins): Opens ChatGPT Plugins. Choose Add custom MCP server and enter the name, description, and connection. Authentication: No authentication. Then choose Create as a plugin.
   - Name: PickForge
-  - Description: Product search with labeled affiliate links. You pay the store, not PickForge.
+  - Description: Product and flight search with labeled affiliate links (Amazon, AliExpress, Travelpayouts). You pay the merchant, not PickForge.
   - Connection: https://pickforge-mcp.onrender.com/sse
 - [ChatGPT guide](https://developers.openai.com/api/docs/guides/custom-mcp-server): OpenAI’s steps for adding a custom MCP server.
 - [Grok](https://grok.com/connectors): Opens Grok connectors. Choose New Connector, then Custom, and enter the name and server address.
@@ -112,6 +112,10 @@ Use the buttons under Connect an assistant. Claude opens Add custom connector wi
 ### How do I contact the publisher?
 
 This page has no contact form.
+
+### Can the assistant search flights?
+
+Yes. The MCP tool search_travel takes IATA origin, destination, and optional departure date. Results use Travelpayouts when that partner is active on the server.
 
 ## For AI & generative search (GEO)
 

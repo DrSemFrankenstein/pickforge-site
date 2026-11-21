@@ -32,7 +32,8 @@
 
 ## Assistant connectors
 
-The public MCP address is https://pickforge-mcp.onrender.com/sse (SSE). Name: PickForge. Description: Product search with labeled affiliate links. You pay the store, not PickForge.
+The public MCP address is https://pickforge-mcp.onrender.com/sse (SSE). Name: PickForge. Description: Product and flight search with labeled affiliate links (Amazon, AliExpress, Travelpayouts). You pay the merchant, not PickForge.
+MCP tools: search_products, search_travel (Travelpayouts flights, IATA codes), generate_affiliate_link (AliExpress URL).
 Claude opens Add custom connector with the name and address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection, with no authentication. Grok opens Connectors: choose New Connector, then Custom. Confirm before adding. Do not paste a localhost address.
 
 - Claude: https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=PickForge&connectorUrl=https%3A%2F%2Fpickforge-mcp.onrender.com%2Fsse
@@ -58,6 +59,8 @@ Claude opens Add custom connector with the name and address filled in. ChatGPT o
   A: Use the buttons under Connect an assistant. Claude opens Add custom connector with the name and server address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection on this page. Grok opens Connectors: choose New Connector, then Custom. You confirm before PickForge is added.
 - Q: How do I contact the publisher?
   A: This page has no contact form.
+- Q: Can the assistant search flights?
+  A: Yes. The MCP tool search_travel takes IATA origin, destination, and optional departure date. Results use Travelpayouts when that partner is active on the server.
 
 ## Policies
 

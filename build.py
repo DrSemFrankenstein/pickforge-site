@@ -76,9 +76,9 @@ CONTENT = {
   "skip": "Skip to content", "nav_label": "Sections", "lang_label": "Language",
   "keywords": "PickForge, affiliate disclosure, AI assistant tool, product search, partner programs",
   "nav": ["Service", "Links", "Partners", "Assistant", "Bot", "Disclosure"],
-  "eyebrow": "Product search for AI assistants · Affiliate disclosure on every page",
+  "eyebrow": "Product & travel search for AI assistants · Affiliate disclosure on every page",
   "h1": "Product search with affiliate links, for AI assistants",
-  "lead": "PickForge is a tool an AI assistant can call when you ask it to find a product. It returns a labeled affiliate link. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.",
+  "lead": "PickForge is a tool an AI assistant can call when you ask it to find a product or flights. It returns labeled affiliate links. This page also builds an Amazon.com link in your browser. You pay the store, not PickForge.",
   "cue": "Scroll for details",
   "hero_asst_h": "Connect an assistant",
   "hero_asst_p": "Opens that product’s plugin settings. Claude fills in the name and server address. You confirm before adding.",
@@ -121,6 +121,7 @@ CONTENT = {
     ("Can I make an AliExpress link on this page?", "Paste an AliExpress product URL and the builder calls the Portals API when a public link endpoint is configured. On static GitHub Pages without that API, use search words or an Amazon URL instead."),
     ("How do I add PickForge to Claude, ChatGPT, or Grok?", "Use the buttons under Connect an assistant. Claude opens Add custom connector with the name and server address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection on this page. Grok opens Connectors: choose New Connector, then Custom. You confirm before PickForge is added."),
     ("How do I contact the publisher?", "This page has no contact form."),
+    ("Can the assistant search flights?", "Yes. The MCP tool search_travel takes IATA origin, destination, and optional departure date. Results use Travelpayouts when that partner is active on the server."),
   ],
   "link": {
     "h": "Make a store link",
@@ -181,17 +182,17 @@ CONTENT = {
     "items": [
       ("Amazon", "amazon", "Amazon Associates", "Product and search links on amazon.com include Associates ID pickforge-20."),
       ("AliExpress", "aliexpress", "AliExpress Portals", "Official promotion links are created only through the Portals affiliate API."),
-      ("Travelpayouts", "travelpayouts", "Travelpayouts Drive", "Travel affiliate tooling via the Drive script in the page head, per Travelpayouts program rules."),
+      ("Travelpayouts", "travelpayouts", "Travelpayouts", "Drive script on this site; MCP tool search_travel and Telegram /flights use the Travelpayouts API with your affiliate marker."),
     ],
   },
   "assistant": {
     "h": "Add the tool to an assistant",
     "p": [
-      "The product search is an MCP server: a service the assistant calls when you ask it to find a product. It returns links. A link that can earn a commission is labeled. You pay the store, not PickForge.",
+      "The MCP server lets an assistant search products (search_products) or flights (search_travel via Travelpayouts). Each link that can earn a commission is labeled. You pay the merchant, not PickForge.",
       "PickForge is not in a plugin directory. The server address is https://pickforge-mcp.onrender.com/sse. Each link opens that product’s add-plugin page. The name, description, and connection are on the card. Claude’s link fills in the name and server address. You confirm before it is added. Do not paste a localhost address.",
     ],
     "field_labels": {"name": "Name", "description": "Description", "connection": "Connection"},
-    "mcp_description": "Product search with labeled affiliate links. You pay the store, not PickForge.",
+    "mcp_description": "Product and flight search with labeled affiliate links (Amazon, AliExpress, Travelpayouts). You pay the merchant, not PickForge.",
     "connectors": [
       ("Claude", CLAUDE_CONNECT, "Opens Add custom connector with the name and server address filled in. Review them, then add.", "claude", ("name", "connection")),
       ("ChatGPT", CHATGPT_CONNECT, "Opens ChatGPT Plugins. Choose Add custom MCP server and enter the name, description, and connection. Authentication: No authentication. Then choose Create as a plugin.", "chatgpt", ("name", "description", "connection")),
@@ -201,13 +202,13 @@ CONTENT = {
   },
   "telegram": {
     "h": "PickForge Telegram bot",
-    "p": "Search products, convert Amazon and AliExpress URLs, and open labeled affiliate deals in Telegram. The Mini App uses the same PickForge search service as the MCP server.",
+    "p": "Search products, search flights (Travelpayouts), convert Amazon and AliExpress URLs, and open labeled affiliate deals in Telegram. The Mini App uses the same Core API as the MCP server.",
     "short": "Telegram",
     "handle": "@PickForgeShopBot",
     "steps": [
       "Open the bot in Telegram and tap Start.",
       "Set shipping country and currency with /locale or inside the Mini App.",
-      "Search in chat, paste store links to convert, or tap Shop for product cards.",
+      "Search in chat, use /flights TLV LHR for routes, paste store links to convert, or open the Mini App for products and flights.",
     ],
     "mini_label": "Mini App URL",
   },
@@ -344,17 +345,17 @@ CONTENT = {
     "items": [
       ("Amazon", "amazon", "Amazon Associates", "Ссылки на товары и поиск на amazon.com с идентификатором Associates pickforge-20."),
       ("AliExpress", "aliexpress", "AliExpress Portals", "Партнёрские ссылки создаёт только официальный API Portals."),
-      ("Travelpayouts", "travelpayouts", "Travelpayouts Drive", "Travel-аффилиат через скрипт Drive в head страницы, по правилам программы Travelpayouts."),
+      ("Travelpayouts", "travelpayouts", "Travelpayouts", "Drive на сайте; MCP search_travel и Telegram /flights — API Travelpayouts с вашим marker."),
     ],
   },
   "assistant": {
     "h": "Добавить инструмент в ассистент",
     "p": [
-      "Поиск товаров — это MCP-сервер: служба, которую ассистент вызывает, когда вы просите найти товар. Он возвращает ссылки. Ссылка, которая может принести комиссию, помечена. Платите магазину, не PickForge.",
+      "MCP-сервер: поиск товаров (search_products) и рейсов (search_travel через Travelpayouts). Партнёрские ссылки помечены. Платите магазину, не PickForge.",
       "PickForge ещё нет в каталоге плагинов. Адрес сервера: https://pickforge-mcp.onrender.com/sse. Каждая ссылка открывает страницу добавления плагина. Имя, описание и подключение указаны на карточке. Ссылка Claude подставляет имя и адрес сервера. Подтвердите, прежде чем сервер будет добавлен. Не вставляйте адрес localhost.",
     ],
     "field_labels": {"name": "Имя", "description": "Описание", "connection": "Подключение"},
-    "mcp_description": "Поиск товаров с помеченными партнёрскими ссылками. Платите магазину, не PickForge.",
+    "mcp_description": "Поиск товаров и рейсов с партнёрскими ссылками (Amazon, AliExpress, Travelpayouts). Платите магазину, не PickForge.",
     "connectors": [
       ("Claude", CLAUDE_CONNECT, "Открывает Add custom connector: имя и адрес сервера уже заполнены. Проверьте их и добавьте.", "claude", ("name", "connection")),
       ("ChatGPT", CHATGPT_CONNECT, "Открывает ChatGPT Plugins. Выберите Add custom MCP server и введите имя, описание и подключение. Authentication: No authentication. Затем Create as a plugin.", "chatgpt", ("name", "description", "connection")),
@@ -364,13 +365,13 @@ CONTENT = {
   },
   "telegram": {
     "h": "Telegram-бот PickForge",
-    "p": "Ищите товары, конвертируйте ссылки Amazon и AliExpress и открывайте помеченные партнёрские предложения в Telegram. Mini App использует тот же сервис поиска PickForge, что и MCP.",
+    "p": "Товары, рейсы (Travelpayouts), конвертер ссылок Amazon/AliExpress в Telegram. Mini App и MCP используют один Core API.",
     "short": "Telegram",
     "handle": "@PickForgeShopBot",
     "steps": [
       "Откройте бота в Telegram и нажмите Start.",
       "Укажите страну доставки и валюту через /locale или в Mini App.",
-      "Ищите в чате, вставляйте ссылки магазинов или откройте Shop с карточками товаров.",
+      "В чате: поиск, /flights TLV LHR, ссылки магазинов; в Mini App — товары и рейсы.",
     ],
     "mini_label": "Адрес Mini App",
   },
@@ -507,17 +508,17 @@ CONTENT = {
     "items": [
       ("Amazon", "amazon", "Amazon Associates", "קישורי מוצר וחיפוש ב-amazon.com כוללים את מזהה Associates‏ pickforge-20."),
       ("AliExpress", "aliexpress", "AliExpress Portals", "קישורי קידום רשמיים נוצרים רק ב-API השותפים של Portals."),
-      ("Travelpayouts", "travelpayouts", "Travelpayouts Drive", "שותפות נסיעות דרך סקריפט Drive ב-head, לפי כללי התוכנית של Travelpayouts."),
+      ("Travelpayouts", "travelpayouts", "Travelpayouts", "Drive באתר; MCP search_travel ו-/flights בטלגרם — API של Travelpayouts."),
     ],
   },
   "assistant": {
     "h": "הוספת הכלי לעוזר",
     "p": [
-      "חיפוש המוצרים הוא שרת MCP: שירות שהעוזר קורא לו כשמבקשים למצוא מוצר. הוא מחזיר קישורים. קישור שעשוי להניב עמלה מסומן. התשלום הוא לחנות, לא ל-PickForge.",
+      "שרת MCP: חיפוש מוצרים (search_products) וטיסות (search_travel ב-Travelpayouts). קישורי שותפים מסומנים. התשלום לסוחר, לא ל-PickForge.",
       "PickForge לא רשום בקטלוג תוספים. כתובת השרת: https://pickforge-mcp.onrender.com/sse. כל קישור פותח את עמוד הוספת התוסף. השם, התיאור והחיבור מופיעים בכרטיס. הקישור של Claude ממלא את השם ואת כתובת השרת. יש לאשר לפני ההוספה. אל תדביקו כתובת localhost.",
     ],
     "field_labels": {"name": "שם", "description": "תיאור", "connection": "חיבור"},
-    "mcp_description": "חיפוש מוצרים עם קישורי שותפים מסומנים. התשלום הוא לחנות, לא ל-PickForge.",
+    "mcp_description": "חיפוש מוצרים וטיסות עם קישורי שותפים (Amazon, AliExpress, Travelpayouts). התשלום לסוחר, לא ל-PickForge.",
     "connectors": [
       ("Claude", CLAUDE_CONNECT, "פותח את Add custom connector עם שם וכתובת שרת מלאים. בדקו אותם ואז הוסיפו.", "claude", ("name", "connection")),
       ("ChatGPT", CHATGPT_CONNECT, "פותח את ChatGPT Plugins. בחרו Add custom MCP server והזינו שם, תיאור וחיבור. Authentication: No authentication. אחר כך Create as a plugin.", "chatgpt", ("name", "description", "connection")),
@@ -527,13 +528,13 @@ CONTENT = {
   },
   "telegram": {
     "h": "בוט הטלגרם של PickForge",
-    "p": "חפשו מוצרים, המירו קישורי Amazon ו-AliExpress ופתחו עסקאות שותפים מסומנות בטלגרם. ה-Mini App משתמש באותו שירות חיפוש PickForge כמו שרת ה-MCP.",
+    "p": "מוצרים, טיסות (Travelpayouts), המרת קישורים בטלגרם. Mini App ו-MCP משתמשים ב-Core API.",
     "short": "Telegram",
     "handle": "@PickForgeShopBot",
     "steps": [
       "פתחו את הבוט בטלגרם והקישו Start.",
       "הגדירו מדינת משלוח ומטבע עם /locale או מתוך ה-Mini App.",
-      "חפשו בצ'אט, הדביקו קישורי חנויות או פתחו Shop עם כרטיסי מוצר.",
+      "בצ'אט: חיפוש, /flights TLV LHR, קישורים; ב-Mini App — מוצרים וטיסות.",
     ],
     "mini_label": "כתובת Mini App",
   },
@@ -819,8 +820,8 @@ def page(lang):
     return f"""<!doctype html>
 <html lang="{lang}" dir="{d}">
 <head>
-{TRAVELPAYOUTS_DRIVE}
 <meta charset="utf-8">
+{TRAVELPAYOUTS_DRIVE}
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{c["title"]}</title>
 <meta name="description" content="{c["description"]}">
@@ -1073,6 +1074,7 @@ def llms_txt():
 ## Assistant connectors
 
 The public MCP address is {MCP_URL} (SSE). Name: {MCP_NAME}. Description: {e["assistant"]["mcp_description"]}
+MCP tools: search_products, search_travel (Travelpayouts flights, IATA codes), generate_affiliate_link (AliExpress URL).
 Claude opens Add custom connector with the name and address filled in. ChatGPT opens Plugins: choose Add custom MCP server and enter the name, description, and connection, with no authentication. Grok opens Connectors: choose New Connector, then Custom. Confirm before adding. Do not paste a localhost address.
 
 """ + "\n".join(f"- {row[0]}: {row[1]}" for row in e["assistant"]["connectors"]) + f"""

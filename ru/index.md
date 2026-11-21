@@ -41,11 +41,11 @@ PickForge — независимый проект. Эта страница оп�
 
 - **Amazon** (Amazon Associates): Ссылки на товары и поиск на amazon.com с идентификатором Associates pickforge-20.
 - **AliExpress** (AliExpress Portals): Партнёрские ссылки создаёт только официальный API Portals.
-- **Travelpayouts** (Travelpayouts Drive): Travel-аффилиат через скрипт Drive в head страницы, по правилам программы Travelpayouts.
+- **Travelpayouts** (Travelpayouts): Drive на сайте; MCP search_travel и Telegram /flights — API Travelpayouts с вашим marker.
 
 ## Добавить инструмент в ассистент
 
-Поиск товаров — это MCP-сервер: служба, которую ассистент вызывает, когда вы просите найти товар. Он возвращает ссылки. Ссылка, которая может принести комиссию, помечена. Платите магазину, не PickForge.
+MCP-сервер: поиск товаров (search_products) и рейсов (search_travel через Travelpayouts). Партнёрские ссылки помечены. Платите магазину, не PickForge.
 
 PickForge ещё нет в каталоге плагинов. Адрес сервера: https://pickforge-mcp.onrender.com/sse. Каждая ссылка открывает страницу добавления плагина. Имя, описание и подключение указаны на карточке. Ссылка Claude подставляет имя и адрес сервера. Подтвердите, прежде чем сервер будет добавлен. Не вставляйте адрес localhost.
 
@@ -54,7 +54,7 @@ PickForge ещё нет в каталоге плагинов. Адрес сер�
   - Подключение: https://pickforge-mcp.onrender.com/sse
 - [ChatGPT](https://chatgpt.com/plugins): Открывает ChatGPT Plugins. Выберите Add custom MCP server и введите имя, описание и подключение. Authentication: No authentication. Затем Create as a plugin.
   - Имя: PickForge
-  - Описание: Поиск товаров с помеченными партнёрскими ссылками. Платите магазину, не PickForge.
+  - Описание: Поиск товаров и рейсов с партнёрскими ссылками (Amazon, AliExpress, Travelpayouts). Платите магазину, не PickForge.
   - Подключение: https://pickforge-mcp.onrender.com/sse
 - [Инструкция ChatGPT](https://developers.openai.com/api/docs/guides/custom-mcp-server): Шаги OpenAI для своего MCP-сервера.
 - [Grok](https://grok.com/connectors): Открывает коннекторы Grok. Выберите New Connector, затем Custom, и введите имя и адрес сервера.

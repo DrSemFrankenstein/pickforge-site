@@ -41,11 +41,11 @@ PickForge הוא פרויקט עצמאי. עמוד זה מתאר את השירו
 
 - **Amazon** (Amazon Associates): קישורי מוצר וחיפוש ב-amazon.com כוללים את מזהה Associates‏ pickforge-20.
 - **AliExpress** (AliExpress Portals): קישורי קידום רשמיים נוצרים רק ב-API השותפים של Portals.
-- **Travelpayouts** (Travelpayouts Drive): שותפות נסיעות דרך סקריפט Drive ב-head, לפי כללי התוכנית של Travelpayouts.
+- **Travelpayouts** (Travelpayouts): Drive באתר; MCP search_travel ו-/flights בטלגרם — API של Travelpayouts.
 
 ## הוספת הכלי לעוזר
 
-חיפוש המוצרים הוא שרת MCP: שירות שהעוזר קורא לו כשמבקשים למצוא מוצר. הוא מחזיר קישורים. קישור שעשוי להניב עמלה מסומן. התשלום הוא לחנות, לא ל-PickForge.
+שרת MCP: חיפוש מוצרים (search_products) וטיסות (search_travel ב-Travelpayouts). קישורי שותפים מסומנים. התשלום לסוחר, לא ל-PickForge.
 
 PickForge לא רשום בקטלוג תוספים. כתובת השרת: https://pickforge-mcp.onrender.com/sse. כל קישור פותח את עמוד הוספת התוסף. השם, התיאור והחיבור מופיעים בכרטיס. הקישור של Claude ממלא את השם ואת כתובת השרת. יש לאשר לפני ההוספה. אל תדביקו כתובת localhost.
 
@@ -54,7 +54,7 @@ PickForge לא רשום בקטלוג תוספים. כתובת השרת: https://
   - חיבור: https://pickforge-mcp.onrender.com/sse
 - [ChatGPT](https://chatgpt.com/plugins): פותח את ChatGPT Plugins. בחרו Add custom MCP server והזינו שם, תיאור וחיבור. Authentication: No authentication. אחר כך Create as a plugin.
   - שם: PickForge
-  - תיאור: חיפוש מוצרים עם קישורי שותפים מסומנים. התשלום הוא לחנות, לא ל-PickForge.
+  - תיאור: חיפוש מוצרים וטיסות עם קישורי שותפים (Amazon, AliExpress, Travelpayouts). התשלום לסוחר, לא ל-PickForge.
   - חיבור: https://pickforge-mcp.onrender.com/sse
 - [מדריך ChatGPT](https://developers.openai.com/api/docs/guides/custom-mcp-server): השלבים של OpenAI להוספת שרת MCP משלכם.
 - [Grok](https://grok.com/connectors): פותח את מחברי Grok. בחרו New Connector ואז Custom, והזינו שם וכתובת שרת.
